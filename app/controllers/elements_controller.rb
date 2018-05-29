@@ -7,9 +7,8 @@ class ElementsController < ApplicationController
   def create
     @element = Element.new(element_params)
     @zone = Zone.find(params[:zone_id])
-    @garden = Garden.find(params[:garden_id])
     if @element.save
-      redirect_to garden_path(@garden)
+      redirect_to garden_path(@zone.garden_id)
     else
       render :new
     end
