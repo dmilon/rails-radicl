@@ -9,7 +9,7 @@ class ZonesController < ApplicationController
     @garden = Garden.find(params[:garden_id])
     @zone.garden = @garden
     if @zone.save
-      redirect_to garden_path(@garden)
+      redirect_to new_zone_element_path(@zone)
       # en attente de la route du formulaire new_element
       # redirect_to new_zone_element_path
     else
