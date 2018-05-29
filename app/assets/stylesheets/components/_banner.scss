@@ -1,7 +1,9 @@
 .banner {
+  background-color: #FBFBFB;
   color: white;
   text-align: center;
-  background-size: cover !important;
+  background-size: contain !important;
+  background-repeat: no-repeat;
   background-position: center;
   width: 100vw;
   height: 100vh;
@@ -12,29 +14,38 @@
   border: none;
 }
 
+.banner-content {
+    padding-top: 30px;
+    position: absolute;
+    left: 102px;
+    width: 350px;
+    text-align: left;
+    line-height: 1;
+}
+
 .banner h1 {
-  font-size: 35px;
+  font-size: 45px;
   font-weight: 300;
   // text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   letter-spacing: .02em;
+  line-height: 1.6;
 }
 
 .btn-home {
-  background-color: #157691;
-  border: 1px solid;
-  color: white;
+  background-color: transparent;
+  border: 1px solid #0D6797;
+  border-radius: 2px;
+  color: #0D6797;
   opacity: 0.9;
   font-size: 18px;
   font-weight: lighter;
   letter-spacing: .02em;
+  box-shadow: 0px 1px 3px #eaeaea;
 }
 
 .btn-home:hover{
-  background-color: white;
-  color: #157691;
+  background-color: #0D6797;
+  color: white;
 }
 
-.downarrow img {
-transform: translateY(160px);
- width: 30px;
-}
+
