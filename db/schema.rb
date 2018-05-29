@@ -1,6 +1,5 @@
-ActiveRecord::Schema.define(version: 2018_05_29_094836) do
+ActiveRecord::Schema.define(version: 2018_05_29_162831) do
 
-  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "alert_scopes", force: :cascade do |t|
@@ -47,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_094836) do
     t.float "long"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "log_scopes", force: :cascade do |t|
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_094836) do
   end
 
   create_table "logs", force: :cascade do |t|
-    t.string "categoy"
     t.boolean "status"
     t.date "date"
     t.string "description"
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_094836) do
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
     t.index ["user_id"], name: "index_logs_on_user_id"
   end
 
@@ -96,7 +96,11 @@ ActiveRecord::Schema.define(version: 2018_05_29_094836) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "avatar"
+    t.bigint "garden_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["garden_id"], name: "index_users_on_garden_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -119,5 +123,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_094836) do
   add_foreign_key "log_scopes", "logs"
   add_foreign_key "logs", "users"
   add_foreign_key "products", "elements"
+  add_foreign_key "users", "gardens"
   add_foreign_key "zones", "gardens"
 end
