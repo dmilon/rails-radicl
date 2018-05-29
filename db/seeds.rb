@@ -1,4 +1,3 @@
-
 User.destroy_all
 Garden.destroy_all
 Zone.destroy_all
@@ -96,3 +95,9 @@ digging.save
 
 puts "our first users, gardens, zones, elements and logs have been saved with success. love from the radicl team"
 
+zone1 = Zone.new
+zone1.save
+zone2 = Zone.new
+zone1.save
+puts "zones saved"
+puts "Is anybody here? Hellooo ? I'm a tiny ant stuck in the machine"
