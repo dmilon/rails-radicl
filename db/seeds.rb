@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+zone1 = Zone.new
+zone1.save
+zone2 = Zone.new
+zone1.save
+puts "zones saved"

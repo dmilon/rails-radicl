@@ -17,6 +17,10 @@ class ZonesController < ApplicationController
     end
   end
 
+  def show
+    @zone = Zone.find(params[:id])
+  end
+
   private
 
   def zone_params

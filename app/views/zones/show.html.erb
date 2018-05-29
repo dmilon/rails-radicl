@@ -1,0 +1,20 @@
+<h1><%= @zone.name %></h1>
+<div class="tab-elements">
+  <% if @zone.elements.empty? %>
+  <p> You don't have any elements yet. <%= link_to "Create one", new_zone_element_path(@zone) %></p>
+  <% else %>
+    <% @zone.elements.each do |element| %>
+      <div class="col-xs-12 col-sm-3">
+        <%= element.name %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+#TODO: logs
+<div class="tab-logs">
+<% if @zone.elements.logs.empty? %>
+  <p> You don't have any logs yet. <%= link_to "Create one", new_zone_element_path(@zone) %></p>
+<% else %>
+<% end %>
+</div>

@@ -1,4 +1,8 @@
 class ElementsController < ApplicationController
+
+  def index
+    @elements = Element.all
+  end
   def new
     @zone = Zone.find(params[:zone_id])
     @element = Element.new
