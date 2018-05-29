@@ -1,7 +1,7 @@
 class ElementsController < ApplicationController
   def new
-    @element = Element.new(element_params)
     @zone = Zone.find(params[:zone_id])
+    @element = Element.new
   end
 
   def create
@@ -18,6 +18,6 @@ class ElementsController < ApplicationController
   private
 
   def element_params
-    params.require(:element).permit(:quantity, :photo)
+    params.require(:element).permit(:name, :quantity, :photo, :zone_id)
   end
 end
