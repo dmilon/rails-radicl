@@ -5,8 +5,8 @@ class ZonesController < ApplicationController
   end
 
   def create
-    @zone = Zone.new(zone_params)
     @garden = Garden.find(params[:garden_id])
+    @zone = Zone.new(zone_params)
     @zone.garden = @garden
     if @zone.save
       redirect_to new_zone_element_path(@zone)

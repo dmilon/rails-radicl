@@ -6,4 +6,6 @@ class User < ApplicationRecord
   belongs_to :garden, optional: true
   has_many :logs
   has_many :follows
+
+
 end
