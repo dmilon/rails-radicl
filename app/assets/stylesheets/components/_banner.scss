@@ -1,0 +1,40 @@
+.banner {
+  color: white;
+  text-align: center;
+  background-size: cover !important;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top:0px;
+  border: none;
+}
+
+.banner h1 {
+  font-size: 35px;
+  font-weight: 300;
+  // text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  letter-spacing: .02em;
+}
+
+.btn-home {
+  background-color: #157691;
+  border: 1px solid;
+  color: white;
+  opacity: 0.9;
+  font-size: 18px;
+  font-weight: lighter;
+  letter-spacing: .02em;
+}
+
+.btn-home:hover{
+  background-color: white;
+  color: #157691;
+}
+
+.downarrow img {
+transform: translateY(160px);
+ width: 30px;
+}
