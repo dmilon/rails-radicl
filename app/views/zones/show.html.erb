@@ -5,6 +5,7 @@
   <% else %>
     <% @zone.elements.each do |element| %>
       <div class="col-xs-12 col-sm-3">
+        #INSERT BRUNO'S CARD
         <%= element.name %>
       </div>
     <% end %>
@@ -14,7 +15,13 @@
 #TODO: logs
 <div class="tab-logs">
 <% if @zone.elements.logs.empty? %>
-  <p> You don't have any logs yet. <%= link_to "Create one", new_zone_element_path(@zone) %></p>
+  <p> You don't have any logs yet. <%= link_to "Create one", new_log_path %></p>
 <% else %>
+  <% @zone.elements.logs.each do |log| %>
+    <div class="col-xs-12 col-sm-3">
+      #INSERT BRUNO'S CARD
+      <p><%= log.date %> - <%= log.status %> - <%= log.category %></p>
+    </div>
+  <% end %>
 <% end %>
 </div>
