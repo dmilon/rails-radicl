@@ -1,59 +1,72 @@
+
+.row {
+    margin-left: -63px;
+    margin-right: -63px;
+}
+
+
+img.card-img-top {
+  height: 180px;
+  position: absolute;
+}
+
+p.card-text {
+    font-size: 12px;
+}
+
+p.address-garden{
+  font-size: 10px;
+}
+
 .card {
-  height: 250px;
-  width: 100%;
-  text-shadow: 1px 3px 5px rgba(0,0,0,0.6);
-  background-size: cover !important;
-  background-position: center;
-  color: white;
+  margin-top: 100px;
   position: relative;
-  margin-top: 30px;
-  flex: 3 3 auto;
-  margin: 10px 0;
 }
 
-.row{ padding-bottom: 30px}
-
-.card:hover{
-  opacity: 0.9;
-}
-
-.card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 40px;
-  border-radius: 50%;
-}
-.card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 15px;
+h2.card-title{
+  font-size: 18px;
   text-transform: uppercase;
 }
-.card-description {
+
+p.name-gardener {
+    margin-top: -8px;
+    font-size: 13px;
+}
+
+.card-body {
+  width: 241px;
+  padding: 5px 15px;
+  border: 1px solid #0D6797;
   position: absolute;
-  bottom: 10px;
+  top: 180px;
+  margin-top: 9px;
+}
+
+i.fas.fa-seedling {
+  position: absolute;
+  color: white;
+  top: 10px;
   left: 10px;
+  box-shadow: 0 1px 17px rgba(0,0,0,0.6);
 }
-.card-description h2 {
-  font-size: 24px;
+
+i.fas.fa-seedling:hover{
+  color: #9dd3bc;
 }
-.card-description p {
-  font-size: 14px;
-  opacity: 0.7;
-  font-weight: lighter;
-}
+
 .card-link {
+  background-color: #0d6797;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 2;
-  background: black;
-  opacity: 0;
+  width: 241px;
+  top: 368px;
+  margin-top: 10px;
 }
-.card-link:hover {
-  opacity: 0.1;
+
+.card-link a {
+  text-align:center;
+  font-size: 13px;
+  color: white;
+  text-decoration:none;
+  margin-left: 170px;
+  padding-top:-10px
 }

@@ -6,12 +6,15 @@ class LogsController < ApplicationController
 
   def new
     @log = Log.new
-    @log_scope = LogScope.new
   end
 
   def create
     @log = Log.new(params_log)
-
+    if @log.save
+      redirect_to garden_path(@garden)
+    else
+      render :new
+    end
   end
 
   private
