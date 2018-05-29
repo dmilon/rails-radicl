@@ -14,26 +14,26 @@ damien = User.create!(email: "damien@gmail.com", password: "password", name: "da
 louisa = User.create!(email: "louisa@gmail.com", password: "password", name: "louisa", avatar: "https://avatars2.githubusercontent.com/u/13285082?v=4")
 
 # Create 4 farms / gardens
-ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4000"
-  location: "Rue de Bretagne 56300 Pontivy", lat: "48.079894", long: "-2.974862",
+ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4000",
+  location: "Rue de Bretagne 56300 Pontivy", lat: 48.079894, long: -2.974862,
   remote_photo_url: 'https://images.wwoof.fr/815x458/photos/hosts/bc68d91a39f6ad7aaab270ced00d3dac.jpg')
 ferme_de_quelenne.user = bruno
 ferme_de_quelenne.save!
 
-ferme_louley = Garden.new(name: "Ferme forestière Louley Médoc", area: "4000"
-  location: "Rue de Bretagne 56300 Pontivy", lat: "48.079894", long: "-2.974862",
+ferme_louley = Garden.new(name: "Ferme forestière Louley Médoc", area: "4000",
+  location: "Rue de Bretagne 56300 Pontivy", lat: 48.079894, long: -2.974862,
   remote_photo_url: 'https://images.wwoof.fr/380x253/photos/hosts/c695d233ad1898b9e1f76e87787d1439.jpg')
 ferme_louley.user = louisa
 ferme_louley.save!
 
-maison_ane = Garden.new(name: "La maison de l'âne", area: "4000"
-  location: "Rue de Bretagne 56300 Pontivy", lat: "48.079894", long: "-2.974862",
+maison_ane = Garden.new(name: "La maison de l'âne", area: "4000",
+  location: "Rue de Bretagne 56300 Pontivy", lat: 48.079894, long: -2.974862,
   remote_photo_url: 'https://images.wwoof.fr/380x253/photos/hosts/800d56e82103249058db06f057314702.jpeg')
 maison_ane.user = alexia
 maison_ane.save!
 
-champs = Garden.new(name: "L'envie des champs", area: "4000"
-  location: "Rue de Bretagne 56300 Pontivy", lat: "48.079894", long: "-2.974862",
+champs = Garden.new(name: "L'envie des champs", area: "4000",
+  location: "Rue de Bretagne 56300 Pontivy", lat: 48.079894, long: -2.974862,
   remote_photo_url: 'https://images.wwoof.fr/380x253/photos/hosts/81887dd857cc6e424d37862119dcea26.jpg')
 champs.user = damien
 champs.save!
