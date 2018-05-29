@@ -18,6 +18,6 @@ class ElementsController < ApplicationController
   private
 
   def element_params
-    params.require(:element).permit(:area, :photo)
+    params.require(:element).permit(:quantity, :photo)
   end
 end
