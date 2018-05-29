@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :zones, only: [:show] do
     resources :elements, only: [:create, :new]
   end
+  resources :logs, only: [:new, :create, :update, :index, :edit]
 end

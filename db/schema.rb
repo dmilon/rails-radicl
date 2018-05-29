@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_094836) do
   end
 
   create_table "logs", force: :cascade do |t|
-    t.string "categoy"
+    t.string "category"
     t.boolean "status"
     t.date "date"
     t.string "description"
