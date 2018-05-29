@@ -1,4 +1,4 @@
 class LogScope < ApplicationRecord
-  belongs_to :logs
+  belongs_to :log
   belongs_to :element
 end
