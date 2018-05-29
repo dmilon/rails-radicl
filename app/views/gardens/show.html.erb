@@ -13,20 +13,45 @@
       <div class="col-xs-12 col-sm-4">
         <%= content_tag(:div, class: "card", style:"background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url();") do %>
         <!-- #{cl_image_path zone.photo} -->
-          <div class="card-category"><%=zone.name%></div>
           <div class="card-description">
             <h2><em><%=zone.area%></em></h2>
             <p>last log : xxx</p>
+            <%= link_to zone.name, zone_path(zone), class: "card-category" %>
           </div>
-
-          <%= link_to "", zone_path(zone), class: "card-link" %>
         <% end %>
        </div>
      <% end %>
-
     <% end %>
   </div>
-  <div class="row">
 
+  <div class="row">
+    <% if @garden.zones == [] %>
+      <p class="error-message"><%= "Sorry, no zones " %></p>
+    <% else %>
+      <% @logs.each do |log| %>
+        <% log.log_scopes.each do |log_scope|%>
+          <div>
+            <p><%= log.categoy %></p>
+            <p><%= log.date %></p>
+            <p><%= log.description %></p>
+            <p><%= log.status %></p>
+            <p><%= log_scope.element.zone.name %></p>
+            <p><%= log_scope.element.name %></p>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
   </div>
+      <%# @garden.zones.each do |zone|%>
+        <%# zone.elements.each do |element| %>
+          <%# element.log_scopes.each do |log_scope| %>
+            <%# log_scope.logs.each do |log| %>
+              <!-- <div> -->
+      <!--           <h1><%#= log.date %></h1> -->
+                <!-- <p><%#= log.status %></p> -->
+                <!-- <p><%#= log.category %></p> -->
+              <!-- </div> -->
+            <%# end %>
+          <%# end %>
+        <%# end %>
 </div>
