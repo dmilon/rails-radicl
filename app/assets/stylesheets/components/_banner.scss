@@ -15,16 +15,18 @@
 }
 
 .banner-content {
-    padding-top: 30px;
+    padding-top: 20px;
     position: absolute;
     left: 102px;
-    width: 350px;
+    width: 400px;
     text-align: left;
     line-height: 1;
 }
 
+span#banner-typed-text{font-size: 80px;}
+
 .banner h1 {
-  font-size: 45px;
+  font-size: 50px;
   font-weight: 300;
   // text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
   letter-spacing: .02em;
