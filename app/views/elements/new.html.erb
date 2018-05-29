@@ -1,0 +1,8 @@
+<h1>Add an element to your <%= @zone.name %></h1>
+<%= simple_form_for [@zone, @element] do |f| %>
+  <%= f.input :name, required: true %>
+  <%= f.input :photo, required: false %>
+  <%= f.input :quantity, as: :integer, required: true %>
+  <%= f.submit "add an element", class: "btn btn-primary" %>
+<% end %>
+
