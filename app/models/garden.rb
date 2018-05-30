@@ -1,5 +1,5 @@
 class Garden < ApplicationRecord
-  has_many :users
+  has_many :users, dependent: :nullify
   has_many :follows
   has_many :zones, dependent: :destroy
   validates :name, presence: true, uniqueness: true

@@ -42,6 +42,10 @@
       <% end %>
     <% end %>
   </div>
+  <%= link_to "Delete", garden_path(@garden),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+  <%= link_to "Edit", edit_garden_path(@garden) %>
       <%# @garden.zones.each do |zone|%>
         <%# zone.elements.each do |element| %>
           <%# element.log_scopes.each do |log_scope| %>

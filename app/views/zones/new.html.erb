@@ -1,13 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
-      <%= simple_form_for [@garden, @zone] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :area %>
-        <%= f.input :photo %>
-<!-- f.input :photo_cache, as: :hidden -->
-        <%= f.submit "add a zone", class: "btn btn-primary" %>
-      <% end %>
+      <%= render 'form', zone: @zone %>
     </div>
   </div>
 </div>
