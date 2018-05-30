@@ -11,6 +11,7 @@ class LogsController < ApplicationController
 
   def create
     @log = Log.new(log_params)
+    @zone = Zone.find(params[:zone_id])
     @log.user = current_user
     @log.date = Date.new(params[:log]['date(1i)'].to_i, params[:log]['date(2i)'].to_i, params[:log]['date(3i)'].to_i)
     if @log.date == Date.today
@@ -23,10 +24,10 @@ class LogsController < ApplicationController
       @element_ids.each do |element_id|
           LogScope.create(log_id: @log.id, element_id: element_id.to_i)
       end
-      redirect_back fallback_location: root_path
+      redirect_to zone_path(@zone)
     else
-      @zone = Zone.find(params[:zone_id])
-
+      @elements = Element.all
+      @log_scopes = LogScope.all
       render "zones/show"
     end
   end
