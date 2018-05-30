@@ -7,6 +7,7 @@ class GardensController < ApplicationController
         lng: garden.longitude
       }
   end
+
   def new
     @garden = Garden.new
   end
