@@ -2,14 +2,9 @@
   <div class="form">
     <div class="row">
       <h1>add a new farm</h1>
-        <%= simple_form_for(@garden) do |f| %>
-          <%= f.input :address, input_html: { id: 'garden_address'} %>
-          <%= f.input :name %>
-          <%= f.input :area %>
-          <%= f.input :photo %>
-          <%= f.submit "add a farm", class:"btn btn-home btn-lg"%>
-        <% end %>
+        <%= render 'form', garden: @garden %>
     </div>
   </div>
 </div>
+
 

@@ -1,4 +1,6 @@
 class ZonesController < ApplicationController
+  before_action :set_zone, only: [:show, :edit, :update, :destroy]
+
   def new
     @garden = Garden.find(params[:garden_id])
     @zone = Zone.new
@@ -10,8 +12,6 @@ class ZonesController < ApplicationController
     @zone.garden = @garden
     if @zone.save
       redirect_to new_zone_element_path(@zone)
-      # en attente de la route du formulaire new_element
-      # redirect_to new_zone_element_path
     else
       render :new
     end
@@ -24,7 +24,24 @@ class ZonesController < ApplicationController
     @log_scopes = LogScope.all
   end
 
+  def edit
+  end
+
+  def update
+    @zone.update(zone_params)
+    redirect_to zone_path(@zone)
+  end
+
+  def destroy
+    @zone.destroy
+    redirect_to garden_path(@zone.garden)
+  end
+
   private
+
+  def set_zone
+    @zone = Zone.find(params[:id])
+  end
 
   def zone_params
     params.require(:zone).permit(:name, :area, :photo, :garden_id)

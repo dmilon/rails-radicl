@@ -4,6 +4,10 @@
   <h1><%= @zone.name.upcase %></h1>
   <p><%= @zone.garden.name %></p>
 </div>
+<%#= link_to "Edit your zone", edit_zone_path(@zone) %>
+<%#= link_to "Delete", zone_path(@zone),
+    method: :delete,
+    data: { confirm: "Are you sure?" }%>
 
 <div class="container">
 <!-- this is the zone section -->
@@ -36,10 +40,6 @@
   <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
   <% end %>
 </div>
-
-</div>
-
-
 
 <div id="elements-logs" class="tabcontent">
   <div class="row">
@@ -116,4 +116,7 @@
 <% if @log.errors.any? %>
 <%= javascript_pack_tag 'display_modal' %>
 <% end %>
-
+<%#= link_to "Edit element", edit_element_path(element)%>
+ <%#= link_to "Delete", element_path(element),
+     method: :delete,
+     data: { confirm: "Are you sure?" } %>

@@ -1,0 +1,6 @@
+<%= simple_form_for [@zone, @element] do |f| %>
+  <%= f.input :name, required: true %>
+  <%= f.input :photo, required: false %>
+  <%= f.input :quantity, as: :integer, required: true %>
+  <%= f.submit %>
+<% end %>
