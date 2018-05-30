@@ -1,9 +1,13 @@
 .form{
-  background-image: linear-gradient(-225deg, rgba(0,101,168,0.2) 9%, rgba(0,36,61,0.6) 77%), url("https://www.thesocialitefamily.com/wp-content/uploads/2016/02/zeusis-11-2-1070x642.jpg");
-  background-position: center;
-  background-size: cover;
-  width: 100vw;
-  padding-bottom: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 600px;
+  padding:50px;
+  color : #0d6797;
+}
+
+abbr[title], abbr[data-original-title]
+{
+  border-bottom: none!important;
 }
 
 h2{
@@ -21,22 +25,18 @@ i.far.fa-times-circle{
   color: black;
 }
 
+input.form-control{
+text-align: center;
+width: 400px;
+margin: 0 auto;
+}
+
 .form-control {
   box-shadow:none;
   border: none;
   background-color: transparent;
-  border-bottom: 2px solid black;
-}
-
-.col-sm-4.col-sm-offset-4 {
-    background-color: white;
-    padding: 50px 30px;
-    margin-top: 55px;
-}
-
-.col-sm-4.col-sm-offset-4 a {
-  color:black;
-  font-size: 15px;
+  border-bottom: 1px solid #0d6797;
+  text-align: center;
 }
 
 .form-actions .btn{
@@ -55,29 +55,6 @@ margin-bottom: 30px
 input {box-shadow: none;}
 
 
-.form-wrapper{
-  background-color: white;
-  padding: 50px;
-  height: 532px;
-  margin-top: 30px;
-  margin-left: 10px;
-  margin-right: 30px;
-  width: 530px;
-}
-
-
-.form-wrapper-2 {
-    background-color: #e0e0e0;
-    padding: 50px;
-    width: 600px;
-    margin-right: 30px;
-    margin-top: 30px;
-    margin-left: 10px;
-    margin-bottom: 30px;
-}
-
-input.form-control.string.optional{background-color: white}
-
 .cancel-account{
   background-color: #e0e0e0;
   padding: 10px;
@@ -91,17 +68,6 @@ input.form-control.string.optional{background-color: white}
     margin-top: 30px;
 }
 
-a.go-back{
-  color: white!important;
-  text-align: center;
-  margin-top: 34px;
-  padding: 14px;
-}
-
-a.go-back:hover{
-  border: 1px solid black;
-  color:black!important;
-}
 
 .destroy {
   font-size: 15px;
@@ -111,4 +77,16 @@ a.go-back:hover{
 
 textarea.form-control {
     height: 42px;
+}
+
+input.btn.btn-home.btn-lg{
+  background-color: #0d6797;
+  color: white;
+  box-shadow:none;
+}
+
+input.btn.btn-home.btn-lg:hover{
+  border: 1px solid #0d6797;
+  background-color: white;
+  color: #0d6797;
 }

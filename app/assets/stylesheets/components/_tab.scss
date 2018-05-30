@@ -21,6 +21,12 @@
     background-color: #ddd;
 }
 
+
+.tab button h1{
+  font-size: 35px;
+  margin-top: 10px;
+}
+
 /* Create an active/current tablink class */
 .tab button.active {
     background-color: #dbf3ff;

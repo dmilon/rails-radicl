@@ -1,5 +1,10 @@
 <%= render 'shared/banner-dashboard' %>
 
+<div class="zone-name">
+  <h1><%= @garden.name.upcase %></h1>
+  <p><%= @garden.address %></p>
+</div>
+
 <div class="container">
 <!-- this is the zone section -->
 <br><br>
@@ -32,7 +37,9 @@
   </div>
 
    <div class="plus">
+  <%= link_to new_garden_zone_path(@garden) do %>
   <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+  <% end %>
   </div>
 </div>
 <!-- this is the end of the zone section -->
@@ -73,7 +80,9 @@
       <% end %>
   </div>
    <div class="plus">
+  <%= link_to new_log_path do %>
   <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+  <% end %>
   </div>
   <!-- this is the end of log section -->
   </div>

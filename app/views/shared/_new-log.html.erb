@@ -1,0 +1,10 @@
+<h1>Log an action</h1>
+<%= simple_form_for [@user, @log] do |f| %>
+  <%= f.input :date, required: true %>
+  <%= f.input :category, required: true %>
+  <%= f.input :description, required: false %>
+  <%= f.input :quantity, as: :integer, required: true %>
+  <%= f.submit "add an element", class: "btn btn-primary" %>
+<% end %>
+
+

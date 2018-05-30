@@ -1,5 +1,10 @@
 <%= render 'shared/banner-dashboard' %>
 
+<div class="zone-name">
+  <h1><%= @zone.name.upcase %></h1>
+  <p><%= @zone.garden.name %></p>
+</div>
+
 <div class="container">
 <!-- this is the zone section -->
 <br><br>
@@ -10,59 +15,64 @@
 
 <div id="elements" class="tabcontent active">
   <div class="row">
-    <% if @zone.elements.empty? %>
-      <p> You don't have any elements yet. <%= link_to "Create one", new_zone_element_path(@zone) %></p>
-    <% else %>
-      <% @zone.elements.each do |element| %>
-    <div class="col-xs-12 col-md-6">
-        <%= content_tag(:div, class: "card", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
-        <!-- #{cl_image_path zone.photo} -->
-          <div class="card-description-zone">
-            <h3><%= element.name%></h3>
-            <p><%= element.quantity %> m2</p>
-            <p>last log: 12/01/2018</p>
-            <div class="card-link-garden">
+    <% @elements.each do |element| %>
+      <% if element.zone_id == @zone.id %>
+        <div class="col-xs-12 col-md-6">
+          <%= content_tag(:div, class: "card", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
+            <!-- #{cl_image_path zone.photo} -->
+              <div class="card-description-zone">
+                <h3><%= element.name%></h3>
+                <p><%= element.quantity %></p>
+                <p>last log: 12/01/2018</p>
+              </div>
+          <% end %>
         </div>
-          </div>
-        <% end %>
-       </div>
-     <% end %>
+      <% end %>
     <% end %>
   </div>
+
+<div class="plus">
+  <%= link_to new_zone_element_path(@zone) do %>
+  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+  <% end %>
 </div>
+
+</div>
+
+
 
 <div id="elements-logs" class="tabcontent">
   <div class="row">
-      <% if @zone.elements == [] %>
-        <p class="error-message"><%= "Sorry, no elements " %></p>
-      <% else %>
-        <br><br><br>
-        <% @logs.each do |log| %>
-          <% log.log_scopes.each do |log_scope|%>
-      <div class="message">
-            <div class="message-name">
-              <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
-              <p><%= log.date %> 13/10/2018</p>
-              <p><strong>
-                <% if log.status = true %>
-                <span class="badge badge-success">good job!</span>
-                <% else %>
-                <span class="badge badge-warning">to be done</span>
-                <p>plan the log</p>
-                <% end %>
-              </strong></p>
-            </div>
-            <div class="message-body">
-              <h4><strong><%= log.category %></strong></h4>
-              <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
-            </div>
-            <div>
-              <p><%= link_to log_scope.element.zone.name, zone_path %></p>
-            </div>
-      </div>
-        <% end %>
+      <% @elements.each do |element| %>
+        <% if element.zone_id == @zone.id %>
+          <% @log_scopes.each do |log_scope| %>
+            <% if log_scope.element_id == element.id %>
+              <div class="message">
+                <div class="message-name">
+                    <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
+                    <p><%= log_scope.log.date %> 13/10/2018</p>
+                    <p><strong>
+                      <% if log_scope.log.status = true %>
+                      <span class="badge badge-success">good job!</span>
+                      <% else %>
+                      <span class="badge badge-warning">to be done</span>
+                      <p>plan the log</p>
+                      <% end %></strong></p>
+                </div>
+                  <div class="message-body">
+                    <h4><strong><%= log_scope.log.category %></strong></h4>
+                    <p><strong><%= log_scope.log.description %></strong></p>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
       <% end %>
+  </div>
+  <div class="plus">
+    <%= link_to new_log_path do %>
+    <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+    <% end %>
   </div>
 </div>
 

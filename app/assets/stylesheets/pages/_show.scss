@@ -8,8 +8,34 @@
   justify-content: center;
 }
 
+.zone-name{
+  background-color: whitesmoke;
+  padding: 20px;
+  text-align: center;
+}
+
+.zone-name p {
+  font-style: italic;
+  margin-bottom: 0px;
+}
+
+p.error-message {
+    padding: 40px 70px 10px;
+    font-style: italic;
+}
+
+.zone-name h1{
+  text-align: center;
+  margin: 0 auto;
+  letter-spacing: 0.1em;
+  font-size: 26px;
+  font-weight: 300;
+  padding-bottom: 7px
+}
+
 .plus {margin-top: 74px;
   text-align:center;
+  margin-bottom: 100px;
 }
 
 .plus img {
@@ -82,3 +108,5 @@
   border-radius: 0px;
 }
 .badge-success {background-color: green;}
+
+.badge-warning {background-color: coral;}
