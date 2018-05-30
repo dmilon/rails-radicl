@@ -1,4 +1,27 @@
 
+.card-icon p{
+margin-top: -10px;
+font-size: 18px;
+padding: 0px;
+}
+
+.card-icon {
+  margin: 0 auto;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  text-align:center;
+  background-color: #dbf3ff;
+  padding: 50px;
+  box-shadow: 1px 1px 3px #eaeaea;
+}
+
+
+.wrapper{
+  margin-top: 30px;
+  padding: 30px;
+}
+
 
 img.card-img-top {
   height: 180px;
@@ -13,7 +36,7 @@ p.address-garden{
 }
 
 .card {
-  margin-top: 100px;
+  margin-top: 20px;
   position: relative;
 }
 

@@ -42,6 +42,7 @@
 </div>
 
 <div id="elements-logs" class="tabcontent">
+  <br><br>
   <div class="row">
       <% @elements.each do |element| %>
         <% if element.zone_id == @zone.id %>
@@ -50,7 +51,7 @@
               <div class="message">
                 <div class="message-name">
                     <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
-                    <p><%= log_scope.log.date %> 13/10/2018</p>
+                    <p><%= log_scope.log.date %></p>
                     <p><strong>
                       <% if log_scope.log.status = true %>
                       <span class="badge badge-success">good job!</span>
@@ -60,8 +61,8 @@
                       <% end %></strong></p>
                 </div>
                   <div class="message-body">
-                    <h4><strong><%= log_scope.log.category %></strong></h4>
-                    <p><strong><%= log_scope.log.description %></strong></p>
+                    <h4><strong><%= log_scope.log.category %></strong> on <%= log_scope.element.name %></h4>
+                    <p><%= log_scope.log.description %></p>
                   </div>
               </div>
             <% end %>
@@ -69,33 +70,24 @@
         <% end %>
       <% end %>
   </div>
-  <div class="plus">
-    <%= link_to new_log_path do %>
+  <div class="plus mod">
+    <button class="plus" data-toggle="modal" data-target="#myModal">
     <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
-    <% end %>
+    </button>
   </div>
 </div>
 
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-<!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-        Launch demo modal
-      </button>
-    </div>
-  </div>
-</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content form">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Commit your log</h4>
+        <h3 class="modal-title" id="myModalLabel">Commit your log</h3>
       </div>
       <div class="modal-body">
         <div class="form-log">
@@ -106,7 +98,8 @@
             <%= f.input :date %>
             <%= f.association :elements, collection: @zone.elements, as: :check_boxes %>
             <%= hidden_field_tag :zone_id, @zone.id %>
-            <%= f.submit 'Save your action', class: 'btn btn-primary' %>
+            <br>
+            <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
           <% end %>
         </div>
       </div>
