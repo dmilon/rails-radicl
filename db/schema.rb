@@ -52,13 +52,13 @@ ActiveRecord::Schema.define(version: 2018_05_29_162831) do
   end
 
   create_table "gardens", force: :cascade do |t|
-    t.string "location"
     t.integer "area"
     t.string "photo"
-    t.float "lat"
-    t.float "long"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.string "name"
   end
 

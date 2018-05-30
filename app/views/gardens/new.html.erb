@@ -1,0 +1,11 @@
+<h1>Gardens#new</h1>
+<p>Find me in app/views/gardens/new.html.erb</p>
+<%= simple_form_for(@garden) do |f| %>
+  <%= f.input :address, input_html: { id: 'garden_address'} %>
+  <%= f.input :area %>
+  <%= f.input :photo %>
+  <%= f.submit %>
+<% end %>
+
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
+<%= javascript_pack_tag 'map' %>
