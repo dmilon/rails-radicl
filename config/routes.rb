@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+  resources :gardens, only: [:new, :create]
   resources :gardens, only: [:show] do
     resources :zones, only: [:new, :create, :index]
   end
@@ -8,4 +9,5 @@ Rails.application.routes.draw do
     resources :elements, only: [:create, :new]
   end
   resources :logs, only: [:new, :create, :update, :index, :edit]
+
 end
