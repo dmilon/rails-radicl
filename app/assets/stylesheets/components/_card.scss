@@ -1,11 +1,7 @@
-.row {
-    margin-left: -63px;
-    margin-right: -63px;
-}
+
 
 img.card-img-top {
   height: 180px;
-  position: absolute;
 }
 
 p.card-text {
@@ -35,7 +31,7 @@ p.name-gardener {
   width: 241px;
   padding: 5px 15px;
   border: 1px solid #0D6797;
-  position: absolute;
+  // position: absolute;
   top: 180px;
   margin-top: 9px;
 }
@@ -54,10 +50,11 @@ i.fas.fa-seedling:hover{
 
 .card-link {
   background-color: #0d6797;
-  position: absolute;
+  //position: absolute;
   width: 241px;
   top: 368px;
   margin-top: 10px;
+  margin-bottom: 100px;
 }
 
 
@@ -70,6 +67,32 @@ i.fas.fa-seedling:hover{
   padding-top:-10px
 }
 
+// card for gardens
+.card-description-zone {
+  padding: 50px;
+}
 
+.card-link-garden {
+    background-color: #0d6797;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0px;
+    font-size: 18px;
+    padding: 5px;
+}
 
+.card-link-garden a:hover {
+  text-decoration: none;
+  opacity: 0.6}
 
+.card-description-zone h3, .card-description-zone p, .card-description-zone a {
+  color: white;
+}
+
+.card-description-zone-add{
+  height: 246px!important;
+}
+
+.plus img{width: 300px}

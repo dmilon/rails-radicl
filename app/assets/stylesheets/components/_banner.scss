@@ -14,6 +14,12 @@
   border: none;
 }
 
+.banner-dash{
+  background-size:cover!important;
+  background-position: center center;
+  height: 35vh;
+}
+
 .banner-content {
     padding-top: 20px;
     position: absolute;
@@ -25,7 +31,7 @@
 
 span#banner-typed-text{font-size: 80px;}
 
-.banner h1 {
+.banner-dash h1, .banner h1 {
   font-size: 50px;
   font-weight: 300;
   // text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
