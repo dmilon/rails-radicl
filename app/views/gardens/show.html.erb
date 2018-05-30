@@ -2,7 +2,15 @@
 
 <div class="zone-name">
   <h1><%= @garden.name.upcase %></h1>
+    <%= link_to edit_garden_path(@garden) do %>
+      <i class="far fa-edit"></i>
+    <% end %>
   <p><%= @garden.address %></p>
+      <%= link_to garden_path(@garden),
+          method: :delete,
+          data: { confirm: "Are you sure?" } do %>
+      <i class="far fa-trash-alt"></i>
+    <% end %>
 </div>
 
 <div class="container">
@@ -88,10 +96,7 @@
   </div>
   </div>
 
-  <%= link_to "Delete", garden_path(@garden),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
-  <%= link_to "Edit", edit_garden_path(@garden) %>
+
 
       <%# @garden.zones.each do |zone|%>
         <%# zone.elements.each do |element| %>

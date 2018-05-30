@@ -2,12 +2,19 @@
 
 <div class="zone-name">
   <h1><%= @zone.name.upcase %></h1>
+    <%= link_to edit_zone_path(@zone) do %>
+     <i class="far fa-edit"></i>
+    <% end %>
   <p><%= @zone.garden.name %></p>
-</div>
-<%#= link_to "Edit your zone", edit_zone_path(@zone) %>
-<%#= link_to "Delete", zone_path(@zone),
+  <%= link_to zone_path(@zone),
     method: :delete,
-    data: { confirm: "Are you sure?" }%>
+    data: { confirm: "Are you sure?" } do %>
+  <i class="far fa-trash-alt"></i>
+  <% end %>
+</div>
+
+
+
 
 <div class="container">
 <!-- this is the zone section -->
@@ -26,8 +33,16 @@
             <!-- #{cl_image_path zone.photo} -->
               <div class="card-description-zone">
                 <h3><%= element.name%></h3>
+                  <%= link_to edit_element_path(element) do %>
+                    <i class="far fa-edit"></i>
+                  <% end %>
                 <p><%= element.quantity %></p>
                 <p>last log: 12/01/2018</p>
+                  <%= link_to element_path(element),
+                    method: :delete,
+                    data: { confirm: "Are you sure?" } do %>
+                  <i class="far fa-trash-alt"></i>
+                  <% end %>
               </div>
           <% end %>
         </div>
@@ -39,6 +54,7 @@
   <%= link_to new_zone_element_path(@zone) do %>
   <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
   <% end %>
+</div>
 </div>
 
 <div id="elements-logs" class="tabcontent">
@@ -80,7 +96,6 @@
 </div>
 
 
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -106,10 +121,7 @@
     </div>
   </div>
 </div>
+
 <% if @log.errors.any? %>
 <%= javascript_pack_tag 'display_modal' %>
 <% end %>
-<%#= link_to "Edit element", edit_element_path(element)%>
- <%#= link_to "Delete", element_path(element),
-     method: :delete,
-     data: { confirm: "Are you sure?" } %>
