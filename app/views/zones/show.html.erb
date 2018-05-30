@@ -1,47 +1,122 @@
-<h1><%= @zone.name %></h1>
-<%= link_to "Edit your zone", edit_zone_path(@zone) %>
-<%= link_to "Delete", zone_path(@zone),
+<%= render 'shared/banner-dashboard' %>
+
+<div class="zone-name">
+  <h1><%= @zone.name.upcase %></h1>
+  <p><%= @zone.garden.name %></p>
+</div>
+<%#= link_to "Edit your zone", edit_zone_path(@zone) %>
+<%#= link_to "Delete", zone_path(@zone),
     method: :delete,
     data: { confirm: "Are you sure?" }%>
-<div class="tab-elements">
-  <%= link_to "Create a new element", new_zone_element_path(@zone) %>
-  <% @elements.each do |element| %>
-    <% if element.zone_id == @zone.id %>
-      <div class="col-xs-12 col-sm-3">
-      <!--         INSERT BRUNO'S CARD -->
-        <div class="element-card">
-          <%= element.name %>
-          <%= element.quantity %>
-          <%= element.photo %>
-          <%= link_to "Edit element", edit_element_path(element)%>
-          <%= link_to "Delete", element_path(element),
-          method: :delete,
-          data: { confirm: "Are you sure?" } %>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
+
+<div class="container">
+<!-- this is the zone section -->
+<br><br>
+<div class="tab">
+  <button class="tablinks default" data-tab="elements"><h1>my elements</h1></button>
+  <button class="tablinks" data-tab="elements-logs"><h1>my logs</h1></button>
 </div>
 
-<div class="tab-logs">
-  <%= link_to "Create a new log", new_log_path %>
-  <% @elements.each do |element| %>
-    <% if element.zone_id == @zone.id %>
-      <% @log_scopes.each do |log_scope| %>
-        <% if log_scope.element_id == element.id %>
-          <div class="col-xs-12 col-sm-3">
-          <!--         INSERT BRUNO'S CARD -->
-            <div class="element-card">
-              <%= log_scope.log.date %>
-              <%= log_scope.log.status %>
-              <%= log_scope.log.description %>
-
-            </div>
-          </div>
-        <% else %>
-        <% end %>
+<div id="elements" class="tabcontent active">
+  <div class="row">
+    <% @elements.each do |element| %>
+      <% if element.zone_id == @zone.id %>
+        <div class="col-xs-12 col-md-6">
+          <%= content_tag(:div, class: "card", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
+            <!-- #{cl_image_path zone.photo} -->
+              <div class="card-description-zone">
+                <h3><%= element.name%></h3>
+                <p><%= element.quantity %></p>
+                <p>last log: 12/01/2018</p>
+              </div>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
+  </div>
+
+<div class="plus">
+  <%= link_to new_zone_element_path(@zone) do %>
+  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
   <% end %>
 </div>
 
+<div id="elements-logs" class="tabcontent">
+  <div class="row">
+      <% @elements.each do |element| %>
+        <% if element.zone_id == @zone.id %>
+          <% @log_scopes.each do |log_scope| %>
+            <% if log_scope.element_id == element.id %>
+              <div class="message">
+                <div class="message-name">
+                    <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
+                    <p><%= log_scope.log.date %> 13/10/2018</p>
+                    <p><strong>
+                      <% if log_scope.log.status = true %>
+                      <span class="badge badge-success">good job!</span>
+                      <% else %>
+                      <span class="badge badge-warning">to be done</span>
+                      <p>plan the log</p>
+                      <% end %></strong></p>
+                </div>
+                  <div class="message-body">
+                    <h4><strong><%= log_scope.log.category %></strong></h4>
+                    <p><strong><%= log_scope.log.description %></strong></p>
+                  </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
+  <div class="plus">
+    <%= link_to new_log_path do %>
+    <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+    <% end %>
+  </div>
+</div>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+<!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Launch demo modal
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Commit your log</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-log">
+          <%= simple_form_for @log do |f| %>
+            <%= f.input :category, collection: Log::ACTIONS, prompt: "which action?" %>
+            <%= f.input :description, placeholder: "some description?" %>
+            <%= f.input :quantity %>
+            <%= f.input :date %>
+            <%= f.association :elements, collection: @zone.elements, as: :check_boxes %>
+            <%= hidden_field_tag :zone_id, @zone.id %>
+            <%= f.submit 'Save your action', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% if @log.errors.any? %>
+<%= javascript_pack_tag 'display_modal' %>
+<% end %>
+<%#= link_to "Edit element", edit_element_path(element)%>
+ <%#= link_to "Delete", element_path(element),
+     method: :delete,
+     data: { confirm: "Are you sure?" } %>
