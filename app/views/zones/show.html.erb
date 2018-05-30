@@ -1,12 +1,37 @@
 <h1><%= @zone.name %></h1>
 <div class="tab-elements">
-  <% if @zone.elements.empty? %>
-  <p> You don't have any elements yet. <%= link_to "Create one", new_zone_element_path(@zone) %></p>
-  <% else %>
-    <% @zone.elements.each do |element| %>
+  <%= link_to "Create a new element", new_zone_element_path(@zone) %>
+  <% @elements.each do |element| %>
+    <% if element.zone_id == @zone.id %>
       <div class="col-xs-12 col-sm-3">
-        <%= element.name %>
+      <!--         INSERT BRUNO'S CARD -->
+        <div class="element-card">
+          <%= element.name %>
+          <%= element.quantity %>
+          <%= element.photo %>
+        </div>
       </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="tab-logs">
+  <%= link_to "Create a new log", new_log_path %>
+  <% @elements.each do |element| %>
+    <% if element.zone_id == @zone.id %>
+      <% @log_scopes.each do |log_scope| %>
+        <% if log_scope.element_id == element.id %>
+          <div class="col-xs-12 col-sm-3">
+          <!--         INSERT BRUNO'S CARD -->
+            <div class="element-card">
+              <%= log_scope.log.date %>
+              <%= log_scope.log.status %>
+              <%= log_scope.log.description %>
+            </div>
+          </div>
+        <% else %>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 </div>
