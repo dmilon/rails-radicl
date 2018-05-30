@@ -14,7 +14,7 @@ louisa = User.create!(email: "louisa@gmail.com", password: "password", name: "lo
 
 # Create 4 farms / gardens
 ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4000",
-  address: 'Rue de Bretagne 56300 Pontivy', latitude: "48.079894", longitude: "-2.974862",
+  address: 'Rue de Bretagne 56300 Pontivy', latitude: 48.079894, longitude: -2.974862,
   photo: 'https://images.wwoof.fr/815x458/photos/hosts/bc68d91a39f6ad7aaab270ced00d3dac.jpg')
 ferme_de_quelenne.save!
 bruno.garden = ferme_de_quelenne
@@ -22,21 +22,21 @@ bruno.save!
 
 
 ferme_louley = Garden.new(name: "Ferme forestière Louley Médoc", area: "4000",
-  address: "Rue de Bretagne 56300 Pontivy", latitude: "48.079894", longitude: "-2.974862",
+  address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
   photo: 'https://images.wwoof.fr/380x253/photos/hosts/c695d233ad1898b9e1f76e87787d1439.jpg')
 ferme_louley.save!
 louisa.garden = ferme_louley
 louisa.save!
 
 maison_ane = Garden.new(name: "La maison de l'âne", area: "4000",
-  address: "Rue de Bretagne 56300 Pontivy", latitude: "48.079894", longitude: "-2.974862",
+  address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
   photo: 'https://images.wwoof.fr/380x253/photos/hosts/800d56e82103249058db06f057314702.jpeg')
 maison_ane.save!
 alexia.garden = maison_ane
 alexia.save!
 
 champs = Garden.new(name: "L'envie des champs", area: "4000",
-  address: "Rue de Bretagne 56300 Pontivy", latitude: "48.079894", longitude: "-2.974862",
+  address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
   photo: 'https://images.wwoof.fr/380x253/photos/hosts/81887dd857cc6e424d37862119dcea26.jpg')
 champs.save!
 damien.garden = champs
