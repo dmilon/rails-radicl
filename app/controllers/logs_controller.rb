@@ -1,3 +1,4 @@
+require 'date'
 class LogsController < ApplicationController
 
   def index
@@ -9,17 +10,35 @@ class LogsController < ApplicationController
   end
 
   def create
-    @log = Log.new(params_log)
-    if @log.save
-      redirect_to garden_path(@garden)
+    @log = Log.new(log_params)
+    @zone = Zone.find(params[:zone_id])
+    @log.user = current_user
+    @log.date = Date.new(params[:log]['date(1i)'].to_i, params[:log]['date(2i)'].to_i, params[:log]['date(3i)'].to_i)
+    if @log.date == Date.today
+      @log.status = true
     else
-      render :new
+      @log.status = false
+    end
+    if @log.save
+      @element_ids = params[:log][:element_ids]
+      @element_ids.each do |element_id|
+          LogScope.create(log_id: @log.id, element_id: element_id.to_i)
+      end
+      redirect_to zone_path(@zone)
+    else
+      @elements = Element.all
+      @log_scopes = LogScope.all
+      render "zones/show"
     end
   end
 
   private
 
-  def params_log
-    params.require(:log).permit(:category, :date, :status, :description, :quantity)
+  def log_params
+    params.require(:log).permit(:status, :date, :description, :quantity, :category, :user_id)
+  end
+
+  def log_scope_params
+    params.require(:log_scope).permit(:element_id, :log_id)
   end
 end
