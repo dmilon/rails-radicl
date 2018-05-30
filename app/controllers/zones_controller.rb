@@ -19,7 +19,8 @@ class ZonesController < ApplicationController
 
   def show
     @zone = Zone.find(params[:id])
-    @logs = Log.all
+    @elements = Element.all
+    @log_scopes = LogScope.all
   end
 
   private
