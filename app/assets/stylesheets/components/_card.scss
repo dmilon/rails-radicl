@@ -1,0 +1,75 @@
+.row {
+    margin-left: -63px;
+    margin-right: -63px;
+}
+
+img.card-img-top {
+  height: 180px;
+  position: absolute;
+}
+
+p.card-text {
+    font-size: 12px;
+}
+
+p.address-garden{
+  font-size: 10px;
+}
+
+.card {
+  margin-top: 100px;
+  position: relative;
+}
+
+h2.card-title{
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+p.name-gardener {
+    margin-top: -8px;
+    font-size: 13px;
+}
+
+.card-body {
+  width: 241px;
+  padding: 5px 15px;
+  border: 1px solid #0D6797;
+  position: absolute;
+  top: 180px;
+  margin-top: 9px;
+}
+
+i.fas.fa-seedling {
+  position: absolute;
+  color: white;
+  top: 10px;
+  left: 10px;
+  box-shadow: 0 1px 17px rgba(0,0,0,0.6);
+}
+
+i.fas.fa-seedling:hover{
+  color: #9dd3bc;
+}
+
+.card-link {
+  background-color: #0d6797;
+  position: absolute;
+  width: 241px;
+  top: 368px;
+  margin-top: 10px;
+}
+
+
+.card-link a {
+  text-align:center;
+  font-size: 13px;
+  color: white;
+  text-decoration:none;
+  margin-left: 170px;
+  padding-top:-10px
+}
+
+
+
+

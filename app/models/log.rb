@@ -1,4 +1,5 @@
 class Log < ApplicationRecord
-  belong_to :user
-  has_many :log_scope
+  belongs_to :user
+  has_many :log_scopes, dependent: :destroy
+  has_many :elements, through: :log_scopes
 end
