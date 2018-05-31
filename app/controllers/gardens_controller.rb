@@ -16,6 +16,8 @@ class GardensController < ApplicationController
 
   def show
     @logs = Log.all
+    @zones = @garden.zones
+    @log = Log.new
   end
 
   def edit
