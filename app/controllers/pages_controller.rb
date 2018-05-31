@@ -5,5 +5,4 @@ class PagesController < ApplicationController
     @gardens = Garden.all
   end
 
-
 end
