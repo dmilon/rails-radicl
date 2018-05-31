@@ -1,0 +1,7 @@
+<%= simple_form_for(@garden) do |f| %>
+  <%= f.input :address, input_html: { id: 'garden_address'} %>
+  <%= f.input :name %>
+  <%= f.input :area %>
+  <%= f.input :photo %>
+  <%= f.submit %>
+<% end %>

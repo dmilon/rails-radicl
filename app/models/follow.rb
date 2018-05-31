@@ -1,4 +1,4 @@
 class Follow < ApplicationRecord
   belongs_to :user
-  belongs :garden
+  belongs_to :garden
 end
