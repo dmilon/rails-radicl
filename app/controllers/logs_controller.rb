@@ -19,7 +19,7 @@ class LogsController < ApplicationController
       @log.status = false
     end
 
-    if params[:log][:zones][:name].blank?
+    if params[:log][:zones].blank?
       # if blank, I came from one zones/:id
       @zone = Zone.find(params[:zone_id])
       authorize @log
@@ -28,7 +28,9 @@ class LogsController < ApplicationController
         @element_ids.each do |element_id|
             LogScope.create(log_id: @log.id, element_id: element_id.to_i)
         end
-        redirect_to zone_path(@zone)
+        if @zone.garden == current_user.garden
+          redirect_to zone_path(@zone)
+        end
       else
         @elements = Element.all
         @log_scopes = LogScope.all
@@ -47,7 +49,7 @@ class LogsController < ApplicationController
             end
           end
         end
-        redirect_to garden_path(@garden)
+        redirect_to garden_path(current_user.garden)
       else
         render "gardens/show"
       end
