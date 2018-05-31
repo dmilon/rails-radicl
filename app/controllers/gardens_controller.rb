@@ -15,6 +15,7 @@ class GardensController < ApplicationController
   end
 
   def show
+    authorize @garden
     @logs = Log.all
     @zones = @garden.zones
     @log = Log.new
