@@ -1,6 +1,15 @@
 class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :edit, :update, :destroy]
 
+  def index
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR address ILIKE :query"
+      @gardens = Garden.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @gardens = Garden.all
+    end
+  end
+
   def new
     @garden = Garden.new
   end
