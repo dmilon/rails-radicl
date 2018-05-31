@@ -14,13 +14,15 @@
     </div>
   </div>
   <% end %>
-  <%= link_to new_garden_zone_path(current_user.garden) do %>
-  <div class="col-xs-12 col-sm-3">
-    <div class="card-icon">
-    <p>add your zones</p>
-      <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
+  <% if current_user.garden.exist? %>
+    <%= link_to new_garden_zone_path(current_user.garden) do %>
+    <div class="col-xs-12 col-sm-3">
+      <div class="card-icon">
+      <p>add your zones</p>
+        <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
+      </div>
     </div>
-  </div>
+    <% end %>
   <% end %>
   <%= link_to garden_path(current_user.garden) do %>
   <div class="col-xs-12 col-sm-3">
