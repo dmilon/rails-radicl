@@ -1,4 +1,4 @@
-<%= render 'shared/banner-dashboard' %>
+<%= render 'shared/banner-zone' %>
 
 <div class="zone-name">
   <h1><%= @zone.name.upcase %></h1>
@@ -16,7 +16,7 @@
 
 
 
-<div class="container">
+<div class="container show-garden">
 <!-- this is the zone section -->
 <br><br>
 <div class="tab">
@@ -33,12 +33,12 @@
             <!-- #{cl_image_path zone.photo} -->
               <div class="card-description-zone">
                 <h3><%= element.name%></h3>
-                  <%= link_to edit_element_path(element) do %>
+                  <%= link_to edit_zone_element_path(element) do %>
                     <i class="far fa-edit"></i>
                   <% end %>
                 <p><%= element.quantity %></p>
                 <p>last log: 12/01/2018</p>
-                  <%= link_to element_path(element),
+                  <%= link_to zone_element_path(element),
                     method: :delete,
                     data: { confirm: "Are you sure?" } do %>
                   <i class="far fa-trash-alt"></i>
@@ -96,7 +96,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content form">
       <div class="modal-header">
@@ -105,15 +105,17 @@
       </div>
       <div class="modal-body">
         <div class="form-log">
-          <%= simple_form_for @log do |f| %>
-            <%= f.input :category, collection: Log::ACTIONS, prompt: "which action?" %>
-            <%= f.input :description, placeholder: "some description?" %>
-            <%= f.input :quantity %>
-            <%= f.input :date %>
-            <%= f.association :elements, collection: @zone.elements, as: :check_boxes %>
-            <%= hidden_field_tag :zone_id, @zone.id %>
-            <br>
-            <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
+          <% if policy(@log).create? %>
+            <%= simple_form_for @log do |f| %>
+              <%= f.input :date, as: :date, input_html: { class: "select2" } %>
+              <%= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
+              <%= f.input :description %>
+              <%= f.input :quantity %>
+              <%= f.association :elements, collection: @zone.elements, as: :check_boxes %>
+              <%= hidden_field_tag :zone_id, @zone.id %>
+              <br>
+              <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
+            <% end %>
           <% end %>
         </div>
       </div>

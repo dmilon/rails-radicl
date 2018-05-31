@@ -13,3 +13,5 @@ function loadDynamicBannerText() {
 }
 
 export { loadDynamicBannerText };
+
+

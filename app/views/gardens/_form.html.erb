@@ -1,7 +1,7 @@
 <%= simple_form_for(@garden) do |f| %>
-  <%= f.input :address, input_html: { id: 'garden_address'} %>
   <%= f.input :name %>
-  <%= f.input :area %>
+  <%= f.input :address, input_html: { id: 'garden_address'}, input_html: { class: "select2" } %>
+  <%= f.input :area, placeholder: 'ex: 1000 m2' %>
   <%= f.input :photo %>
-  <%= f.submit %>
+  <%= f.submit 'go!', class: "btn btn-home btn-lg" %>
 <% end %>

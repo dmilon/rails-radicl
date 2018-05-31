@@ -1,0 +1,14 @@
+<h1>We are a community</h1>
+
+<%= form_tag gardens_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a garden"
+  %>
+<% end %>
+
+<% @gardens.each do |garden| %>
+<%= garden.name %>
+<% end %>
+

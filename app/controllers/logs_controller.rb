@@ -5,14 +5,12 @@ class LogsController < ApplicationController
     @logs = Log.all
   end
 
-  def new
-    @log = Log.new
-  end
-
   def create
+    # authorize @garden
+    # authorize @zone
+    # @garden = Garden.find(params[:garden_id])
     @logs = Log.all
     @log = Log.new(log_params)
-    @garden = Garden.find(params[:garden_id])
     @log.user = current_user
     @log.date = Date.new(params[:log]['date(1i)'].to_i, params[:log]['date(2i)'].to_i, params[:log]['date(3i)'].to_i)
     if @log.date == Date.today
@@ -21,15 +19,18 @@ class LogsController < ApplicationController
       @log.status = false
     end
 
-    if params[:log][:zones][:name].blank?
+    if params[:log][:zones].blank?
       # if blank, I came from one zones/:id
       @zone = Zone.find(params[:zone_id])
+      authorize @log
       if @log.save
         @element_ids = params[:log][:element_ids]
         @element_ids.each do |element_id|
             LogScope.create(log_id: @log.id, element_id: element_id.to_i)
         end
-        redirect_to zone_path(@zone)
+        if @zone.garden == current_user.garden
+          redirect_to zone_path(@zone)
+        end
       else
         @elements = Element.all
         @log_scopes = LogScope.all
@@ -37,6 +38,7 @@ class LogsController < ApplicationController
       end
     else
       # Else It means I came from gardens/:id
+      authorize @log
       if @log.save
         log_id =  @log.id
         params[:log][:zones][:name].each do |zone_id|
@@ -47,7 +49,7 @@ class LogsController < ApplicationController
             end
           end
         end
-        redirect_to garden_path(@garden)
+        redirect_to garden_path(current_user.garden)
       else
         render "gardens/show"
       end

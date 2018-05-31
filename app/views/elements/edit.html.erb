@@ -1,2 +1,11 @@
-<h1>Edit an element</h1>
-<%= render 'form', element: @element %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.11)), url(https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bfcaecd3f907b444b43692e25ff77302); background-size: cover!important">
+  <div class="form">
+    <div class="row">
+      <h1>edit an element</h1>
+      <% if policy(@element).update? %>
+        <%= render 'form', element: @element %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

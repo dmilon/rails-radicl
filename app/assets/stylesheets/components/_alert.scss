@@ -13,3 +13,24 @@
 .alert-warning {
   background: $red;
 }
+
+
+.alert {
+    position: absolute;
+    top: 85px;
+    left: 102px;
+    height: 40px;
+    padding-top: 12px;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    z-index: 40;
+    border: none;
+    border-radius: 0px;
+}
+
+button.close {
+    margin-top: -1px;
+    font-size: 18px;
+    color: white!important;
+}
