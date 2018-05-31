@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_29_162831) do
+ActiveRecord::Schema.define(version: 2018_05_31_123238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 2018_05_29_162831) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.string "name"
   end
 
   create_table "log_scopes", force: :cascade do |t|
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_162831) do
     t.string "name"
     t.string "avatar"
     t.bigint "garden_id"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["garden_id"], name: "index_users_on_garden_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

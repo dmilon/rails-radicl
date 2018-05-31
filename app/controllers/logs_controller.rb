@@ -5,10 +5,6 @@ class LogsController < ApplicationController
     @logs = Log.all
   end
 
-  def new
-    @log = Log.new
-  end
-
   def create
     @logs = Log.all
     @log = Log.new(log_params)

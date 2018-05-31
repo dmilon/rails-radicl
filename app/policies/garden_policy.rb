@@ -3,10 +3,21 @@ class GardenPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
-    def show?
-      false
+    def create?
+      true
     end
 
-  end
+    def show?
+      user.garden == record
+    end
+
+    def update?
+      user.garden == record && user.admin?
+    end
+
+    def destroy?
+      user.garden == record && user.admin?
+    end
 end

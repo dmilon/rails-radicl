@@ -1,2 +1,4 @@
 <h1>Edit an element</h1>
-<%= render 'form', element: @element %>
+<% if policy(@element).update? %>
+  <%= render 'form', element: @element %>
+<% end %>

@@ -3,7 +3,9 @@
     <div class="row">
         <h1>add an element to <%= @zone.name.downcase %></h1>
         <br>
-        <%= render 'form', element: @element %>
+        <% if policy(@element).create? %>
+          <%= render 'form', element: @element %>
+        <% end %>
     </div>
   </div>
 </div>

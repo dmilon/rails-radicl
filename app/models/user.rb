@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :logs, dependent: :destroy
   has_many :follows
-
+  validates :name, presence: true
+  validates :email, presence: true
+  validates :admin, presence: true
 
 end
