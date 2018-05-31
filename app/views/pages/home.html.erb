@@ -14,30 +14,32 @@
     </div>
   </div>
   <% end %>
-  <%= link_to new_garden_zone_path(current_user.garden) do %>
-  <div class="col-xs-12 col-sm-3">
-    <div class="card-icon">
-    <p>add your zones</p>
-      <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
+  <%# if current_user.garden %>
+    <%#= link_to new_garden_zone_path(current_user.garden) do %>
+    <div class="col-xs-12 col-sm-3">
+      <div class="card-icon">
+      <p>add your zones</p>
+        <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
+      </div>
     </div>
-  </div>
-  <% end %>
-  <%= link_to garden_path(current_user.garden) do %>
+    <%# end %>
+  <%# end %>
+  <%#= link_to garden_path(current_user.garden) do %>
   <div class="col-xs-12 col-sm-3">
     <div class="card-icon">
     <p>log your actions</p>
       <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671027/watering.svg" alt="">
     </div>
-  <% end %>
+  <%# end %>
   </div>
-  <%= link_to community_gardens_path do %>
+  <%#= link_to community_gardens_path do %>
   <div class="col-xs-12 col-sm-3">
     <div class="card-icon">
     <p>share & learn</p>
       <img src="http://res.cloudinary.com/bdmbdm/image/upload/v1527697464/share.svg" alt="">
     </div>
   </div>
-  <% end %>
+  <%# end %>
 </div>
 </div>
 
