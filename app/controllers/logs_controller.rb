@@ -10,8 +10,9 @@ class LogsController < ApplicationController
   end
 
   def create
+    @logs = Log.all
     @log = Log.new(log_params)
-
+    @garden = Garden.find(params[:garden_id])
     @log.user = current_user
     @log.date = Date.new(params[:log]['date(1i)'].to_i, params[:log]['date(2i)'].to_i, params[:log]['date(3i)'].to_i)
     if @log.date == Date.today
@@ -46,7 +47,7 @@ class LogsController < ApplicationController
             end
           end
         end
-        redirect_to root_path
+        redirect_to garden_path(@garden)
       else
         render "gardens/show"
       end
