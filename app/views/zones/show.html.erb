@@ -105,15 +105,17 @@
       </div>
       <div class="modal-body">
         <div class="form-log">
-          <%= simple_form_for @log do |f| %>
-            <%= f.input :category, collection: Log::ACTIONS, prompt: "which action?" %>
-            <%= f.input :description, placeholder: "some description?" %>
-            <%= f.input :quantity %>
-            <%= f.input :date %>
-            <%= f.association :elements, collection: @zone.elements, as: :check_boxes %>
-            <%= hidden_field_tag :zone_id, @zone.id %>
-            <br>
-            <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
+          <% if policy(@log).create? %>
+            <%= simple_form_for @log do |f| %>
+              <%= f.input :category, collection: Log::ACTIONS, prompt: "which action?" %>
+              <%= f.input :description, placeholder: "some description?" %>
+              <%= f.input :quantity %>
+              <%= f.input :date %>
+              <%= f.association :elements, collection: @zone.elements, as: :check_boxes %>
+              <%= hidden_field_tag :zone_id, @zone.id %>
+              <br>
+              <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
+            <% end %>
           <% end %>
         </div>
       </div>

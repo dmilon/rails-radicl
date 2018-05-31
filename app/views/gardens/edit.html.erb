@@ -2,9 +2,9 @@
   <div class="form">
     <div class="row">
       <h1>edit your info</h1>
-
-  <%= render 'form', garden: @garden %>
-
-</div>
-</div>
+      <% if policy(@garden).edit? %>
+        <%= render 'form', garden: @garden %>
+      <% end %>
+    </div>
+  </div>
 </div>
