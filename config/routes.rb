@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   resources :gardens, only: [:show] do
     resources :zones, only: [:new, :create, :index]
+    member do
+      get 'stats', to: 'gardens#stats'
+    end
   end
   resources :zones, only: [:update, :edit, :destroy]
 

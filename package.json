@@ -4,6 +4,8 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "bootstrap": "3",
+    "chart.js": "^2.7.2",
+    "chartjs": "^0.3.24",
     "gmaps": "^0.4.24",
     "jquery": "^3.3.1",
     "sweetalert": "^2.1.0",

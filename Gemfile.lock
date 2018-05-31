@@ -83,6 +83,8 @@ GEM
     geocoder (1.4.9)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.0.1)
+      activesupport (>= 4.2)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.0.1)
@@ -234,6 +236,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass (~> 5.0.9)
   geocoder
+  groupdate
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   pg (~> 0.21)
@@ -254,4 +257,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

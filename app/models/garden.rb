@@ -3,6 +3,7 @@ class Garden < ApplicationRecord
   has_many :follows
   has_many :zones, dependent: :destroy
   has_many :elements, through: :zones
+  has_many :logs, through: :elements
   validates :name, presence: true, uniqueness: true
   validates :address, presence: true
   geocoded_by :address
