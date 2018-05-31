@@ -4,4 +4,7 @@ class Element < ApplicationRecord
   has_many :alert_scopes
   has_many :logs, through: :log_scopes
   belongs_to :zone
+
+  mount_uploader :photo, PhotoUploader
+
 end

@@ -2,7 +2,8 @@ class Log < ApplicationRecord
   belongs_to :user
   has_many :log_scopes, dependent: :destroy
   has_many :elements, through: :log_scopes
-  ACTIONS = ["preparing soil",
+  ACTIONS = [
+   "preparing soil",
    "fertilisating soil",
    "sowing",
    "transplanting",
@@ -18,6 +19,7 @@ class Log < ApplicationRecord
    "washing and packing",
    "storing",
    "selling",
-   "building" ]
+   "building",
+   "others" ]
   validates :category, inclusion: { in: ACTIONS }
 end

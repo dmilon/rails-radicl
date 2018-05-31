@@ -7,6 +7,7 @@ class ElementsController < ApplicationController
 
   def new
     @zone = Zone.find(params[:zone_id])
+    #@garden = @zone.garden
     @element = Element.new(zone: @zone)
     authorize @element
   end

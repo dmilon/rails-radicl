@@ -22,6 +22,7 @@ gem 'webpacker'
 gem 'geocoder'
 gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
+gem 'datetime_picker_input'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
