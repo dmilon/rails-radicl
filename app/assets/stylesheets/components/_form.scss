@@ -94,3 +94,10 @@ input.btn.btn-home.btn-lg:hover{
 label {
   font-weight: lighter;
 }
+
+input[type="file"] {
+    display: block;
+    font-size: 10px;
+    margin: 0 auto;
+    padding-top: 10px;
+}

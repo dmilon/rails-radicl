@@ -13,7 +13,7 @@
     <% end %>
 </div>
 
-<div class="container">
+<div class="container show-garden">
 <!-- this is the zone section -->
 <br><br>
 <div class="tab">
@@ -88,10 +88,10 @@
         <% end %>
       <% end %>
   </div>
-   <div class="plus">
-  <%= link_to new_log_path do %>
-  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
-  <% end %>
+ <div class="plus mod">
+    <button class="plus" data-toggle="modal" data-target="#myModal">
+    <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+    </button>
   </div>
   <!-- this is the end of log section -->
   </div>
@@ -112,20 +112,15 @@
           <%# end %>
         <%# end %>
 
-    <div class="row">
-      <div class="col-xs-12">
-  <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-          Add a log
-        </button>
-      </div>
-    </div>
+
+
+
   </div>
 </div>
   <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content form">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Commit your log</h4>
@@ -138,15 +133,20 @@
             <%= f.input :quantity %>
             <%= f.input :date %>
             <%= hidden_field_tag :garden_id, @garden.id %>
+            <br>
+            <p> On which zones? </p>
             <%= f.simple_fields_for :zones do |v|  %>
               <%= v.collection_check_boxes :name, @garden.zones, :id, :name %>
             <% end %>
+            <br><br>
+            <p> On which elements? </p>
             <%= f.simple_fields_for :elements do |e| %>
               <%= e.collection_check_boxes :name, @garden.elements, :id, :name %>
             <% end %>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
               <%#= hidden_field_tag :zone_id, zone.id %>
-            <%= f.submit 'Save your action', class: 'btn btn-primary' %>
+              <br><br>
+            <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
           <% end %>
         </div>
       </div>

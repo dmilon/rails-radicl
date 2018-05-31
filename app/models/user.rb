@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_many :logs, dependent: :destroy
   has_many :follows
 
+  mount_uploader :avatar, PhotoUploader
 
 end

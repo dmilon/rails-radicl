@@ -1,8 +1,7 @@
-<div class="form">
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-4">
-
-<h2>Edit my profile</h2>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.11)), url(https://images.unsplash.com/photo-1431631927486-6603c868ce5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=31cfb792a10418a51f4a1e609e089a06&auto=format&fit=crop&w=1950&q=80); background-size: cover!important;">
+  <div class="form">
+    <div class="row">
+<h2>edit my profile</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -17,14 +16,16 @@
     <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+    <%= f.input :avatar %>
+    <%= f.input :avatar_cache, as: :hidden %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn btn-home btn-lg" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<p>Cancel my account</p>
 
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
