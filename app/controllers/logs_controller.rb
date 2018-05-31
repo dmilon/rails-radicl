@@ -20,6 +20,7 @@ class LogsController < ApplicationController
     if params[:log][:zones][:name].blank?
       # if blank, I came from one zones/:id
       @zone = Zone.find(params[:zone_id])
+      auth
       if @log.save
         @element_ids = params[:log][:element_ids]
         @element_ids.each do |element_id|

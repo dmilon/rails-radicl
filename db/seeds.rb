@@ -7,10 +7,10 @@ Log.destroy_all
 puts "destroying ALL"
 
 # Create 4 users
-alexia = User.create!(email: "alexia@gmail.com", password: "password", name: "alexia", avatar: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/uulvf4bsfdnfbnlzn5zl.jpg")
-bruno = User.create!(email: "bruno@gmail.com", password: "password", name: "bruno", avatar: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
-damien = User.create!(email: "damien@gmail.com", password: "password", name: "damien", avatar: "https://avatars0.githubusercontent.com/u/37899667?v=4")
-louisa = User.create!(email: "louisa@gmail.com", password: "password", name: "louisa", avatar: "https://avatars2.githubusercontent.com/u/13285082?v=4")
+alexia = User.create!(admin: true, email: "alexia@gmail.com", password: "password", name: "alexia", avatar: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/uulvf4bsfdnfbnlzn5zl.jpg")
+bruno = User.create!(admin: true, email: "bruno@gmail.com", password: "password", name: "bruno", avatar: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
+damien = User.create!(admin: true, email: "damien@gmail.com", password: "password", name: "damien", avatar: "https://avatars0.githubusercontent.com/u/37899667?v=4")
+louisa = User.create!(admin: true, email: "louisa@gmail.com", password: "password", name: "louisa", avatar: "https://avatars2.githubusercontent.com/u/13285082?v=4")
 
 # Create 4 farms / gardens
 ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4000",
