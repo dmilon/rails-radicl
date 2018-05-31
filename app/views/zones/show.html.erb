@@ -33,12 +33,12 @@
             <!-- #{cl_image_path zone.photo} -->
               <div class="card-description-zone">
                 <h3><%= element.name%></h3>
-                  <%= link_to edit_element_path(element) do %>
+                  <%= link_to edit_zone_element_path(element) do %>
                     <i class="far fa-edit"></i>
                   <% end %>
                 <p><%= element.quantity %></p>
                 <p>last log: 12/01/2018</p>
-                  <%= link_to element_path(element),
+                  <%= link_to zone_element_path(element),
                     method: :delete,
                     data: { confirm: "Are you sure?" } do %>
                   <i class="far fa-trash-alt"></i>
