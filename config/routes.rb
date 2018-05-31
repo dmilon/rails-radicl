@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :gardens, only: [:new, :create, :update, :edit, :destroy]
 
-  resources :gardens, only: [:show] do
+  resources :gardens, only: [:show], as: :garden do
     resources :zones, only: [:new, :create, :index]
   end
   resources :zones, only: [:update, :edit, :destroy]

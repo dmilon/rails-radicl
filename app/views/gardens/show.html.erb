@@ -9,7 +9,7 @@
       <%= link_to garden_path(@garden),
           method: :delete,
           data: { confirm: "Are you sure?" } do %>
-      <i class="far fa-trash-alt"></i>
+          <i class="far fa-trash-alt"></i>
     <% end %>
 </div>
 
@@ -66,7 +66,7 @@
       <div class="message">
             <div class="message-name">
               <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
-              <p><%= log.date %> 13/10/2018</p>
+              <p><%= log.date %></p>
               <p><strong>
                 <% if log.status = true %>
                 <span class="badge badge-success">good job!</span>
@@ -118,7 +118,7 @@
   </div>
 </div>
   <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content form">
       <div class="modal-header">
@@ -128,10 +128,10 @@
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
-            <%= f.input :category, collection: Log::ACTIONS, prompt: "which action?" %>
-            <%= f.input :description, placeholder: "some description?" %>
+            <%= f.input :date, as: :date, input_html: { class: "select2" } %>
+            <%= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
+            <%= f.input :description %>
             <%= f.input :quantity %>
-            <%= f.input :date %>
             <%= hidden_field_tag :garden_id, @garden.id %>
             <br>
             <p> On which zones? </p>

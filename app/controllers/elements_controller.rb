@@ -8,6 +8,7 @@ class ElementsController < ApplicationController
   def new
     @element = Element.new
     @zone = Zone.find(params[:zone_id])
+    @garden = @zone.garden
   end
 
   def create

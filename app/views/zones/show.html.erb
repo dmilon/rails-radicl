@@ -96,7 +96,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content form">
       <div class="modal-header">
@@ -106,10 +106,10 @@
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
-            <%= f.input :category, collection: Log::ACTIONS, prompt: "which action?" %>
-            <%= f.input :description, placeholder: "some description?" %>
+            <%= f.input :date, as: :date, input_html: { class: "select2" } %>
+           <%= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
+            <%= f.input :description %>
             <%= f.input :quantity %>
-            <%= f.input :date %>
             <%= f.association :elements, collection: @zone.elements, as: :check_boxes %>
             <%= hidden_field_tag :zone_id, @zone.id %>
             <br>
