@@ -6,11 +6,8 @@ Rails.application.routes.draw do
   resources :gardens, only: [:show], as: :garden do
     resources :zones, only: [:new, :create, :index]
   end
-  resources :zones, only: [:update, :edit, :destroy]
-
-  resources :zones, only: [:show] do
-    resources :elements, only: [:new, :create]
+  resources :zones, only: [:show, :new, :edit] do
+    resources :elements, only: [:new; :edit, :create, :update, :delete]
   end
-  resources :elements, only: [:edit, :update, :destroy]
-  resources :logs, only: [:new, :create, :update, :index, :edit]
+  resources :logs, only: [:create, :update]
 end

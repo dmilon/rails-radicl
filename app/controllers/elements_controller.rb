@@ -6,15 +6,17 @@ class ElementsController < ApplicationController
   end
 
   def new
-    @element = Element.new
     @zone = Zone.find(params[:zone_id])
-    @garden = @zone.garden
+    #@garden = @zone.garden
+    @element = Element.new(zone: @zone)
+    authorize @element
   end
 
   def create
-    @element = Element.new(element_params)
     @zone = Zone.find(params[:zone_id])
+    @element = Element.new(element_params)
     @element.zone = @zone
+    authorize @element
     if @element.save
       redirect_to zone_path(@zone)
     else

@@ -3,13 +3,15 @@ class ZonesController < ApplicationController
 
   def new
     @garden = Garden.find(params[:garden_id])
-    @zone = Zone.new
+    @zone = Zone.new(garden: @garden)
+    authorize @zone
   end
 
   def create
     @garden = Garden.find(params[:garden_id])
     @zone = Zone.new(zone_params)
     @zone.garden = @garden
+    authorize @zone
     if @zone.save
       redirect_to new_zone_element_path(@zone)
     else
@@ -18,6 +20,7 @@ class ZonesController < ApplicationController
   end
 
   def show
+    authorize @zone
     @zone = Zone.find(params[:id])
     @garden = @zone.garden
     @log = Log.new
@@ -26,9 +29,11 @@ class ZonesController < ApplicationController
   end
 
   def edit
+    authorize @zone
   end
 
   def update
+    authorize @zone
     @zone.update(zone_params)
     redirect_to zone_path(@zone)
   end

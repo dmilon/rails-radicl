@@ -2,9 +2,9 @@
   <div class="form">
     <div class="row">
       <h1>edit your info</h1>
-
-<%= render 'form', zone: @zone %>
-
-</div>
-</div>
+      <% if policy(@zone).edit? %>
+        <%= render 'form', zone: @zone %>
+      <% end %>
+    </div>
+  </div>
 </div>
