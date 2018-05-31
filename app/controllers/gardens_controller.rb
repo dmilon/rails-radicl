@@ -1,12 +1,13 @@
 class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @gardens = policy_scope(Garden).order(created_at: :desc)
-  end
+  # def index
+  #   @gardens = policy_scope(Garden).order(created_at: :desc)
+  # end
 
   def new
     @garden = Garden.new
+    authorize @garden
   end
 
   def create
