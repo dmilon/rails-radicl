@@ -8,10 +8,27 @@
   justify-content: center;
 }
 
+i.far.fa-edit {
+    position: absolute;
+    font-size: 18px;
+    color: black;
+    top: 29px;
+    right: 26px;
+}
+
+i.far.fa-trash-alt {
+    position: absolute;
+    right: 32px;
+    bottom: 25px;
+    color: gray;
+    font-size: 14px;
+}
+
 .zone-name{
   background-color: whitesmoke;
   padding: 20px;
   text-align: center;
+  position: relative;
 }
 
 .zone-name p {
