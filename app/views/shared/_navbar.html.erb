@@ -10,7 +10,7 @@
       <% if current_user.garden.nil? == false %>
         <!-- Links when logged in -->
         <%= link_to "My garden", garden_path(current_user.garden), class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Dashboard", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Dashboard", stats_garden_path(current_user.garden), class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Community", community_gardens_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% else %>
         <%= link_to "Community", community_gardens_path, class: "navbar-wagon-item navbar-wagon-link" %>
