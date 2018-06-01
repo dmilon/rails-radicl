@@ -20,7 +20,6 @@ ferme_de_quelenne.save!
 bruno.garden = ferme_de_quelenne
 bruno.save!
 
-
 ferme_louley = Garden.new(name: "Ferme forestière Louley Médoc", area: "4000",
   address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
   remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1472653525502-fc569e405a74.jpg')
@@ -43,13 +42,25 @@ damien.garden = champs
 damien.save!
 
 # Create 8 zones
-zone1 = Zone.new(name: "Zone 1", area: "200")
+zone1 = Zone.new(name: "Potager", area: "200")
 zone1.garden = ferme_de_quelenne
 zone1.save
 
-zone2 = Zone.new(name: "Zone 2", area: "100")
+zone2 = Zone.new(name: "Poulailler", area: "100")
 zone2.garden = ferme_de_quelenne
 zone2.save
+
+zone17 = Zone.new(name: "Etable", area: "100")
+zone17.garden = ferme_de_quelenne
+zone17.save
+
+zone18 = Zone.new(name: "Ruches", area: "100")
+zone18.garden = ferme_de_quelenne
+zone18.save
+
+zone10 = Zone.new(name: "Verger", area: "100")
+zone10.garden = ferme_de_quelenne
+zone10.save
 
 zone3 = Zone.new(name: "Zone 3", area: "300")
 zone3.garden = ferme_louley
@@ -72,29 +83,73 @@ zone7.garden = champs
 zone7.save
 
 zone8 = Zone.new(name: "Zone 8", area: "70")
-zone8.garden = champs
+zone8.garden = maison_ane
 zone8.save
+
+zone22 = Zone.new(name: "Verger", area: "700")
+zone22.garden = maison_ane
+zone22.save
+
+zone23 = Zone.new(name: "Fruits", area: "30")
+zone23.garden = maison_ane
+zone23.save
+
+zone24 = Zone.new(name: "Ruches", area: "100")
+zone24.garden = maison_ane
+zone24.save
+
+zone25 = Zone.new(name: "Potager", area: "20")
+zone25.garden = maison_ane
+zone25.save
+
+zone26 = Zone.new(name: "Donkeys", area: "200")
+zone26.garden = maison_ane
+zone26.save
 
 
 # Create 10 elements
 carrot = Element.new(name: "Carrots", quantity: "300")
-carrot.zone = zone5
+carrot.zone = zone1
 carrot.save
 
 beetroot = Element.new(name: "Beetroot", quantity: "200")
-beetroot.zone = zone4
+beetroot.zone = zone1
 beetroot.save
 
 onion = Element.new(name: "Onion", quantity: "100")
-onion.zone = zone2
+onion.zone = zone1
 onion.save
 
 leek = Element.new(name: "Leek", quantity: "10")
-leek.zone = zone8
+leek.zone = zone1
 leek.save
 
+leeks = Element.new(name: "Leeks", quantity: "100")
+leeks.zone = zone25
+leeks.save
+
+carrots = Element.new(name: "Carrots", quantity: "300")
+carrots.zone = zone25
+carrots.save
+
+beetradish = Element.new(name: "Beetroot", quantity: "200")
+beetradish.zone = zone25
+beetradish.save
+
+onions = Element.new(name: "Onion", quantity: "100")
+onions.zone = zone25
+onions.save
+
+leeki = Element.new(name: "Leek", quantity: "10")
+leeki.zone = zone25
+leeki.save
+
+bees = Element.new(name: "Bees", quantity: "10000")
+bees.zone = zone24
+bees.save
+
 donkey = Element.new(name: "Donkey", quantity: "3")
-donkey.zone = zone7
+donkey.zone = zone26
 donkey.save
 
 
