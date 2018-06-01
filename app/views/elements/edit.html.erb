@@ -3,7 +3,7 @@
     <div class="row">
       <h1>edit an element</h1>
       <% if policy(@element).update? %>
-        <%= render 'form', element: @element %>
+        <%= render 'form', zone: @zone, element: @element %>
       <% end %>
     </div>
   </div>

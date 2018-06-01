@@ -22,7 +22,7 @@ class ZonePolicy < ApplicationPolicy
       user.garden == record.garden && user.admin?
     end
 
-    def delete?
+    def destroy?
       user.garden == record.garden && user.admin?
     end
 end

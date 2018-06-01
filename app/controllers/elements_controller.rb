@@ -7,7 +7,7 @@ class ElementsController < ApplicationController
 
   def new
     @zone = Zone.find(params[:zone_id])
-    #@garden = @zone.garden
+    @garden = @zone.garden
     @element = Element.new(zone: @zone)
     authorize @element
   end
@@ -25,6 +25,8 @@ class ElementsController < ApplicationController
   end
 
   def edit
+    @zone = Zone.find(params[:zone_id])
+    authorize @element
   end
 
   def update

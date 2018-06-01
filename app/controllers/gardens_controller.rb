@@ -28,6 +28,7 @@ class GardensController < ApplicationController
   def create
     @garden = Garden.new(params_garden)
     if @garden.save
+      #TODO: Faire passer user.admin à true
       redirect_to garden_path(@garden)
     else
       render :new
@@ -44,14 +45,17 @@ class GardensController < ApplicationController
   end
 
   def edit
+    authorize @garden
   end
 
   def update
+    authorize @garden
     @garden.update(params_garden)
     redirect_to garden_path(@garden)
   end
 
   def destroy
+    authorize @garden
     @garden.destroy
     redirect_to root_path
   end

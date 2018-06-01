@@ -39,6 +39,7 @@ class ZonesController < ApplicationController
   end
 
   def destroy
+    authorize @zone
     @zone.destroy
     redirect_to garden_path(@zone.garden)
   end
