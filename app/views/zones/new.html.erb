@@ -4,7 +4,7 @@
       <h2>add a new zone to <%= @garden.name.downcase %></h2>
       <br>
       <% if policy(@zone).create? %>
-        <%= render 'form', zone: @zone %>
+        <%= render 'form', garden: @garden, zone: @zone %>
       <% end %>
     </div>
   </div>

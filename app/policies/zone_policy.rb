@@ -5,11 +5,17 @@ class ZonePolicy < ApplicationPolicy
     end
   end
     def show?
-      user.garden == record.garden
+      true
+    end
+
+    def new?
+      # user.garden == record.garden && user.admin?
+      true
     end
 
     def create?
-      user.garden == record.garden && user.admin?
+      true
+      # user.garden == record.garden && user.admin?
     end
 
     def update?

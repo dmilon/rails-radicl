@@ -15,9 +15,12 @@ class GardensController < ApplicationController
   end
 
   def show
+    @garden = Garden.find(params[:id])
+    @users = @garden.users
     @logs = Log.all
     @zones = @garden.zones
     @log = Log.new
+    authorize @garden
   end
 
   def edit
