@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   resources :logs, only: [:create, :update]
 
-  namespace :community do
+  scope :community, as: :community do
     resources :gardens, only: [:index]
   end
 
