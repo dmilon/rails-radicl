@@ -19,16 +19,33 @@ function openCity(evt, cityName) {
 }
 
 function tabsClickListener() {
-  const tabs = document.querySelectorAll('tablinks');
+  const tabLinks = document.querySelectorAll('.tablinks');
+  const tabDefault = document.querySelector('.tablinks.default');
+  if (tabLinks && tabDefault) {
     setTimeout(function() {
-      document.querySelector('.tablinks.default').click()
-    }, 100)
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', (event) => {
+      tabDefault.click();
+    }, 100);
+    tabLinks.forEach((tabLink) => {
+      tabLink.addEventListener('click', (event) => {
         openCity(event, event.currentTarget.dataset.tab);
       });
     });
+  }
 }
+
+//   const tabLinks = document.querySelectorAll('.tablinks');
+//   if (tabLinks)
+//     setTimeout(function() {
+//     const tabLinksDefault = document.querySelector('.tablinks.default')
+//       tabLinksDefault.click()
+//     }, 100)
+//     tabLinks.forEach((tabLink) => {
+//       tabLink.addEventListener('click', (event) => {
+//         openCity(event, event.currentTarget.dataset.tab);
+//       });
+//     });
+//   }
+// }
 
 
 export { tabsClickListener };
