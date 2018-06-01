@@ -19,15 +19,17 @@ function openCity(evt, cityName) {
 }
 
 function tabsClickListener() {
-  const tabLinks = document.querySelectorAll('.tablinks');
-  setTimeout(function() {
-    document.querySelector(".tablinks.default").click()
-  }, 100)
-  tabLinks.forEach((tabLink) => {
-    tabLink.addEventListener('click', (event) => {
-      openCity(event, event.currentTarget.dataset.tab);
+  const tabLinks = document.querySelectorAll("tablinks");
+  if (tablinks) {
+    setTimeout(function() {
+      document.querySelector(".tablinks.default").click()
+    }, 100)
+    tabLinks.forEach((tabLink) => {
+      tabLink.addEventListener("click", (event) => {
+        openCity(event, event.currentTarget.dataset.tab);
+      });
     });
-  });
+  }
 }
 
 
