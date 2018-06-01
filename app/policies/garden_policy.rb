@@ -10,7 +10,7 @@ class GardenPolicy < ApplicationPolicy
     end
 
     def show?
-      user.garden == record
+      true
     end
 
     def update?
