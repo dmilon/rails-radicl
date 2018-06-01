@@ -1,6 +1,6 @@
 <%= render 'shared/banner-zone' %>
 
-<div class="zone-name">
+<div class="zone-name zoni">
   <h1><%= @zone.name.upcase %></h1>
     <%= link_to edit_zone_path(@zone) do %>
      <i class="far fa-edit"></i>
@@ -21,11 +21,14 @@
   <button class="tablinks" data-tab="elements-logs"><h1>my logs</h1></button>
 </div>
 
+
+
+
 <div id="elements" class="tabcontent active">
   <div class="row">
     <% @elements.each do |element| %>
       <% if element.zone_id == @zone.id %>
-        <div class="col-xs-12 col-md-6">
+        <div class="col-xs-12 col-md-3">
           <%= content_tag(:div, class: "card garden", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
             <!-- #{cl_image_path zone.photo} -->
               <div class="card-description-zone">

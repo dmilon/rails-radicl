@@ -52,6 +52,7 @@ class GardensController < ApplicationController
     authorize @garden
     @garden.update(params_garden)
     redirect_to garden_path(@garden)
+    authorize @garden
   end
 
   def destroy

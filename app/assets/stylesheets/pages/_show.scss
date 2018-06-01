@@ -32,6 +32,16 @@ i.far.fa-trash-alt {
   position: relative;
 }
 
+.zone-name.zoni {
+ background-color: #46b2e8;
+}
+
+
+.row.zones-garden {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 .zone-name p {
   font-style: italic;
   margin-bottom: 0px;
@@ -57,7 +67,7 @@ p.error-message {
 }
 
 .plus img {
-    width: 70px;
+    width: 70px!important;
 }
 
 .avatar-large {
