@@ -29,7 +29,7 @@
     <% @elements.each do |element| %>
       <% if element.zone_id == @zone.id %>
         <div class="col-xs-12 col-md-6">
-          <%= content_tag(:div, class: "card", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
+          <%= content_tag(:div, class: "card garden", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
             <!-- #{cl_image_path zone.photo} -->
               <div class="card-description-zone">
                 <h3><%= element.name%></h3>
@@ -58,7 +58,7 @@
 </div>
 
 <div id="elements-logs" class="tabcontent">
-  <div class="row">
+  <div class="row garden-logs">
       <% @elements.each do |element| %>
         <% if element.zone_id == @zone.id %>
           <% @log_scopes.each do |log_scope| %>
