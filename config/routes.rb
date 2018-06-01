@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get 'stats', to: 'gardens#stats'
     end
   end
-  resources :zones, only: [:show, :new, :edit, :update] do
+  resources :zones, only: [:show, :new, :edit, :update, :destroy] do
     resources :elements, only: [:new, :edit, :create, :update, :destroy]
   end
   resources :logs, only: [:create, :update]

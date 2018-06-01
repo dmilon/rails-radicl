@@ -6,9 +6,9 @@ class LogsController < ApplicationController
   end
 
   def create
-    # authorize @garden
+    #@garden = Garden.find(params[:garden_id])
+    #authorize @garden
     # authorize @zone
-    # @garden = Garden.find(params[:garden_id])
     @logs = Log.all
     @log = Log.new(log_params)
     @log.user = current_user
