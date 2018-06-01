@@ -6,25 +6,20 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
-
     <% if user_signed_in? %>
-
       <!-- Links when logged in -->
       <%= link_to "My garden", garden_path(current_user.garden), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Dashboard", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Community", community_gardens_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-
-      <!-- Avatar photo -->
-        <% if current_user.avatar.present? %>
-            <%= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <!-- Avatar photo -->
+          <% if current_user.avatar.present? %>
+            <%#= cl_image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
             <%= cl_image_tag 'male-farmer_1f468-200d-1f33e', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
-
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>

@@ -1,6 +1,26 @@
 class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :edit, :update, :destroy]
 
+  def index
+
+    if params[:query].present?
+      @gardens = policy_scope(Garden).order(created_at: :desc)
+      @gardens = @gardens.where.not(latitude: nil, longitude: nil)
+      sql_query = "name ILIKE :query OR address ILIKE :query"
+      @gardens = @gardens.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @gardens = policy_scope(Garden).order(created_at: :desc)
+    end
+
+    @markers = @gardens.map do |garden|
+      {
+        lat: garden.latitude,
+        lng: garden.longitude
+      }
+    end
+  end
+
+
   def new
     @garden = Garden.new
   end
