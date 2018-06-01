@@ -28,7 +28,7 @@
     <% else %>
     <% @garden.zones.each do |zone| %>
     <div class="col-xs-12 col-md-6">
-        <%= content_tag(:div, class: "card", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
+        <%= content_tag(:div, class: "card garden", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
         <!-- #{cl_image_path zone.photo} -->
           <div class="card-description-zone">
             <h3><%=zone.name%></h3>
@@ -55,12 +55,11 @@
 
 <!-- this is the log section -->
 <div id="Logs" class="tabcontent">
-  <div class="row">
+  <div class="row garden-logs">
 
       <% if @garden.zones == [] %>
         <p class="error-message"><%= "Sorry, no zones " %></p>
       <% else %>
-        <br><br><br>
         <% @logs.each do |log| %>
           <% log.log_scopes.each do |log_scope|%>
       <div class="message">
