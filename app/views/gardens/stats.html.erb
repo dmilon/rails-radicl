@@ -5,7 +5,12 @@
     </div>
     <div class="row">
       <div class="overview">
-
+        <h2>Overview</h2>
+        <p>Garden area: <%= @garden.area %></p>
+        <p>Garden zones: <%= @garden.zones.count %></p>
+        <p>Garden elements:  <%= @garden.elements.count %></p>
+        <p>Garden Logs: <%=  @garden.logs.count %></p>
+        <p>Garden users: <%= @garden.users.count %></p>
       </div>
     </div>
     <div class="row">
@@ -13,6 +18,7 @@
 
       </div>
     </div>
+    <h2>Stats/h2>
     <div class="row">
       <div class="col-xs-6">
         <canvas id="myBarChart1" width="1200" height="600"></canvas>
