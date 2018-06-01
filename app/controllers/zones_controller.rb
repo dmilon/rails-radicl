@@ -30,6 +30,7 @@ class ZonesController < ApplicationController
 
   def edit
     authorize @zone
+    @garden = @zone.garden
   end
 
   def update

@@ -30,6 +30,7 @@ class ElementsController < ApplicationController
   end
 
   def update
+    authorize @element
     @element.update(element_params)
     redirect_to zone_path(@element.zone)
   end
