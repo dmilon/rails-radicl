@@ -1,19 +1,13 @@
 class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :edit, :update, :destroy]
 
-  # def index
-  #   @gardens = policy_scope(Garden).order(created_at: :desc)
-  # end
-
   def new
     @garden = Garden.new
-    authorize @garden
   end
 
   def create
     @garden = Garden.new(params_garden)
     if @garden.save
-      #TODO: Faire passer user.admin à true
       redirect_to garden_path(@garden)
     else
       render :new
@@ -21,30 +15,27 @@ class GardensController < ApplicationController
   end
 
   def show
-    authorize @garden
     @logs = Log.all
     @zones = @garden.zones
     @log = Log.new
   end
 
   def edit
-    authorize @garden
   end
 
   def update
-    authorize @garden
     @garden.update(params_garden)
     redirect_to garden_path(@garden)
   end
 
   def destroy
-    authorize @garden
     @garden.destroy
     redirect_to root_path
   end
 
   def stats
     @garden = Garden.find(params[:id])
+    authorize @garden
     @zones = @garden.zones
 
     #charts1 - by zone
@@ -103,7 +94,35 @@ class GardensController < ApplicationController
     }]
 
     @chart4_labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'December']
-    @logs_by_garden_by_month = @garden.logs.group(:created_at).count
+    @logs_by_garden_by_month = { january: 0, february: 0, march: 0, april: 0, may: 0, june: 0, july: 0, august: 0, september: 0, october: 0, december: 0}
+    @garden.logs.group(:created_at).count.each do |log_date|
+      case
+      when log_date[0].month == 1
+        @logs_by_garden_by_month[:january] += 1
+      when log_date[0].month == 2
+        @logs_by_garden_by_month[:february] += 1
+         when log_date[0].month == 3
+        @logs_by_garden_by_month[:march] += 1
+         when log_date[0].month == 4
+        @logs_by_garden_by_month[:april] += 1
+         when log_date[0].month == 5
+        @logs_by_garden_by_month[:may] += 1
+         when log_date[0].month == 6
+        @logs_by_garden_by_month[:june] += 1
+         when log_date[0].month== 7
+        @logs_by_garden_by_month[:july] += 1
+         when log_date[0].month == 8
+        @logs_by_garden_by_month[:august] += 1
+         when log_date[0].month == 9
+        @logs_by_garden_by_month[:september] += 1
+         when log_date[0].month == 10
+        @logs_by_garden_by_month[:october] += 1
+         when log_date[0].month == 11
+        @logs_by_garden_by_month[:november] += 1
+         when log_date[0].month == 12
+        @logs_by_garden_by_month[:december] += 1
+      end
+    end
     @data4 = @logs_by_garden_by_month.values
     @chart4_datasets = [{
       label: '# of logs by month',

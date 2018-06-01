@@ -20,4 +20,8 @@ class GardenPolicy < ApplicationPolicy
     def destroy?
       user.garden == record && user.admin?
     end
+
+    def stats?
+      true
+    end
 end
