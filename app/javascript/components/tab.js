@@ -33,19 +33,4 @@ function tabsClickListener() {
   }
 }
 
-//   const tabLinks = document.querySelectorAll('.tablinks');
-//   if (tabLinks)
-//     setTimeout(function() {
-//     const tabLinksDefault = document.querySelector('.tablinks.default')
-//       tabLinksDefault.click()
-//     }, 100)
-//     tabLinks.forEach((tabLink) => {
-//       tabLink.addEventListener('click', (event) => {
-//         openCity(event, event.currentTarget.dataset.tab);
-//       });
-//     });
-//   }
-// }
-
-
 export { tabsClickListener };
