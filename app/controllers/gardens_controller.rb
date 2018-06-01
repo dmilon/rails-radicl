@@ -23,10 +23,15 @@ class GardensController < ApplicationController
 
   def new
     @garden = Garden.new
+    authorize @garden
   end
 
   def create
     @garden = Garden.new(params_garden)
+    @user = current_user
+    @user.garden = @garden
+    @garden.users << @user
+    authorize @garden
     if @garden.save
       #TODO: Faire passer user.admin à true
       redirect_to garden_path(@garden)
