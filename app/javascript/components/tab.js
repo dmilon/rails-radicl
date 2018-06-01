@@ -20,15 +20,17 @@ function openCity(evt, cityName) {
 
 function tabsClickListener() {
   const tabLinks = document.querySelectorAll('.tablinks');
-  setTimeout(function() {
-    document.querySelector(".tablinks.default").click()
-  }, 100)
-  tabLinks.forEach((tabLink) => {
-    tabLink.addEventListener('click', (event) => {
-      openCity(event, event.currentTarget.dataset.tab);
+  const tabDefault = document.querySelector('.tablinks.default');
+  if (tabLinks && tabDefault) {
+    setTimeout(function() {
+      tabDefault.click();
+    }, 100);
+    tabLinks.forEach((tabLink) => {
+      tabLink.addEventListener('click', (event) => {
+        openCity(event, event.currentTarget.dataset.tab);
+      });
     });
-  });
+  }
 }
-
 
 export { tabsClickListener };

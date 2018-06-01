@@ -1,6 +1,26 @@
 class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :edit, :update, :destroy]
 
+  def index
+
+    if params[:query].present?
+      @gardens = policy_scope(Garden).order(created_at: :desc)
+      @gardens = @gardens.where.not(latitude: nil, longitude: nil)
+      sql_query = "name ILIKE :query OR address ILIKE :query"
+      @gardens = @gardens.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @gardens = policy_scope(Garden).order(created_at: :desc)
+    end
+
+    @markers = @gardens.map do |garden|
+      {
+        lat: garden.latitude,
+        lng: garden.longitude
+      }
+    end
+  end
+
+
   def new
     @garden = Garden.new
   end
@@ -8,6 +28,7 @@ class GardensController < ApplicationController
   def create
     @garden = Garden.new(params_garden)
     if @garden.save
+      #TODO: Faire passer user.admin à true
       redirect_to garden_path(@garden)
     else
       render :new
@@ -24,15 +45,18 @@ class GardensController < ApplicationController
   end
 
   def edit
+    authorize @garden
   end
 
   def update
+    authorize @garden
     @garden.update(params_garden)
     redirect_to garden_path(@garden)
     authorize @garden
   end
 
   def destroy
+    authorize @garden
     @garden.destroy
     redirect_to root_path
   end

@@ -86,7 +86,7 @@
               <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
             </div>
             <div>
-              <p><%= link_to log_scope.element.zone.name, zone_path %></p>
+              <p><%= link_to log_scope.element.zone.name, zone_path(log_scope.element.zone) %></p>
             </div>
       </div>
         <% end %>
