@@ -2,45 +2,71 @@
 
 <div class="container show-garden">
 
-  <div class="row">
-    <div class="col-xs-12 col-md-6">
-      <h1> my garden's stats</h1>
+  <div class="row text-center">
+    <div class="col-xs-12">
+      <h1 class="show">my garden's stats</h1>
       <div class="overview">
-        <h3>Overview</h3>
-        <p>Garden area: <%= @garden.area %></p>
-        <p>Garden zones: <%= @garden.zones.count %></p>
-        <p>Garden elements:  <%= @garden.elements.count %></p>
-        <p>Garden Logs: <%=  @garden.logs.count %></p>
-        <p>Garden users: <%= @garden.users.count %></p>
+        <h3 class="show">overview</h3>
+        <p><%= @garden.name %></p>
+        <br>
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <p>total area: <%= @garden.area %> m2</p>
+          <p>number of zones: <%= @garden.zones.count %></p>
+          <p>number of elements: <%= @garden.elements.count %></p>
+        </div>
+        <div class="col-xs-12 col-md-6">
+          <p>number of logs: <%=  @garden.logs.count %></p>
+          <p>contributors: <%= @garden.users.count %></p>
+        </div>
+      </div>
       </div>
     </div>
-    </div>
+  </div>
 
-    <div class="col-xs-12 col-md-6">
-      <div class="contributors">
-      </div>
-    <h3>Stats</h3>
-    <div class="row">
-      <div class="col-xs-6">
-        <canvas id="myBarChart1" width="1200" height="600"></canvas>
-      </div>
-      <div class="col-xs-6">
-        <canvas id="myBarChart2" width="1200" height="600"></canvas>
-      </div>
-      </div>
-    </div>
-    </div>
+</div>
 
+
+<div class="wrapper-2">
+  <h1 class="show">stats</h1>
   <div class="row">
-      <div class="col-xs-6">
-        <canvas id="myBarChart3" width="1200" height="600"></canvas>
+    <div class="col-xs-12">
+    <!-- <div class="contributors">
+    </div> -->
+      <div class="row overview">
+        <div class="col-xs-12 col-md-6">
+            <canvas id="myBarChart1" width="1200" height="600"></canvas>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <canvas id="myBarChart2" width="1200" height="600"></canvas>
+        </div>
       </div>
-      <div class="col-xs-6">
+      <div class="row overview">
+        <div class="col-xs-12 col-md-6">
+          <canvas id="myBarChart3" width="1200" height="600"></canvas>
+        </div>
+      <div class="col-xs-12 col-md-6">
         <canvas id="myBarChart4" width="1200" height="600"></canvas>
+      </div>
+      </div>
+    </div>
+  </div>
+   <div class="text-center"> <%= link_to "share my stats with the community", community_gardens_path, class: "btn btn-home btn-lg text-center green-button" %></div>
+</div>
+
+
+
+
+
       </div>
     </div>
   </div>
 </div>
+
+</div>
+</div>
+
+
 
 <%= javascript_pack_tag 'chart' %>
 

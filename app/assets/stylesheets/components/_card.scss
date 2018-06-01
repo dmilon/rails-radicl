@@ -8,7 +8,7 @@
  background-color: #fbfbfb;
  width: 100vw;
  padding: 30px 150px;
- margin-bottom: 80px;
+ padding-bottom: 80px;
 }
 
  .card-icon {
@@ -24,6 +24,12 @@
     box-shadow: 1px 1px 3px #eaeaea;
 }
 
+.card-icon:hover{
+  background-color: #46b2e8;
+  transition: .5s ease;
+}
+
+
 .row a {
   color: #2b4635!important;
   opacity: 1
@@ -35,7 +41,7 @@
 }
 
 img.card-img-top {
-height: 50%;
+height: 145px;
 display: block;
 width: 100%;
 }
@@ -112,15 +118,15 @@ i.fas.fa-seedling {
   color: white;
   top: 10px;
   left: 10px;
-  box-shadow: 0 1px 17px rgba(0, 0, 0, 0.6);
-  background-color: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
-  padding: 2px;
+  background-color: #3fb1ea;
+  padding: 4px;
+  font-size: 14px;
   z-index: 300;
 }
 
 i.fas.fa-seedling:hover{
-  color: #9dd3bc;
+  color: #2b4635;
 }
 
 .card-link {
@@ -131,6 +137,9 @@ i.fas.fa-seedling:hover{
   text-align:center;
 }
 
+.card-link p a:hover {
+  text-decoration: none!important
+}
 
 .card-link p {
   font-size: 13px;
@@ -173,7 +182,7 @@ i.fas.fa-seedling:hover{
   height: 246px!important;
 }
 
-.plus img{width: 300px}
+.plus img {width: 70px}
 
 .card.garden{
   margin-bottom: 30px;

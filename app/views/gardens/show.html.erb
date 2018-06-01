@@ -22,21 +22,25 @@
 </div>
 
 <div id="Farm" class="tabcontent active">
-  <div class="row">
+  <div class="row zones-garden">
     <% if @zones == [] %>
       <p class="error-message"><%= "Sorry, no zones " %></p>
     <% else %>
     <% @garden.zones.each do |zone| %>
     <div class="col-xs-12 col-md-3">
-        <%= content_tag(:div, class: "card garden", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
-        <!-- #{cl_image_path zone.photo} -->
-          <div class="card-description-zone">
-            <h3><%=zone.name%></h3>
-            <p><%= zone.area %> m2</p>
-            <p>last log: 12/01/2018</p>
-            <div class="card-link-garden">
-        <%= link_to 'visit zone', zone_path(zone) %>
+        <div class="card">
+        <%= cl_image_tag zone.photo, class: "card-img-top" %>
+          <div class="overlay">
+            <div class="text">
+              <h2><%= zone.name %></h2>
+              <p><%= zone.area %>m2</p>
+            </div>
+          </div>
+
+        <%= link_to zone_path(zone) do %>
         </div>
+          <div class="card-link">
+            <p>visit zone</p>
           </div>
         <% end %>
        </div>
