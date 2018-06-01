@@ -1,11 +1,12 @@
-<div class="container">
+<%= render 'shared/banner-dashboard' %>
+
+<div class="container show-garden">
+
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-6">
       <h1> my garden's stats</h1>
-    </div>
-    <div class="row">
       <div class="overview">
-        <h2>Overview</h2>
+        <h3>Overview</h3>
         <p>Garden area: <%= @garden.area %></p>
         <p>Garden zones: <%= @garden.zones.count %></p>
         <p>Garden elements:  <%= @garden.elements.count %></p>
@@ -13,12 +14,12 @@
         <p>Garden users: <%= @garden.users.count %></p>
       </div>
     </div>
-    <div class="row">
-      <div class="contributors">
-
-      </div>
     </div>
-    <h2>Stats/h2>
+
+    <div class="col-xs-12 col-md-6">
+      <div class="contributors">
+      </div>
+    <h3>Stats</h3>
     <div class="row">
       <div class="col-xs-6">
         <canvas id="myBarChart1" width="1200" height="600"></canvas>
@@ -26,8 +27,9 @@
       <div class="col-xs-6">
         <canvas id="myBarChart2" width="1200" height="600"></canvas>
       </div>
+      </div>
     </div>
-  </div>
+    </div>
 
   <div class="row">
       <div class="col-xs-6">
