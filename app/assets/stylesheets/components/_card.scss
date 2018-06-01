@@ -11,21 +11,17 @@
  margin-bottom: 80px;
 }
 
-.card-icon p{
-margin-top: -10px;
-font-size: 18px;
-padding: 0px;
-}
-
-.card-icon {
-  margin: 0 auto;
-  width: 240px;
-  height: 240px;
-  border-radius: 50%;
-  text-align:center;
-  background-color: #dbf3ff;
-  padding: 50px;
-  box-shadow: 1px 1px 3px #eaeaea;
+ .card-icon {
+    margin: 0 auto;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #dbf3ff;
+    padding: 52px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    box-shadow: 1px 1px 3px #eaeaea;
 }
 
 .card-icon a {
@@ -120,6 +116,7 @@ i.fas.fa-seedling {
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 50%;
   padding: 2px;
+  z-index: 300;
 }
 
 i.fas.fa-seedling:hover{
@@ -166,6 +163,10 @@ i.fas.fa-seedling:hover{
 
 .card-description-zone h3, .card-description-zone p, .card-description-zone a {
   color: white;
+}
+
+.card-description-zone h3 {
+  font-size: 17px,
 }
 
 .card-description-zone-add{

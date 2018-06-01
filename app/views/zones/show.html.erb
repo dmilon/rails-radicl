@@ -48,8 +48,10 @@
   </div>
 
 <div class="plus">
-  <%= link_to new_zone_element_path(@zone) do %>
-  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+  <% if @garden.users.include?(current_user) %>
+    <%= link_to new_zone_element_path(@zone) do %>
+      <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+    <% end %>
   <% end %>
 </div>
 </div>
@@ -83,9 +85,11 @@
       <% end %>
   </div>
   <div class="plus mod">
-    <button class="plus" data-toggle="modal" data-target="#myModal">
-    <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
-    </button>
+    <% if @garden.users.include?(current_user) %>
+      <button class="plus" data-toggle="modal" data-target="#myModal">
+        <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+      </button>
+    <% end %>
   </div>
 </div>
 

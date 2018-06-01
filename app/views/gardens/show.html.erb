@@ -27,7 +27,7 @@
       <p class="error-message"><%= "Sorry, no zones " %></p>
     <% else %>
     <% @garden.zones.each do |zone| %>
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-3">
         <%= content_tag(:div, class: "card garden", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671031/pig.svg); background-size:cover;") do %>
         <!-- #{cl_image_path zone.photo} -->
           <div class="card-description-zone">
@@ -44,10 +44,12 @@
     <% end %>
   </div>
 
-   <div class="plus">
-  <%= link_to new_garden_zone_path(@garden) do %>
-  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
-  <% end %>
+  <div class="plus">
+    <% if @garden.users.include?(current_user) %>
+      <%= link_to new_garden_zone_path(@garden) do %>
+        <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+      <% end %>
+    <% end %>
   </div>
 </div>
 <!-- this is the end of the zone section -->
@@ -88,7 +90,9 @@
       <% end %>
   </div>
    <div class="plus mod">
+    <% if @garden.users.include?(current_user) %>
       <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="" data-toggle="modal" data-target="#myModal">
+    <% end %>
   </div>
   <!-- this is the end of log section -->
   </div>

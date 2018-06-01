@@ -15,7 +15,7 @@ louisa = User.create!(admin: true, email: "louisa@gmail.com", password: "passwor
 # Create 4 farms / gardens
 ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4000",
   address: 'Rue de Bretagne 56300 Pontivy', latitude: 48.079894, longitude: -2.974862,
-  photo: 'https://images.wwoof.fr/815x458/photos/hosts/bc68d91a39f6ad7aaab270ced00d3dac.jpg')
+  photo: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg')
 ferme_de_quelenne.save!
 bruno.garden = ferme_de_quelenne
 bruno.save!
@@ -23,21 +23,21 @@ bruno.save!
 
 ferme_louley = Garden.new(name: "Ferme forestière Louley Médoc", area: "4000",
   address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
-  photo: 'https://images.wwoof.fr/380x253/photos/hosts/c695d233ad1898b9e1f76e87787d1439.jpg')
+  photo: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1472653525502-fc569e405a74.jpg')
 ferme_louley.save!
 louisa.garden = ferme_louley
 louisa.save!
 
 maison_ane = Garden.new(name: "La maison de l'âne", area: "4000",
   address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
-  photo: 'https://images.wwoof.fr/380x253/photos/hosts/800d56e82103249058db06f057314702.jpeg')
+  photo: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1495138434997-9d69d2a54c8a.jpg')
 maison_ane.save!
 alexia.garden = maison_ane
 alexia.save!
 
 champs = Garden.new(name: "L'envie des champs", area: "4000",
   address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
-  photo: 'https://images.wwoof.fr/380x253/photos/hosts/81887dd857cc6e424d37862119dcea26.jpg')
+  photo: 'http://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1469122312224-c5846569feb1.jpg')
 champs.save!
 damien.garden = champs
 damien.save!
@@ -62,7 +62,6 @@ zone4.save
 zone5 = Zone.new(name: "Zone 5", area: "300")
 zone5.garden = maison_ane
 zone5.save
-
 
 zone6 = Zone.new(name: "Zone 6", area: "10")
 zone6.garden = maison_ane
