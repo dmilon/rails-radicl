@@ -3,7 +3,7 @@ class ZonesController < ApplicationController
 
   def new
     @garden = Garden.find(params[:garden_id])
-    @zone = Zone.new(garden: @garden)
+    @zone = Zone.new
     authorize @zone
   end
 

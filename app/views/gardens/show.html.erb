@@ -44,10 +44,12 @@
     <% end %>
   </div>
 
-   <div class="plus">
-  <%= link_to new_garden_zone_path(@garden) do %>
-  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
-  <% end %>
+  <div class="plus">
+    <% if @garden.users.include?(current_user) %>
+      <%= link_to new_garden_zone_path(@garden) do %>
+        <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+      <% end %>
+    <% end %>
   </div>
 </div>
 <!-- this is the end of the zone section -->
@@ -88,7 +90,9 @@
       <% end %>
   </div>
    <div class="plus mod">
+    <% if @garden.users.include?(current_user) %>
       <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="" data-toggle="modal" data-target="#myModal">
+    <% end %>
   </div>
   <!-- this is the end of log section -->
   </div>
