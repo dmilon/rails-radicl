@@ -7,15 +7,15 @@ Log.destroy_all
 puts "destroying ALL"
 
 # Create 4 users
-alexia = User.create!(admin: true, email: "alexia@gmail.com", password: "password", name: "alexia", avatar: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/uulvf4bsfdnfbnlzn5zl.jpg")
-bruno = User.create!(admin: true, email: "bruno@gmail.com", password: "password", name: "bruno", avatar: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
-damien = User.create!(admin: true, email: "damien@gmail.com", password: "password", name: "damien", avatar: "https://avatars0.githubusercontent.com/u/37899667?v=4")
-louisa = User.create!(admin: true, email: "louisa@gmail.com", password: "password", name: "louisa", avatar: "https://avatars2.githubusercontent.com/u/13285082?v=4")
+alexia = User.create!(admin: true, email: "alexia@gmail.com", password: "password", name: "alexia", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/uulvf4bsfdnfbnlzn5zl.jpg")
+bruno = User.create!(admin: true, email: "bruno@gmail.com", password: "password", name: "bruno", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
+damien = User.create!(admin: true, email: "damien@gmail.com", password: "password", name: "damien", remote_avatar_url: "https://avatars0.githubusercontent.com/u/37899667?v=4")
+louisa = User.create!(admin: true, email: "louisa@gmail.com", password: "password", name: "louisa", remote_avatar_url: "https://avatars2.githubusercontent.com/u/13285082?v=4")
 #worker = User.create!(admin: false, email: "worker@gmail.com", password: "password", name: "worker", avatar: "https://avatars2.githubusercontent.com/u/13285082?v=4")
 # Create 4 farms / gardens
 ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4000",
   address: 'Rue de Bretagne 56300 Pontivy', latitude: 48.079894, longitude: -2.974862,
-  photo: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg')
 ferme_de_quelenne.save!
 bruno.garden = ferme_de_quelenne
 bruno.save!
@@ -23,21 +23,21 @@ bruno.save!
 
 ferme_louley = Garden.new(name: "Ferme forestière Louley Médoc", area: "4000",
   address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
-  photo: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1472653525502-fc569e405a74.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1472653525502-fc569e405a74.jpg')
 ferme_louley.save!
 louisa.garden = ferme_louley
 louisa.save!
 
 maison_ane = Garden.new(name: "La maison de l'âne", area: "4000",
   address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
-  photo: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1495138434997-9d69d2a54c8a.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1495138434997-9d69d2a54c8a.jpg')
 maison_ane.save!
 alexia.garden = maison_ane
 alexia.save!
 
 champs = Garden.new(name: "L'envie des champs", area: "4000",
   address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
-  photo: 'http://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1469122312224-c5846569feb1.jpg')
+  remote_photo_url: 'http://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1469122312224-c5846569feb1.jpg')
 champs.save!
 damien.garden = champs
 damien.save!

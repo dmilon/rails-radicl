@@ -7,6 +7,7 @@
 
 .container.show-garden {
   width: 900px;
+  min-height: 300px;
 }
 
 body {
@@ -15,5 +16,21 @@ body {
 
 
 .how{
-  color: #0d6797;
+  color: #2b4635;
+  margin-bottom: 56px;
+}
+
+.green-button {
+  color: #2b4635;
+  border: 1px solid #2b4635;
+}
+
+.green-button:hover {
+  background-color: #2b4635;
+  color: white;
+  border: 1px solid white;
+}
+
+.row a {
+  text-decoration:none!important;
 }

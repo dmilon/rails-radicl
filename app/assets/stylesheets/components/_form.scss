@@ -2,7 +2,7 @@
   background-color: rgba(255, 255, 255, 0.7);
   width: 600px;
   padding:50px;
-  color : #0d6797;
+  color : #2b4635;
 }
 
 span#select2-log_category-container {
@@ -10,12 +10,12 @@ span#select2-log_category-container {
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #0d6797!important;
+    color: #2b4635!important;
     line-height: 28px;}
 
 .select2-container--default .select2-results__option--highlighted[aria-selected]
 {
-  background-color: #0d6797!important;
+  background-color: #2b4635!important;
 }
 
 
@@ -39,7 +39,7 @@ input.form-control {
     text-align: left;
     width: 400px;
     margin: 0 auto;
-    color: #0d6797;
+    color: #2b4635;
     font-weight: 300;
 }
 
@@ -57,7 +57,7 @@ margin: 0 auto;
   box-shadow:none;
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid #0d6797;
+  border-bottom: 1px solid #2b4635;
   border-radius: 0px;
   text-align: center;
 }
@@ -103,15 +103,15 @@ textarea.form-control {
 }
 
 input.btn.btn-home.btn-lg{
-  background-color: #0d6797;
+  background-color: #2b4635;
   color: white;
   box-shadow:none;
 }
 
 input.btn.btn-home.btn-lg:hover{
-  border: 1px solid #0d6797;
+  border: 1px solid #2b4635;
   background-color: white;
-  color: #0d6797;
+  color: #2b4635;
 }
 
 label {
