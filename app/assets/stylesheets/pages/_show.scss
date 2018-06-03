@@ -1,12 +1,13 @@
 
+p {margin: O}
 .message {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid rgba(220,224,244,0.4);
-  width: 900px;
-  margin: 0 auto;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    border-bottom: 1px solid #46b2e8;
+    width: 818px;
+    margin: 0 auto;
+    justify-content: center;
 }
 
 i.far.fa-edit {
@@ -36,6 +37,11 @@ i.far.fa-trash-alt {
  background-color: #46b2e8;
 }
 
+.text p {
+    font-size: 13px;
+    font-style: italic;
+    text-align: left;
+}
 
 .row.zones-garden {
   margin-top: 30px;
@@ -58,35 +64,46 @@ p.error-message {
   letter-spacing: 0.1em;
   font-size: 26px;
   font-weight: 300;
-  padding-bottom: 7px
+  padding-bottom: 7px;
+  color: #2b4635;
 }
 
 .plus {margin-top: 74px;
   text-align:center;
-  margin-bottom: 100px;
-}
-
-.plus img {
-    width: 70px!important;
+  margin-bottom: 30px
 }
 
 .avatar-large {
-  width: 50px;
+  width: 45px;
+  margin-top: -3px;
+}
+
+img.plus-sign {
+    width: 45px!important;
+    padding: 8px!important;
+}
+
+img.plus-sign:hover{
+  cursor:pointer;
 }
 
 .message:last-child {
   border-bottom: none;
 }
+
 .message-body {
   flex-grow: 1;
-  max-width: 900px;
+  max-width: 800px;
+  text-align: left;
 }
+
+
 .message-name {
-  padding-left: 10px;
-  min-width: 131px;
-  text-align: center;
-  background-color: #dbf3ff;
-  padding: 20px;
+    padding-left: 10px;
+    text-align: center;
+    background-color: #dbf3ff;
+    padding: 10px;
+    height: 66px;
 }
 
 
@@ -98,7 +115,7 @@ p.error-message {
   font-size: 13px;
   font-weight: lighter;
   opacity: 0.6;
-  margin-top: 5px;
+  margin-top: 14px;
 }
 .message-body {
   padding-left: 10px;
@@ -134,7 +151,9 @@ p.error-message {
   font-size: 12px;
   font-weight: lighter;
   border-radius: 0px;
+  padding: 10px;
 }
+
 .badge-success {background-color: green;}
 
 .badge-warning {background-color: coral;}
