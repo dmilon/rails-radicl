@@ -15,7 +15,8 @@ class GardensController < ApplicationController
     @markers = @gardens.map do |garden|
       {
         lat: garden.latitude,
-        lng: garden.longitude
+        lng: garden.longitude,
+        infoWindow: { content: render_to_string(partial: "/gardens/info_window", locals: { garden: garden }) }
       }
     end
   end
