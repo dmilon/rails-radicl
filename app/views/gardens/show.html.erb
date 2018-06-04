@@ -19,10 +19,12 @@
 <div class="tab">
   <% if @garden.users.include?(current_user) %>
     <button class="tablinks default" data-tab="Farm"><h1>my zones</h1></button>
-    <button class="tablinks" data-tab="Logs"><h1>my logs</h1></button>
+    <button class="tablinks" data-tab="Logs"><h1>my activity</h1></button>
+    <button class="tablinks" data-tab="Shares"><h1>my shares</h1></button>
   <% else %>
     <button class="tablinks default" data-tab="Farm"><h1>zones</h1></button>
-    <button class="tablinks" data-tab="Logs"><h1>logs</h1></button>
+    <button class="tablinks" data-tab="Logs"><h1>actions</h1></button>
+    <button class="tablinks" data-tab="Shares"><h1>shares</h1></button>
   <% end %>
 </div>
 
@@ -36,7 +38,7 @@
     <div class="col-xs-12 col-md-3">
         <div class="card">
         <%= cl_image_tag "https://res.cloudinary.com/bdmbdm/image/upload/v1528032584/plussign_card.png", class: "card-img-top" %>
-   <%= link_to new_garden_zone_path(@garden) do %>
+    <%= link_to new_garden_zone_path(@garden) do %>
           <div class="overlay">
             <div class="text">
               <h5>add a new zone</h5>
@@ -133,6 +135,48 @@
 
   <!-- this is the end of log section -->
   </div>
+
+<div id="Shares" class="tabcontent">
+  <div class="row garden-logs">
+
+      <% if @garden.zones == [] %>
+        <p class="error-message"><%= "Sorry, no zones are available " %></p>
+
+      <% else %>
+    <% if @garden.users.include?(current_user) %>
+    <div class="message text-left">
+      <div class="message-name">
+        <img class="plus-sign" src="http://res.cloudinary.com/bdmbdm/image/upload/v1528034422/plussign_square.png" data-toggle="modal" data-target="#myModalShares">
+    </div>
+      <div class="message-body">
+        <p>sharing with my community</p>
+      </div>
+    </div>
+    <% end %>
+        <% @logs.each do |log| %>
+          <% log.log_scopes.each do |log_scope|%>
+      <div class="message">
+            <div class="message-name">
+              <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
+            </div>
+            <div class="message-body">
+              <p><%= log.date.strftime("%A, %b %d") %></p>
+            </div>
+            <div class="message-body">
+              <h6><strong><%= log.category %></strong></h6>
+            </div>
+            <div class="message-body">
+              <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
+            </div>
+
+      </div>
+        <% end %>
+        <% end %>
+      <% end %>
+  </div>
+
+
+
   </div>
 
 
@@ -157,7 +201,7 @@
     <div class="modal-content form">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Commit your log</h4>
+        <h4 class="modal-title" id="myModalLabel">Log your actions</h4>
       </div>
       <div class="modal-body">
         <div class="form-log">
@@ -179,7 +223,6 @@
             <% end %>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
               <%#= hidden_field_tag :zone_id, zone.id %>
-              <br><br>
             <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
           <% end %>
         </div>
@@ -187,6 +230,45 @@
     </div>
   </div>
 </div>
+
+
+<div class="modal fade" id="myModalShares" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content form">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Commit your log</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-log">
+          <%= simple_form_for @log do |f| %>
+            <%= f.input :date, as: :date, input_html: { class: "select2" } %>
+            <%#= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
+            <p> Which element do you want to share? </p>
+            <%= f.simple_fields_for :elements do |e| %>
+              <%= e.collection_check_boxes :name, @garden.elements, :id, :name %>
+            <% end %>
+            <p> From which zones? </p>
+            <%= f.simple_fields_for :zones do |v|  %>
+              <%= v.collection_check_boxes :name, @garden.zones, :id, :name %>
+            <% end %>
+            <%= f.input :description %>
+            <%= f.input :quantity %>
+            <%= hidden_field_tag :garden_id, @garden.id %>
+            <br>
+            <br><br>
+              <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
+              <%#= hidden_field_tag :zone_id, zone.id %>
+              <br><br>
+            <%= f.submit 'share with the community', class: 'btn btn-home btn-lg' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <% if @log.errors.any? %>
 <%= javascript_pack_tag 'display_modal' %>
 <% end %>

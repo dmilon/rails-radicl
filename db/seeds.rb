@@ -14,28 +14,28 @@ louisa = User.create!(admin: true, email: "louisa@gmail.com", password: "passwor
 #worker = User.create!(admin: false, email: "worker@gmail.com", password: "password", name: "worker", avatar: "https://avatars2.githubusercontent.com/u/13285082?v=4")
 # Create 4 farms / gardens
 ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4000",
-  address: 'Rue de Bretagne 56300 Pontivy', latitude: 48.079894, longitude: -2.974862,
+  address: 'D918, 61290 Longny-au-Perche', latitude: 48.538352, longitude: 0.746001,
   remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg')
 ferme_de_quelenne.save!
 bruno.garden = ferme_de_quelenne
 bruno.save!
 
 ferme_louley = Garden.new(name: "Ferme forestière Louley Médoc", area: "4000",
-  address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
+  address: "9 Rue du Dr Jean Vivares, 61290 Longny-au-Perche", latitude: 48.529327, longitude: 0.751545,
   remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1472653525502-fc569e405a74.jpg')
 ferme_louley.save!
 louisa.garden = ferme_louley
 louisa.save!
 
 maison_ane = Garden.new(name: "La maison de l'âne", area: "4000",
-  address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
+  address: "La Hutte, 61290 Longny-au-Perche", latitude: 48.543471, longitude: 0.714202,
   remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1495138434997-9d69d2a54c8a.jpg')
 maison_ane.save!
 alexia.garden = maison_ane
 alexia.save!
 
 champs = Garden.new(name: "L'envie des champs", area: "4000",
-  address: "Rue de Bretagne 56300 Pontivy", latitude: 48.079894, longitude: -2.974862,
+  address: "La Heslière, 61290 Longny-au-Perche", latitude: 48.530741, longitude: 0.784926,
   remote_photo_url: 'http://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1469122312224-c5846569feb1.jpg')
 champs.save!
 damien.garden = champs
@@ -152,7 +152,7 @@ donkey = Element.new(name: "Donkey", quantity: "3")
 donkey.zone = n
 donkey.save
 
-horses = Element.new(name)
+horses = Element.new(name: "horse")
 horses.zone = c
 horses.save
 
