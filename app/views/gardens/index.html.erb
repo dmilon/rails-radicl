@@ -1,19 +1,9 @@
+<%= render 'shared/banner-community' %>
 
 <div class="container map">
 
   <div class="wrapper wrapper-3">
-    <br><br>
-    <h1 class="how text-center">be part your community</h1>
-    <br>
-    <div class="search-community">
-    <%= form_tag community_gardens_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a farm, build your community"
-      %>
-    <% end %>
-    </div>
+    <h1 class="how text-center">join and share with your community</h1>
 </div>
 
 <div class="tab">
@@ -25,6 +15,15 @@
 <div id="Follow" class="tabcontent active">
   <div class="row zones-garden">
     <div class="col-xs-12 col-md-6">
+    <div class="search-community">
+    <%= form_tag community_gardens_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control search-farm",
+        placeholder: "Search for a farm, build your community"
+      %>
+    <% end %>
+    </div><br><br>
     <div
       id="map"
       style="width: 600px!important; height: 600px!important;"
@@ -70,65 +69,7 @@
     <%# if @garden.zones == [] %>
     <%# else %>
 
-      <div id= "searchbar">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "barwidth",
-            placeholder: "search for shared products"%>
-            <i class="far fa-times-circle"></i>
-        <div class= "filter">
-          <div id="myBtnContainer">
-            <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
-            <button class="btn filter-btn" data-filter="category">Category</button>
-            <button class="btn filter-btn" data-filter="date"> Date</button>
-          </div>
-        </div>
-      </div>
 
-
-        <div class="message text-left">
-          <div class="message-name">
-            <img class="plus-sign" src="http://res.cloudinary.com/bdmbdm/image/upload/v1528034422/plussign_square.png" data-toggle="modal" data-target="#myModal">
-          </div>
-
-          <div class="message-body">
-            <p>log a new action</p>
-          </div>
-        </div>
-
-    <% @products.each do |product| %>
-      <div class="message">
-            <div class="message-name">
-              <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
-            </div>
-            <div class="message-body">
-              <p><%= log.date.strftime("%A, %b %d") %></p>
-            </div>
-            <div class="message-body">
-              <h6><strong><%= log.category %></strong></h6>
-            </div>
-              <% log.log_scopes.each do |log_scope|%>
-                <div class="message-body ">
-                  <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
-                </div>
-                <div class="message-body">
-                  <p><%= link_to log_scope.element.zone.name, zone_path(log_scope.element.zone) %></p>
-                </div>
-              <% end %>
-              <div class="message-body">
-                <p><strong>
-                  <% if log.status = true %>
-                    <span class="badge badge-success">good job!</span>
-                  <% else %>
-                    <span class="badge badge-warning">to be done</span>
-                  <p>plan the log</p>
-                  <% end %>
-                </strong></p>
-              </div>
-        </div>
-        <% end %>
-  </div>
-</div>
   <!-- this is the end of log section -->
 
 

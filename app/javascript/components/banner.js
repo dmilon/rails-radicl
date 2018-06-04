@@ -5,7 +5,7 @@ function loadDynamicBannerText() {
     new Typed('#banner-typed-text', {
       strings: ["manage", "learn", "spread", "harvest"],
       typeSpeed: 50,
-      loop: true,
+       loop: true,
       showCursor: false,
       fadeOut: true,
     });
