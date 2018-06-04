@@ -7,19 +7,13 @@ class Log < ApplicationRecord
    "fertilisating soil",
    "sowing",
    "transplanting",
-   "irrigating",
+   "watering",
    "weeding",
    "mulching",
-   "growing",
    "protecting and taking care of crops",
-   "tying",
    "carrying",
    "cleaning",
-   "harvesting",
-   "washing and packing",
-   "storing",
-   "selling",
-   "building",
+   "conditionning and selling",
    "others" ]
   validates :category, inclusion: { in: ACTIONS }
 end

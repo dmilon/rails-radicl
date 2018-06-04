@@ -92,15 +92,39 @@ class GardensController < ApplicationController
 
     #chart2 - by elements
     @chart2_labels = []
-    @data2 = []
-    @zones.each do |zone|
-      zone.elements.each do |element|
-        @sum = 0
-        @chart2_labels << element.name
-        @sum += element.logs.count
-        @data2 << @sum
-      end
+    @chart2_datasets = []
+    @data_serie_element = {}
+    i = 0
+    @garden.elements.each do |element|
+      @element_name = element.name
+      @chart2_labels << @element_name
+      @data_serie_elements[:element_name] = element.logs.group(:category).count
     end
+
+    @actions = [
+     "preparing soil",
+     "fertilisating soil",
+     "sowing",
+     "transplanting",
+     "watering",
+     "weeding",
+     "mulching",
+     "protecting and taking care of crops",
+     "carrying",
+     "cleaning",
+     "conditionning and selling",
+     "others" ]
+
+     @actions.each do |action|
+      @data_prep = {:label, :data, :backgroundColor, :borderColor, borderWidth: 1}
+      @data_prep[:label] = action
+      @data_serie_elements.each do |data_serie_element|
+        # data_serie_element.
+      end
+
+
+     end
+
 
     @chart2_datasets = [{
       label: '# of logs by elements',
