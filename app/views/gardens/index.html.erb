@@ -1,10 +1,11 @@
 
 <div class="container map">
 
-  <div class="wrapper">
+  <div class="wrapper wrapper-3">
     <br><br>
     <h1 class="how text-center">be part your community</h1>
     <br>
+    <div class="search-community">
     <%= form_tag community_gardens_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -12,22 +13,27 @@
         placeholder: "Find a farm, build your community"
       %>
     <% end %>
+    </div>
 </div>
 
-  <div class="cardswithmap wrapper">
-    <div class="row">
+<div class="tab">
+    <button class="tablinks default" data-tab="Follow"><h1>join them</h1></button>
+    <button class="tablinks" data-tab="Shared"><h1>shared with you</h1></button>
+</div>
+
+
+<div id="Follow" class="tabcontent active">
+  <div class="row zones-garden">
     <div class="col-xs-12 col-md-6">
     <div
       id="map"
-      style="width: 100%; height: 100vh;
-     margin: 0 auto; margin-bottom: 80px"
+      style="width: 600px!important; height: 600px!important;"
       data-markers="<%= @markers.to_json %>">
     </div>
     </div>
 
 
-    <div class="col-xs-12 col-md-6">
-    <div class="row ">
+<div class="col-xs-12 col-md-6">
   <% @gardens.each do |garden| %>
     <div class="col-xs-12 col-sm-6">
       <div class="card">
@@ -38,6 +44,7 @@
           <i class="fas fa-seedling"></i>
         <% end %>
          <!--  <a href="#" class="icon"><i class="fas fa-seedling"></i></a> -->
+        <%= link_to garden_path(garden) do %>
           <div class="overlay">
             <div class="text">
               <h2><%= garden.name %></h2>
@@ -45,22 +52,86 @@
             </div>
           </div>
 
-        <%= link_to garden_path(garden) do %>
         </div>
           <div class="card-link">
-            <p>show</p>
+            <p>follow</p>
           </div>
         <% end %>
     </div>
 <% end %>
 </div>
-</div>
     </div>
-
-
   </div>
 
+
+<!-- this is the shared section -->
+<div id="Shared" class="tabcontent">
+  <div class="row garden-logs">
+    <%# if @garden.zones == [] %>
+    <%# else %>
+
+      <div id= "searchbar">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "barwidth",
+            placeholder: "search for shared products"%>
+            <i class="far fa-times-circle"></i>
+        <div class= "filter">
+          <div id="myBtnContainer">
+            <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
+            <button class="btn filter-btn" data-filter="category">Category</button>
+            <button class="btn filter-btn" data-filter="date"> Date</button>
+          </div>
+        </div>
+      </div>
+
+
+        <div class="message text-left">
+          <div class="message-name">
+            <img class="plus-sign" src="http://res.cloudinary.com/bdmbdm/image/upload/v1528034422/plussign_square.png" data-toggle="modal" data-target="#myModal">
+          </div>
+
+          <div class="message-body">
+            <p>log a new action</p>
+          </div>
+        </div>
+
+    <% @products.each do |product| %>
+      <div class="message">
+            <div class="message-name">
+              <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
+            </div>
+            <div class="message-body">
+              <p><%= log.date.strftime("%A, %b %d") %></p>
+            </div>
+            <div class="message-body">
+              <h6><strong><%= log.category %></strong></h6>
+            </div>
+              <% log.log_scopes.each do |log_scope|%>
+                <div class="message-body ">
+                  <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
+                </div>
+                <div class="message-body">
+                  <p><%= link_to log_scope.element.zone.name, zone_path(log_scope.element.zone) %></p>
+                </div>
+              <% end %>
+              <div class="message-body">
+                <p><strong>
+                  <% if log.status = true %>
+                    <span class="badge badge-success">good job!</span>
+                  <% else %>
+                    <span class="badge badge-warning">to be done</span>
+                  <p>plan the log</p>
+                  <% end %>
+                </strong></p>
+              </div>
+        </div>
+        <% end %>
+  </div>
 </div>
+  <!-- this is the end of log section -->
+
+
 
 <div>
   <h1>Followed</h1>
@@ -68,5 +139,4 @@
   <p><%= follow.garden.name %></p>
   <% end %>
 </div>
-
 
