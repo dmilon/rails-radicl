@@ -1,4 +1,8 @@
 class ProductsController < ApplicationController
+
+  def index
+    @products = Product.all
+  end
   def new
     @garden = current_user.garden
     @zones = Zone.all.where(garden: @garden)

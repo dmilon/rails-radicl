@@ -17,6 +17,9 @@ class GardensController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/gardens/info_window", locals: { garden: garden }) }
       }
     end
+
+    @products = Product.all
+    @users = User.all
   end
 
 

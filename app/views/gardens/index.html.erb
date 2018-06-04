@@ -69,7 +69,54 @@
     <%# if @garden.zones == [] %>
     <%# else %>
 
+      <div id= "searchbar">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "barwidth",
+            placeholder: "search for shared products"%>
+            <i class="far fa-times-circle"></i>
+        <div class= "filter">
+          <div id="myBtnContainer">
+            <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
+            <button class="btn filter-btn" data-filter="category">Category</button>
+            <button class="btn filter-btn" data-filter="date"> Date</button>
+          </div>
+        </div>
+      </div>
 
+    <% @products.each do |product| %>
+      <% @users.each do |user| %>
+        <% if user.garden == product.element.zone.garden  %>
+          <div class="message">
+            <div class="message-name">
+              <%= cl_image_tag user.garden.photo, class: "avatar-large"  %>
+            </div>
+            <div class="message-body">
+              <p><%= user.garden.name%></p>
+              <p><%= user.garden.address %></p>
+              <p><%= user.name %></p>
+            </div>
+            <div class="message-body">
+              <h6><strong><%= product.element.name %> x <%= product.quantity %></strong></h6>
+            </div>
+            <div class="message-body">
+              <p>
+                <% if product.end_date > Date.today %>
+                  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/goFichier_1_4x-100.jpg" width= 25>
+                <% else %>
+                  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/foFichier_1_4x-100.jpg" width= 25>
+                <% end %>
+              </p>
+              <div class="contact">
+                <p> contact </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
   <!-- this is the end of log section -->
 
 

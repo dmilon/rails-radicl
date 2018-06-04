@@ -1,16 +1,11 @@
 // import flatpickr from "flatpickr"
-// import "flatpickr/dist/themes/confetti.css"
-// import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
+// import "flatpickr/dist/themes/airbnb.css"
+// import "flatpickr/dist/flatpickr.min.css"
 
-// const form = document.querySelector(".log-date");
+// const form = document.querySelector("form-log");
 // if ( form ) {
-//   const formDate = form.dataset.disableDates
-//   if ( formDate ) {
-//     const disable = JSON.parse(formDate);
-//     flatpickr("#range_start", {
-//       altInput: true,
-//       plugins: [new rangePlugin({ input: "#range_end"})],
-//     });
-//   }
+//   flatpickr("#datepicker", {
+//     allowInput: true,
+//   });
 // }
 
