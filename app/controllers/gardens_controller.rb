@@ -72,67 +72,90 @@ class GardensController < ApplicationController
 
     #charts1 - by zone
     @chart1_labels = []
-    @data1 = []
+    @chart1_data1 = []
     @zones.each do |zone|
       @sum = 0
       @chart1_labels << zone.name
       zone.elements.each do |element|
         @sum += element.logs.count
       end
-      @data1 << @sum
-    end
-    # @chart1_labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
-    @chart1_datasets = [{
-      label: '# of logs by zones',
-      data: @data1,
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255,99,132,1)',
-      borderWidth: 1
-    }]
-
-    #chart2 - by elements
-    @chart2_labels = []
-    @chart2_datasets = []
-    @data_serie_element = {}
-    i = 0
-    @garden.elements.each do |element|
-      @element_name = element.name
-      @chart2_labels << @element_name
-      @data_serie_elements[:element_name] = element.logs.group(:category).count
+      @chart1_data1 << @sum
     end
 
-    @actions = [
-     "preparing soil",
-     "fertilisating soil",
-     "sowing",
-     "transplanting",
-     "watering",
-     "weeding",
-     "mulching",
-     "protecting and taking care of crops",
-     "carrying",
-     "cleaning",
-     "conditionning and selling",
-     "others" ]
-
-     @actions.each do |action|
-      @data_prep = {:label, :data, :backgroundColor, :borderColor, borderWidth: 1}
-      @data_prep[:label] = action
-      @data_serie_elements.each do |data_serie_element|
-        # data_serie_element.
+    if current_user.follows.exists?
+      @chart1_data2 = []
+      @users_followed = current_user.follows
+      @users_followed.each do |user_followed|
+        @garden = user_followed.garden
+        @zones = @garden.zones
+        @chart1_labels.each do |chart1_label|
+          # waiting
+          if chart1_label ==
+        end
+        @elements = @garden.elements
       end
 
 
-     end
-
-
-    @chart2_datasets = [{
-      label: '# of logs by elements',
-      data: @data2,
+    # @chart1_labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+    @chart1_datasets = [{
+      label: '# of logs by zones',
+      data: @chart1_data1,
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgba(255,99,132,1)',
       borderWidth: 1
-    }]
+    }, {
+      label: '# of logs by zones',
+      data: @chart1_data2,
+      backgroundColor: 'rgba(125, 99, 132, 0.2)',
+      borderColor: 'rgba(125,99,132,1)',
+      borderWidth: 1
+    }
+    ]
+
+    #chart2 - by elements
+    # @chart2_labels = []
+    # @chart2_datasets = []
+    # @data_serie_element = {}
+    # i = 0
+    # @garden.elements.each do |element|
+    #   @element_name = element.name
+    #   @chart2_labels << @element_name
+    #   @data_serie_elements[:element_name] = element.logs.group(:category).count
+    #   # element.logs.where(category:"sowing").count
+    # end
+
+    # @actions = [
+    #  "preparing soil",
+    #  "fertilisating soil",
+    #  "sowing",
+    #  "transplanting",
+    #  "watering",
+    #  "weeding",
+    #  "mulching",
+    #  "protecting and taking care of crops",
+    #  "carrying",
+    #  "cleaning",
+    #  "conditionning and selling",
+    #  "others" ]
+
+    #  @actions.each do |action|
+    #   @data_prep = {:label, :data, :backgroundColor, :borderColor, borderWidth: 1}
+    #   @data_prep[:label] = action
+    #   @data_serie_elements.each do |data_serie_element|
+    #     # data_serie_element.
+    #   end
+
+
+    #  end
+
+
+    # @chart2_datasets = [{
+    #   label: '# of logs by elements',
+    #   data: @data2,
+    #   backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    #   borderColor: 'rgba(255,99,132,1)',
+    #   borderWidth: 1
+    # }]
 
     #chart3 - by category
     @chart3_labels = []
