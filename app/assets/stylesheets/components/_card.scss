@@ -96,11 +96,14 @@ width: 100%;
   width: 100%;
 }
 
-.text h2{
-  font-size: 18px;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  margin: 20px auto;
+.text h2 {
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin: 20px auto;
+    text-align: left;
+    line-height: 1.2;
+    padding-top: 12px;
 }
 
 .card-body {
@@ -182,7 +185,8 @@ i.fas.fa-seedling:hover{
   height: 246px!important;
 }
 
-.plus img {width: 70px}
+.plus img
+{width: 40px!important;}
 
 .card.garden{
   margin-bottom: 30px;

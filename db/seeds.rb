@@ -42,138 +42,147 @@ damien.garden = champs
 damien.save!
 
 # Create 8 zones
-zone1 = Zone.new(name: "Potager", area: "200")
-zone1.garden = ferme_de_quelenne
-zone1.save
+a = Zone.new(name: "Potager", area: "200", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527863158/m8xrduxuketfvxv9mijw.jpg")
+a.garden = ferme_de_quelenne
+a.save
 
-zone2 = Zone.new(name: "Poulailler", area: "100")
-zone2.garden = ferme_de_quelenne
-zone2.save
+b = Zone.new(name: "Poulailler", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528036811/photo-1495696386015-f371820f82a6.jpg")
+b.garden = ferme_de_quelenne
+b.save
 
-zone17 = Zone.new(name: "Etable", area: "100")
-zone17.garden = ferme_de_quelenne
-zone17.save
+c = Zone.new(name: "Chevaux", area: "2500", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1511374322656-82cdd30150c9.jpg")
+c.garden = ferme_de_quelenne
+c.save
 
-zone18 = Zone.new(name: "Ruches", area: "100")
-zone18.garden = ferme_de_quelenne
-zone18.save
+d = Zone.new(name: "Ruches", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1498936178812-4b2e558d2937.jpg")
+d.garden = ferme_de_quelenne
+d.save
 
-zone10 = Zone.new(name: "Verger", area: "100")
-zone10.garden = ferme_de_quelenne
-zone10.save
+e = Zone.new(name: "Verger", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1505872342847-6dbb5e76cd31.jpg")
+e.garden = ferme_de_quelenne
+e.save
 
-zone3 = Zone.new(name: "Zone 3", area: "300")
-zone3.garden = ferme_louley
-zone3.save
+f = Zone.new(name: "Vaches", area: "500", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1500595046743-cd271d694d30.jpg" )
+f.garden = ferme_de_quelenne
+f.save
 
-zone4 = Zone.new(name: "Zone 4", area: "300")
-zone4.garden = ferme_louley
-zone4.save
+g = Zone.new(name: "Moutons", area: "4000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg")
+g.garden = ferme_de_quelenne
+g.save
 
-zone5 = Zone.new(name: "Zone 5", area: "300")
-zone5.garden = maison_ane
-zone5.save
+h = Zone.new(name: "Cochons", area: "300", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1524317818500-ab1fded2ce81.jpg")
+h.garden = ferme_de_quelenne
+h.save
 
-zone6 = Zone.new(name: "Zone 6", area: "10")
-zone6.garden = maison_ane
-zone6.save
+i = Zone.new(name: "Zone 6", area: "10")
+i.garden = maison_ane
+i.save
 
-zone7 = Zone.new(name: "Zone 7", area: "3")
-zone7.garden = champs
-zone7.save
+j = Zone.new(name: "Zone 7", area: "3")
+j.garden = maison_ane
+j.save
 
-zone8 = Zone.new(name: "Zone 8", area: "70")
-zone8.garden = maison_ane
-zone8.save
+k = Zone.new(name: "Zone 8", area: "70")
+k.garden = maison_ane
+k.save
 
-zone22 = Zone.new(name: "Verger", area: "700")
-zone22.garden = maison_ane
-zone22.save
+l = Zone.new(name: "Verger", area: "700")
+l.garden = maison_ane
+l.save
 
-zone23 = Zone.new(name: "Fruits", area: "30")
-zone23.garden = maison_ane
-zone23.save
+m = Zone.new(name: "Fruits", area: "30")
+m.garden = maison_ane
+m.save
 
-zone24 = Zone.new(name: "Ruches", area: "100")
-zone24.garden = maison_ane
-zone24.save
+n = Zone.new(name: "Ruches", area: "100")
+n.garden = maison_ane
+n.save
 
-zone25 = Zone.new(name: "Potager", area: "20")
-zone25.garden = maison_ane
-zone25.save
+o = Zone.new(name: "Potager", area: "20")
+o.garden = maison_ane
+o.save
 
-zone26 = Zone.new(name: "Donkeys", area: "200")
-zone26.garden = maison_ane
-zone26.save
+p = Zone.new(name: "Donkeys", area: "200")
+p.garden = maison_ane
+p.save
 
 
 # Create 10 elements
 carrot = Element.new(name: "Carrots", quantity: "300")
-carrot.zone = zone1
+carrot.zone = a
 carrot.save
 
 beetroot = Element.new(name: "Beetroot", quantity: "200")
-beetroot.zone = zone1
+beetroot.zone = a
 beetroot.save
 
 onion = Element.new(name: "Onion", quantity: "100")
-onion.zone = zone1
+onion.zone = a
 onion.save
 
 leek = Element.new(name: "Leek", quantity: "10")
-leek.zone = zone1
+leek.zone = a
 leek.save
 
 leeks = Element.new(name: "Leeks", quantity: "100")
-leeks.zone = zone25
+leeks.zone = o
 leeks.save
 
 carrots = Element.new(name: "Carrots", quantity: "300")
-carrots.zone = zone25
+carrots.zone = o
 carrots.save
 
 beetradish = Element.new(name: "Beetroot", quantity: "200")
-beetradish.zone = zone25
+beetradish.zone = o
 beetradish.save
 
 onions = Element.new(name: "Onion", quantity: "100")
-onions.zone = zone25
+onions.zone = o
 onions.save
 
 leeki = Element.new(name: "Leek", quantity: "10")
-leeki.zone = zone25
+leeki.zone = n
 leeki.save
 
 bees = Element.new(name: "Bees", quantity: "10000")
-bees.zone = zone24
+bees.zone = m
 bees.save
 
 donkey = Element.new(name: "Donkey", quantity: "3")
-donkey.zone = zone26
+donkey.zone = n
 donkey.save
+
+horses = Element.new(name)
+horses.zone = c
+horses.save
 
 
 # Create a few logs
-seedling = Log.new(category: "seed", description: "i did my work today, i'm happy", quantity: "100", status: "done")
-seedling.user = damien
+seedling = Log.new(category: "seed", description: "i did my work today, i'm happy", quantity: "100", status: false)
+seedling.user = bruno
 seedling.save
 
-watering = Log.new(category: "maintenance", description: "watering the onions", status: "on-going")
-watering.user = alexia
+watering = Log.new(category: "maintenance", description: "watering the onions", status: false)
+watering.user = bruno
 watering.save
 
-cutting = Log.new(category: "maintenance", description: "cutting the dead branches", status: "to be done")
+cutting = Log.new(category: "sowing", description: "cutting the dead branches", status: false)
 cutting.user = bruno
 cutting.save
 
-digging = Log.new(category: "preparing ground", description: "preparing the soil", status: "done")
-digging.user = damien
+digging = Log.new(category: "preparing soil", description: "preparing the soil", status: true)
+digging.user = bruno
 digging.save
+
+feeding = Log.new(category: "preparing soil", description: "preparing the soil", status: true)
+feeding.user = bruno
+feeding.save
+
 
 # create log_scope
 scope1 = LogScope.new
 log_id = seedling.id
-scope1.element_id = leek.id
+scope1.element_id = leeki.id
 scope1.save
 
 scope2 = LogScope.new
@@ -191,8 +200,10 @@ scope4.log_id = digging.id
 scope4.element_id = donkey.id
 scope4.save
 
+
 puts "our first users, gardens, zones, elements and logs have been saved with success. love from the radicl team"
 
 puts "zones saved"
 puts "Is anybody here? Hellooo ? I'm a tiny ant stuck in the machine"
+puts "Bitch better have my money ... OUH LA LA"
 

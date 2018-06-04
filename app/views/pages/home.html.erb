@@ -59,13 +59,13 @@
         <%= cl_image_tag garden.photo, class: "card-img-top" %>
           <a href="#" class="icon"><i class="fas fa-seedling"></i></a>
           <div class="overlay">
+        <%= link_to garden_path(garden) do %>
             <div class="text">
               <h2><%= garden.name %></h2>
               <p><%= garden.address %></p>
             </div>
           </div>
 
-        <%= link_to garden_path(garden) do %>
         </div>
           <div class="card-link">
             <p>discover</p>
