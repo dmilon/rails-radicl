@@ -18,4 +18,6 @@ Rails.application.routes.draw do
     resources :gardens, only: [:index]
   end
 
+  resources :follows, only: [:create]
+
 end

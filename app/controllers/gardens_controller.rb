@@ -2,7 +2,6 @@ class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :edit, :update, :destroy]
 
   def index
-
     if params[:query].present?
       @gardens = policy_scope(Garden).order(created_at: :desc)
       @gardens = @gardens.where.not(latitude: nil, longitude: nil)
@@ -11,7 +10,6 @@ class GardensController < ApplicationController
     else
       @gardens = policy_scope(Garden).order(created_at: :desc)
     end
-
     @markers = @gardens.map do |garden|
       {
         lat: garden.latitude,
