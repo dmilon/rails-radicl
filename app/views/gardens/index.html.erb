@@ -102,12 +102,15 @@
             </div>
             <div class="message-body">
               <p>
-                <% if product.end_date < Date.today %>
-                  <img src="" alt="">
+                <% if product.end_date > Date.today %>
+                  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/goFichier_1_4x-100.jpg" width= 25>
                 <% else %>
-                  <img src="" alt="">
+                  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/foFichier_1_4x-100.jpg" width= 25>
                 <% end %>
               </p>
+              <div class="contact">
+                <p> contact </p>
+              </div>
             </div>
           </div>
         <% end %>
