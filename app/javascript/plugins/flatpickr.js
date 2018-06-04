@@ -2,8 +2,6 @@
 // import "flatpickr/dist/themes/confetti.css"
 // import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
-// //Flatpickr & disabling dates
-
 // const form = document.querySelector(".log-date");
 // if ( form ) {
 //   const formDate = form.dataset.disableDates
