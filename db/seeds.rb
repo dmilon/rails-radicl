@@ -156,6 +156,24 @@ horses = Element.new(name: "Horse", quantity: "18")
 horses.zone = c
 horses.save
 
+product1 = Product.new(quantity: 50, end_date: "15/06/2018")
+product1.element = carrots
+product1.save
+product2 = Product.new(quantity: 100, end_date: "15/06/2018")
+product2.element = beetradish
+product2.save
+product3 = Product.new(quantity: 50, end_date: "20/06/2018")
+product3.element = leeks
+product3.save
+product4 = Product.new(quantity: 500, end_date: "23/09/2018")
+product4.element = bees
+product4.save
+product5 = Product.new(quantity: 50, end_date: "15/07/2018")
+product5.element = onions
+product5.save
+product6 = Product.new(quantity: 1, end_date: "25/08/2018")
+product6.element = donkey
+product6.save
 
 # Create a few logs
 seedling = Log.new(category: "seed", description: "i did my work today, i'm happy", quantity: "100", status: false, date: '21/05/2018')
@@ -201,9 +219,10 @@ scope4.element_id = donkey.id
 scope4.save
 
 
-puts "our first users, gardens, zones, elements and logs have been saved with success. love from the radicl team"
 
+puts "our first users, gardens, zones, elements and logs have been saved with success. love from the radicl team"
 puts "zones saved"
 puts "Is anybody here? Hellooo ? I'm a tiny ant stuck in the machine"
 puts "Bitch better have my money ... OUH LA LA"
+puts "ACHETEZ MES BONNES PATATES ! 5 EURO ! 5 EURO LA PATATE BIO"
 

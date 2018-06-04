@@ -232,7 +232,7 @@
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
-            <%= f.input :date, as: :date, input_html: { class: "select2" } %>
+            <%= f.input :date, as: :date, input_html: { class: "datepicker"} %>
             <%= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
             <%= f.input :description %>
             <%= f.input :quantity %>

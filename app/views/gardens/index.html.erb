@@ -85,48 +85,34 @@
         </div>
       </div>
 
-
-        <div class="message text-left">
-          <div class="message-name">
-            <img class="plus-sign" src="http://res.cloudinary.com/bdmbdm/image/upload/v1528034422/plussign_square.png" data-toggle="modal" data-target="#myModal">
-          </div>
-
-          <div class="message-body">
-            <p>log a new action</p>
-          </div>
-        </div>
-
     <% @products.each do |product| %>
-      <div class="message">
+      <% @users.each do |user| %>
+        <% if user.garden == product.element.zone.garden  %>
+          <div class="message">
             <div class="message-name">
-              <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
+              <%= cl_image_tag user.garden.photo, class: "avatar-large"  %>
             </div>
             <div class="message-body">
-              <p><%= log.date.strftime("%A, %b %d") %></p>
+              <p><%= user.garden.name%></p>
+              <p><%= user.garden.address %></p>
+              <p><%= user.name %></p>
             </div>
             <div class="message-body">
-              <h6><strong><%= log.category %></strong></h6>
+              <h6><strong><%= product.element.name %> x <%= product.quantity %></strong></h6>
             </div>
-              <% log.log_scopes.each do |log_scope|%>
-                <div class="message-body ">
-                  <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
-                </div>
-                <div class="message-body">
-                  <p><%= link_to log_scope.element.zone.name, zone_path(log_scope.element.zone) %></p>
-                </div>
-              <% end %>
-              <div class="message-body">
-                <p><strong>
-                  <% if log.status = true %>
-                    <span class="badge badge-success">good job!</span>
-                  <% else %>
-                    <span class="badge badge-warning">to be done</span>
-                  <p>plan the log</p>
-                  <% end %>
-                </strong></p>
-              </div>
-        </div>
+            <div class="message-body">
+              <p>
+                <% if product.end_date < Date.today %>
+                  <img src="" alt="">
+                <% else %>
+                  <img src="" alt="">
+                <% end %>
+              </p>
+            </div>
+          </div>
         <% end %>
+      <% end %>
+    <% end %>
   </div>
 </div>
   <!-- this is the end of log section -->
