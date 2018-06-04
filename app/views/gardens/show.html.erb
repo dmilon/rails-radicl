@@ -244,6 +244,7 @@
             <p> On which elements? </p>
             <%= f.simple_fields_for :elements do |e| %>
               <%= e.collection_check_boxes :name, @garden.elements, :id, :name  %>
+
             <% end %>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
 
