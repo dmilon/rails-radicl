@@ -1,0 +1,50 @@
+
+<div class="container">
+
+<div class="wrapper">
+<br>
+<h1 class="how">we are a community</h1>
+<br>
+
+<%= form_tag gardens_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a garden"
+  %>
+<% end %>
+</div>
+
+</div>
+
+
+<div class="wrapper-2">
+<h1 class="how text-center">join the community, discover our greatest farms</h1>
+<br>
+
+<div class="row ">
+  <% @gardens.each do |garden| %>
+    <div class="col-xs-12 col-sm-3">
+      <div class="card">
+        <%= cl_image_tag garden.photo, class: "card-img-top" %>
+<!--             <i class="fas fa-seedling"></i> -->
+          <%# end %>
+         <!--  <a href="#" class="icon"><i class="fas fa-seedling"></i></a> -->
+          <div class="overlay">
+            <div class="text">
+              <h2><%= garden.name %></h2>
+              <p><%= garden.address %></p>
+            </div>
+          </div>
+
+        <%= link_to garden_path(garden) do %>
+        </div>
+          <div class="card-link">
+            <p>show</p>
+          </div>
+        <% end %>
+    </div>
+<% end %>
+</div>
+</div>
+

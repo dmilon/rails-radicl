@@ -19,5 +19,5 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:new, :create]
-
+  resources :follows, only: [:create]
 end

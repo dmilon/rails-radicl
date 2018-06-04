@@ -56,10 +56,10 @@ ActiveRecord::Schema.define(version: 2018_06_04_100131) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.string "name"
   end
 
   create_table "log_scopes", force: :cascade do |t|
