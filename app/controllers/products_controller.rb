@@ -13,7 +13,6 @@ class ProductsController < ApplicationController
     @elements = Element.all.where(zone: @zones)
     @product = Product.new(product_params)
     authorize @product
-    raise
     if @product.save
       redirect_to garden_path(current_user.garden)
     else
@@ -24,6 +23,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:element_id, :quantity, :price, :description, :start_date, :end_date)
+    params.require(:product).permit(:element_id, :quantity, :price, :description)
   end
 end

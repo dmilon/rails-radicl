@@ -1,7 +1,7 @@
 <h1>Share with your community</h1>
 <% if policy(Product).create? %>
   <%= simple_form_for(@product) do |f| %>
-    <%= f.input :element, collection: @elements, required: true %>
+    <%= f.input :element_id, collection: @elements, required: false %>
     <%= f.input :price, as: :integer, required: false %>
     <%= f.input :description, as: :string, required: false %>
     <%= f.submit 'Share!', class: "btn btn-home btn-lg" %>
