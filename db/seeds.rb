@@ -152,7 +152,7 @@ donkey = Element.new(name: "Donkey", quantity: "3")
 donkey.zone = n
 donkey.save
 
-horses = Element.new(name)
+horses = Element.new(name: "Lucky", quantity: "7")
 horses.zone = c
 horses.save
 
