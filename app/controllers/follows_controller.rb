@@ -16,7 +16,7 @@ class FollowsController < ApplicationController
     if @follow.save
       redirect_to community_gardens_path
     else
-      redirect_to gardens_path(@garden)
+      redirect_to community_gardens_path
     end
 
   end
