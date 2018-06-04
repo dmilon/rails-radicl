@@ -62,4 +62,11 @@
 
 </div>
 
+<div>
+  <h1>Followed</h1>
+  <% current_user.follows.each do |follow| %>
+  <p><%= follow.garden.name %></p>
+  <% end %>
+</div>
+
 
