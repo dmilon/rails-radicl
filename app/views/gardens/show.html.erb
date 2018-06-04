@@ -89,6 +89,26 @@
       <p class="error-message"><%= "Sorry, no zones are available " %></p>
 
     <% else %>
+
+      <div id= "searchbar">
+          <%= text_field_tag :query,
+            params[:query],
+            class: "barwidth",
+            placeholder: "search for actions"%>
+      <i class="far fa-times-circle"></i>
+      <div class= "filter">
+        <div id="myBtnContainer">
+          <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
+          <button class="btn filter-btn" data-filter="category">Category</button>
+          <button class="btn filter-btn" data-filter="date"> Date</button>
+          <button class="btn filter-btn" data-filter="date"> Element</button>
+
+        </div>
+      </div></div>
+
+
+
+
       <% if @garden.users.include?(current_user) %>
         <div class="message text-left">
           <div class="message-name">
@@ -102,11 +122,9 @@
       <% end %>
     <% end %>
 
-
-
     <% @logs.each do |log| %>
       <div class="message">
-            <div class="message-name">
+            <div class="message-name filterDiv <%= log.category %>">
               <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
             </div>
             <div class="message-body">
@@ -116,7 +134,7 @@
               <h6><strong><%= log.category %></strong></h6>
             </div>
               <% log.log_scopes.each do |log_scope|%>
-                <div class="message-body">
+                <div class="message-body ">
                   <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
                 </div>
                 <div class="message-body">
@@ -147,6 +165,8 @@
       <p class="error-message"><%= "Sorry, no zones are available " %></p>
 
     <% else %>
+
+
       <% if @garden.users.include?(current_user) %>
         <div class="message text-left">
           <div class="message-name">
@@ -223,7 +243,7 @@
             <%# end %>
             <p> On which elements? </p>
             <%= f.simple_fields_for :elements do |e| %>
-              <%= e.collection_check_boxes :name, @garden.elements, :id, :name,  %>
+              <%= e.collection_check_boxes :name, @garden.elements, :id, :name  %>
             <% end %>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
 
