@@ -158,23 +158,23 @@ horses.save
 
 
 # Create a few logs
-seedling = Log.new(category: "seed", description: "i did my work today, i'm happy", quantity: "100", status: false)
+seedling = Log.new(category: "seed", description: "i did my work today, i'm happy", quantity: "100", status: false, date: '21/05/2018')
 seedling.user = bruno
 seedling.save
 
-watering = Log.new(category: "maintenance", description: "watering the onions", status: false)
+watering = Log.new(category: "maintenance", description: "watering the onions", status: false, date: '24/04/2018')
 watering.user = bruno
 watering.save
 
-cutting = Log.new(category: "sowing", description: "cutting the dead branches", status: false)
+cutting = Log.new(category: "sowing", description: "cutting the dead branches", status: false, date: '24/03/2018')
 cutting.user = bruno
 cutting.save
 
-digging = Log.new(category: "preparing soil", description: "preparing the soil", status: true)
+digging = Log.new(category: "preparing soil", description: "preparing the soil", status: true, date: '24/02/2018')
 digging.user = bruno
 digging.save
 
-feeding = Log.new(category: "preparing soil", description: "preparing the soil", status: true)
+feeding = Log.new(category: "preparing soil", description: "preparing the soil", status: true, date: '24/05/2018')
 feeding.user = bruno
 feeding.save
 
