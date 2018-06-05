@@ -45,7 +45,7 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
     @users = @garden.users
-    @logs = Log.all.order(date: :desc)
+    @logs = @garden.logs.order(date: :desc)
     @zones = @garden.zones
     @log = Log.new
     authorize @garden
@@ -125,41 +125,220 @@ class GardensController < ApplicationController
     ]
 
     #chart2 - by elements
-    # @chart2_labels = []
-    # @chart2_datasets = []
-    # @data_serie_element = {}
-    # i = 0
-    # @garden.elements.each do |element|
-    #   @element_name = element.name
-    #   @chart2_labels << @element_name
-    #   @data_serie_elements[:element_name] = element.logs.group(:category).count
-    #   # element.logs.where(category:"sowing").count
-    # end
+    @chart2_labels = []
+    @chart2_datasets = []
+    @data_serie_logs = {}
+    i = 0
 
-    # @actions = [
-    #  "preparing soil",
-    #  "fertilisating soil",
-    #  "sowing",
-    #  "transplanting",
-    #  "watering",
-    #  "weeding",
-    #  "mulching",
-    #  "protecting and taking care of crops",
-    #  "carrying",
-    #  "cleaning",
-    #  "conditionning and selling",
-    #  "others" ]
+    @garden.elements.each do |element|
+      @element_name = element.name
+      @chart2_labels << @element_name
+    end
 
-    #  @actions.each do |action|
-    #   @data_prep = {:label, :data, :backgroundColor, :borderColor, borderWidth: 1}
-    #   @data_prep[:label] = action
-    #   @data_serie_elements.each do |data_serie_element|
-    #     # data_serie_element.
-    #   end
+    @chart_order = @chart2_labels
+
+    @garden.logs.each do |log|
+      @log_cat = log.category
+      if @garden.logs == []
+        @data_serie_logs[@log_cat] = 0
+      else
+        @data_serie_logs[@log_cat] = log.elements.group(:name).count
+      end
+    end
 
 
-    #  end
+    @elements_number = @chart2_labels.count
 
+    @actions = [
+     "preparing soil",
+     "fertilisating soil",
+     "sowing",
+     "transplanting",
+     "watering",
+     "weeding",
+     "mulching",
+     "protecting and taking care of crops",
+     "carrying",
+     "cleaning",
+     "conditionning and selling",
+     "others"]
+
+    @preparing_soil = []
+    @fertilisating_soil = []
+    @sowing = []
+    @transplanting = []
+    @watering = []
+    @weeding = []
+    @mulching = []
+    @protecting_and_taking_care_of_crops = []
+    @carrying = []
+    @cleaning = []
+    @conditionning_and_selling = []
+    @others = []
+
+     @elements_number.times do
+      @preparing_soil << 0
+      @fertilisating_soil << 0
+      @sowing << 0
+      @transplanting << 0
+      @watering << 0
+      @weeding << 0
+      @mulching << 0
+      @protecting_and_taking_care_of_crops << 0
+      @carrying << 0
+      @cleaning << 0
+      @conditionning_and_selling << 0
+      @others << 0
+    end
+
+    @data_serie_logs.each do |data_serie_cat, data_serie_elements|
+      if data_serie_cat == "preparing soil"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @preparing_soil[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "fertilisating soil"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @fertilisating_soil[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "sowing"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @sowing[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "transplanting"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @transplanting[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "watering"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @watering[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "weeding"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @weeding[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "mulching"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @mulching[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "protecting and taking care of crops"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @protecting_and_taking_care_of_crops[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "carrying"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @carrying[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "cleaning"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @cleaning[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "conditionning and selling"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @conditionning_and_selling[index] = v
+            end
+          end
+        end
+      end
+      if data_serie_cat == "others"
+        data_serie_elements.each do |k,v|
+          @chart2_labels.each_with_index do |label, index|
+            if label == k
+              @others[index] = v
+            end
+          end
+        end
+      end
+    end
+
+
+ @color = 125
+ @actions.each do |action|
+  @hash_new = {}
+  @hash_new[:label] = action
+  if action == "preparing soil"
+    @hash_new[:data] = @preparing_soil
+  elsif action == "fertilisating soil"
+    @hash_new[:data] = @fertilisating_soil
+  elsif action == "sowing"
+    @hash_new[:data] = @sowing
+  elsif action == "transplanting"
+    @hash_new[:data] = @transplanting
+  elsif action == "watering"
+    @hash_new[:data] = @watering
+  elsif action == "weeding"
+    @hash_new[:data] = @weeding
+  elsif action == "mulching"
+    @hash_new[:data] = @mulching
+  elsif action == "protecting and taking care of crops"
+    @hash_new[:data] = @protecting_and_taking_care_of_crops
+  elsif action == "carrying"
+    @hash_new[:data] = @carrying
+  elsif action == "cleaning"
+    @hash_new[:data] = @cleaning
+  elsif action == "conditionning and selling"
+    @hash_new[:data] = @conditionning_and_selling
+  else action == "others"
+    @hash_new[:data] = @others
+  end
+
+  @color += 50
+  @hash_new[:backgroundColor] = 'rgba(#{@color}, 99, 132, 0.2)'
+  @hash_new[:borderColor] = 'rgba(#{@color},99,132,1)'
+  @hash_new[:borderWidth] = 1
+  @chart2_datasets << @hash_new
+ end
 
     # @chart2_datasets = [{
     #   label: '# of logs by elements',
@@ -183,6 +362,8 @@ class GardensController < ApplicationController
       borderColor: 'rgba(255,99,132,1)',
       borderWidth: 1
     }]
+
+    #chart by dates
 
     @chart4_labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'December']
     @logs_by_garden_by_month = { january: 0, february: 0, march: 0, april: 0, may: 0, june: 0, july: 0, august: 0, september: 0, october: 0, december: 0}
