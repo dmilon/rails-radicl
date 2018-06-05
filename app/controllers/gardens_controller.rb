@@ -109,9 +109,9 @@ class GardensController < ApplicationController
             end
           end
         end
-      end
       sum = sum.fdiv(current_user.follows.count)
       @chart1_data2 << sum
+      end
     end
 
     @chart1_datasets = [{
