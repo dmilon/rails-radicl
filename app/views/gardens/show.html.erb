@@ -99,11 +99,10 @@
     <% else %>
 
       <div id= "searchbar">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "barwidth",
-            placeholder: "search for actions"%>
-      <i class="far fa-times-circle"></i>
+        <%= form_tag garden_path(@garden), method: :get do %>
+          <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "search for actions" %>
+        <% end %>
+          <!--i class="far fa-times-circle"></i>
       <div class= "filter">
         <div id="myBtnContainer">
           <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
@@ -111,8 +110,8 @@
           <button class="btn filter-btn" data-filter="date"> Date</button>
           <button class="btn filter-btn" data-filter="date"> Element</button>
 
-        </div>
-      </div></div>
+        </div-->
+      </div><!--/div-->
 
 
 
