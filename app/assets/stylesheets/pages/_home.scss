@@ -1,5 +1,16 @@
 // Specific CSS for your home-page
 
+.animated {
+transition: all 0.6s ease-in;
+}
+
+.anim-scroll { opacity: 0}
+
+.row.statistics{
+  width: 1100px;
+  margin: 0 auto;
+}
+
 
 .container {
   min-height: 80vh;

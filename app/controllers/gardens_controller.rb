@@ -45,7 +45,7 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
     @users = @garden.users
-    @logs = @garden.logs
+    @logs = @garden.logs.order(date: :desc)
     @zones = @garden.zones
     @log = Log.new
     authorize @garden

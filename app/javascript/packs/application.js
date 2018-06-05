@@ -8,7 +8,9 @@ import { loadDynamicBannerText } from '../components/banner';
 import { tabsClickListener } from '../components/tab';
 import { bindSweetAlertButtonDemo } from '../components/banner';
 import '../components/select2';
+import { scroll } from '../components/scroll';
 
+scroll();
 initUpdateNavbarOnScroll();
 loadDynamicBannerText();
 tabsClickListener();
