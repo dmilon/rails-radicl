@@ -70,8 +70,8 @@
           <div class="overlay">
             <div class="text">
               <p>area: <%= zone.area %>m2</p>
-              <% if zone.logs.exists? %>
-                <p>last logged on:<br><%= zone.logs.last.date.strftime("%A, %b %d")%></p>
+              <% unless zone.logs.empty? %>
+                <p>last logged on:<br><%= zone.logs.last.created_at.strftime("%A, %b %d")%></p>
               <% end %>
             </div>
           </div>
@@ -163,7 +163,7 @@
               <% end %>
             </div>
             <div class="message-body products">
-              <p><%= log.date.strftime("%A, %b %d") %></p>
+              <p><%= log.created_at.strftime("%A, %b %d") %></p>
             </div>
             <div class="message-body products">
               <h6><strong><%= log.category %></strong></h6>
@@ -224,7 +224,7 @@
             <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
           </div>
           <div class="message-body">
-            <p><%= log.date.strftime("%A, %b %d") %></p>
+            <p><%= log.created_at.strftime("%A, %b %d") %></p>
           </div>
           <div class="message-body products">
             <h6><strong><%= log.category %></strong></h6>
