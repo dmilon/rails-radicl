@@ -3,5 +3,5 @@
 meta_product_name: "radicl"
 meta_title: "radicl 👩‍🌾 - manage & share your perma systems"
 meta_description: "radicl is the first community tool for permaculture farms"
-meta_image: "mandalat.jpg"                       # should exist in `app/assets/images/`
+meta_image: "og_image_radicl.png"                       # should exist in `app/assets/images/`
 twitter_account: "@bdellamattia"   # required for Twitter Cards
