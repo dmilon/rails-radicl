@@ -4,16 +4,16 @@ class Log < ApplicationRecord
   has_many :elements, through: :log_scopes
   ACTIONS = [
    "preparing soil",
-   "fertilisating soil",
+   "fertilisating",
    "sowing",
    "transplanting",
    "watering",
    "weeding",
    "mulching",
-   "protecting and taking care of crops",
+   "caring crops",
    "carrying",
    "cleaning",
-   "conditionning and selling",
+   "sharing",
    "others" ]
   validates :category, inclusion: { in: ACTIONS }
 

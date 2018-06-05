@@ -1,6 +1,5 @@
-<%= render 'shared/banner-dashboard' %>
 
-<div class="zone-name">
+<div class="zone-name zoni">
   <h1><%= @garden.name.upcase %></h1>
     <%#= link_to edit_garden_path(@garden) do %>
       <!-- <i class="far fa-edit"></i> -->
@@ -13,7 +12,16 @@
     <%# end %>
 </div>
 
-<div class="container show-garden">
+<div class="row meteo animated fadeInUp">
+<a class="weatherwidget-io open-link" href="https://forecast7.com/en/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+</div>
+
+
+
+<div class="container show-garden animated fadeInUp">
 <!-- this is the zone section -->
 <br><br>
 <div class="tab">
@@ -23,7 +31,7 @@
     <button class="tablinks" data-tab="Shares"><h1>my shares</h1></button>
   <% else %>
     <button class="tablinks default" data-tab="Farm"><h1>zones</h1></button>
-    <button class="tablinks" data-tab="Logs"><h1>actions</h1></button>
+    <button class="tablinks" data-tab="Logs"><h1>activity</h1></button>
     <button class="tablinks" data-tab="Shares"><h1>shares</h1></button>
   <% end %>
 </div>
@@ -37,7 +45,7 @@
       <% if @garden.users.include?(current_user) %>
       <div class="col-xs-12 col-md-3">
         <div class="card">
-          <%= cl_image_tag "https://res.cloudinary.com/bdmbdm/image/upload/v1528032584/plussign_card.png", class: "card-img-top" %>
+          <%= cl_image_tag "https://res.cloudinary.com/bdmbdm/image/upload/v1528191161/Plan_de_travail_123.png", class: "card-img-top", width: 10 %>
           <%= link_to new_garden_zone_path(@garden) do %>
             <div class="overlay">
               <div class="text">
@@ -125,16 +133,44 @@
     <% @logs.each do |log| %>
       <div class="message">
             <div class="message-name filterDiv <%= log.category %>">
-              <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
+              <% if log.category == "preparing soil" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1561630_cc.svg">
+              <% elsif log.category == "fertilisating" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1042097_cc.svg">
+              <% elsif log.category == "sowing" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/seed.svg">
+              <% elsif log.category == "transplanting" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">
+              <% elsif log.category == "watering" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240203_cc.svg">
+              <% elsif log.category == "weeding" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189035/noun_984560_cc.svg">
+              <% elsif log.category == "mulching" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240202_cc.svg">
+              <% elsif log.category == "mulching" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240202_cc.svg">
+              <% elsif log.category == "caring crops" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189177/noun_1002074_cc.svg">
+              <% elsif log.category == "carrying" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671027/brouette.svg">
+              <% elsif log.category == "cleaning" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189352/noun_1551479_cc.svg">
+              <% elsif log.category == "cleaning" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189352/noun_1551479_cc.svg">
+              <% elsif log.category == "sharing" %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671030/selling.svg">
+              <% else %>
+                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">
+              <% end %>
             </div>
-            <div class="message-body">
+            <div class="message-body products">
               <p><%= log.date.strftime("%A, %b %d") %></p>
             </div>
-            <div class="message-body">
+            <div class="message-body products">
               <h6><strong><%= log.category %></strong></h6>
             </div>
               <% log.log_scopes.each do |log_scope|%>
-                <div class="message-body ">
+                <div class="message-body productsi">
                   <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
                 </div>
                 <div class="message-body">
@@ -191,11 +227,11 @@
           <div class="message-body">
             <p><%= log.date.strftime("%A, %b %d") %></p>
           </div>
-          <div class="message-body">
+          <div class="message-body products">
             <h6><strong><%= log.category %></strong></h6>
           </div>
           <% log.log_scopes.each do |log_scope|%>
-            <div class="message-body">
+            <div class="message-body productsi">
               <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
             </div>
           <% end %>
@@ -205,7 +241,7 @@
     <% end %>
   </div>
 
-
+<br><br>
 
 </div>
 

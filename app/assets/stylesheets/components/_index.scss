@@ -7,4 +7,18 @@
 @import "tab";
 @import "form";
 @import "modal";
+@import "animate";
+@import "circle";
 
+.avatar-large.shared{ width: 78px}
+
+.message-body h6 {
+  color: #2b4635
+}
+
+.message-body p a {
+text-decoration: underline!important}
+
+.message-body.product {
+  width: 110px;
+}

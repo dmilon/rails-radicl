@@ -13,34 +13,37 @@ alexia = User.create!(admin: true, email: "alexia@gmail.com", password: "passwor
 bruno = User.create!(admin: true, email: "bruno@gmail.com", password: "password", name: "bruno", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
 damien = User.create!(admin: true, email: "damien@gmail.com", password: "password", name: "damien", remote_avatar_url: "https://avatars0.githubusercontent.com/u/37899667?v=4")
 louisa = User.create!(admin: true, email: "louisa@gmail.com", password: "password", name: "louisa", remote_avatar_url: "https://avatars2.githubusercontent.com/u/13285082?v=4")
+olivier = User.create!(admin: true, email: "olivier@gmail.com", password: "password", name: "olivier", remote_avatar_url: "https://avatars2.githubusercontent.com/u/13285082?v=4")
+delphine = User.create!(admin: true, email: "delphine@gmail.com", password: "password", name: "delphine", remote_avatar_url: "https://avatars2.githubusercontent.com/u/13285082?v=4")
+
 #worker = User.create!(admin: false, email: "worker@gmail.com", password: "password", name: "worker", avatar: "https://avatars2.githubusercontent.com/u/13285082?v=4")
 juliette = User.create(admin: true, email: "juliette@gmail.com", password: "password", name: "juliette", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
 denis = User.create(admin: true, email: "denis@gmail.com", password: "password", name: "denis", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
 # Create 4 farms / gardens
 ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4000",
   address: 'D918, 61290 Longny-au-Perche', latitude: 48.538352, longitude: 0.746001,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1506140006527-5ca84877d824.jpg')
 ferme_de_quelenne.save!
 bruno.garden = ferme_de_quelenne
 bruno.save!
 
 ferme_louley = Garden.new(name: "Ferme forestière Louley Médoc", area: "4000",
   address: "9 Rue du Dr Jean Vivares, 61290 Longny-au-Perche", latitude: 48.529327, longitude: 0.751545,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1472653525502-fc569e405a74.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1499348287264-a2603bc210c9.jpg')
 ferme_louley.save!
 louisa.garden = ferme_louley
 louisa.save!
 
 maison_ane = Garden.new(name: "La maison de l'âne", area: "4000",
   address: "La Hutte, 61290 Longny-au-Perche", latitude: 48.543471, longitude: 0.714202,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1495138434997-9d69d2a54c8a.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528190395/photo-1441749074938-1c6782303919.jpg')
 maison_ane.save!
 alexia.garden = maison_ane
 alexia.save!
 
 champs = Garden.new(name: "L'envie des champs", area: "4000",
   address: "La Heslière, 61290 Longny-au-Perche", latitude: 48.530741, longitude: 0.784926,
-  remote_photo_url: 'http://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1469122312224-c5846569feb1.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528190395/photo-1444755303876-9cbab89f863c.jpg')
 champs.save!
 damien.garden = champs
 damien.save!
@@ -54,6 +57,20 @@ bonnePatate = Garden.new(name: "À La bonne patate", area: "4000", address: "La 
 bonnePatate.save!
 denis.garden = bonnePatate
 denis.save!
+
+champi = Garden.new(name: "L'étang Chiot", area: "3020",
+  address: "L'Étang Chiot, 61290 Longny-au-Perche", latitude: 48.546360, longitude: 0.730251,
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528190394/photo-1471231681582-352356ab45a0.jpg')
+champi.save!
+olivier.garden = champi
+olivier.save!
+
+champil = Garden.new(name: "Moulin de la Vigne", area: "420",
+  address: "Moulin de la Vigne, 61400 Feings", latitude: 48.546587, longitude: 0.688022,
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528190394/photo-1521511263595-37aa9f9c6ea1.jpg')
+champil.save!
+delphine.garden = champil
+delphine.save!
 
 # Create 8 zones
 a = Zone.new(name: "Potager", area: "200", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527863158/m8xrduxuketfvxv9mijw.jpg")
@@ -191,23 +208,23 @@ product6.element = donkey
 product6.save
 
 # Create a few logs
-seedling = Log.new(category: "seed", description: "i did my work today, i'm happy", quantity: "100", status: false, date: '21/05/2018')
+seedling = Log.new(category: "sowing", description: "i did my work today", status: false, date: '21/05/2018')
 seedling.user = bruno
 seedling.save
 
-watering = Log.new(category: "maintenance", description: "watering the onions", status: false, date: '24/04/2018')
+watering = Log.new(category: "watering", description: "watering the onions", status: false, date: '24/04/2018')
 watering.user = bruno
 watering.save
 
-cutting = Log.new(category: "sowing", description: "cutting the dead branches", status: false, date: '24/03/2018')
+cutting = Log.new(category: "caring crops", description: "cutting the dead branches", status: false, date: '24/03/2018')
 cutting.user = bruno
 cutting.save
 
-digging = Log.new(category: "preparing soil", description: "preparing the soil", status: true, date: '24/02/2018')
+digging = Log.new(category: "preparing soil", description: "preparing the soil for transplant", status: true, date: '24/02/2018')
 digging.user = bruno
 digging.save
 
-feeding = Log.new(category: "preparing soil", description: "preparing the soil", status: true, date: '24/05/2018')
+feeding = Log.new(category: "fertilisating", description: "fertilisating the carrots", status: false, date: '24/05/2018')
 feeding.user = bruno
 feeding.save
 
@@ -228,10 +245,10 @@ scope3.log_id = cutting.id
 scope3.element_id = carrot.id
 scope3.save
 
-scope4 = LogScope.new
-scope4.log_id = digging.id
-scope4.element_id = donkey.id
-scope4.save
+# scope4 = LogScope.new
+# scope4.log_id = digging.id
+# scope4.element_id = donkey.id
+# scope4.save
 
 # create follows
 follow1 = Follow.new(user: bruno, garden: ferme_louley)
