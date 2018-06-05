@@ -82,26 +82,27 @@ class GardensController < ApplicationController
       @chart1_data1 << @sum
     end
 
-    if current_user.follows.exists?
-      @chart1_data2 = []
-      @users_followed = current_user.follows
-      @users_followed.each do |user_followed|
-        @garden = user_followed.garden
-        @zones = @garden.zones
-      # pour chauqe user_followed, pour chacunes de ses zones, je compte les logs par categorie
-        @zones.each do |zone|
-          zone.logs.group(:category).count
-        end
-      # je regroupe pour tous les users_followed les categories des logs
-      # je fais des moyennes selon s'ils ont fait ces categories
-      # j'ordonne selon les labels
+    # if current_user.follows.exists?
+    #   @chart1_data2 = []
+    #   @users_followed = current_user.follows
+    #   @users_followed.each do |user_followed|
+    #     @garden = user_followed.garden
+    #     @zones = @garden.zones
+    #   # pour chauqe user_followed, pour chacunes de ses zones, je compte les logs par categorie
+    #     @zones.each do |zone|
+    #       zone.logs.group(:category).count
+    #     end
+    #   # je regroupe pour tous les users_followed les categories des logs
+    #   # je fais des moyennes selon s'ils ont fait ces categories
+    #   # j'ordonne selon les labels
 
-        @chart1_labels.each do |chart1_label|
-          # waiting
-          if chart1_label ==
-        end
-        @elements = @garden.elements
-      end
+    #     @chart1_labels.each do |chart1_label|
+    #       # waiting
+    #       if chart1_label ==
+    #       end
+    #     end
+    #     @elements = @garden.elements
+    #   end
 
 
     # @chart1_labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
