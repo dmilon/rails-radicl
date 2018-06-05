@@ -42,181 +42,218 @@ damien.garden = champs
 damien.save!
 
 # Create 8 zones
-a = Zone.new(name: "Potager", area: "200", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527863158/m8xrduxuketfvxv9mijw.jpg")
-a.garden = ferme_de_quelenne
-a.save
+Garden.all.each do |garden|
+  zone = Zone.new(name: "Potager", area: "200", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527863158/m8xrduxuketfvxv9mijw.jpg")
+  zone.garden = garden
+  zone.save!
+end
 
-b = Zone.new(name: "Poulailler", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528036811/photo-1495696386015-f371820f82a6.jpg")
-b.garden = ferme_de_quelenne
-b.save
+# b = Zone.new(name: "Poulailler", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528036811/photo-1495696386015-f371820f82a6.jpg")
+# b.garden = ferme_de_quelenne
+# b.save
 
-c = Zone.new(name: "Chevaux", area: "2500", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1511374322656-82cdd30150c9.jpg")
-c.garden = ferme_de_quelenne
-c.save
+# c = Zone.new(name: "Chevaux", area: "2500", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1511374322656-82cdd30150c9.jpg")
+# c.garden = ferme_de_quelenne
+# c.save
 
-d = Zone.new(name: "Ruches", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1498936178812-4b2e558d2937.jpg")
-d.garden = ferme_de_quelenne
-d.save
+# d = Zone.new(name: "Ruches", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1498936178812-4b2e558d2937.jpg")
+# d.garden = ferme_de_quelenne
+# d.save
 
-e = Zone.new(name: "Verger", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1505872342847-6dbb5e76cd31.jpg")
-e.garden = ferme_de_quelenne
-e.save
+# e = Zone.new(name: "Verger", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1505872342847-6dbb5e76cd31.jpg")
+# e.garden = ferme_de_quelenne
+# e.save
 
-f = Zone.new(name: "Vaches", area: "500", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1500595046743-cd271d694d30.jpg" )
-f.garden = ferme_de_quelenne
-f.save
+# f = Zone.new(name: "Vaches", area: "500", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1500595046743-cd271d694d30.jpg" )
+# f.garden = ferme_de_quelenne
+# f.save
 
-g = Zone.new(name: "Moutons", area: "4000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg")
-g.garden = ferme_de_quelenne
-g.save
+# g = Zone.new(name: "Moutons", area: "4000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg")
+# g.garden = ferme_de_quelenne
+# g.save
 
-h = Zone.new(name: "Cochons", area: "300", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1524317818500-ab1fded2ce81.jpg")
-h.garden = ferme_de_quelenne
-h.save
+# h = Zone.new(name: "Cochons", area: "300", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1524317818500-ab1fded2ce81.jpg")
+# h.garden = ferme_de_quelenne
+# h.save
 
-i = Zone.new(name: "Zone 6", area: "10")
-i.garden = maison_ane
-i.save
+# i = Zone.new(name: "Zone 6", area: "10")
+# i.garden = maison_ane
+# i.save
 
-j = Zone.new(name: "Zone 7", area: "3")
-j.garden = maison_ane
-j.save
+# j = Zone.new(name: "Zone 7", area: "3")
+# j.garden = maison_ane
+# j.save
 
-k = Zone.new(name: "Zone 8", area: "70")
-k.garden = maison_ane
-k.save
+# k = Zone.new(name: "Zone 8", area: "70")
+# k.garden = maison_ane
+# k.save
 
-l = Zone.new(name: "Verger", area: "700")
-l.garden = maison_ane
-l.save
+# l = Zone.new(name: "Verger", area: "700")
+# l.garden = maison_ane
+# l.save
 
-m = Zone.new(name: "Fruits", area: "30")
-m.garden = maison_ane
-m.save
+# m = Zone.new(name: "Fruits", area: "30")
+# m.garden = maison_ane
+# m.save
 
-n = Zone.new(name: "Ruches", area: "100")
-n.garden = maison_ane
-n.save
+# n = Zone.new(name: "Ruches", area: "100")
+# n.garden = maison_ane
+# n.save
 
-o = Zone.new(name: "Potager", area: "20")
-o.garden = maison_ane
-o.save
+# o = Zone.new(name: "Potager", area: "20")
+# o.garden = maison_ane
+# o.save
 
-p = Zone.new(name: "Donkeys", area: "200")
-p.garden = maison_ane
-p.save
+# p = Zone.new(name: "Donkeys", area: "200")
+# p.garden = maison_ane
+# p.save
 
 
 # Create 10 elements
-carrot = Element.new(name: "Carrots", quantity: "300")
-carrot.zone = a
-carrot.save
+Garden.all.each do |garden|
+  carrot = Element.new(name: "Carrots", quantity: "300")
+  carrot.zone = garden.zones.first
+  carrot.save!
+end
 
-beetroot = Element.new(name: "Beetroot", quantity: "200")
-beetroot.zone = a
-beetroot.save
+# beetroot = Element.new(name: "Beetroot", quantity: "200")
+# beetroot.zone = a
+# beetroot.save
 
-onion = Element.new(name: "Onion", quantity: "100")
-onion.zone = a
-onion.save
+# onion = Element.new(name: "Onion", quantity: "100")
+# onion.zone = a
+# onion.save
 
-leek = Element.new(name: "Leek", quantity: "10")
-leek.zone = a
-leek.save
+# leek = Element.new(name: "Leek", quantity: "10")
+# leek.zone = a
+# leek.save
 
-leeks = Element.new(name: "Leeks", quantity: "100")
-leeks.zone = o
-leeks.save
+# leeks = Element.new(name: "Leeks", quantity: "100")
+# leeks.zone = o
+# leeks.save
 
-carrots = Element.new(name: "Carrots", quantity: "300")
-carrots.zone = o
-carrots.save
+# carrots = Element.new(name: "Carrots", quantity: "300")
+# carrots.zone = o
+# carrots.save
 
-beetradish = Element.new(name: "Beetroot", quantity: "200")
-beetradish.zone = o
-beetradish.save
+# beetradish = Element.new(name: "Beetroot", quantity: "200")
+# beetradish.zone = o
+# beetradish.save
 
-onions = Element.new(name: "Onion", quantity: "100")
-onions.zone = o
-onions.save
+# onions = Element.new(name: "Onion", quantity: "100")
+# onions.zone = o
+# onions.save
 
-leeki = Element.new(name: "Leek", quantity: "10")
-leeki.zone = n
-leeki.save
+# leeki = Element.new(name: "Leek", quantity: "10")
+# leeki.zone = n
+# leeki.save
 
-bees = Element.new(name: "Bees", quantity: "10000")
-bees.zone = m
-bees.save
+# bees = Element.new(name: "Bees", quantity: "10000")
+# bees.zone = m
+# bees.save
 
-donkey = Element.new(name: "Donkey", quantity: "3")
-donkey.zone = n
-donkey.save
+# donkey = Element.new(name: "Donkey", quantity: "3")
+# donkey.zone = n
+# donkey.save
 
-horses = Element.new(name: "Horse", quantity: "18")
-horses.zone = c
-horses.save
+# horses = Element.new(name: "Horse", quantity: "18")
+# horses.zone = c
+# horses.save
 
-product1 = Product.new(quantity: 50, end_date: "15/06/2018")
-product1.element = carrots
-product1.save
-product2 = Product.new(quantity: 100, end_date: "15/06/2018")
-product2.element = beetradish
-product2.save
-product3 = Product.new(quantity: 50, end_date: "20/06/2018")
-product3.element = leeks
-product3.save
-product4 = Product.new(quantity: 500, end_date: "23/09/2018")
-product4.element = bees
-product4.save
-product5 = Product.new(quantity: 50, end_date: "15/07/2018")
-product5.element = onions
-product5.save
-product6 = Product.new(quantity: 1, end_date: "25/08/2018")
-product6.element = donkey
-product6.save
+# product1 = Product.new(quantity: 50, end_date: "15/06/2018")
+# product1.element = carrots
+# product1.save
+# product2 = Product.new(quantity: 100, end_date: "15/06/2018")
+# product2.element = beetradish
+# product2.save
+# product3 = Product.new(quantity: 50, end_date: "20/06/2018")
+# product3.element = leeks
+# product3.save
+# product4 = Product.new(quantity: 500, end_date: "23/09/2018")
+# product4.element = bees
+# product4.save
+# product5 = Product.new(quantity: 50, end_date: "15/07/2018")
+# product5.element = onions
+# product5.save
+# product6 = Product.new(quantity: 1, end_date: "25/08/2018")
+# product6.element = donkey
+# product6.save
 
 # Create a few logs
-seedling = Log.new(category: "seed", description: "i did my work today, i'm happy", quantity: "100", status: false, date: '21/05/2018')
-seedling.user = bruno
-seedling.save
 
-watering = Log.new(category: "maintenance", description: "watering the onions", status: false, date: '24/04/2018')
-watering.user = bruno
-watering.save
+3.times do
+  log = Log.new(category: "sowing")
+  log.user = alexia
+  log.save!
+  log_scope = LogScope.new
+  log_scope.element = alexia.garden.zones.first.elements.first
+  log_scope.log = log
+  log_scope.save!
+end
 
-cutting = Log.new(category: "sowing", description: "cutting the dead branches", status: false, date: '24/03/2018')
-cutting.user = bruno
-cutting.save
+10.times do
+  log = Log.new(category: "sowing")
+  log.user = bruno
+  log.save!
+  log_scope = LogScope.new
+  log_scope.element = bruno.garden.zones.first.elements.first
+  log_scope.log = log
+  log_scope.save!
+end
 
-digging = Log.new(category: "preparing soil", description: "preparing the soil", status: true, date: '24/02/2018')
-digging.user = bruno
-digging.save
+20.times do
+  log = Log.new(category: "sowing")
+  log.user = louisa
+  log.save!
+  log_scope = LogScope.new
+  log_scope.element = louisa.garden.zones.first.elements.first
+  log_scope.log = log
+  log_scope.save!
+end
 
-feeding = Log.new(category: "preparing soil", description: "preparing the soil", status: true, date: '24/05/2018')
-feeding.user = bruno
-feeding.save
+
+
+# seedling = Log.new(category: "seed", description: "i did my work today, i'm happy", quantity: "100", status: false, date: '21/05/2018')
+# seedling.user = bruno
+# seedling.save
+
+# watering = Log.new(category: "maintenance", description: "watering the onions", status: false, date: '24/04/2018')
+# watering.user = bruno
+# watering.save
+
+# cutting = Log.new(category: "sowing", description: "cutting the dead branches", status: false, date: '24/03/2018')
+# cutting.user = bruno
+# cutting.save
+
+# digging = Log.new(category: "preparing soil", description: "preparing the soil", status: true, date: '24/02/2018')
+# digging.user = bruno
+# digging.save
+
+# feeding = Log.new(category: "preparing soil", description: "preparing the soil", status: true, date: '24/05/2018')
+# feeding.user = bruno
+# feeding.save
 
 
 # create log_scope
-scope1 = LogScope.new
-log_id = seedling.id
-scope1.element_id = leeki.id
-scope1.save
+# scope1 = LogScope.new
+# log_id = seedling.id
+# scope1.element_id = leeki.id
+# scope1.save
 
-scope2 = LogScope.new
-scope2.log_id = watering.id
-scope2.element_id = onion.id
-scope2.save
+# scope2 = LogScope.new
+# scope2.log_id = watering.id
+# scope2.element_id = onion.id
+# scope2.save
 
-scope3 = LogScope.new
-scope3.log_id = cutting.id
-scope3.element_id = carrot.id
-scope3.save
+# scope3 = LogScope.new
+# scope3.log_id = cutting.id
+# scope3.element_id = carrot.id
+# scope3.save
 
-scope4 = LogScope.new
-scope4.log_id = digging.id
-scope4.element_id = donkey.id
-scope4.save
+# scope4 = LogScope.new
+# scope4.log_id = digging.id
+# scope4.element_id = donkey.id
+# scope4.save
 
 
 

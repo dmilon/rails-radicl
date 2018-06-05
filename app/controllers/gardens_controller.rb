@@ -45,7 +45,7 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
     @users = @garden.users
-    @logs = Log.all
+    @logs = @garden.logs
     @zones = @garden.zones
     @log = Log.new
     authorize @garden
@@ -76,39 +76,33 @@ class GardensController < ApplicationController
     #charts1 - by zone
     @chart1_labels = []
     @chart1_data1 = []
+    @chart1_data2 = []
+
     @zones.each do |zone|
-      @sum = 0
       @chart1_labels << zone.name
+
+      @sum = 0
       zone.elements.each do |element|
         @sum += element.logs.count
       end
       @chart1_data1 << @sum
+
+      if current_user.follows.exists?
+        sum = 0
+        current_user.follows.each do |follow|
+          follow.garden.zones.each do |follow_zone|
+            if zone.name == follow_zone.name
+              follow_zone.elements.each do |follow_element|
+                sum += follow_element.logs.count
+              end
+            end
+          end
+        end
+      end
+      sum = sum.fdiv(current_user.follows.count)
+      @chart1_data2 << sum
     end
 
-    # if current_user.follows.exists?
-    #   @chart1_data2 = []
-    #   @users_followed = current_user.follows
-    #   @users_followed.each do |user_followed|
-    #     @garden = user_followed.garden
-    #     @zones = @garden.zones
-    #   # pour chauqe user_followed, pour chacunes de ses zones, je compte les logs par categorie
-    #     @zones.each do |zone|
-    #       zone.logs.group(:category).count
-    #     end
-    #   # je regroupe pour tous les users_followed les categories des logs
-    #   # je fais des moyennes selon s'ils ont fait ces categories
-    #   # j'ordonne selon les labels
-
-    #     @chart1_labels.each do |chart1_label|
-    #       # waiting
-    #       if chart1_label ==
-    #       end
-    #     end
-    #     @elements = @garden.elements
-    #   end
-
-
-    # @chart1_labels = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
     @chart1_datasets = [{
       label: '# of logs by zones',
       data: @chart1_data1,
