@@ -32,7 +32,7 @@
 
 div#map {
   width: 500px!important;
-height: 400px!important}
+height: calc(100vh - 10px) !important}
 
 
 h2.mapi {

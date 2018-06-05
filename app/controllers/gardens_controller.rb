@@ -249,7 +249,7 @@ class GardensController < ApplicationController
           end
         end
       end
-      if data_serie_cat == "protecting and taking care of crops"
+      if data_serie_cat == "caring crops"
         data_serie_elements.each do |k,v|
           @chart2_labels.each_with_index do |label, index|
             if label == k
