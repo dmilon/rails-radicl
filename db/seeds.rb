@@ -213,10 +213,10 @@ scope3.log_id = cutting.id
 scope3.element_id = carrot.id
 scope3.save
 
-scope4 = LogScope.new
-scope4.log_id = digging.id
-scope4.element_id = donkey.id
-scope4.save
+# scope4 = LogScope.new
+# scope4.log_id = digging.id
+# scope4.element_id = donkey.id
+# scope4.save
 
 
 

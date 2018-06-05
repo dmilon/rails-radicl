@@ -45,7 +45,7 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
     @users = @garden.users
-    @logs = Log.all
+    @logs = @garden.logs
     @zones = @garden.zones
     @log = Log.new
     authorize @garden
@@ -125,41 +125,270 @@ class GardensController < ApplicationController
     ]
 
     #chart2 - by elements
-    # @chart2_labels = []
-    # @chart2_datasets = []
-    # @data_serie_element = {}
-    # i = 0
-    # @garden.elements.each do |element|
-    #   @element_name = element.name
-    #   @chart2_labels << @element_name
-    #   @data_serie_elements[:element_name] = element.logs.group(:category).count
-    #   # element.logs.where(category:"sowing").count
-    # end
+    @chart2_labels = []
+    @chart2_datasets = []
+    @data_serie_elements = {}
+    i = 0
+    @garden.elements.each do |element|
+      @element_name = element.name
+      @chart2_labels << @element_name
+      if element.logs == []
+        @data_serie_elements[@element_name] = 0
+      else
+        @data_serie_elements[@element_name] = element.logs.group(:category).count
+      end
+    end
 
-    # @actions = [
-    #  "preparing soil",
-    #  "fertilisating soil",
-    #  "sowing",
-    #  "transplanting",
-    #  "watering",
-    #  "weeding",
-    #  "mulching",
-    #  "protecting and taking care of crops",
-    #  "carrying",
-    #  "cleaning",
-    #  "conditionning and selling",
-    #  "others" ]
+    @actions = [
+     "preparing soil",
+     "fertilisating soil",
+     "sowing",
+     "transplanting",
+     "watering",
+     "weeding",
+     "mulching",
+     "protecting and taking care of crops",
+     "carrying",
+     "cleaning",
+     "conditionning and selling",
+     "others"]
+    @preparing_soil = []
+    @fertilisating_soil = []
+    @sowing = []
+    @transplanting = []
+    @watering = []
+    @weeding = []
+    @mulching = []
+    @protecting_and_taking_care_of_crops = []
+    @carrying = []
+    @cleaning = []
+    @conditionning_and_selling = []
+    @others = []
 
-    #  @actions.each do |action|
-    #   @data_prep = {:label, :data, :backgroundColor, :borderColor, borderWidth: 1}
-    #   @data_prep[:label] = action
-    #   @data_serie_elements.each do |data_serie_element|
-    #     # data_serie_element.
-    #   end
+    @data_serie_elements.values.each do |data_serie_logs|
+      if data_serie_logs == 0
+        @preparing_soil << 0
+        @fertilisating_soil << 0
+        @sowing << 0
+        @transplanting << 0
+        @watering << 0
+        @weeding << 0
+        @mulching << 0
+        @protecting_and_taking_care_of_crops << 0
+        @carrying << 0
+        @cleaning << 0
+        @conditionning_and_selling << 0
+        @others << 0
+      else
+        data_serie_logs.each do |k, v|
+          if k == "preparing soil"
+            @preparing_soil << v
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << 0
+            @watering << 0
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "fertilisating soil"
+            @preparing_soil << 0
+            @fertilisating_soil << v
+            @sowing << 0
+            @transplanting << 0
+            @watering << 0
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "sowing"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << v
+            @transplanting << 0
+            @watering << 0
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "transplanting"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << v
+            @watering << 0
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "watering"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << 0
+            @watering << v
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "weeding"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << 0
+            @watering << 0
+            @weeding << v
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "mulching"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << 0
+            @watering << 0
+            @weeding << 0
+            @mulching << v
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "protecting and taking care of crops"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << 0
+            @watering << 0
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << v
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "carrying"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << 0
+            @watering << 0
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << v
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "cleaning"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << 0
+            @watering << 0
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << v
+            @conditionning_and_selling << 0
+            @others << 0
+          end
+          if k == "conditionning and selling"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << 0
+            @watering << 0
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << v
+            @others << 0
+          end
+          if k == "others"
+            @preparing_soil << 0
+            @fertilisating_soil << 0
+            @sowing << 0
+            @transplanting << 0
+            @watering << 0
+            @weeding << 0
+            @mulching << 0
+            @protecting_and_taking_care_of_crops << 0
+            @carrying << 0
+            @cleaning << 0
+            @conditionning_and_selling << 0
+            @others << v
+          end
+        end
+      end
+    end
 
+     @color = 125
+     @actions.each do |action|
+      hash_new = {}
+      hash_new[:label] = action
+      if action == "preparing soil"
+        hash_new[:data] = @preparing_soil
+      elsif action == "fertilisating soil"
+        hash_new[:data] = @fertilisating_soil
+      elsif action == "sowing"
+        hash_new[:data] = @sowing
+      elsif action == "transplanting"
+        hash_new[:data] = @transplanting
+      elsif action == "watering"
+        hash_new[:data] = @watering
+      elsif action == "weeding"
+        hash_new[:data] = @weeding
+      elsif action == "mulching"
+        hash_new[:data] = @mulching
+      elsif action == "protecting and taking care of crops"
+        hash_new[:data] = @protecting_and_taking_care_of_crops
+      elsif action == "carrying"
+        hash_new[:data] = @carrying
+      elsif action == "cleaning"
+        hash_new[:data] = @cleaning
+      elsif action == "conditionning and selling"
+        hash_new[:data] = @conditionning_and_selling
+      else action == "others"
+        hash_new[:data] = @others
+      end
 
-    #  end
-
+      @color += 10
+      hash_new[:backgroundColor] = 'rgba(#{@color}, 99, 132, 0.2)'
+      hash_new[:borderColor] = 'rgba(#{@color},99,132,1)'
+      hash_new[:borderWidth] = 1
+      @chart2_datasets << hash_new
+     end
 
     # @chart2_datasets = [{
     #   label: '# of logs by elements',
@@ -183,6 +412,8 @@ class GardensController < ApplicationController
       borderColor: 'rgba(255,99,132,1)',
       borderWidth: 1
     }]
+
+    #chart by dates
 
     @chart4_labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'December']
     @logs_by_garden_by_month = { january: 0, february: 0, march: 0, april: 0, may: 0, june: 0, july: 0, august: 0, september: 0, october: 0, december: 0}
