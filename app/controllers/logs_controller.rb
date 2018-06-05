@@ -12,8 +12,8 @@ class LogsController < ApplicationController
     @logs = Log.all
     @log = Log.new(log_params)
     @log.user = current_user
-    @log.date = Date.new(params[:log]['date(1i)'].to_i, params[:log]['date(2i)'].to_i, params[:log]['date(3i)'].to_i)
-    if @log.date == Date.today
+    @log.date = Date.parse(params[:log][:date])
+    if @log.date < Date.today
       @log.status = true
     else
       @log.status = false

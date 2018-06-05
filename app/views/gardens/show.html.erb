@@ -143,12 +143,16 @@
               <% end %>
               <div class="message-body">
                 <p><strong>
-                  <% if log.status = true %>
+                  <i class="fas fa-check-circle <% "done" if log.status %>"></i>
+                  <!-- <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528202520/noun_1552127_cc_1.svg" alt=""> -->
+                  <!-- if @log.status = true (done), alors bouton passe au vert
+                  if @log.status = false (to do), alors bouton passe au gris -->
+                <!--   <% if log.status = true %>
                     <span class="badge badge-success">good job!</span>
                   <% else %>
                     <span class="badge badge-warning">to be done</span>
                   <p>plan the log</p>
-                  <% end %>
+                  <% end %> -->
                 </strong></p>
               </div>
         </div>
@@ -221,6 +225,7 @@
         <%# end %>
   </div>
 </div>
+
   <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -232,7 +237,7 @@
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
-            <%= f.input :date, as: :date, input_html: { class: "datepicker"} %>
+            <%= f.input :date, as: :string, input_html: { class: "datepicker"} %>
             <%= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
             <%= f.input :description %>
             <%= f.input :quantity %>
@@ -256,7 +261,6 @@
   </div>
 </div>
 
-
 <div class="modal fade" id="myModalShares" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content form">
@@ -267,7 +271,7 @@
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
-            <%= f.input :date, as: :date, input_html: { class: "select2" } %>
+            <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
             <%#= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
             <p> Which element do you want to share? </p>
             <%= f.simple_fields_for :elements do |e| %>

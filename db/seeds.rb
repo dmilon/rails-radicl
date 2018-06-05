@@ -3,6 +3,8 @@ Garden.destroy_all
 Zone.destroy_all
 Element.destroy_all
 Log.destroy_all
+Product.destroy_all
+Follow.destroy_all
 
 puts "destroying ALL"
 
@@ -12,6 +14,8 @@ bruno = User.create!(admin: true, email: "bruno@gmail.com", password: "password"
 damien = User.create!(admin: true, email: "damien@gmail.com", password: "password", name: "damien", remote_avatar_url: "https://avatars0.githubusercontent.com/u/37899667?v=4")
 louisa = User.create!(admin: true, email: "louisa@gmail.com", password: "password", name: "louisa", remote_avatar_url: "https://avatars2.githubusercontent.com/u/13285082?v=4")
 #worker = User.create!(admin: false, email: "worker@gmail.com", password: "password", name: "worker", avatar: "https://avatars2.githubusercontent.com/u/13285082?v=4")
+juliette = User.create(admin: true, email: "juliette@gmail.com", password: "password", name: "juliette", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
+denis = User.create(admin: true, email: "denis@gmail.com", password: "password", name: "denis", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
 # Create 4 farms / gardens
 ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4000",
   address: 'D918, 61290 Longny-au-Perche', latitude: 48.538352, longitude: 0.746001,
@@ -40,6 +44,16 @@ champs = Garden.new(name: "L'envie des champs", area: "4000",
 champs.save!
 damien.garden = champs
 damien.save!
+
+bizou = Garden.new(name: "Bizou", area: "4000", address: "La Bellangerie, 61110 Moutiers-au-Perche", latitude: 48.494182, longitude: 0.834733,remote_photo_url: "" )
+bizou.save!
+juliette.garden = bizou
+juliette.save!
+
+bonnePatate = Garden.new(name: "À La bonne patate", area: "4000", address: "La Ferme de Ronne, 61110 Moutiers-au-Perche", latitude: 48.451338, longitude: 0.826649,remote_photo_url: "" )
+bonnePatate.save!
+denis.garden = bonnePatate
+denis.save!
 
 # Create 8 zones
 a = Zone.new(name: "Potager", area: "200", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527863158/m8xrduxuketfvxv9mijw.jpg")
@@ -156,6 +170,7 @@ horses = Element.new(name: "Horse", quantity: "18")
 horses.zone = c
 horses.save
 
+#create 6 products for the share
 product1 = Product.new(quantity: 50, end_date: "15/06/2018")
 product1.element = carrots
 product1.save
@@ -218,6 +233,15 @@ scope4.log_id = digging.id
 scope4.element_id = donkey.id
 scope4.save
 
+# create follows
+follow1 = Follow.new(user: bruno, garden: ferme_louley)
+follow1.save!
+follow2 = Follow.new(user: bruno, garden: maison_ane)
+follow2.save!
+follow3 = Follow.new(user: bruno, garden: champs)
+follow3.save!
+follow4 = Follow.new(user: bruno, garden: bizou)
+follow4.save!
 
 
 puts "our first users, gardens, zones, elements and logs have been saved with success. love from the radicl team"
