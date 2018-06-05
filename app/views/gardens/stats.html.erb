@@ -1,55 +1,70 @@
 <%= render 'shared/banner-dashboard' %>
-
-<div class="container show-garden">
-
-  <div class="row text-center statsoverv">
-    <div class="col-xs-12">
-      <br>
-      <h2 class="show">MY FARM'S STAT</h2>
-        <h3 class="show">overview</h3>
-        <p><%= @garden.name %></p>
-        <br>
-      <div class="row">
-          <div class="col-xs-12 col-sm-3">
-            <div class="card-icon stats">
-              <h1><%= @garden.area %></h1>
-        <%= content_tag(:div, class: "card", style:"background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527671030/autumn.svg);") do %>
-        <% end %>
-         </div>
-            <p> m2</p>
-          </div>
-              <div class="col-xs-12 col-sm-3">
-            <div class="card-icon stats">
-               <h1><%= @garden.zones.count %></h1>
-<!--               <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
- -->            </div>
-            <p>zones </p>
-          </div>
-              <div class="col-xs-12 col-sm-3">
-            <div class="card-icon stats">
-<!--               <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
- -->            <h1><%= @garden.elements.count %></h1>
-            </div>
-            <p>elements</p>
-          </div>
-              <div class="col-xs-12 col-sm-3">
-            <div class="card-icon stats">
-<!--               <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
- -->            <h1><%=  @garden.logs.count %></h1>
-            </div>
-            <p>logs this month</p>
-          </div>
-
-
-
+      <div class="zone-name">
+      <h1><%= @garden.name.upcase %></h1>
+        <p class="show">overview</p>
       </div>
+    </div>
+
+<div class="wrapper-3">
+
+      <div class="row statistics">
+        <br><br>
+          <div class="col-xs-12 col-md-3">
+            <div class="clearfix">
+              <div class="c100 p80 big green animated fadeInUp">
+                    <span><%= @garden.area %> m2</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+              </div>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-md-3">
+              <div class="clearfix">
+                <div class="c100 p40 big orange animated fadeInUp">
+                    <span><%= @garden.zones.count %> zones</span>
+                    <div class="slice">
+                        <div class="bar"></div>
+                        <div class="fill"></div>
+                    </div>
+              </div>
+              </div>
+          </div>
+
+
+              <div class="col-xs-12 col-md-3">
+                <div class="clearfix">
+                  <div class="c100 p40 big red animated fadeInUp">
+                      <span><%= @garden.elements.count %> products</span>
+                      <div class="slice">
+                          <div class="bar"></div>
+                          <div class="fill"></div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="col-xs-12 col-md-3">
+                <div class="clearfix">
+                  <div class="c100 p15 big red animated fadeInUp">
+                      <span><%=  @garden.logs.count %> logs</span>
+                      <div class="slice">
+                          <div class="bar"></div>
+                        <div class="fill"></div>
+                      </div>
+                  </div>
+                </div>
+            </div>
     </div>
   </div>
 
 </div>
 
 
-<div class="wrapper-2">
+<div class="wrapper-2 animated anim-scroll">
   <h1 class="show">stats</h1>
   <div class="row">
     <div class="col-xs-12">
@@ -73,9 +88,11 @@
       </div>
     </div>
   </div>
-   <div class="text-center"> <%= link_to "share my stats with the community", community_gardens_path, class: "btn btn-home btn-lg text-center green-button" %></div>
-</div>
 
+</div>
+<br><br>
+<div class="text-center animated zoomIn"> <%= link_to "share my stats with the community", community_gardens_path, class: "btn btn-home btn-lg text-center green-button" %></div>
+<br><br>
 
 
 
