@@ -51,6 +51,9 @@ i.far.fa-times-circle {
     color: #46b2e8;
 }
 
+
+
+
 .btn.active{
   background-color: #46b2e8;
   border: 1px solid #46b2e8;
@@ -208,14 +211,12 @@ img.plus-sign:hover{
   font-size: 14px;
   font-weight: bold;
 }
-.status.accepted {
-  color: #04A366;
-}
-.status.declined {
-  color: red;
-}
-.status.pending {
-  color: lightgrey;
+
+i.fas.fa-check-circle {
+  color: grey;
+  &.done {
+    color: #04A366;
+  }
 }
 
 .badge{

@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    authorize @products
   end
   def new
     @garden = current_user.garden

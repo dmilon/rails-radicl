@@ -16,4 +16,8 @@ class Log < ApplicationRecord
    "sharing",
    "others" ]
   validates :category, inclusion: { in: ACTIONS }
+
+  def done?
+    log.status
+  end
 end

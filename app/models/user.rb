@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :admin, presence: true
+
+  def follow?(garden)
+    !Follow.find_by(user: self, garden: garden).nil?
+  end
 end

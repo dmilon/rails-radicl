@@ -114,20 +114,24 @@ width: 100%;
   margin-bottom: 100px;
 }
 
-i.fas.fa-seedling {
+i.fas.fa-heart {
   position: absolute;
-  color: white;
   top: 10px;
   left: 10px;
   border-radius: 50%;
-  background-color: #3fb1ea;
   padding: 4px;
   font-size: 14px;
   z-index: 300;
+  background-color: #3fb1ea;
+  color: white;
+  &.followed {
+    background-color: white;
+    color: #294637;
+  }
 }
 
-i.fas.fa-seedling:hover{
-  color: #2b4635;
+i.fas.fa-heart:hover {
+  color: #294637;
 }
 
 .card-link {
