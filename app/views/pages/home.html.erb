@@ -55,10 +55,13 @@
 
 <div class="row ">
   <% @gardens.each do |garden| %>
+      <% follow = current_user.follow?(garden) %>
     <div class="col-xs-12 col-sm-3">
       <div class="card">
         <%= cl_image_tag garden.photo, class: "card-img-top" %>
-          <a href="#" class="icon"><i class="fas fa-seedling"></i></a>
+         <%= link_to follows_path(garden_id: garden.id), method: :post, class: "icon" do %>
+          <i class="fas fa-heart <%= "followed" if follow %>" ></i>
+        <% end %>
           <div class="overlay">
         <%= link_to garden_path(garden) do %>
             <div class="text">

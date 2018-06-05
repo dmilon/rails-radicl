@@ -48,12 +48,12 @@ champs.save!
 damien.garden = champs
 damien.save!
 
-bizou = Garden.new(name: "Bizou", area: "4000", address: "La Bellangerie, 61110 Moutiers-au-Perche", latitude: 48.494182, longitude: 0.834733,remote_photo_url: "" )
+bizou = Garden.new(name: "Bizou", area: "4000", address: "La Bellangerie, 61110 Moutiers-au-Perche", latitude: 48.494182, longitude: 0.834733,remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528187374/photo-1473973266408-ed4e27abdd47.jpg" )
 bizou.save!
 juliette.garden = bizou
 juliette.save!
 
-bonnePatate = Garden.new(name: "À La bonne patate", area: "4000", address: "La Ferme de Ronne, 61110 Moutiers-au-Perche", latitude: 48.451338, longitude: 0.826649,remote_photo_url: "" )
+bonnePatate = Garden.new(name: "À La bonne patate", area: "4000", address: "La Ferme de Ronne, 61110 Moutiers-au-Perche", latitude: 48.451338, longitude: 0.826649,remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528187374/photo-1464684979825-ad6f2811cef2.jpg" )
 bonnePatate.save!
 denis.garden = bonnePatate
 denis.save!
@@ -80,7 +80,7 @@ Garden.all.each do |garden|
 end
 
 
-a = Zone.new(name: "Aromates", area: "300", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528036811/photo-1495696386015-f371820f82a6.jpg")
+a = Zone.new(name: "Aromates", area: "300", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209665/photo-1509727841791-40d09ad9b7fc.jpg")
 a.garden = ferme_de_quelenne
 a.save
 

@@ -1,7 +1,9 @@
 
+  <% follow = current_user.follow?(garden) %>
 <%= cl_image_tag garden.photo, class: "img-map" %>
-  <a href="#" class="icon"><i class="fas fa-seedling"></i></a>
-  <h2 class="mapi"><%= garden.name %></h2>
+<%= link_to follows_path(garden_id: garden.id), method: :post, class: "icon" do %>
+          <i class="fas fa-heart <%= "followed" if follow %>" ></i>
+        <% end %>  <h2 class="mapi"><%= garden.name %></h2>
   <p class="mapi"><%= garden.address %></p>
   </div>
   </div>
@@ -9,7 +11,7 @@
 <%= link_to garden_path(garden) do %>
 </div>
   <div class="card-link">
-    <p>follow</p>
+    <p>discover</p>
   </div>
 <% end %>
 
