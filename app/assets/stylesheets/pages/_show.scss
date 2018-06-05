@@ -5,6 +5,24 @@
     text-transform: lowercase;
 }
 
+.row.meteo {
+  margin:0 auto
+}
+
+a.weatherwidget-io{
+height: 0;
+transition: height 1s ease;
+}
+
+.open-link {
+  height: 100px!important;
+}
+
+.locationName{display:none;}
+
+.message-body.productsi {width: 200px}
+.message-body.products {width: 110px}
+
 input#query {
     box-shadow: none;
     border: none;
@@ -32,6 +50,9 @@ div#searchbar {
 i.far.fa-times-circle {
     color: #46b2e8;
 }
+
+
+
 
 .btn.active{
   background-color: #46b2e8;
@@ -82,7 +103,13 @@ i.far.fa-trash-alt {
 
 .zone-name.zoni {
  background-color: #46b2e8;
+ padding-top: 150px;
 }
+
+.zone-name.zoni h1 {color: white}
+
+.zone-name.zoni p {color:white;}
+
 
 .text p {
     font-size: 13px;
@@ -184,14 +211,12 @@ img.plus-sign:hover{
   font-size: 14px;
   font-weight: bold;
 }
-.status.accepted {
-  color: #04A366;
-}
-.status.declined {
-  color: red;
-}
-.status.pending {
-  color: lightgrey;
+
+i.fas.fa-check-circle {
+  color: grey;
+  &.done {
+    color: #04A366;
+  }
 }
 
 .badge{

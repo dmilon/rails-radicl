@@ -1,20 +1,29 @@
-//= require datetime_picker_input
+//=require datetime_picker_input
 
 import "bootstrap";
-// import "../plugins/flatpickr";
+import "../plugins/flatpickr";
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { loadDynamicBannerText } from '../components/banner';
 import { tabsClickListener } from '../components/tab';
 import { bindSweetAlertButtonDemo } from '../components/banner';
+// import { initTooltip } from '../components/init_tooltip';
 import '../components/select2';
+import { scroll } from '../components/scroll';
 
+scroll();
 initUpdateNavbarOnScroll();
 loadDynamicBannerText();
 tabsClickListener();
+// initTooltip();
 
-
-
+const markAsDone = document.querySelectorAll(".fas.fa-check-circle");
+markAsDone.forEach((button) => {
+  button.addEventListener('click', (event) => {
+    console.log("toto");
+    button.classList.toggle('done');
+  });
+})
 const buttons = document.querySelectorAll('#myBtnContainer .btn');
 
 buttons.forEach((button) => {
