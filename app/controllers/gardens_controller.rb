@@ -122,14 +122,11 @@ class GardensController < ApplicationController
     @chart2_labels = []
     @chart2_datasets = []
     @data_serie_logs = {}
-    i = 0
 
     @garden.elements.each do |element|
       @element_name = element.name
       @chart2_labels << @element_name
     end
-
-    @chart_order = @chart2_labels
 
     @garden.logs.each do |log|
       @log_cat = log.category
@@ -144,18 +141,19 @@ class GardensController < ApplicationController
     @elements_number = @chart2_labels.count
 
     @actions = [
-     "preparing soil",
-     "fertilisating soil",
-     "sowing",
-     "transplanting",
-     "watering",
-     "weeding",
-     "mulching",
-     "protecting and taking care of crops",
-     "carrying",
-     "cleaning",
-     "conditionning and selling",
-     "others"]
+      "preparing soil",
+      "fertilisating",
+      "sowing",
+      "transplanting",
+      "watering",
+      "weeding",
+      "mulching",
+      "caring crops",
+      "carrying",
+      "cleaning",
+      "sharing",
+      "others"
+    ]
 
     @preparing_soil = []
     @fertilisating_soil = []
@@ -164,13 +162,13 @@ class GardensController < ApplicationController
     @watering = []
     @weeding = []
     @mulching = []
-    @protecting_and_taking_care_of_crops = []
+    @caring_crops = []
     @carrying = []
     @cleaning = []
-    @conditionning_and_selling = []
+    @sharing = []
     @others = []
 
-     @elements_number.times do
+    @elements_number.times do
       @preparing_soil << 0
       @fertilisating_soil << 0
       @sowing << 0
@@ -178,10 +176,10 @@ class GardensController < ApplicationController
       @watering << 0
       @weeding << 0
       @mulching << 0
-      @protecting_and_taking_care_of_crops << 0
+      @caring_crops << 0
       @carrying << 0
       @cleaning << 0
-      @conditionning_and_selling << 0
+      @sharing << 0
       @others << 0
     end
 
@@ -195,7 +193,7 @@ class GardensController < ApplicationController
           end
         end
       end
-      if data_serie_cat == "fertilisating soil"
+      if data_serie_cat == "fertilisating"
         data_serie_elements.each do |k,v|
           @chart2_labels.each_with_index do |label, index|
             if label == k
@@ -249,11 +247,11 @@ class GardensController < ApplicationController
           end
         end
       end
-      if data_serie_cat == "protecting and taking care of crops"
+      if data_serie_cat == "caring crops"
         data_serie_elements.each do |k,v|
           @chart2_labels.each_with_index do |label, index|
             if label == k
-              @protecting_and_taking_care_of_crops[index] = v
+              @caring_crops[index] = v
             end
           end
         end
@@ -276,11 +274,11 @@ class GardensController < ApplicationController
           end
         end
       end
-      if data_serie_cat == "conditionning and selling"
+      if data_serie_cat == "sharing"
         data_serie_elements.each do |k,v|
           @chart2_labels.each_with_index do |label, index|
             if label == k
-              @conditionning_and_selling[index] = v
+              @sharing[index] = v
             end
           end
         end
@@ -297,13 +295,15 @@ class GardensController < ApplicationController
     end
 
 
- @color = 125
+ @color_red = 125
+ @color_green = 250
+ @color_blue = 40
  @actions.each do |action|
   @hash_new = {}
   @hash_new[:label] = action
   if action == "preparing soil"
     @hash_new[:data] = @preparing_soil
-  elsif action == "fertilisating soil"
+  elsif action == "fertilisating"
     @hash_new[:data] = @fertilisating_soil
   elsif action == "sowing"
     @hash_new[:data] = @sowing
@@ -315,21 +315,23 @@ class GardensController < ApplicationController
     @hash_new[:data] = @weeding
   elsif action == "mulching"
     @hash_new[:data] = @mulching
-  elsif action == "protecting and taking care of crops"
-    @hash_new[:data] = @protecting_and_taking_care_of_crops
+  elsif action == "caring crops"
+    @hash_new[:data] = @caring_crops
   elsif action == "carrying"
     @hash_new[:data] = @carrying
   elsif action == "cleaning"
     @hash_new[:data] = @cleaning
-  elsif action == "conditionning and selling"
-    @hash_new[:data] = @conditionning_and_selling
+  elsif action == "sharing"
+    @hash_new[:data] = @sharing
   else action == "others"
     @hash_new[:data] = @others
   end
 
-  @color += 50
-  @hash_new[:backgroundColor] = 'rgba(#{@color}, 99, 132, 0.2)'
-  @hash_new[:borderColor] = 'rgba(#{@color},99,132,1)'
+  @color_red += 10
+  @color_green -= 20
+  @color_blue += 10
+  @hash_new[:backgroundColor] = "rgba(#{@color_red}, #{@color_green}, #{@color_blue}, 0.2)"
+  @hash_new[:borderColor] = "rgba(#{@color_red}, #{@color_green}, #{@color_blue},1)"
   @hash_new[:borderWidth] = 1
   @chart2_datasets << @hash_new
  end
@@ -348,6 +350,7 @@ class GardensController < ApplicationController
     @logs_by_garden = @garden.logs.group(:category).count
     @chart3_labels = @logs_by_garden.keys
     @data3 = @logs_by_garden.values
+
 
     @chart3_datasets = [{
       label: '# of logs by category',

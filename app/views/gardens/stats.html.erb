@@ -103,6 +103,11 @@
 </div>
 </div>
 
+<!-- <div>
+  <p><%#= @weeding %></p>
+  <p><%#= @data_serie_logs %></p>
+</div> -->
+
 <%= javascript_pack_tag 'chart' %>
 
 <script>
@@ -111,11 +116,11 @@
   initChart("myBarChart1", labels1, datasets1);
   var labels2 = <%= raw @chart2_labels.to_json %>
   var datasets2 = <%= raw @chart2_datasets.to_json %>;
-  initChart("myBarChart2", labels2, datasets2);
+  initStackedChart("myBarChart2", labels2, datasets2);
   var labels3 = <%= raw @chart3_labels.to_json %>
   var datasets3 = <%= raw @chart3_datasets.to_json %>;
-  initChart("myBarChart3", labels3, datasets3);
+  initRadarChart("myBarChart3", labels3, datasets3);
   var labels4 = <%= raw @chart4_labels.to_json %>
   var datasets4 = <%= raw @chart4_datasets.to_json %>;
-  initChart("myBarChart4", labels4, datasets4);
+  initLineChart("myBarChart4", labels4, datasets4);
 </script>
