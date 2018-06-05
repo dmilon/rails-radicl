@@ -351,7 +351,17 @@ class GardensController < ApplicationController
     @chart3_labels = @logs_by_garden.keys
     @data3 = @logs_by_garden.values
 
+    # @logs_followed = []
+    # @user = current_user
+    # @follows = @user.follows
+    # @follows.each do |follow|
+    #   @logs = follow.garden.logs
+    #   @logs_by_follow = @logs.group(:category).count
+    #   @logs_followed << @logs_by_follow
+    # end
 
+    # @logs_followed.each do ||
+    # end
     @chart3_datasets = [{
       label: '# of logs by category',
       data: @data3,
@@ -364,7 +374,7 @@ class GardensController < ApplicationController
 
     @chart4_labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'December']
     @logs_by_garden_by_month = { january: 0, february: 0, march: 0, april: 0, may: 0, june: 0, july: 0, august: 0, september: 0, october: 0, december: 0}
-    @garden.logs.group(:created_at).count.each do |log_date|
+    @garden.logs.group(:date).count.each do |log_date|
       case
       when log_date[0].month == 1
         @logs_by_garden_by_month[:january] += 1
