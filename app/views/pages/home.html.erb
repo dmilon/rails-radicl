@@ -1,8 +1,8 @@
 <%= render 'shared/banner' %>
 
-<div class="container">
-  <div class="wrapper animated anim-scroll">
-    <h1 class="how text-center">how does it work?</h1>
+<div class="container animated anim-scroll">
+  <div class="wrapper">
+    <h1 class="how text-center">Comment ça marche ?</h1>
     <div class="row">
       <br><br><br>
       <%= link_to new_garden_path do %>
@@ -10,33 +10,33 @@
           <div class="card-icon">
             <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671032/farm.svg" alt="">
           </div>
-          <p class="text-center">create your farm</p>
+          <p class="text-center">Créez votre ferme et suivez les fermes de votre région</p>
         </div>
       <% end %>
       <div class="col-xs-12 col-sm-3">
         <div class="card-icon">
           <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
         </div>
-        <p class="text-center">add your zones</p>
+        <p class="text-center">Ajouter vos zones de permaculture</p>
       </div>
       <div class="col-xs-12 col-sm-3">
         <div class="card-icon">
           <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671027/watering.svg" alt="">
         </div>
-        <p class="text-center">log your actions</p>
+        <p class="text-center">Pilotez votre activité au quotidien</p>
       </div>
       <div class="col-xs-12 col-sm-3">
         <div class="card-icon">
           <img src="http://res.cloudinary.com/bdmbdm/image/upload/v1527697464/share.svg" alt="">
         </div>
-        <p class="text-center">share & learn</p>
+        <p class="text-center">Partagez votre expérience & vos produits</p>
       </div>
     </div>
   </div>
 </div>
-<div class="wrapper-2 animated anim-scroll">
+<div class="wrapper-2">
 
-  <h1 class="how text-center">get inspired, explore our greatest farms</h1>
+  <h1 class="how text-center">Découvrez les fermes de votre région</h1>
   <br>
   <div class="row">
     <% @gardens.each do |garden| %>
@@ -51,13 +51,14 @@
           <% end %>
           <%= link_to garden_path(garden) do %>
             <div class="overlay">
+          <%= cl_image_tag garden.users[0].avatar, class: "avatar card-avatar" %>
               <div class="text">
                 <h2><%= garden.name %></h2>
                 <p><%= garden.address %></p>
               </div>
             </div>
             <div class="card-link">
-              <p>discover</p>
+              <p>découvrir</p>
             </div>
           <% end %>
         </div>
@@ -65,5 +66,5 @@
     <% end %>
   </div>
   <br>
-  <div class="text-center"> <%= link_to "join the community", community_gardens_path, class: "btn btn-home btn-lg text-center green-button animated zoomIn" %></div>
+  <div class="text-center"> <%= link_to "Rejoindre la communauté", community_gardens_path, class: "btn btn-home btn-lg text-center green-button animated zoomIn" %></div>
 </div>
