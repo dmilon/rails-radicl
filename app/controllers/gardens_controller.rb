@@ -21,6 +21,7 @@ class GardensController < ApplicationController
     end
     @products = Product.all
     @users = User.all
+    @product = Product.new
   end
 
 
