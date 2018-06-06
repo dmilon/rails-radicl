@@ -19,7 +19,7 @@ function initChart(id, labels, datasets) {
           },
           title: {
             display: true,
-            text: '#'
+            text: '# of logs by zones'
           },
           legend: {
             display: true,
@@ -50,7 +50,7 @@ function initStackedChart(id, labels, datasets) {
           },
           title: {
             display: true,
-            text: '#'
+            text: '# logs by category and elements'
           },
           legend: {
             display: true,
@@ -77,16 +77,12 @@ function initRadarChart(id, labels, datasets) {
         },
         title: {
           display: true,
-          text: '#'
+          text: '# logs by category'
         },
         scale: {
           ticks: {
             beginAtZero: true
           }
-        },
-        title: {
-          display: true,
-          text: '#'
         },
         legend: {
           display: true,
@@ -118,7 +114,7 @@ function initLineChart(id, labels, datasets) {
           },
           title: {
             display: true,
-            text: '#'
+            text: '#logs by date'
           },
           legend: {
             display: true,
