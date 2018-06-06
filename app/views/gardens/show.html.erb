@@ -4,10 +4,10 @@
 </div>
 
 <div class="row meteo animated fadeInUp">
-  <a class="weatherwidget-io open-link" href="https://forecast7.com/en/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
-  <script>
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-  </script>
+  <a class="weatherwidget-io" href="https://forecast7.com/fr/48d530d75/longny-au-perche/" data-font="Roboto" data-icons="Climacons Animated" data-theme="pure" >Longny-au-Perche, France</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
 </div>
 
 
@@ -144,21 +144,20 @@
     <div class="modal-content form">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">log your actions</h4>
+        <h4 class="modal-title" id="myModalLabel">Enregistrez vos actions</h4>
       </div>
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
             <%= f.input :date, as: :string, input_html: { class: "datepicker"} %>
-            <%= f.input :category, label: 'Type of action', collection: Log::ACTIONS, prompt:"what kind of action do you want to log?", input_html: { class: "select2" } %>
+            <%= f.input :category, label: 'Type d\'action', collection: Log::ACTIONS, prompt:"Quelle action souhaitez vous enregistrer ?", input_html: { class: "select2" } %>
             <%= f.input :description %>
-            <%= f.input :quantity %>
             <%= hidden_field_tag :garden_id, @garden.id %>
 <!--             <p> On which zones? </p>
  -->            <%#= f.simple_fields_for :zones do |v|  %>
               <%#= v.collection_check_boxes :name, @garden.zones, :id, :name %>
             <%# end %>
-            <p> On which elements? </p>
+            <p> Sur quels éléments ? </p>
             <div class="block-party">
               <%= f.simple_fields_for :elements do |e| %>
                 <%= e.collection_radio_buttons :name, @garden.elements, :id, :name %>
@@ -166,7 +165,7 @@
             </div>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
             <br>
-            <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
+            <%= f.submit 'enregistrer', class: 'btn btn-home btn-lg' %>
           <% end %>
         </div>
       </div>

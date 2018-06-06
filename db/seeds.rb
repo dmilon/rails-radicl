@@ -12,20 +12,20 @@ alexia = User.create(admin: true, email: "alexia@gmail.com", password: "password
 bruno = User.create(admin: true, email: "bruno@gmail.com", password: "password", name: "bruno", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
 damien = User.create(admin: true, email: "damien@gmail.com", password: "password", name: "damien", remote_avatar_url: "https://avatars0.githubusercontent.com/u/37899667?v=4")
 louisa = User.create(admin: true, email: "louisa@gmail.com", password: "password", name: "louisa", remote_avatar_url: "https://avatars2.githubusercontent.com/u/13285082?v=4")
-olivier = User.create(admin: true, email: "olivier@gmail.com", password: "password", name: "olivier", remote_avatar_url: "https://avatars2.githubusercontent.com/u/13285082?v=4")
-delphine = User.create(admin: true, email: "delphine@gmail.com", password: "password", name: "delphine", remote_avatar_url: "https://avatars2.githubusercontent.com/u/13285082?v=4")
-juliette = User.create(admin: true, email: "juliette@gmail.com", password: "password", name: "juliette", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
-denis = User.create(admin: true, email: "denis@gmail.com", password: "password", name: "denis", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
-lea = User.create(admin: true, email: "lea@gmail.com", password: "password", name: "denis", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
-mohammed = User.create(admin: true, email: "mohammed@gmail.com", password: "password", name: "mohammed", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
-arnold = User.create(admin: true, email: "arnold@gmail.com", password: "password", name: "arnold", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
-irene = User.create(admin: true, email: "irene@gmail.com", password: "password", name: "irene", remote_avatar_url: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/ne5jwxwgjjpcig0q6hds.jpg")
+olivier = User.create(admin: true, email: "olivier@gmail.com", password: "password", name: "olivier", remote_avatar_url: "https://randomuser.me/api/portraits/men/11.jpg")
+delphine = User.create(admin: true, email: "delphine@gmail.com", password: "password", name: "delphine", remote_avatar_url: "https://randomuser.me/api/portraits/women/9.jpg")
+juliette = User.create(admin: true, email: "juliette@gmail.com", password: "password", name: "juliette", remote_avatar_url: "https://randomuser.me/api/portraits/women/11.jpg")
+denis = User.create(admin: true, email: "denis@gmail.com", password: "password", name: "denis", remote_avatar_url: "https://randomuser.me/api/portraits/men/13.jpg")
+lea = User.create(admin: true, email: "lea@gmail.com", password: "password", name: "denis", remote_avatar_url: "https://randomuser.me/api/portraits/men/10.jpg")
+mohammed = User.create(admin: true, email: "mohammed@gmail.com", password: "password", name: "mohammed", remote_avatar_url: "https://randomuser.me/api/portraits/men/20.jpg")
+arnold = User.create(admin: true, email: "arnold@gmail.com", password: "password", name: "arnold", remote_avatar_url: "https://randomuser.me/api/portraits/men/14.jpg")
+irene = User.create(admin: true, email: "irene@gmail.com", password: "password", name: "irene", remote_avatar_url: "https://randomuser.me/api/portraits/women/7.jpg")
 
 
 # Create Damien's farms
 champs = Garden.new(name: "L'envie des champs", area: "200",
   address: "La Heslière, 61290 Longny-au-Perche", latitude: 48.530741, longitude: 0.784926,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528190395/photo-1444755303876-9cbab89f863c.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528296878/a4b7a1c7313cd6c202d03f7b47d3f6ea.jpg')
 champs.save
 damien.garden = champs
 damien.save
@@ -212,7 +212,7 @@ scope15.save
 #Create Bruno's Farm
 ferme_de_quelenne = Garden.new(name: "Ferme maraîchère de Quélénesse", area: "4530",
   address: 'D918, 61290 Longny-au-Perche', latitude: 48.538352, longitude: 0.746001,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1499348287264-a2603bc210c9.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528296877/55d1747bcad9cb45ae531a428cf78184.jpg')
 ferme_de_quelenne.save!
 bruno.garden = ferme_de_quelenne
 bruno.save!
@@ -654,7 +654,7 @@ scope53.element_id = carrot2.id
 scope53.save
 
 # Create Juliette's farm
-bizou = Garden.new(name: "Ferme du Bizou", area: "4000", address: "La Bellangerie, 61110 Moutiers-au-Perche", latitude: 48.494182, longitude: 0.834733,remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528187374/photo-1473973266408-ed4e27abdd47.jpg" )
+bizou = Garden.new(name: "Ferme de Bizou", area: "4000", address: "La Bellangerie, 61110 Moutiers-au-Perche", latitude: 48.494182, longitude: 0.834733,remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528296878/a20eabfcaaa2a6fd9f1d15125b51ee4f.jpg" )
 bizou.save!
 juliette.garden = bizou
 juliette.save!
@@ -1097,33 +1097,34 @@ scope92.save
 
 ferme_louley = Garden.new(name: "Ferme forestière Louley Médoc", area: "4000",
   address: "9 Rue du Dr Jean Vivares, 61290 Longny-au-Perche", latitude: 48.529327, longitude: 0.751545,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1506140006527-5ca84877d824.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528296878/279595dedb42f5a0e9f951e42c0d3b14.jpg')
 ferme_louley.save!
 louisa.garden = ferme_louley
 louisa.save!
 
 maison_ane = Garden.new(name: "La maison de l'âne", area: "4000",
   address: "La Hutte, 61290 Longny-au-Perche", latitude: 48.543471, longitude: 0.714202,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528190395/photo-1441749074938-1c6782303919.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528296878/95d8529f7a4321e2bea3dae6d8926f38.jpg')
 maison_ane.save!
 alexia.garden = maison_ane
 alexia.save!
 
-bonnePatate = Garden.new(name: "À La bonne patate", area: "4000", address: "La Ferme de Ronne, 61110 Moutiers-au-Perche", latitude: 48.451338, longitude: 0.826649,remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528187374/photo-1464684979825-ad6f2811cef2.jpg" )
+bonnePatate = Garden.new(name: "À La bonne patate", area: "4000", address: "La Ferme de Ronne, 61110 Moutiers-au-Perche", latitude: 48.451338, longitude: 0.826649,
+  remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528296878/c6903d08c0beb1ed4f1e124b9ec88e2c.jpg" )
 bonnePatate.save!
 denis.garden = bonnePatate
 denis.save!
 
 champi = Garden.new(name: "L'étang Chiot", area: "3020",
   address: "L'Étang Chiot, 61290 Longny-au-Perche", latitude: 48.546360, longitude: 0.730251,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528190394/photo-1471231681582-352356ab45a0.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528296877/7aec9578bb499b585126c6b2be5c5d6f.jpg')
 champi.save!
 olivier.garden = champi
 olivier.save!
 
 champil = Garden.new(name: "Moulin de la Vigne", area: "420",
   address: "Moulin de la Vigne, 61400 Feings", latitude: 48.546587, longitude: 0.688022,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528190394/photo-1521511263595-37aa9f9c6ea1.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528296879/cda6a6b69f3b443c2c2306535c502b13.jpg')
 champil.save!
 delphine.garden = champil
 delphine.save!
