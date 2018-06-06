@@ -17,7 +17,7 @@
     <div class="col-xs-12 col-md-6">
     <div id= "search-community">
       <%= form_tag community_gardens_path, method: :get do %>
-        <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "search for a farm, build your community" %>
+        <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "recherchez une ferme" %>
       <% end %>
     </div>
     <br><br>
@@ -43,19 +43,9 @@
     <%# else %>
 
       <div id= "searchbar">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "barwidth",
-            placeholder: "search for shared products"%>
-            <i class="far fa-times-circle"></i>
-        <div class= "filter">
-          <div id="myBtnContainer">
-            <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
-            <button class="btn filter-btn" data-filter="category">Category</button>
-            <button class="btn filter-btn" data-filter="date">Date</button>
-            <button class="btn filter-btn" data-filter="date">Availability</button>
-          </div>
-        </div>
+        <%= form_tag community_gardens_path, method: :get do %>
+          <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "recherchez dans votre communauté" %>
+        <% end %>
       </div>
 
     <% @products.each do |product| %>
