@@ -1,27 +1,15 @@
-
 <div class="zone-name zoni">
   <h1><%= @garden.name.upcase %></h1>
-    <%#= link_to edit_garden_path(@garden) do %>
-      <!-- <i class="far fa-edit"></i> -->
-    <%# end %>
   <p><%= @garden.address %></p>
-    <%#= link_to garden_path(@garden),
-          method: :delete,
-          data: { confirm: "Are you sure?" } do %>
-          <!-- <i class="far fa-trash-alt"></i> -->
-    <%# end %>
 </div>
-
 <div class="row meteo animated fadeInUp">
-<a class="weatherwidget-io open-link" href="https://forecast7.com/en/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-</script>
+  <a class="weatherwidget-io open-link" href="https://forecast7.com/en/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
+  <script>
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+  </script>
 </div>
-
-
-
 <div class="container show-garden animated fadeInUp">
+
 <!-- this is the zone section -->
 <br><br>
 <div class="tab">
@@ -41,159 +29,62 @@
     <% if @zones == [] %>
       <p class="error-message"><%= "Sorry, no zones " %></p>
     <% else %>
-
-      <% if @garden.users.include?(current_user) %>
-      <div class="col-xs-12 col-md-3">
-        <div class="card">
-          <%= cl_image_tag "https://res.cloudinary.com/bdmbdm/image/upload/v1528191161/Plan_de_travail_123.png", class: "card-img-top", width: 10 %>
-          <%= link_to new_garden_zone_path(@garden) do %>
+      <button class="tablinks default" data-tab="Farm"><h1>zones</h1></button>
+      <button class="tablinks" data-tab="Logs"><h1>activity</h1></button>
+      <button class="tablinks" data-tab="Shares"><h1>shares</h1></button>
+    <% end %>
+  </div>
+  <div id="Farm" class="tabcontent active">
+    <div class="row zones-garden">
+      <% if @zones == [] %>
+        <p class="error-message">Sorry, no zones</p>
+      <% else %>
+        <% if @garden.users.include?(current_user) %>
+          <div class="col-xs-12 col-md-3">
+            <div class="card">
+              <%= cl_image_tag "https://res.cloudinary.com/bdmbdm/image/upload/v1528191161/Plan_de_travail_123.png", class: "card-img-top", width: 10 %>
+              <%= link_to new_garden_zone_path(@garden) do %>
+                <div class="overlay">
+                  <div class="text">
+                    <h5>add a new zone</h5>
+                  </div>
+                </div>
+                <div class="card-link">
+                  <p>add</p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      
+      <% @garden.zones.each do |zone| %>
+        <div class="col-xs-12 col-md-3">
+          <div class="card">
+          <%= cl_image_tag zone.photo, class: "card-img-top" %>
+          <%= link_to zone_path(zone) do %>
             <div class="overlay">
               <div class="text">
-                <h5>add a new zone</h5>
+                <p>area: <%= zone.area %>m2</p>
+                <% unless zone.logs.empty? %>
+                  <p>last logged on:<br><%= zone.logs.last.created_at.strftime("%A, %b %d")%></p>
+                <% end %>
               </div>
             </div>
-          </div>
-          <div class="card-link">
-            <p>add</p>
-          </div>
-        </div>
-      <% end %>
-
-    <% end %>
-
-    <% @garden.zones.each do |zone| %>
-
-      <div class="col-xs-12 col-md-3">
-        <div class="card">
-        <%= cl_image_tag zone.photo, class: "card-img-top" %>
-        <%= link_to zone_path(zone) do %>
-          <div class="overlay">
-            <div class="text">
-              <p>area: <%= zone.area %>m2</p>
-              <% unless zone.logs.empty? %>
-                <p>last logged on:<br><%= zone.logs.last.created_at.strftime("%A, %b %d")%></p>
-              <% end %>
+            <div class="card-link">
+              <p><%= zone.name %></p>
             </div>
           </div>
-
-          <div class="card-link">
-            <p><%= zone.name %></p>
-          </div>
+          <% end %>
         </div>
-        <% end %>
-      </div>
-    <% end %>
-
+      <% end %>
+    </div>
   </div>
-
-</div>
-<!-- this is the end of the zone section -->
-
-
-<!-- this is the log section -->
-<div id="Logs" class="tabcontent">
-  <div class="row garden-logs">
-    <% if @garden.zones == [] %>
-      <p class="error-message"><%= "Sorry, no zones are available " %></p>
-
-    <% else %>
-
-      <div id= "searchbar">
-        <%= form_tag garden_path(@garden), method: :get do %>
-          <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "search for actions" %>
-        <% end %>
-          <!--i class="far fa-times-circle"></i>
-      <div class= "filter">
-        <div id="myBtnContainer">
-          <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
-          <button class="btn filter-btn" data-filter="category">Category</button>
-          <button class="btn filter-btn" data-filter="date"> Date</button>
-          <button class="btn filter-btn" data-filter="date"> Element</button>
-
-        </div-->
-      </div><!--/div-->
-
-
-
-
-      <% if @garden.users.include?(current_user) %>
-        <div class="message text-left">
-          <div class="message-name">
-            <img class="plus-sign" src="http://res.cloudinary.com/bdmbdm/image/upload/v1528034422/plussign_square.png" data-toggle="modal" data-target="#myModal">
-          </div>
-
-          <div class="message-body">
-            <p>log a new action</p>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-    <% @logs.each do |log| %>
-      <div class="message">
-            <div class="message-name filterDiv <%= log.category %>">
-              <% if log.category == "preparing soil" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1561630_cc.svg">
-              <% elsif log.category == "fertilisating" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1042097_cc.svg">
-              <% elsif log.category == "sowing" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/seed.svg">
-              <% elsif log.category == "transplanting" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">
-              <% elsif log.category == "watering" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240203_cc.svg">
-              <% elsif log.category == "weeding" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189035/noun_984560_cc.svg">
-              <% elsif log.category == "mulching" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240202_cc.svg">
-              <% elsif log.category == "mulching" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240202_cc.svg">
-              <% elsif log.category == "caring crops" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189177/noun_1002074_cc.svg">
-              <% elsif log.category == "carrying" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671027/brouette.svg">
-              <% elsif log.category == "cleaning" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189352/noun_1551479_cc.svg">
-              <% elsif log.category == "cleaning" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189352/noun_1551479_cc.svg">
-              <% elsif log.category == "sharing" %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671030/selling.svg">
-              <% else %>
-                <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">
-              <% end %>
-            </div>
-            <div class="message-body products">
-              <p><%= log.created_at.strftime("%A, %b %d") %></p>
-            </div>
-            <div class="message-body products">
-              <h6><strong><%= log.category %></strong></h6>
-            </div>
-              <% log.log_scopes.each do |log_scope|%>
-                <div class="message-body productsi">
-                  <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
-                </div>
-                <div class="message-body">
-                  <p><%= link_to log_scope.element.zone.name, zone_path(log_scope.element.zone) %></p>
-                </div>
-              <% end %>
-              <div class="message-body">
-                <p><strong>
-                  <i class="fas fa-check-circle <% "done" if log.status %>"></i>
-                  <!-- <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528202520/noun_1552127_cc_1.svg" alt=""> -->
-                  <!-- if @log.status = true (done), alors bouton passe au vert
-                  if @log.status = false (to do), alors bouton passe au gris -->
-                <!--   <% if log.status = true %>
-                    <span class="badge badge-success">good job!</span>
-                  <% else %>
-                    <span class="badge badge-warning">to be done</span>
-                  <p>plan the log</p>
-                  <% end %> -->
-                </strong></p>
-              </div>
-        </div>
-        <% end %>
-      <% end %>
+  <!-- this is the end of the zone section -->
+  <!-- this is the log section -->
+  <div id="Logs" class="tabcontent">
+    <%= render 'logslist', logs: @logs, garden: @garden %>
   </div>
-
   <!-- this is the end of log section -->
   </div>
 
@@ -201,10 +92,7 @@
   <div class="row garden-logs">
     <% if @garden.zones == [] %>
       <p class="error-message"><%= "Sorry, no zones are available " %></p>
-
     <% else %>
-
-
       <% if @garden.users.include?(current_user) %>
         <div class="message text-left">
           <div class="message-name">
@@ -215,8 +103,6 @@
           </div>
         </div>
       <% end %>
-
-
       <% @logs.each do |log| %>
         <div class="message">
           <div class="message-name">
@@ -235,7 +121,6 @@
           <% end %>
         </div>
       <% end %>
-
     <% end %>
   </div>
 
@@ -256,7 +141,7 @@
               <!-- </div> -->
             <%# end %>
           <%# end %>
-        <%# end %>
+         <%# end %>
   </div>
 </div>
 
@@ -331,9 +216,6 @@
     </div>
   </div>
 </div>
-
-
 <% if @log.errors.any? %>
 <%= javascript_pack_tag 'display_modal' %>
 <% end %>
-

@@ -4,12 +4,12 @@
 
   <div class="wrapper wrapper-3 animated fadeInUp">
     <h1 class="how text-center">join and share with your community</h1>
-</div>
+  </div>
 
-<div class="tab animated fadeInUp">
+  <div class="tab animated fadeInUp">
     <button class="tablinks default" data-tab="Follow"><h1>join them</h1></button>
     <button class="tablinks" data-tab="Shared"><h1>shared with you</h1></button>
-</div>
+  </div>
 
 
 <div id="Follow" class="tabcontent active animated fadeInUp">
@@ -29,31 +29,8 @@
     </div>
 
 
-<div class="col-xs-12 col-md-6">
-  <% @gardens.each do |garden| %>
-    <% follow = current_user.follow?(garden) %>
-    <div class="col-xs-12 col-sm-6">
-      <div class="card">
-        <%= cl_image_tag garden.photo, class: "card-img-top" %>
-        <%= link_to follows_path(garden_id: garden.id), method: :post, class: "icon" do %>
-          <i class="fas fa-heart <%= "followed" if follow %>" ></i>
-        <% end %>
-         <!--  <a href="#" class="icon"><i class="fas fa-seedling"></i></a> -->
-        <%= link_to garden_path(garden) do %>
-          <div class="overlay">
-            <div class="text">
-              <h2><%= garden.name %></h2>
-              <p><%= garden.address %></p>
-            </div>
-          </div>
-
-        </div>
-          <div class="card-link">
-            <p>discover</p>
-          </div>
-        <% end %>
-    </div>
-<% end %>
+<div class="col-xs-12 col-md-6 right-side-index">
+  <%= render "rightsideindex", gardens: @gardens %>
 </div>
     </div>
   </div>

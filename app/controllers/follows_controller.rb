@@ -10,24 +10,23 @@ class FollowsController < ApplicationController
   end
 
   def create
-    # est-ce que le current_user follow ce garden
+    @gardens = Garden.all
     @garden = Garden.find(params[:garden_id])
     @follow = Follow.find_by(user: current_user, garden: @garden)
-    # si j'ai récupéré qq chose dans @follow -- déjà followed
     if @follow
-      # unfollow
       authorize @follow
       @follow.destroy
-      redirect_to community_gardens_path
-    # sinon
+      respond_to do |format|
+        format.html { redirect_to community_gardens_path }
+        format.js
+      end
     else
-      # on crée le follow
       @follow = Follow.new(user: current_user, garden: @garden)
       authorize @follow
-      if @follow.save
-        redirect_to community_gardens_path
-      else
-        redirect_to community_gardens_path
+      @follow.save
+      respond_to do |format|
+        format.html { redirect_to community_gardens_path }
+        format.js
       end
     end
   end

@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   def create
     @garden = current_user.garden
     @zones = Zone.all.where(garden: @garden)
-    @elements = Element.all.where(zone: @zones)
+    @elements = Element.where(zone: @zones)
     @product = Product.new(product_params)
     authorize @product
     if @product.save
