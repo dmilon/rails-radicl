@@ -19,6 +19,12 @@ input.btn.btn-home.btn-lg {
     letter-spacing: 0.02em;
 }
 
+.button-contact:hover{
+  background-color: white;
+  border: 1px solid #2b4635;
+  color: #2b4635;
+}
+
 
 .select2-container{
   width: 446px!important;
@@ -68,11 +74,6 @@ i.far.fa-times-circle{
   color: black;
 }
 
-input.form-control{
-text-align: center;
-width: 400px;
-margin: 0 auto;
-}
 
 .form-control {
   box-shadow:none;
@@ -159,4 +160,5 @@ textarea {
     height: 103px;
     width: 412px;
     margin-left: 17px;
+    text-align: left;
 }

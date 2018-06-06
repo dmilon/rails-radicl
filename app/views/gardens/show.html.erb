@@ -2,16 +2,19 @@
   <h1><%= @garden.name.upcase %></h1>
   <p><%= @garden.address %></p>
 </div>
+
 <div class="row meteo animated fadeInUp">
   <a class="weatherwidget-io open-link" href="https://forecast7.com/en/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
   <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
   </script>
 </div>
-<div class="container show-garden animated fadeInUp">
 
+
+<div class="container show-garden animated fadeInUp">
 <!-- this is the zone section -->
 <br><br>
+
 <div class="tab">
   <% if @garden.users.include?(current_user) %>
     <button class="tablinks default" data-tab="Logs"><h1>my activity</h1></button>
@@ -24,16 +27,6 @@
   <% end %>
 </div>
 
-<div id="Farm" class="tabcontent active">
-  <div class="row zones-garden">
-    <% if @zones == [] %>
-      <p class="error-message"><%= "Sorry, no zones " %></p>
-    <% else %>
-      <button class="tablinks default" data-tab="Farm"><h1>zones</h1></button>
-      <button class="tablinks" data-tab="Logs"><h1>activity</h1></button>
-      <button class="tablinks" data-tab="Shares"><h1>shares</h1></button>
-    <% end %>
-  </div>
   <div id="Farm" class="tabcontent active">
     <div class="row zones-garden">
       <% if @zones == [] %>
@@ -57,7 +50,7 @@
           </div>
         <% end %>
       <% end %>
-      
+
       <% @garden.zones.each do |zone| %>
         <div class="col-xs-12 col-md-3">
           <div class="card">
