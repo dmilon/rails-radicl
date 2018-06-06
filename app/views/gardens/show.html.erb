@@ -26,8 +26,8 @@
 <br><br>
 <div class="tab">
   <% if @garden.users.include?(current_user) %>
-    <button class="tablinks default" data-tab="Farm"><h1>my zones</h1></button>
-    <button class="tablinks" data-tab="Logs"><h1>my activity</h1></button>
+    <button class="tablinks default" data-tab="Logs"><h1>my activity</h1></button>
+    <button class="tablinks" data-tab="Farm"><h1>my zones</h1></button>
     <button class="tablinks" data-tab="Shares"><h1>my shares</h1></button>
   <% else %>
     <button class="tablinks default" data-tab="Farm"><h1>zones</h1></button>
