@@ -15,15 +15,12 @@
 <div id="Follow" class="tabcontent active animated fadeInUp">
   <div class="row zones-garden">
     <div class="col-xs-12 col-md-6">
-    <div class="search-community">
-    <%= form_tag community_gardens_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control search-farm",
-        placeholder: "Search for a farm, build your community"
-      %>
-    <% end %>
-    </div><br><br>
+    <div id= "search-community">
+      <%= form_tag community_gardens_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "search for a farm, build your community" %>
+      <% end %>
+    </div>
+    <br><br>
     <div
       id="map"
       style="width: 600px!important; height: auto!important;"
