@@ -79,7 +79,14 @@
       <div class="message-body">
         <p><strong>
           <%= link_to log_path(log), method: :patch, remote: true, class: "icon" do %>
-            <i class="fas fa-check-circle <%= "done" if log.status %>"></i>
+            <% if log.status %>
+              <button type="button" class="btn btn-medium done">
+                <i class="fas fa-check done"></i>
+                pas fait
+              </button>
+            <% else %>
+              <button type="button" class="btn btn-medium mark_as_done">Marquer comme fait</button>
+            <% end %>
           <% end %>
           <!-- <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528202520/noun_1552127_cc_1.svg" alt=""> -->
           <!-- if @log.status = true (done), alors bouton passe au vert
