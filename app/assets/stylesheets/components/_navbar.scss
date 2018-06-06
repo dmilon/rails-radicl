@@ -31,6 +31,13 @@ display:none}
   border-radius: 50%;
 }
 
+
+.avatar {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+}
+
 /* Right section */
 .navbar-wagon-right {
   display: flex;
@@ -55,9 +62,10 @@ display:none}
 }
 
 .navbar-wagon-link:hover {
-  color: #46b2e8!important;
-  text-decoration: overline;
+  color: white;
+  text-decoration: underline;
 }
+
 
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {

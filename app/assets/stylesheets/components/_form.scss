@@ -26,11 +26,17 @@ input.btn.btn-home.btn-lg {
 }
 
 
+.select2-results__option{font-size: 13px}
+
 .select2-container{
-  width: 446px!important;
+  width: 430px!important;
 }
 
-label.collection_radio_buttons{margin-left: 11px;}
+span#select2-log_category-container{
+  font-size: 13px;
+}
+
+label.collection_radio_buttons{margin-left: 11px; font-size: 16px;}
 
 span#select2-log_category-container {
     margin-left: 6px;
@@ -42,7 +48,7 @@ span#select2-log_category-container {
 
 .select2-container--default .select2-results__option--highlighted[aria-selected]
 {
-  background-color: #2b4635!important;
+  background-color: #46b2e8!important;
 }
 
 
@@ -64,7 +70,7 @@ h2{
 
 input.form-control {
     text-align: left;
-    width: 400px;
+    width: 450px;
     margin: 0 auto;
     color: #2b4635;
     font-weight: 300;
@@ -82,6 +88,7 @@ i.far.fa-times-circle{
   border-bottom: 1px solid #2b4635;
   border-radius: 0px;
   text-align: center;
+  padding-top: 20px;
 }
 
 .form-actions .btn{
@@ -125,15 +132,15 @@ textarea.form-control {
 }
 
 input.btn.btn-home.btn-lg{
-  background-color: #2b4635;
+  background-color: #46b2e8;
   color: white;
   box-shadow:none;
 }
 
 input.btn.btn-home.btn-lg:hover{
-  border: 1px solid #2b4635;
+  border: 1px solid #46b2e8;
   background-color: white;
-  color: #2b4635;
+  color: #46b2e8;
 }
 
 label {
@@ -149,6 +156,15 @@ input[type="file"] {
 
 .block-party span {
   display: block;
+  border-bottom: 1px solid #dcf3fe;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.block-party {
+    background-color: rgba(0, 0, 0, 0.022);
+    padding: 31px;
+    margin-bottom: -42px;
 }
 
 textarea {
