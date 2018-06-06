@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.11)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1486328228599-85db4443971f.jpg); background-size: cover!important">
   <div class="form">
     <div class="row">
- <h2>add a new zone to <%= @garden.name.downcase %></h2>
+ <h2>Ajouter une zone à votre ferme<%#= @garden.name.downcase %></h2>
       <br>
       <% if policy(@zone).create? %>
         <%= render 'form', garden: @garden, zone: @zone %>

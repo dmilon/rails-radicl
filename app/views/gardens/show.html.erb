@@ -1,4 +1,5 @@
 <div class="zone-name zoni">
+  <%= cl_image_tag current_user.avatar class:"avatar card-avatar" %>
   <h1><%= @garden.name.upcase %></h1>
   <p><%= @garden.address %></p>
 </div>
@@ -13,19 +14,19 @@
   <br><br>
   <div class="tab">
     <% if @garden.users.include?(current_user) %>
-      <button class="tablinks default" data-tab="Farm"><h1>my zones</h1></button>
-      <button class="tablinks" data-tab="Logs"><h1>my activity</h1></button>
-      <button class="tablinks" data-tab="Shares"><h1>my shares</h1></button>
+      <button class="tablinks default" data-tab="Farm"><h1>mes zones</h1></button>
+      <button class="tablinks" data-tab="Logs"><h1>mes actions</h1></button>
+      <!-- <button class="tablinks" data-tab="Shares"><h1>my shares</h1></button> -->
     <% else %>
       <button class="tablinks default" data-tab="Farm"><h1>zones</h1></button>
-      <button class="tablinks" data-tab="Logs"><h1>activity</h1></button>
-      <button class="tablinks" data-tab="Shares"><h1>shares</h1></button>
+      <button class="tablinks" data-tab="Logs"><h1>actions</h1></button>
+    <!--   <button class="tablinks" data-tab="Shares"><h1>shares</h1></button> -->
     <% end %>
   </div>
   <div id="Farm" class="tabcontent active">
     <div class="row zones-garden">
       <% if @zones == [] %>
-        <p class="error-message">Sorry, no zones</p>
+        <p class="error-message">Désolé, vous n'avez pas encore de zones</p>
       <% else %>
         <% if @garden.users.include?(current_user) %>
           <div class="col-xs-12 col-md-3">
@@ -34,11 +35,11 @@
               <%= link_to new_garden_zone_path(@garden) do %>
                 <div class="overlay">
                   <div class="text">
-                    <h5>add a new zone</h5>
+                    <h5>J'ajoute une zone</h5>
                   </div>
                 </div>
                 <div class="card-link">
-                  <p>add</p>
+                  <p>Ajouter</p>
                 </div>
               <% end %>
             </div>
@@ -54,7 +55,7 @@
               <div class="text">
                 <p>area: <%= zone.area %>m2</p>
                 <% unless zone.logs.empty? %>
-                  <p>last logged on:<br><%= zone.logs.last.created_at.strftime("%A, %b %d")%></p>
+                  <p>dernière action le:<br><%= zone.logs.last.created_at.strftime("%A, %b %d")%></p>
                 <% end %>
               </div>
             </div>
@@ -78,7 +79,7 @@
 <div id="Shares" class="tabcontent">
   <div class="row garden-logs">
     <% if @garden.zones == [] %>
-      <p class="error-message"><%= "Sorry, no zones are available " %></p>
+      <p class="error-message"><%= "Désolé, ces zones ne sont pas accessibles" %></p>
     <% else %>
       <% if @garden.users.include?(current_user) %>
         <div class="message text-left">
@@ -86,7 +87,7 @@
             <img class="plus-sign" src="http://res.cloudinary.com/bdmbdm/image/upload/v1528034422/plussign_square.png" data-toggle="modal" data-target="#myModalShares">
           </div>
           <div class="message-body">
-            <p>sharing with my community</p>
+            <p>Je partage avec ma communauté</p>
           </div>
         </div>
       <% end %>
@@ -138,13 +139,13 @@
     <div class="modal-content form">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Log your actions</h4>
+        <h4 class="modal-title" id="myModalLabel">J'enregistre une action</h4>
       </div>
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
             <%= f.input :date, as: :string, input_html: { class: "datepicker"} %>
-            <%= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
+            <%= f.input :category, collection: Log::ACTIONS, prompt:"Choisissez une action", input_html: { class: "select2" } %>
             <%= f.input :description %>
             <%= f.input :quantity %>
             <%= hidden_field_tag :garden_id, @garden.id %>
@@ -159,7 +160,7 @@
             <% end %>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
 
-            <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
+            <%= f.submit 'J\'enregistre une action', class: 'btn btn-home btn-lg' %>
           <% end %>
         </div>
       </div>
@@ -172,14 +173,14 @@
     <div class="modal-content form">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Commit your log</h4>
+        <h4 class="modal-title" id="myModalLabel">J'enregistre une action</h4>
       </div>
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
             <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
             <%#= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
-            <p> Which element do you want to share? </p>
+            <p> Que voulez-vous partager? </p>
             <%= f.simple_fields_for :elements do |e| %>
               <%= e.collection_check_boxes :name, @garden.elements, :id, :name %>
             <% end %>
@@ -195,7 +196,7 @@
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
               <%#= hidden_field_tag :zone_id, zone.id %>
               <br><br>
-            <%= f.submit 'share with the community', class: 'btn btn-home btn-lg' %>
+            <%= f.submit 'Je partage avec ma communauté', class: 'btn btn-home btn-lg' %>
           <% end %>
         </div>
       </div>

@@ -1,17 +1,17 @@
 <div class="row garden-logs">
   <% if @garden.zones == [] %>
-    <p class="error-message"><%= "Sorry, no zones are available " %></p>
+    <p class="error-message"><%= "Désolé, ces zones ne sont pas accessibles " %></p>
   <% else %>
     <div id= "searchbar">
       <%= text_field_tag :query,
         params[:query],
         class: "barwidth",
-        placeholder: "search for actions"%>
+        placeholder: "Chercher une action"%>
       <i class="far fa-times-circle"></i>
       <div class= "filter">
         <div id="myBtnContainer">
-          <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
-          <button class="btn filter-btn" data-filter="category">Category</button>
+          <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Tout</button>
+          <button class="btn filter-btn" data-filter="category">Categorie</button>
           <button class="btn filter-btn" data-filter="date"> Date</button>
           <button class="btn filter-btn" data-filter="date"> Element</button>
         </div>
@@ -24,7 +24,7 @@
         </div>
 
         <div class="message-body">
-          <p>log a new action</p>
+          <p>J'enregistre une action</p>
         </div>
       </div>
     <% end %>
