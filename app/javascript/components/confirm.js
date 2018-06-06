@@ -3,11 +3,15 @@ function confirmSent()
 {
   const x = swal({
   title: "Well sent",
-  text: "Check your emails, you'll receive an answer soon.",
+  text: "Please check your emails for updates and delivery",
   icon: "success",
-  button: "Got it!",
   timer: 20000,
 });
+
+  setTimeout(function() {
+    $('#myModal-message').modal('hide');
+    swal.close();
+  }, 2000)
 
 }
 
