@@ -1,6 +1,8 @@
 
 <%= cl_image_tag garden.photo, class: "img-map" %>
-  <a href="#" class="icon"><i class="fas fa-seedling"></i></a>
+  <!-- <a href="#" class="icon"><i class="fas fa-seedling"></i></a> -->
+  <% follow = current_user.follow?(garden) %>
+  <i class="fas fa-heart <%= "followed" if follow %>" ></i>
   <h2 class="mapi"><%= garden.name %></h2>
   <p class="mapi"><%= garden.address %></p>
   </div>

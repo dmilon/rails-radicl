@@ -9,7 +9,7 @@ class LogPolicy < ApplicationPolicy
     user == record.user || user.admin?
   end
 
-  # def update?
-  #   user == record.user || user.admin?
-  # end
+  def update?
+    user == record.user || user.admin?
+  end
 end

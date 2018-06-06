@@ -54,6 +54,20 @@ class LogsController < ApplicationController
     end
   end
 
+  def update
+    @garden = current_user.garden
+    @log = Log.find(params[:id])
+    authorize @log
+    @log.status = !@log.status
+    @log.save
+    respond_to do |format|
+      format.html { redirect_to garden_path(current_user.garden) }
+      format.js do
+        @logs = @garden.logs.order(date: :desc)
+      end
+    end
+  end
+
   private
 
   def log_params
