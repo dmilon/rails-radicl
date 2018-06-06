@@ -3,12 +3,14 @@ class GardensController < ApplicationController
 
   def index
     if params[:query].present?
-      @gardens = policy_scope(Garden).order(created_at: :desc)
-      @gardens = @gardens.where.not(latitude: nil, longitude: nil)
-      sql_query = "name ILIKE :query OR address ILIKE :query"
-      @gardens = @gardens.where(sql_query, query: "%#{params[:query]}%")
+      sql_query = " \
+        gardens.name ILIKE :query \
+        OR gardens.address ILIKE :query \
+        OR users.name ILIKE :query \
+      "
+      @gardens = policy_scope(Garden).joins(:users).where(sql_query, query: "%#{params[:query]}%")
     else
-      @gardens = policy_scope(Garden).order(created_at: :desc)
+      @gardens = policy_scope(Garden).all.order(name: :desc)
     end
     @markers = @gardens.map do |garden|
       {
@@ -17,7 +19,6 @@ class GardensController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/gardens/info_window", locals: { garden: garden }) }
       }
     end
-
     @products = Product.all
     @users = User.all
   end
@@ -44,11 +45,21 @@ class GardensController < ApplicationController
 
   def show
     @garden = Garden.find(params[:id])
+    authorize @garden
     @users = @garden.users
-    @logs = @garden.logs.order(date: :desc)
     @zones = @garden.zones
     @log = Log.new
-    authorize @garden
+    if params[:query].present?
+      sql_query = " \
+        logs.category ILIKE :query \
+        OR logs.description ILIKE :query \
+        OR elements.name ILIKE :query \
+        OR zones.name ILIKE :query \
+      "
+      @logs = @garden.logs.joins(elements: :zone).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @logs = @garden.logs.order(date: :desc)
+    end
   end
 
   def edit
@@ -98,9 +109,9 @@ class GardensController < ApplicationController
             end
           end
         end
-      end
       sum = sum.fdiv(current_user.follows.count)
       @chart1_data2 << sum
+      end
     end
 
     @chart1_datasets = [{
@@ -249,7 +260,7 @@ class GardensController < ApplicationController
           end
         end
       end
-      if data_serie_cat == "protecting and taking care of crops"
+      if data_serie_cat == "caring crops"
         data_serie_elements.each do |k,v|
           @chart2_labels.each_with_index do |label, index|
             if label == k

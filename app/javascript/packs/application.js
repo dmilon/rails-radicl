@@ -10,6 +10,9 @@ import { bindSweetAlertButtonDemo } from '../components/banner';
 // import { initTooltip } from '../components/init_tooltip';
 import '../components/select2';
 import { scroll } from '../components/scroll';
+import { confirmSent } from "../components/confirm"
+import swal from 'sweetalert';
+
 
 scroll();
 initUpdateNavbarOnScroll();

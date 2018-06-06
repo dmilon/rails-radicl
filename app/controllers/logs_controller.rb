@@ -24,10 +24,8 @@ class LogsController < ApplicationController
       # @zone = Zone.find(params[:zone_id])
       authorize @log
       if @log.save
-        @element_ids = params[:log][:elements][:name]
-        @element_ids.each do |element_id|
-            LogScope.create(log_id: @log.id, element_id: element_id.to_i)
-        end
+        @element_id = params[:log][:elements][:name]
+        LogScope.create(log_id: @log.id, element_id: @element_id.to_i)
         redirect_to garden_path(current_user.garden)
       else
         @elements = Element.all

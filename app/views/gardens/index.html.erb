@@ -15,18 +15,15 @@
 <div id="Follow" class="tabcontent active animated fadeInUp">
   <div class="row zones-garden">
     <div class="col-xs-12 col-md-6">
-    <div class="search-community">
-    <%= form_tag community_gardens_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control search-farm",
-        placeholder: "Search for a farm, build your community"
-      %>
-    <% end %>
-    </div><br><br>
+    <div id= "search-community">
+      <%= form_tag community_gardens_path, method: :get do %>
+        <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "search for a farm, build your community" %>
+      <% end %>
+    </div>
+    <br><br>
     <div
       id="map"
-      style="width: 600px!important; height: 700px!important;"
+      style="min-width: 500px; min-height: 600px;"
       data-markers="<%= @markers.to_json %>">
     </div>
     </div>
@@ -86,7 +83,7 @@
               <p><%= user.garden.address %></p>
             </div>
               <div class="message-body">
-                <p><a href="mailto:contact@radicl.org"> CONTACT </a></p>
+                <button class="button-contact sweet-1" data-toggle="modal" data-target="#myModal-message"> CONTACT </button>
               </div>
           </div>
         <% end %>
@@ -104,4 +101,34 @@
   <%# end %>
 </div>
  -->
+<div class="modal fade" id="myModal-message" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content form">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">send a message</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-actions">
+          <form action="#" method="get">
+            <div>
+              <br>
+              <label for="name">your name:</label>
+              <input type="text" id="name" name="user_name" class="form-control">
+            </div>
+            <div>
+              <br>
+              <label for="msg">your message:</label>
+              <textarea id="msg" name="user_message" class="form-control msg"></textarea>
+            </div>
+            <div>
+              <input type="submit" value="contact the farmer" class="btn btn-home btn-lg" onclick="confirmSent()">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>

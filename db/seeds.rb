@@ -48,12 +48,12 @@ champs.save!
 damien.garden = champs
 damien.save!
 
-bizou = Garden.new(name: "Bizou", area: "4000", address: "La Bellangerie, 61110 Moutiers-au-Perche", latitude: 48.494182, longitude: 0.834733,remote_photo_url: "" )
+bizou = Garden.new(name: "Bizou", area: "4000", address: "La Bellangerie, 61110 Moutiers-au-Perche", latitude: 48.494182, longitude: 0.834733,remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528187374/photo-1473973266408-ed4e27abdd47.jpg" )
 bizou.save!
 juliette.garden = bizou
 juliette.save!
 
-bonnePatate = Garden.new(name: "À La bonne patate", area: "4000", address: "La Ferme de Ronne, 61110 Moutiers-au-Perche", latitude: 48.451338, longitude: 0.826649,remote_photo_url: "" )
+bonnePatate = Garden.new(name: "À La bonne patate", area: "4000", address: "La Ferme de Ronne, 61110 Moutiers-au-Perche", latitude: 48.451338, longitude: 0.826649,remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528187374/photo-1464684979825-ad6f2811cef2.jpg" )
 bonnePatate.save!
 denis.garden = bonnePatate
 denis.save!
@@ -80,7 +80,7 @@ Garden.all.each do |garden|
 end
 
 
-a = Zone.new(name: "Aromates", area: "300", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528036811/photo-1495696386015-f371820f82a6.jpg")
+a = Zone.new(name: "Aromates", area: "300", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209665/photo-1509727841791-40d09ad9b7fc.jpg")
 a.garden = ferme_de_quelenne
 a.save
 
@@ -285,112 +285,6 @@ scope2.save
 scope3 = LogScope.new
 scope3.log_id = cutting.id
 scope3.element_id = carrots.id
-scope3.save
-
-carrot = Element.new(name: "Carrots", quantity: "300")
-carrot.zone = a
-carrot.save
-
-beetroot = Element.new(name: "Beetroot", quantity: "200")
-beetroot.zone = a
-beetroot.save
-
-onion = Element.new(name: "Onion", quantity: "100")
-onion.zone = a
-onion.save
-
-leek = Element.new(name: "Leek", quantity: "10")
-leek.zone = a
-leek.save
-
-leeks = Element.new(name: "Leeks", quantity: "100")
-leeks.zone = o
-leeks.save
-
-carrots = Element.new(name: "Carrots", quantity: "300")
-carrots.zone = o
-carrots.save
-
-beetradish = Element.new(name: "Beetroot", quantity: "200")
-beetradish.zone = o
-beetradish.save
-
-onions = Element.new(name: "Onion", quantity: "100")
-onions.zone = o
-onions.save
-
-leeki = Element.new(name: "Leek", quantity: "10")
-leeki.zone = n
-leeki.save
-
-bees = Element.new(name: "Bees", quantity: "10000")
-bees.zone = m
-bees.save
-
-donkey = Element.new(name: "Donkey", quantity: "3")
-donkey.zone = n
-donkey.save
-
-horses = Element.new(name: "Horse", quantity: "18")
-horses.zone = c
-horses.save
-
-#create 6 products for the share
-product1 = Product.new(quantity: 50, end_date: "15/06/2018")
-product1.element = carrots
-product1.save
-product2 = Product.new(quantity: 100, end_date: "15/06/2018")
-product2.element = beetradish
-product2.save
-product3 = Product.new(quantity: 50, end_date: "20/06/2018")
-product3.element = leeks
-product3.save
-product4 = Product.new(quantity: 500, end_date: "23/09/2018")
-product4.element = bees
-product4.save
-product5 = Product.new(quantity: 50, end_date: "15/07/2018")
-product5.element = onions
-product5.save
-product6 = Product.new(quantity: 1, end_date: "25/08/2018")
-product6.element = donkey
-product6.save
-
-# Create a few logs
-seedling = Log.new(category: "sowing", description: "i did my work today", status: false, date: '21/05/2018')
-seedling.user = bruno
-seedling.save
-
-watering = Log.new(category: "watering", description: "watering the onions", status: false, date: '24/04/2018')
-watering.user = bruno
-watering.save
-
-cutting = Log.new(category: "caring crops", description: "cutting the dead branches", status: false, date: '24/03/2018')
-cutting.user = bruno
-cutting.save
-
-digging = Log.new(category: "preparing soil", description: "preparing the soil for transplant", status: true, date: '24/02/2018')
-digging.user = bruno
-digging.save
-
-feeding = Log.new(category: "fertilisating", description: "fertilisating the carrots", status: false, date: '24/05/2018')
-feeding.user = bruno
-feeding.save
-
-
-# create log_scope
-scope1 = LogScope.new
-log_id = seedling.id
-scope1.element_id = leeki.id
-scope1.save
-
-scope2 = LogScope.new
-scope2.log_id = watering.id
-scope2.element_id = onion.id
-scope2.save
-
-scope3 = LogScope.new
-scope3.log_id = cutting.id
-scope3.element_id = carrot.id
 scope3.save
 
 

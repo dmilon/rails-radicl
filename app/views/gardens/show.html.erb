@@ -9,13 +9,25 @@
   </script>
 </div>
 <div class="container show-garden animated fadeInUp">
-  <!-- this is the zone section -->
-  <br><br>
-  <div class="tab">
-    <% if @garden.users.include?(current_user) %>
-      <button class="tablinks default" data-tab="Farm"><h1>my zones</h1></button>
-      <button class="tablinks" data-tab="Logs"><h1>my activity</h1></button>
-      <button class="tablinks" data-tab="Shares"><h1>my shares</h1></button>
+
+<!-- this is the zone section -->
+<br><br>
+<div class="tab">
+  <% if @garden.users.include?(current_user) %>
+    <button class="tablinks default" data-tab="Logs"><h1>my activity</h1></button>
+    <button class="tablinks" data-tab="Farm"><h1>my zones</h1></button>
+    <button class="tablinks" data-tab="Shares"><h1>my shares</h1></button>
+  <% else %>
+    <button class="tablinks default" data-tab="Farm"><h1>zones</h1></button>
+    <button class="tablinks" data-tab="Logs"><h1>activity</h1></button>
+    <button class="tablinks" data-tab="Shares"><h1>shares</h1></button>
+  <% end %>
+</div>
+
+<div id="Farm" class="tabcontent active">
+  <div class="row zones-garden">
+    <% if @zones == [] %>
+      <p class="error-message"><%= "Sorry, no zones " %></p>
     <% else %>
       <button class="tablinks default" data-tab="Farm"><h1>zones</h1></button>
       <button class="tablinks" data-tab="Logs"><h1>activity</h1></button>
@@ -45,6 +57,7 @@
           </div>
         <% end %>
       <% end %>
+      
       <% @garden.zones.each do |zone| %>
         <div class="col-xs-12 col-md-3">
           <div class="card">
@@ -138,13 +151,13 @@
     <div class="modal-content form">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Log your actions</h4>
+        <h4 class="modal-title" id="myModalLabel">log your actions</h4>
       </div>
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
             <%= f.input :date, as: :string, input_html: { class: "datepicker"} %>
-            <%= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
+            <%= f.input :category, label: 'Type of action', collection: Log::ACTIONS, prompt:"what kind of action do you want to log?", input_html: { class: "select2" } %>
             <%= f.input :description %>
             <%= f.input :quantity %>
             <%= hidden_field_tag :garden_id, @garden.id %>
@@ -153,12 +166,13 @@
               <%#= v.collection_check_boxes :name, @garden.zones, :id, :name %>
             <%# end %>
             <p> On which elements? </p>
-            <%= f.simple_fields_for :elements do |e| %>
-              <%= e.collection_check_boxes :name, @garden.elements, :id, :name  %>
-
-            <% end %>
+            <div class="block-party">
+              <%= f.simple_fields_for :elements do |e| %>
+                <%= e.collection_radio_buttons :name, @garden.elements, :id, :name %>
+              <% end %>
+            </div>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
-
+            <br>
             <%= f.submit 'save your action', class: 'btn btn-home btn-lg' %>
           <% end %>
         </div>
@@ -181,7 +195,7 @@
             <%#= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
             <p> Which element do you want to share? </p>
             <%= f.simple_fields_for :elements do |e| %>
-              <%= e.collection_check_boxes :name, @garden.elements, :id, :name %>
+              <%= e.collection_check_boxes :name, @garden.elements, :id, :name, class: 'form-check' %>
             <% end %>
 <!--             <p> From which zones? </p>
  -->            <%#= f.simple_fields_for :zones do |v|  %>
