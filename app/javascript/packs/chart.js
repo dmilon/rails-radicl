@@ -4,63 +4,29 @@ function initChart(id, labels, datasets) {
   var ctx = document.getElementById(id).getContext('2d');
   var myChart = new Chart(ctx, {
       type: 'bar',
-      // changement de style librairie et options
       data: {
           labels: labels,
           datasets: datasets
       },
       options: {
           scales: {
+              xAxes: [{
+                  gridLines: {
+                      display: false
+                  }
+              }],
               yAxes: [{
-                  ticks: {
-                      beginAtZero:true
+                  display: false,
+                  gridLines: {
+                      display: false
                   }
               }]
-          },
-          title: {
-            display: true,
-            text: '# of logs by zones'
-          },
-          legend: {
-            display: true,
-            position: 'right',
           }
       }
   });
 }
 
 global.initChart = initChart;
-
-function initStackedChart(id, labels, datasets) {
-  var ctx = document.getElementById(id).getContext('2d');
-  var myChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-          labels: labels,
-          datasets: datasets
-      },
-      options: {
-          scales: {
-            xAxes: [{
-              stacked: true,
-            }],
-            yAxes: [{
-              stacked: true
-            }]
-          },
-          title: {
-            display: true,
-            text: '# logs by category and elements'
-          },
-          legend: {
-            display: true,
-            position: 'right',
-          }
-      }
-  });
-}
-
-global.initStackedChart = initStackedChart;
 
 function initRadarChart(id, labels, datasets) {
   var ctx = document.getElementById(id).getContext('2d');
@@ -76,7 +42,7 @@ function initRadarChart(id, labels, datasets) {
           position: 'top',
         },
         title: {
-          display: true,
+          display: false,
           text: '# logs by category'
         },
         scale: {
@@ -86,45 +52,10 @@ function initRadarChart(id, labels, datasets) {
         },
         legend: {
           display: true,
-          position: 'right',
+          position: 'top',
         }
       }
   });
 }
 
 global.initRadarChart = initRadarChart;
-
-function initLineChart(id, labels, datasets) {
-  var ctx = document.getElementById(id).getContext('2d');
-  var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: labels,
-          datasets: datasets,
-          fill: false,
-      },
-      options: {
-          scales: {
-            xAxes: [{
-              stacked: true,
-            }],
-            yAxes: [{
-              stacked: true
-            }]
-          },
-          title: {
-            display: true,
-            text: '#logs by date'
-          },
-          legend: {
-            display: true,
-            position: 'right',
-          }
-      }
-  });
-}
-
-global.initLineChart = initLineChart;
-
-
-
