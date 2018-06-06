@@ -122,16 +122,14 @@ i.fas.fa-heart {
   padding: 4px;
   font-size: 14px;
   z-index: 300;
-  background-color: #3fb1ea;
   color: white;
   &.followed {
-    background-color: white;
-    color: #294637;
+    color: #2ba578;
   }
 }
 
 i.fas.fa-heart:hover {
-  color: #294637;
+  color: #2ba578;
 }
 
 .card-link {

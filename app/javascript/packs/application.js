@@ -10,6 +10,9 @@ import { bindSweetAlertButtonDemo } from '../components/banner';
 // import { initTooltip } from '../components/init_tooltip';
 import '../components/select2';
 import { scroll } from '../components/scroll';
+import { confirmSent } from "../components/confirm"
+import swal from 'sweetalert';
+
 
 scroll();
 initUpdateNavbarOnScroll();
@@ -17,13 +20,12 @@ loadDynamicBannerText();
 tabsClickListener();
 // initTooltip();
 
-const markAsDone = document.querySelectorAll(".fas.fa-check-circle");
-markAsDone.forEach((button) => {
-  button.addEventListener('click', (event) => {
-    console.log("toto");
-    button.classList.toggle('done');
-  });
-})
+// const markAsDone = document.querySelectorAll(".fas.fa-check-circle");
+// markAsDone.forEach((button) => {
+//   button.addEventListener('click', (event) => {
+//     button.classList.toggle('done');
+//   });
+// })
 const buttons = document.querySelectorAll('#myBtnContainer .btn');
 
 buttons.forEach((button) => {
