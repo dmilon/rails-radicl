@@ -3,95 +3,115 @@
 <div class="container map">
 
   <div class="wrapper wrapper-3 animated fadeInUp">
-    <h1 class="how text-center">join and share with your community</h1>
+    <h1 class="how text-center">rejoindre la communauté</h1>
   </div>
 
   <div class="tab animated fadeInUp">
-    <button class="tablinks default" data-tab="Follow"><h1>join them</h1></button>
-    <button class="tablinks" data-tab="Shared"><h1>shared with you</h1></button>
+    <button class="tablinks default" data-tab="Follow"><h1>toutes les fermes</h1></button>
+    <button class="tablinks" data-tab="Shared"><h1>ma communauté</h1></button>
   </div>
 
 
-<div id="Follow" class="tabcontent active animated fadeInUp">
-  <div class="row zones-garden">
-    <div class="col-xs-12 col-md-6">
-    <div id= "search-community">
-      <%= form_tag community_gardens_path, method: :get do %>
-        <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "search for a farm, build your community" %>
-      <% end %>
-    </div>
-    <br><br>
-    <div
-      id="map"
-      style="min-width: 500px; min-height: 600px;"
-      data-markers="<%= @markers.to_json %>">
-    </div>
-    </div>
+  <div id="Follow" class="tabcontent active animated fadeInUp">
+    <div class="row zones-garden">
+      <div class="col-xs-12 col-md-6">
+        <div id= "search-community">
+        <%= form_tag community_gardens_path, method: :get do %>
+          <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "trouver une ferme, construire sa communauté" %>
+        <% end %>
+        </div>
+      <br><br>
+        <div
+          id="map"
+          style="min-width: 500px; min-height: 600px;"
+          data-markers="<%= @markers.to_json %>">
+        </div>
+      </div>
 
 
-<div class="col-xs-12 col-md-6 right-side-index">
-  <%= render "rightsideindex", gardens: @gardens %>
+    <div class="col-xs-12 col-md-6 right-side-index">
+      <%= render "rightsideindex", gardens: @gardens %>
+    </div>
+  </div>
 </div>
-    </div>
-  </div>
 
 
 <!-- this is the shared section -->
 <div id="Shared" class="tabcontent">
-  <div class="row garden-logs">
-    <%# if @garden.zones == [] %>
-    <%# else %>
-
-      <div id= "searchbar">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "barwidth",
-            placeholder: "search for shared products"%>
-            <i class="far fa-times-circle"></i>
-        <div class= "filter">
-          <div id="myBtnContainer">
-            <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
-            <button class="btn filter-btn" data-filter="category">Category</button>
-            <button class="btn filter-btn" data-filter="date">Date</button>
-            <button class="btn filter-btn" data-filter="date">Availability</button>
-          </div>
-        </div>
+  <div class="row"></div>
+    <div class="col-xs-2 myfollowers no-padding">
+      <div class="items text-center good-width">
+        <h4>amis permacoles</h4>
       </div>
+      <% current_user.follows.each do |follow| %>
+        <% follow.garden.users.each do |user| %>
+          <div class= "col-xs-6 no-padding"><%= cl_image_tag user.avatar, class: "avatar-medium shared"%></div>
+        <% end %>
+       <% end %>
+    </div>
 
-    <% @products.each do |product| %>
-      <% @users.each do |user| %>
-        <% if user.garden == product.element.zone.garden  %>
+    <div class="col-xs-10">
+      <div class="row border margin-bottom">
+        <%# if @garden.zones == [] %>
+        <%# else %>
+        <div class="items text-center">
+          <h4>produits partagés</h4>
+        </div>
+  <!--       <div id= "searchbar"> -->
+            <%#= text_field_tag :query,
+              params[:query],
+              class: "barwidth",
+              placeholder: "rechercher un produit"%>
+<!--               <i class="far fa-times-circle"></i> -->
+          <!-- <div class= "filter">
+            <div id="myBtnContainer">
+              <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
+              <button class="btn filter-btn" data-filter="category">Category</button>
+              <button class="btn filter-btn" data-filter="date">Date</button>
+              <button class="btn filter-btn" data-filter="date">Availability</button>
+            </div>
+          </div> -->
+<!--         </div> -->
+      <% current_user.follows.each do |follow| %>
+        <% follow.garden.products.each do |product| %>
+        <%# @users.each do |user| %>
+          <%# if user.garden == product.element.zone.garden  %>
           <div class="message">
             <div class="message-name">
-              <%= cl_image_tag user.garden.photo, class: "avatar-large shared"  %>
+              <%= cl_image_tag product.element.zone.garden.photo, class: "avatar-large shared"  %>
             </div>
             <div class="message-body product">
               <p><strong><%= product.element.name.upcase %> x <%= product.quantity %></strong></p>
             </div>
             <div class="message-body">
-              <p><%= user.name %></p>
+              <p><%= product.element.zone.garden.users[0].name %></p>
+            </div>
+           <!--  <div class="message-body"> -->
+                <%# if product.end_date > Date.today %>
+                 <!--  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/goFichier_1_4x-100.jpg" width= 20> -->
+                <%# else %>
+                  <!-- <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/foFichier_1_4x-100.jpg" width= 20> -->
+                <%# end %>
+            <!-- </div> -->
+            <div class="message-body">
+              <h6><%= product.element.zone.garden.name.upcase %></h6>
+              <p><%= product.element.zone.garden.address %></p>
             </div>
             <div class="message-body">
-                <% if product.end_date > Date.today %>
-                  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/goFichier_1_4x-100.jpg" width= 20>
-                <% else %>
-                  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/foFichier_1_4x-100.jpg" width= 20>
-                <% end %>
+              <button class="button-contact sweet-1" data-toggle="modal" data-target="#myModal-message"> CONTACT </button>
             </div>
-            <div class="message-body">
-              <h6><%= user.garden.name.upcase %></h6>
-              <p><%= user.garden.address %></p>
-            </div>
-              <div class="message-body">
-                <button class="button-contact sweet-1" data-toggle="modal" data-target="#myModal-message"> CONTACT </button>
-              </div>
           </div>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div class= "center margin-bottom">
+      <%= button_to "Partager un produit", new_product_path(@product), method: :get, class: "button-contact sweet-1 " %>
+      <p></p>
+    </div>
   </div>
 </div>
   <!-- this is the end of log section -->
+<br><br>
 <br><br>
 
 <!-- <div>
