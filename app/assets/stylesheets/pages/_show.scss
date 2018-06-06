@@ -32,6 +32,12 @@ transition: height 1s ease;
   &.mark_as_done:focus {
     outline: none;
   }
+  &.follow {
+    font-size: 20px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+  }
 }
 .open-link {
   height: 100px!important;
@@ -118,8 +124,8 @@ i.far.fa-trash-alt {
 }
 
 .zone-name.zoni {
- background-color: #46b2e8;
- padding-top: 150px;
+  background-color: #46b2e8;
+  padding-top: 150px;
 }
 
 .zone-name.zoni h1 {color: white}
@@ -166,6 +172,7 @@ p.error-message {
 .avatar-large {
   width: 45px;
   margin-top: -3px;
+  border-radius: 50%;
 }
 
 img.plus-sign {
@@ -248,9 +255,5 @@ i.fas.fa-check {
 
 .badge-warning {background-color: coral;}
 
-.zone-name zoni {
-  display: flex;
-  align-items: center;
-}
 
 

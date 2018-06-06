@@ -1,14 +1,31 @@
-<div class="zone-name zoni">
-  <%= cl_image_tag current_user.avatar class:"avatar card-avatar" %>
-  <h1><%= @garden.name.upcase %></h1>
-  <p><%= @garden.address %></p>
-</div>
-<div class="row meteo animated fadeInUp">
-  <a class="weatherwidget-io open-link" href="https://forecast7.com/en/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
-  <script>
+<% if @garden == current_user.garden %>
+  <div class="zone-name zoni">
+    <%= cl_image_tag current_user.avatar, class: "avatar-large" %>
+    <h1><%= @garden.name.upcase %></h1>
+    <p><%= @garden.address %></p>
+  </div>
+  <div class="row meteo animated fadeInUp">
+    <a class="weatherwidget-io open-link" href="https://forecast7.com/en/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
+    <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-  </script>
-</div>
+    </script>
+  </div>
+<% else %>
+  <div class="zone-name zoni">
+    <%= cl_image_tag current_user.avatar, class: "avatar-large" %>
+    <h1><%= @garden.name.upcase %></h1>
+    <p><%= @garden.address %></p>
+   <!--  <%# if current_user.follow?(@garden) %>
+      <%#= link_to follows_path(@garden), method: :post, class: "icon" do %>
+        <button class="btn btn-medium follow">Ne plus suivre</button>
+      <%# end %>
+    <%# else %>
+      <button class="btn btn-medium unfollow">Suivre</button>
+    <%# end %> -->
+  </div>
+
+<% end %>
+
 <div class="container show-garden animated fadeInUp">
   <!-- this is the zone section -->
   <br><br>
