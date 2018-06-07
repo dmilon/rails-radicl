@@ -3,7 +3,7 @@
     <p class="error-message"><%= "Désolé, ces zones ne sont pas accessibles " %></p>
   <% else %>
       <div id= "searchbar">
-        <%= form_tag garden_path(@garden), method: :get do %>
+        <%= form_tag garden_path(@garden), method: :get, remote: true do %>
           <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "cherchez une action" %>
         <% end %>
       </div>
