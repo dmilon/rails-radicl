@@ -1138,7 +1138,7 @@ mohammed.save!
 
 fhampiluo = Garden.new(name: "Ferme du Perché", area: "300",
   address: "61110 Moutiers-au-Perche", latitude: 48.454412, longitude: 0.826934,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528365126/deee211ef211b34cfd53977edbb642bb_1.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528366875/5f4bda9b5fca0af8d14b33a2a3a48790.jpg')
 fhampiluo.save!
 arnold.garden = fhampiluo
 arnold.save!
