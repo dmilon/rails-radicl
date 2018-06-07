@@ -3,12 +3,12 @@
 <div class="container map">
 
   <div class="wrapper wrapper-3 animated fadeInUp">
-    <h1 class="how text-center">rejoindre la communauté</h1>
+    <h1 class="how text-center">Rejoignez la communauté permacole</h1>
   </div>
 
   <div class="tab animated fadeInUp">
-    <button class="tablinks default" data-tab="Follow"><h1>toutes les fermes</h1></button>
-    <button class="tablinks" data-tab="Shared"><h1>ma communauté</h1></button>
+    <button class="tablinks default" data-tab="Follow"><h1>Toutes les fermes</h1></button>
+    <button class="tablinks" data-tab="Shared"><h1>Ma communauté</h1></button>
   </div>
 
 
@@ -39,18 +39,32 @@
 <!-- this is the shared section -->
 <div id="Shared" class="tabcontent">
 
-  <div class="row"></div>
+  <div class="row">
     <div class="col-xs-2 myfollowers no-padding">
       <%= render "my_followers" %>
+<!-- A deplacer dans my folllowers -->
+        <h4 class="text-center">Mes amis</h4>
+      <% current_user.follows.each do |follow| %>
+        <% follow.garden.users.each do |user| %>
+          <div class= "col-xs-6 no-padding"><%= cl_image_tag user.avatar, class: "avatar-medium shared"%></div>
+        <% end %>
+       <% end %>
+      <!-- fin du a deplacer -->
     </div>
 
-    <div class="col-xs-10">
-      <div class="row border margin-bottom">
+
+    <div class="col-xs-8 col-xs-offset-1">
+      <div class="row">
         <%# if @garden.zones == [] %>
         <%# else %>
         <div class="items text-center">
-          <h4>produits partagés</h4>
+          <h4>Produits partagés dans ma communauté</h4>
+          <br>
         </div>
+
+        <!-- <div class= "center margin-bottom">
+      <%#= button_to "Partager un produit", new_product_path(@product), method: :get, class: "button-contact sweet-1 " %>
+    </div> -->
   <!--       <div id= "searchbar"> -->
             <%#= text_field_tag :query,
               params[:query],
@@ -72,13 +86,13 @@
           <%# if user.garden == product.element.zone.garden  %>
           <div class="message">
             <div class="message-name">
-              <%= cl_image_tag product.element.zone.garden.photo, class: "avatar-large shared"  %>
+              <%= cl_image_tag product.photo, class: "photo-produit"  %>
             </div>
             <div class="message-body product">
               <p><strong><%= product.element.name.upcase %> x <%= product.quantity %></strong></p>
             </div>
             <div class="message-body">
-              <p><%= product.element.zone.garden.users[0].name %></p>
+              <p>Partagé par <%= product.element.zone.garden.users[0].name %></p>
             </div>
            <!--  <div class="message-body"> -->
                 <%# if product.end_date > Date.today %>
@@ -87,9 +101,8 @@
                   <!-- <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/foFichier_1_4x-100.jpg" width= 20> -->
                 <%# end %>
             <!-- </div> -->
-            <div class="message-body">
+            <div class="message-body adress-garden">
               <h6><%= product.element.zone.garden.name.upcase %></h6>
-              <p><%= product.element.zone.garden.address %></p>
             </div>
             <div class="message-body">
               <button class="button-contact sweet-1" data-toggle="modal" data-target="#myModal-message"> CONTACT </button>
@@ -98,16 +111,13 @@
         <% end %>
       <% end %>
     </div>
-    <div class= "center margin-bottom">
-      <%= button_to "Partager un produit", new_product_path(@product), method: :get, class: "button-contact sweet-1 " %>
-      <p></p>
-    </div>
+
   </div>
 </div>
   <!-- this is the end of log section -->
 <br><br>
 <br><br>
-
+</div>
 <!-- <div>
   <h1>Followed</h1>
   <#% current_user.follows.each do |follow| %>
