@@ -49,8 +49,10 @@
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">
         <% end %>
       </div>
-      <div class="message-body products">
-        <p><%= log.date.strftime("%A, %b %d") %></p>
+
+      <div class="message-body products date">
+        <p><%= l(log.date, format: "%A %d %b ") %></p>
+         <!-- #.strftime("%A, %b %d") -->
       </div>
       <div class="message-body products">
         <h6><strong><%= log.category %></strong></h6>
@@ -59,32 +61,19 @@
         <div class="message-body productsi">
           <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
         </div>
-        <div class="message-body">
+        <div class="message-body elements">
           <p><%= link_to log_scope.element.zone.name, zone_path(log_scope.element.zone) %></p>
         </div>
       <% end %>
       <div class="message-body">
-        <p><strong>
-          <%= link_to log_path(log), method: :patch, remote: true, class: "icon" do %>
-            <% if log.status %>
-              <button type="button" class="btn btn-medium done">
-                <i class="fas fa-check done"></i>
-                annuler
-              </button>
-            <% else %>
-              <button type="button" class="btn btn-medium mark_as_done">Marquer comme fait</button>
-            <% end %>
-          <% end %>
-          <!-- <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528202520/noun_1552127_cc_1.svg" alt=""> -->
-          <!-- if @log.status = true (done), alors bouton passe au vert
-          if @log.status = false (to do), alors bouton passe au gris -->
-        <!--   <% if log.status = true %>
-            <span class="badge badge-success">good job!</span>
-          <% else %>
-            <span class="badge badge-warning">to be done</span>
-          <p>plan the log</p>
-          <% end %> -->
-        </strong></p>
+        <% if log.status %>
+          <div class="text-center">
+            <div><i class="fas fa-check done"></i></div>
+            <%= link_to "annuler", log_path(log), method: :patch, remote: true, class: "icon done" %>
+          </div>
+        <% else %>
+          <%= link_to "Je l'ai fait", log_path(log), method: :patch, remote: true, class: "button-contact" %>
+        <% end %>
       </div>
     </div>
   <% end %>
