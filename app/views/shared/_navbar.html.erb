@@ -25,7 +25,7 @@
               <%= cl_image_tag 'male-farmer_1f468-200d-1f33e', class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
             <% end %>
 
-            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu" aria-labelledby="navbar-wagon-menu">
               <li>
                 <%= link_to edit_user_registration_path do %>
                   <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
