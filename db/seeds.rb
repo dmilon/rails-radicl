@@ -25,7 +25,7 @@ robert = User.create(admin: true, email: "robert@gmail.com", password: "password
 # Create Damien's farms
 champs = Garden.new(name: "L'envie des champs", area: "200",
   address: "La Heslière, 61290 Longny-au-Perche", latitude: 48.530741, longitude: 0.784926,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528296878/a4b7a1c7313cd6c202d03f7b47d3f6ea.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528374848/20650753-24036201.jpg')
 champs.save!
 damien.garden = champs
 damien.save!
@@ -116,7 +116,7 @@ scope5.log_id = wat1.id
 scope5.element_id = carotte.id
 scope5.save!
 
-soil2 = Log.new(category: "Labourage", description: "Labourage pour mes betteraves, creuser et désherbage", status: true, date: '2018-06-01')
+soil2 = Log.new(category: "Labourage", description: "Labourage pour mes betteraves", status: true, date: '2018-06-01')
 soil2.user = damien
 soil2.save!
 
@@ -171,7 +171,7 @@ scope11.log_id = sow2.id
 scope11.element_id = artichaut.id
 scope11.save!
 
-soil4 = Log.new(category: "Labourage", description: "Labourage pour mes épinards, creuser et désherbage", status: true, date: '2018-06-01')
+soil4 = Log.new(category: "Labourage", description: "Labourage pour mes épinards", status: true, date: '2018-06-01')
 soil4.user = damien
 soil4.save!
 
@@ -190,7 +190,7 @@ scope13.element_id = epinard.id
 scope13.save!
 
 
-soil5 = Log.new(category: "Labourage", description: "Labourage pour mes épinards, creuser et désherbage", status: true, date: '2018-06-01')
+soil5 = Log.new(category: "Labourage", description: "Labourage pour mes épinards", status: true, date: '2018-06-01')
 soil5.user = damien
 soil5.save!
 
@@ -476,7 +476,7 @@ scope35.save!
 
 #epinard
 
-soil10 = Log.new(category: "Labourage", description: "Labourage pour mes épinards, creuser et désherbage", status: true, date: '2018-03-04')
+soil10 = Log.new(category: "Labourage", description: "Labourage pour mes épinards", status: true, date: '2018-03-04')
 soil10.user = bruno
 soil10.save!
 
@@ -570,7 +570,7 @@ scope44.save!
 
 #betterave
 
-soil12 = Log.new(category: "Labourage", description: "Labourage pour mes betteraves, creuser et désherbage", status: true, date: '2018-03-04')
+soil12 = Log.new(category: "Labourage", description: "Labourage pour mes betteraves", status: true, date: '2018-03-04')
 soil12.user = bruno
 soil12.save!
 
@@ -598,7 +598,7 @@ scope47.element_id = betterave2.id
 scope47.save!
 
 #patates
-soil13 = Log.new(category: "Labourage", description: "Labourage pour mes patates, creuser et désherbage", status: true, date: '2018-03-04')
+soil13 = Log.new(category: "Labourage", description: "Labourage pour mes patates", status: true, date: '2018-03-04')
 soil13.user = bruno
 soil13.save!
 
@@ -608,7 +608,7 @@ scope48.element_id = patate1.id
 scope48.save!
 
 #carottes
-soil14 = Log.new(category: "Labourage", description: "Labourage pour mes carottes, creuser et désherbage", status: true, date: '2018-03-04')
+soil14 = Log.new(category: "Labourage", description: "Labourage pour mes carottes", status: true, date: '2018-03-04')
 soil14.user = bruno
 soil14.save!
 
@@ -1011,7 +1011,7 @@ scope83.save!
 
 #betterave
 
-soil21 = Log.new(category: "Labourage", description: "Labourage pour mes betteraves, creuser et désherbage", status: true, date: '2018-03-04')
+soil21 = Log.new(category: "Labourage", description: "Labourage pour mes betteraves", status: true, date: '2018-03-04')
 soil21.user = juliette
 soil21.save!
 
