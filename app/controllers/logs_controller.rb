@@ -61,7 +61,7 @@ class LogsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to garden_path(current_user.garden) }
       format.js do
-        @logs = @garden.logs.order(date: :desc)
+        @logs = @garden.logs.order(date: :desc).order(created_at: :desc)
       end
     end
   end
