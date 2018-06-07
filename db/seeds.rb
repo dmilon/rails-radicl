@@ -20,7 +20,7 @@ lea = User.create(admin: true, email: "lea@gmail.com", password: "password", nam
 mohammed = User.create(admin: true, email: "mohammed@gmail.com", password: "password", name: "mohammed", remote_avatar_url: "https://randomuser.me/api/portraits/men/20.jpg")
 arnold = User.create(admin: true, email: "arnold@gmail.com", password: "password", name: "arnold", remote_avatar_url: "https://randomuser.me/api/portraits/men/14.jpg")
 irene = User.create(admin: true, email: "irene@gmail.com", password: "password", name: "irene", remote_avatar_url: "https://randomuser.me/api/portraits/women/7.jpg")
-
+robert = User.create(admin: true, email: "robert@gmail.com", password: "password", name: "robert", remote_avatar_url: "https://randomuser.me/api/portraits/men/29.jpg")
 
 # Create Damien's farms
 champs = Garden.new(name: "L'envie des champs", area: "200",
@@ -1129,7 +1129,33 @@ champil.save!
 delphine.garden = champil
 delphine.save!
 
+champilo = Garden.new(name: "Ferme de Ronne", area: "300",
+  address: "61110 Moutiers-au-Perche", latitude: 48.454412, longitude: 0.826934,
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528365126/deee211ef211b34cfd53977edbb642bb_1.jpg')
+champilo.save!
+mohammed.garden = champilo
+mohammed.save!
 
+fhampiluo = Garden.new(name: "Ferme du Perché", area: "300",
+  address: "61110 Moutiers-au-Perche", latitude: 48.454412, longitude: 0.826934,
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528365126/deee211ef211b34cfd53977edbb642bb_1.jpg')
+fhampiluo.save!
+arnold.garden = fhampiluo
+arnold.save!
+
+champiloi = Garden.new(name: "Chateau Moutier", area: "3000",
+  address: "61110 Moutiers-au-Perche", latitude: 48.496264, longitude: 0.835350,
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528365298/8a91cc1659d5f3209a84924903c426a8.jpg')
+champiloi.save!
+lea.garden = champiloi
+lea.save!
+
+champiloiu = Garden.new(name: "Domaine de la bergerie", area: "400",
+  address: "61110 Moutiers-au-Perche", latitude: 48.496264, longitude: 0.835350,
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528366313/1f4ca72d670031f93e70fb5083db6fd9.jpg')
+champiloiu.save!
+irene.garden = champiloiu
+irene.save!
 
 
 
@@ -1259,22 +1285,22 @@ delphine.save!
 follow1 = Follow.new(user: damien, garden: ferme_de_quelenne)
 follow1.save!
 
-product1 = Product.new(quantity: 10, end_date: "15/06/2018")
+product1 = Product.new(quantity: 10, end_date: "15/06/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363257/23654-jaune_blanche_rouge_et_violette_decouvrez_les_varietes_oubliees_de_la_carotte_2.jpg")
 product1.element = carotte2
 product1.save!
-product2 = Product.new(quantity: 30, end_date: "15/06/2018")
+product2 = Product.new(quantity: 30, end_date: "15/06/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528364093/artichokes-1024x597.png")
 product2.element = artichaut2
 product2.save!
-product3 = Product.new(quantity: 10, end_date: "20/06/2018")
+product3 = Product.new(quantity: 10, end_date: "20/06/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363257/te%CC%81le%CC%81chargement.jpg")
 product3.element = epinard2
 product3.save!
-product4 = Product.new(quantity: 20, end_date: "23/09/2018")
+product4 = Product.new(quantity: 20, end_date: "23/09/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363257/tomato.jpg")
 product4.element = tomate2
 product4.save!
-product5 = Product.new(quantity: 10, end_date: "15/07/2018")
+product5 = Product.new(quantity: 10, end_date: "15/07/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363363/epinard-eb081013-100-l750-h512.jpg")
 product5.element = epinard3
 product5.save!
-product6 = Product.new(quantity: 30, end_date: "25/08/2018")
+product6 = Product.new(quantity: 30, end_date: "25/08/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363417/467_481_graines-tomate-poire-jaune.jpg")
 product6.element = tomate3
 product6.save!
 
