@@ -1,5 +1,44 @@
 // Specific CSS for your home-page
 
+
+
+// responsive landing page
+
+@media (max-width: 650px)
+
+{
+  i.fa.fa-bars.dropdown-toggle  {
+    display: none;
+  }
+
+span#banner-typed-text, .banner h1 {
+  font-size: 35px;
+  }
+
+p.text-center {
+  margin-bottom: 20px;
+}
+
+.wrapper-2{ padding: 50px}
+
+a.btn.btn-home.btn-lg.animated.zoomIn{display:none;}
+
+.contactez {
+    background-color: none;
+    display: block!important;
+    padding: 5px;
+    border:none;
+    color:white;
+    margin: 0 auto;
+}
+
+.contactez:hover{
+  background-color:none;
+}
+}
+
+
+
 .animated {
 transition: all 0.6s ease-in;
 }
