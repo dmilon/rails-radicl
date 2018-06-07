@@ -1,7 +1,6 @@
 <% if @garden == current_user.garden %>
-  <div class="zone-name zoni">
-    <h1><%= @garden.name.upcase %></h1>
-    <p><%= @garden.address %></p>
+  <div class="zone-name zoni owner">
+    <h1>Ma ferme</h1>
   </div>
   <div class="row meteo animated fadeInUp">
     <a class="weatherwidget-io open-link" href="https://forecast7.com/fr/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
@@ -10,23 +9,23 @@
     </script>
   </div>
 <% else %>
-  <div class="zone-name zoni">
-    <% @users.each do |user| %>
-      <% if user.garden_id == @garden.id %>
-        <%= cl_image_tag user.avatar, class: "avatar-large" %>
-      <% end %>
+  <% @users.each do |user| %>
+    <% if user.garden_id == @garden.id %>
+      <div class="zone-name zoni" style="background-image: url(<%= @garden.photo %>)">
+        <div class="zoni-box">
+          <div class="zoni-profiles">
+            <%= cl_image_tag user.avatar, class: "avatar-other" %>
+          </div>
+          <div class="zoni-title">
+            <h1>BIENVENUE CHEZ <%= user.name.upcase %></h1>
+            <p><%= @garden.name %></p>
+            <p><%= @garden.address %></p>
+          </div>
+     <!-- Bouton follow de Damien -->
+        </div>
+      </div>
     <% end %>
-    <h1><%= @garden.name.upcase %></h1>
-    <p><%= @garden.address %></p>
-   <!--  <%# if current_user.follow?(@garden) %>
-      <%#= link_to follows_path(@garden), method: :post, class: "icon" do %>
-        <button class="btn btn-medium follow">Ne plus suivre</button>
-      <%# end %>
-    <%# else %>
-      <button class="btn btn-medium unfollow">Suivre</button>
-    <%# end %> -->
-  </div>
-
+  <% end %>
 <% end %>
 
 <div class="container show-garden animated fadeInUp">
@@ -100,7 +99,7 @@
 <div id="Shares" class="tabcontent">
   <div class="row garden-logs">
     <% if @garden.zones == [] %>
-      <p class="error-message"><%= "Désolé, ces zones ne sont pas accessibles" %></p>
+      <p class="error-message"><%= "Ajoutez une zone" %></p>
     <% else %>
       <% if @garden.users.include?(current_user) %>
         <div class="message text-left">

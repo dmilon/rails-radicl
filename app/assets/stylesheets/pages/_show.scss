@@ -124,11 +124,30 @@ i.far.fa-trash-alt {
 }
 
 .zone-name.zoni {
-  background-color: #46b2e8;
   padding-top: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  &.owner {
+  background-color: #46b2e8;
+  }
 }
 
-.zone-name.zoni h1 {color: white}
+.zoni-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+.zoni-title {
+    margin-left: 10px;
+    text-align: left;
+}
+
+.zone-name.zoni h1 {
+  color: white;
+  padding-bottom: 0px;
+}
 
 .zone-name.zoni p {color:white;}
 
@@ -173,6 +192,12 @@ p.error-message {
   width: 45px;
   margin-top: -3px;
   border-radius: 50%;
+}
+
+.avatar-other {
+  border-radius: 50%;
+  width: 90px;
+  border: 2px solid white;
 }
 
 img.plus-sign {
