@@ -65,14 +65,17 @@
           <p><%= link_to log_scope.element.zone.name, zone_path(log_scope.element.zone) %></p>
         </div>
       <% end %>
+
       <div class="message-body">
-        <% if log.status %>
-          <div class="text-center">
-            <div><i class="fas fa-check done"></i></div>
-            <%= link_to "annuler", log_path(log), method: :patch, remote: true, class: "icon done" %>
-          </div>
-        <% else %>
-          <%= link_to "Je l'ai fait", log_path(log), method: :patch, remote: true, class: "button-contact" %>
+        <% if @garden.users.include?(current_user)%>
+          <% if log.status %>
+            <div class="text-center">
+              <div><i class="fas fa-check done"></i></div>
+              <%= link_to "annuler", log_path(log), method: :patch, remote: true, class: "icon done" %>
+            </div>
+          <% else %>
+            <%= link_to "Je l'ai fait", log_path(log), method: :patch, remote: true, class: "button-contact" %>
+          <% end %>
         <% end %>
       </div>
     </div>
