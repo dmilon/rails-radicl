@@ -1,2 +1,3 @@
-document.querySelector("#map").innerHTML = '<%= j render "gardens/left_side_index", gardens: @gardens %>';
-document.querySelector(".right-side-index").innerHTML = '<%= j render "gardens/rightsideindex", gardens: @gardens %>';
+document.querySelector(".right-side-index").innerHTML = '<%= j render "gardens/rightsideindex", gardens: @gardens, markers: @markers %>';
+drawMap();
+
