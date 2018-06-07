@@ -9,6 +9,26 @@
   margin:0 auto
 }
 
+.zone-name.autre{
+    padding-left: 126px;}
+
+
+.title-other {
+    margin-top: 21px;
+    text-align:left;
+}
+
+.title-other h1 {
+  text-align: left!important;
+}
+
+.button-contact.followbtn {
+      font-size: 10px;
+      text-align:center;
+      width:94px;
+}
+
+
 a.weatherwidget-io{
 height: 0;
 transition: height 1s ease;
@@ -118,12 +138,14 @@ i.far.fa-trash-alt {
     font-size: 14px;
 }
 
+
+
 .zone-name{
   background-color: whitesmoke;
   padding: 20px;
   text-align: center;
-  position: relative;
 }
+
 
 .zone-name.zoni {
   padding-top: 150px;
@@ -147,12 +169,18 @@ i.far.fa-trash-alt {
 }
 
 .zone-name.zoni h1 {
-  color: white;
-  padding-bottom: 0px;
+    color: white;
+    padding-bottom: 19px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
 }
+
+.zone-name.zoni.others{background-color: white;}
+
 
 .zone-name.zoni p {color:white;}
 
+.zoni-profiles { position:relative;}
 
 .text p {
     font-size: 13px;
@@ -198,14 +226,17 @@ p.error-message {
 
 .avatar-other {
   border-radius: 50%;
-  width: 90px;
-  border: 2px solid white;
+  width: 87px;
+  margin-bottom: 19px;
 }
 
 img.plus-sign {
     width: 45px!important;
     padding: 8px!important;
 }
+
+
+
 
 img.plus-sign:hover{
   cursor:pointer;

@@ -1,7 +1,7 @@
-<%= link_to follow_path(@garden), method: :patch, remote: true, class: "icon" do %>
+<%= link_to follow_path(@garden), method: :patch, remote: true, class: "icon follow-btn" do %>
   <% if current_user.follow?(@garden) %>
-    <button class="btn btn-medium follow">Ne plus suivre</button>
+    <button class="button-contact followbtn">Ne plus suivre</button>
   <% else %>
-    <button class="btn btn-medium follow">Suivre</button>
+    <button class="button-contact followbtn">Suivre</button>
   <% end %>
 <% end %>

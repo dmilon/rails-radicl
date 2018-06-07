@@ -1,31 +1,39 @@
 <% if @garden == current_user.garden %>
-  <div class="zone-name zoni owner">
-    <h1>Ma ferme</h1>
-  </div>
+
+  <%= render 'shared/banner-dashboard' %>
+      <div class="zone-name">
+      <h1>MA FERME</h1>
+      </div>
+    </div>
   <div class="row meteo animated fadeInUp">
     <a class="weatherwidget-io open-link" href="https://forecast7.com/fr/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
     <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
     </script>
   </div>
+
 <% else %>
+<%= render 'shared/banner-dashboard' %>
+
   <% @users.each do |user| %>
     <% if user.garden_id == @garden.id %>
-      <div class="zone-name zoni" style="background-image: url(<%= @garden.photo %>)">
-        <div class="zoni-box">
-          <div class="zoni-profiles">
-            <%= cl_image_tag user.avatar, class: "avatar-other" %>
-          </div>
-          <div class="zoni-title">
-            <h1>BIENVENUE CHEZ <%= user.name.upcase %></h1>
-            <p><%= @garden.name %></p>
-            <p><%= @garden.address %></p>
-          </div>
-     <div class="follow-btn">
-      <%= render "follow_button", garden: @garden %>
-    </div>
+        <div class="zone-name autre">
+          <div class="row">
+            <div class="col-xs-12 col-md-2 col-md-offset-2">
+              <div><%= cl_image_tag user.avatar, class: "avatar-other" %></div>
+              <div> <%= render "follow_button", garden: @garden %></div>
+            </div>
+            <div class="col-xs-12 col-md-5">
+              <div class="title-other">
+                <h1 class="text-left">BIENVENUE CHEZ <%= user.name.upcase %></h1>
+                  <p><%= @garden.name %></p>
+                  <p><%= @garden.address %></p>
+              </div>
+            </div>
         </div>
       </div>
+
+        </div>
     <% end %>
   <% end %>
 <% end %>
@@ -75,9 +83,9 @@
           <%= link_to zone_path(zone) do %>
             <div class="overlay">
               <div class="text">
-                <p>area: <%= zone.area %>m2</p>
+                <p>Superficie : <%= zone.area %>m2</p>
                 <% unless zone.logs.empty? %>
-                  <p>dernière action le:<br><%= zone.logs.last.created_at.strftime("%A, %b %d")%></p>
+                  <p>Votre dernière action : le <br><%= zone.logs.last.date.strftime("%A, %b %d")%></p>
                 <% end %>
               </div>
             </div>
@@ -119,7 +127,7 @@
             <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
           </div>
           <div class="message-body">
-            <p><%= log.created_at.strftime("%A, %b %d") %></p>
+            <p><%= log.date.strftime("%A, %b %d") %></p>
           </div>
           <div class="message-body products">
             <h6><strong><%= log.category %></strong></h6>

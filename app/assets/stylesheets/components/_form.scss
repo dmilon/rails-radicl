@@ -158,13 +158,17 @@ input[type="file"] {
   display: block;
   border-bottom: 1px solid #dcf3fe;
   padding: 10px;
-  margin-top: 10px;
 }
+
+.block-party span:last-child {
+  border-bottom: none;
+}
+
 
 .block-party {
     background-color: rgba(0, 0, 0, 0.022);
     padding: 31px;
-    margin-bottom: -42px;
+    margin-top: 26px;
 }
 
 textarea {
