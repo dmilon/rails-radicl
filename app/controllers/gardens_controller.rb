@@ -65,6 +65,10 @@ class GardensController < ApplicationController
     else
       @logs = @garden.logs.order(date: :desc)
     end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
