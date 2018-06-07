@@ -25,7 +25,7 @@ robert = User.create(admin: true, email: "robert@gmail.com", password: "password
 # Create Damien's farms
 champs = Garden.new(name: "L'envie des champs", area: "200",
   address: "La Heslière, 61290 Longny-au-Perche", latitude: 48.530741, longitude: 0.784926,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528296878/a4b7a1c7313cd6c202d03f7b47d3f6ea.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528374848/20650753-24036201.jpg')
 champs.save!
 damien.garden = champs
 damien.save!

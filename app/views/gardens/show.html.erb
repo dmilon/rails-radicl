@@ -156,13 +156,13 @@
     <div class="modal-content form">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">J'enregistre une action</h4>
+        <h4 class="modal-title" id="myModalLabel">Enregistrer une action</h4>
       </div>
       <div class="modal-body">
         <div class="form-log">
           <%= simple_form_for @log do |f| %>
             <%= f.input :date, as: :string, input_html: { class: "datepicker"} %>
-            <%= f.input :category, collection: Log::ACTIONS, prompt:"Choisissez une action", input_html: { class: "select2" } %>
+            <%= f.input :category, label: 'Type d\'action', collection: Log::ACTIONS, prompt:'Choisissez une action', input_html: { class: "select2" } %>
             <%= f.input :description %>
             <%= hidden_field_tag :garden_id, @garden.id %>
 <!--             <p> On which zones? </p>
@@ -176,7 +176,7 @@
               <% end %>
             </div>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
-            <%= f.submit 'J\'enregistre une action', class: 'btn btn-home btn-lg' %>
+            <%= f.submit 'Enregistrer', class: 'btn btn-home btn-lg' %>
           <% end %>
         </div>
       </div>
