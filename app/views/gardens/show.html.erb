@@ -14,13 +14,9 @@
     <%= cl_image_tag current_user.avatar, class: "avatar-large" %>
     <h1><%= @garden.name.upcase %></h1>
     <p><%= @garden.address %></p>
-   <!--  <%# if current_user.follow?(@garden) %>
-      <%#= link_to follows_path(@garden), method: :post, class: "icon" do %>
-        <button class="btn btn-medium follow">Ne plus suivre</button>
-      <%# end %>
-    <%# else %>
-      <button class="btn btn-medium unfollow">Suivre</button>
-    <%# end %> -->
+    <div class="follow-btn">
+      <%= render "follow_button", garden: @garden %>
+    </div>
   </div>
 
 <% end %>

@@ -41,14 +41,7 @@
 
   <div class="row"></div>
     <div class="col-xs-2 myfollowers no-padding">
-      <div class="items text-center good-width">
-        <h4>amis permacoles</h4>
-      </div>
-      <% current_user.follows.each do |follow| %>
-        <% follow.garden.users.each do |user| %>
-          <div class= "col-xs-6 no-padding"><%= cl_image_tag user.avatar, class: "avatar-medium shared"%></div>
-        <% end %>
-       <% end %>
+      <%= render "my_followers" %>
     </div>
 
     <div class="col-xs-10">
