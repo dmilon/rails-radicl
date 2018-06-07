@@ -1,149 +1,69 @@
 <%= render 'shared/banner' %>
-
-<div class="container">
-
-<div class="wrapper animated anim-scroll">
-<h1 class="how text-center">how does it work?</h1>
-
-
-  <div class="row ">
-    <br><br><br>
-  <%= link_to new_garden_path do %>
-  <div class="col-xs-12 col-sm-3">
-    <div class="card-icon">
-      <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671032/farm.svg" alt="">
-    </div>
-      <p class="text-center">create your farm</p>
-  </div>
-  <% end %>
-  <%# if current_user.garden %>
-    <%#= link_to new_garden_zone_path(current_user.garden) do %>
-    <div class="col-xs-12 col-sm-3">
-      <div class="card-icon">
-        <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
+<div class="container animated anim-scroll">
+  <div class="wrapper">
+    <h1 class="how text-center">Comment ça marche ?</h1>
+    <div class="row">
+      <br><br><br>
+      <%= link_to new_garden_path do %>
+        <div class="col-xs-12 col-sm-3">
+          <div class="card-icon">
+            <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671032/farm.svg" alt="">
+          </div>
+          <p class="text-center">Créez votre ferme et suivez les fermes de votre région</p>
+        </div>
+      <% end %>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-icon">
+          <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527697260/circles2.svg" alt="">
+        </div>
+        <p class="text-center">Ajouter vos zones de permaculture</p>
       </div>
-      <p class="text-center">add your zones</p>
-    </div>
-    <%# end %>
-  <%# end %>
-  <%#= link_to garden_path(current_user.garden) do %>
-    <div class="col-xs-12 col-sm-3">
-      <div class="card-icon">
-        <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671027/watering.svg" alt="">
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-icon">
+          <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671027/watering.svg" alt="">
+        </div>
+        <p class="text-center">Pilotez votre activité au quotidien</p>
       </div>
-      <p class="text-center">log your actions</p>
-    <%# end %>
-    </div>
-  <%#= link_to community_gardens_path do %>
-    <div class="col-xs-12 col-sm-3">
-      <div class="card-icon">
-        <img src="http://res.cloudinary.com/bdmbdm/image/upload/v1527697464/share.svg" alt="">
+      <div class="col-xs-12 col-sm-3">
+        <div class="card-icon">
+          <img src="http://res.cloudinary.com/bdmbdm/image/upload/v1527697464/share.svg" alt="">
+        </div>
+        <p class="text-center">Partagez votre expérience & vos produits</p>
       </div>
-      <p class="text-center">share & learn</p>
     </div>
-  <%# end %>
   </div>
 </div>
+<div class="wrapper-2">
 
-</div>
-
-<div class="wrapper-2 animated anim-scroll">
-<h1 class="how text-center">get inspired, explore our greatest farms</h1>
-<br>
-
-<div class="row ">
-  <% @gardens.each do |garden| %>
-    <div class="col-xs-12 col-sm-3">
-      <div class="card">
-        <%= cl_image_tag garden.photo, class: "card-img-top" %>
-          <!-- <a href="#" class="icon"><i class="fas fa-seedling"></i></a>
- -->          <div class="overlay">
-        <%= link_to garden_path(garden) do %>
-            <div class="text">
-              <h2><%= garden.name %></h2>
-              <p><%= garden.address %></p>
+  <h1 class="how text-center">Découvrez les fermes de votre région</h1>
+  <br>
+  <div class="row">
+    <% @gardens.each do |garden| %>
+      <div class="col-xs-12 col-sm-3">
+        <div class="card">
+          <%= cl_image_tag garden.photo, class: "card-img-top" %>
+          <% if user_signed_in? %>
+            <% follow = current_user.follow?(garden) %>
+            <%= link_to follows_path(garden_id: garden.id), method: :post, class: "icon" do %>
+              <i class="fas fa-heart <%= "followed" if follow %>" ></i>
+            <% end %>
+          <% end %>
+          <%= link_to garden_path(garden) do %>
+            <div class="overlay">
+          <%= cl_image_tag garden.users[0].avatar, class: "avatar card-avatar" %>
+              <div class="text">
+                <h2><%= garden.name %></h2>
+                <p><%= garden.address %></p>
+              </div>
             </div>
-          </div>
-
+            <div class="card-link">
+              <p>découvrir</p>
+            </div>
+          <% end %>
         </div>
-          <div class="card-link">
-            <p>discover</p>
-          </div>
-        <% end %>
-    </div>
-<% end %>
+      </div>
+    <% end %>
+  </div>
+  <br>
+  <div class="text-center"> <%= link_to "Rejoindre la communauté", community_gardens_path, class: "btn btn-home btn-lg text-center green-button animated zoomIn" %></div>
 </div>
-<br>
- <div class="text-center"> <%= link_to "join the community", community_gardens_path, class: "btn btn-home btn-lg text-center green-button animated zoomIn" %></div>
-</div>
-
-
-
-<!-- this is a card model guys <3 -->
-  <!-- this is it, copy-paste -->
-<!--
-  <div class="col-xs-12 col-sm-3">
-    <div class="card">
-      <img class="card-img-top" src="https://static1.squarespace.com/static/57237e32d210b805ad7f7ed0/t/57ce82eb725e25df3e05ab17/1473151733684/?format=750w" alt="Card image cap">
-      <a href="#" class="icon"><i class="fas fa-seedling"></i></a>
-      <div class="card-body">
-        <h2 class="card-title">Name of the garden</h2>
-        <p class="name-gardener">Name of the gardener</p>
-        <p class="address-garden">40 rue de Lonchamp - Fontainebleau</p>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-        <div class="card-link">
-          <a href="#">explore</a>
-        </div>
-    </div>
-  </div>
-
-  <div class="col-xs-12 col-sm-3">
-    <div class="card">
-      <img class="card-img-top" src="https://static1.squarespace.com/static/57237e32d210b805ad7f7ed0/t/57ce82eb725e25df3e05ab17/1473151733684/?format=750w" alt="Card image cap">
-      <a href="#" class="icon"><i class="fas fa-seedling"></i></a>
-      <div class="card-body">
-        <h2 class="card-title">Name of the garden</h2>
-        <p class="name-gardener">Name of the gardener</p>
-        <p class="address-garden">40 rue de Lonchamp - Fontainebleau</p>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-        <div class="card-link">
-          <a href="#">explore</a>
-        </div>
-    </div>
-  </div>
-
-
-
-  <div class="col-xs-12 col-sm-3">
-    <div class="card">
-      <img class="card-img-top" src="https://static1.squarespace.com/static/57237e32d210b805ad7f7ed0/t/57ce82eb725e25df3e05ab17/1473151733684/?format=750w" alt="Card image cap">
-      <a href="#" class="icon"><i class="fas fa-seedling"></i></a>
-      <div class="card-body">
-        <h2 class="card-title">Name of the garden</h2>
-        <p class="name-gardener">Name of the gardener</p>
-        <p class="address-garden">40 rue de Lonchamp - Fontainebleau</p>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      </div>
-        <div class="card-link">
-          <a href="#">explore</a>
-        </div>
-    </div>
-  </div> -->
-  <!-- <div class="search-bar">
-    <%#= form_tag root_path, method: :get do %>
-    <%#= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a garden"
-    %>
-  <%# end %>
-  </div>
-  <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>">
-  </div> -->
-<!-- end of row -->

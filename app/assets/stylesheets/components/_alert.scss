@@ -15,6 +15,11 @@
 }
 
 
+.alert.alert-info.alert-dismissible {
+    width: 100vw;
+    margin-left: -102px;
+}
+
 .alert {
     position: absolute;
     top: 85px;
@@ -30,7 +35,9 @@
 }
 
 button.close {
+    padding-top: 10px;
     margin-top: -1px;
+    color: black;
     font-size: 18px;
     color: white!important;
 }

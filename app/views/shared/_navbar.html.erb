@@ -9,11 +9,11 @@
     <% if user_signed_in? %>
       <% if current_user.garden.nil? == false %>
         <!-- Links when logged in -->
-        <%= link_to "My farm", garden_path(current_user.garden), class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Dashboard", stats_garden_path(current_user.garden), class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Community", community_gardens_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Ma ferme", garden_path(current_user.garden), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Tableau de bord", stats_garden_path(current_user.garden), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Communauté", community_gardens_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% else %>
-        <%= link_to "Community", community_gardens_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Communauté", community_gardens_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
       <!-- Avatar with dropdown menu -->
         <div class="navbar-wagon-item">
@@ -41,7 +41,7 @@
         </div>
     <% else %>
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 
@@ -50,9 +50,9 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">My gardens</a></li>
-        <li><a href="#">My zones</a></li>
-        <li><a href="#">Help</a></li>
+        <li><a href="#">Ma ferme</a></li>
+        <li><a href="#">Mes zones</a></li>
+        <li><a href="#">Aide</a></li>
       </ul>
     </div>
   </div>

@@ -1,11 +1,10 @@
 <% if @garden == current_user.garden %>
   <div class="zone-name zoni">
-    <%= cl_image_tag current_user.avatar, class: "avatar-large" %>
     <h1><%= @garden.name.upcase %></h1>
     <p><%= @garden.address %></p>
   </div>
   <div class="row meteo animated fadeInUp">
-    <a class="weatherwidget-io open-link" href="https://forecast7.com/en/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
+    <a class="weatherwidget-io open-link" href="https://forecast7.com/fr/48d530d75/longny-au-perche/" data-font="Open Sans" data-icons="Climacons Animated" data-mode="Forecast" data-theme="pure" >Longny-au-Perche, France</a>
     <script>
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
     </script>
@@ -63,6 +62,7 @@
           </div>
         <% end %>
       <% end %>
+
       <% @garden.zones.each do |zone| %>
         <div class="col-xs-12 col-md-3">
           <div class="card">
@@ -164,19 +164,18 @@
             <%= f.input :date, as: :string, input_html: { class: "datepicker"} %>
             <%= f.input :category, collection: Log::ACTIONS, prompt:"Choisissez une action", input_html: { class: "select2" } %>
             <%= f.input :description %>
-            <%= f.input :quantity %>
             <%= hidden_field_tag :garden_id, @garden.id %>
 <!--             <p> On which zones? </p>
  -->            <%#= f.simple_fields_for :zones do |v|  %>
               <%#= v.collection_check_boxes :name, @garden.zones, :id, :name %>
             <%# end %>
-            <p> On which elements? </p>
-            <%= f.simple_fields_for :elements do |e| %>
-              <%= e.collection_check_boxes :name, @garden.elements, :id, :name  %>
-
-            <% end %>
+            <p> Sur quels éléments ? </p>
+            <div class="block-party">
+              <%= f.simple_fields_for :elements do |e| %>
+                <%= e.collection_radio_buttons :name, @garden.elements, :id, :name %>
+              <% end %>
+            </div>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
-
             <%= f.submit 'J\'enregistre une action', class: 'btn btn-home btn-lg' %>
           <% end %>
         </div>
@@ -199,7 +198,7 @@
             <%#= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
             <p> Que voulez-vous partager? </p>
             <%= f.simple_fields_for :elements do |e| %>
-              <%= e.collection_check_boxes :name, @garden.elements, :id, :name %>
+              <%= e.collection_check_boxes :name, @garden.elements, :id, :name, class: 'form-check' %>
             <% end %>
 <!--             <p> From which zones? </p>
  -->            <%#= f.simple_fields_for :zones do |v|  %>

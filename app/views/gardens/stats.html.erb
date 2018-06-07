@@ -1,7 +1,7 @@
 <%= render 'shared/banner-dashboard' %>
       <div class="zone-name">
       <h1><%= @garden.name.upcase %></h1>
-        <p class="show">overview</p>
+        <p class="show">Vue d'ensemble</p>
       </div>
     </div>
 
@@ -36,8 +36,8 @@
 
               <div class="col-xs-12 col-md-3">
                 <div class="clearfix">
-                  <div class="c100 p40 big red animated fadeInUp">
-                      <span><%= @garden.elements.count %> products</span>
+                  <div class="c100 p40 big blue animated fadeInUp">
+                      <span><%= @garden.elements.count %> ressources</span>
                       <div class="slice">
                           <div class="bar"></div>
                           <div class="fill"></div>
@@ -50,7 +50,7 @@
               <div class="col-xs-12 col-md-3">
                 <div class="clearfix">
                   <div class="c100 p15 big red animated fadeInUp">
-                      <span><%=  @garden.logs.count %> logs</span>
+                      <span><%=  @garden.logs.count %> actions</span>
                       <div class="slice">
                           <div class="bar"></div>
                         <div class="fill"></div>
@@ -65,34 +65,26 @@
 
 
 <div class="wrapper-2 animated anim-scroll">
-  <h1 class="show">stats</h1>
+  <h1 class="show text-center">Actions du mois dernier</h1>
   <div class="row">
     <div class="col-xs-12">
     <!-- <div class="contributors">
     </div> -->
       <div class="row overview">
         <div class="col-xs-12 col-md-6">
+            <h3 style="color: black" class="text-center">Par zone</h3>
             <canvas id="myBarChart1" width="1200" height="1000"></canvas>
         </div>
         <div class="col-xs-12 col-md-6">
-            <canvas id="myBarChart2" width="1200" height="1000"></canvas>
+          <h3 style="color: black" class="text-center">Par catégorie</h3>
+          <canvas id="myBarChart3" width="1200" height="1000"></canvas>
         </div>
-      </div>
-      <div class="row overview">
-        <div class="col-xs-12 col-md-6">
-          <canvas id="myBarChart3" width="1200" height="600"></canvas>
-        </div>
-      <div class="col-xs-12 col-md-6">
-        <canvas id="myBarChart4" width="1200" height="600"></canvas>
-      </div>
       </div>
     </div>
   </div>
-
-
 </div>
 <br><br>
-<div class="text-center animated zoomIn"> <%= link_to "share my stats with the community", community_gardens_path, class: "btn btn-home btn-lg text-center green-button" %></div>
+<div class="text-center animated zoomIn"> <%= link_to "Partagez mes données avec ma communauté", community_gardens_path, class: "btn btn-home btn-lg text-center green-button" %></div>
 <br><br>
 
       </div>
@@ -102,20 +94,34 @@
 
 </div>
 </div>
+
+<!-- <div>
+  <p><%#= @weeding %></p>
+  <p><%#= @data_serie_logs %></p>
+</div> -->
 
 <%= javascript_pack_tag 'chart' %>
 
-<script>
+<!--script>
   var labels1 = <%= raw @chart1_labels.to_json %>
   var datasets1 = <%= raw @chart1_datasets.to_json %>;
   initChart("myBarChart1", labels1, datasets1);
   var labels2 = <%= raw @chart2_labels.to_json %>
   var datasets2 = <%= raw @chart2_datasets.to_json %>;
-  initChart("myBarChart2", labels2, datasets2);
+  initStackedChart("myBarChart2", labels2, datasets2);
   var labels3 = <%= raw @chart3_labels.to_json %>
   var datasets3 = <%= raw @chart3_datasets.to_json %>;
-  initChart("myBarChart3", labels3, datasets3);
+  initRadarChart("myBarChart3", labels3, datasets3);
   var labels4 = <%= raw @chart4_labels.to_json %>
   var datasets4 = <%= raw @chart4_datasets.to_json %>;
-  initChart("myBarChart4", labels4, datasets4);
+  initLineChart("myBarChart4", labels4, datasets4);
+</script-->
+
+<script>
+  var labels1 = <%= raw @chart1_labels.to_json %>
+  var datasets1 = <%= raw @chart1_datasets.to_json %>;
+  initChart("myBarChart1", labels1, datasets1);
+  var labels3 = <%= raw @chart3_labels.to_json %>
+  var datasets3 = <%= raw @chart3_datasets.to_json %>;
+  initRadarChart("myBarChart3", labels3, datasets3);
 </script>
