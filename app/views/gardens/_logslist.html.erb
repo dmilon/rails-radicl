@@ -49,8 +49,9 @@
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">
         <% end %>
       </div>
-      <div class="message-body products">
-        <p><%= log.created_at.strftime("%A, %b %d") %></p>
+      <div class="message-body products date">
+        <p><%= l(log.created_at, format: "%A %d %b ") %></p>
+         <!-- #.strftime("%A, %b %d") -->
       </div>
       <div class="message-body products">
         <h6><strong><%= log.category %></strong></h6>
