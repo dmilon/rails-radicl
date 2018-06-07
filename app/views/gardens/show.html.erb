@@ -12,7 +12,11 @@
   </div>
 <% else %>
   <div class="zone-name zoni">
-    <%= cl_image_tag current_user.avatar, class: "avatar-large" %>
+    <% @users.each do |user| %>
+      <% if user.garden_id == @garden.id %>
+        <%= cl_image_tag user.avatar, class: "avatar-large" %>
+      <% end %>
+    <% end %>
     <h1><%= @garden.name.upcase %></h1>
     <p><%= @garden.address %></p>
    <!--  <%# if current_user.follow?(@garden) %>
