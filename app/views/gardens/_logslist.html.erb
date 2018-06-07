@@ -2,19 +2,10 @@
   <% if @garden.zones == [] %>
     <p class="error-message"><%= "Sorry, no zones are available " %></p>
   <% else %>
-    <div id= "searchbar">
-      <%= text_field_tag :query,
-        params[:query],
-        class: "barwidth",
-        placeholder: "search for actions"%>
-      <i class="far fa-times-circle"></i>
-      <div class= "filter">
-        <div id="myBtnContainer">
-          <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
-          <button class="btn filter-btn" data-filter="category">Category</button>
-          <button class="btn filter-btn" data-filter="date"> Date</button>
-          <button class="btn filter-btn" data-filter="date"> Element</button>
-        </div>
+      <div id= "searchbar">
+        <%= form_tag garden_path(@garden), method: :get do %>
+          <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "cherchez une action" %>
+        <% end %>
       </div>
     </div>
     <% if @garden.users.include?(current_user) %>
@@ -32,31 +23,27 @@
   <% @logs.each do |log| %>
     <div class="message">
       <div class="message-name filterDiv <%= log.category %>">
-        <% if log.category == "preparing soil" %>
+        <% if log.category == "Labourage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1561630_cc.svg">
-        <% elsif log.category == "fertilisating" %>
+        <% elsif log.category == "Fertilisation" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1042097_cc.svg">
-        <% elsif log.category == "sowing" %>
+        <% elsif log.category == "Semis" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/seed.svg">
-        <% elsif log.category == "transplanting" %>
+        <% elsif log.category == "Repiquage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">
-        <% elsif log.category == "watering" %>
+        <% elsif log.category == "Arrosage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240203_cc.svg">
-        <% elsif log.category == "weeding" %>
+        <% elsif log.category == "Désherbage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189035/noun_984560_cc.svg">
-        <% elsif log.category == "mulching" %>
+        <% elsif log.category == "Paillage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240202_cc.svg">
-        <% elsif log.category == "mulching" %>
-          <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240202_cc.svg">
-        <% elsif log.category == "caring crops" %>
+        <% elsif log.category == "Protection" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189177/noun_1002074_cc.svg">
-        <% elsif log.category == "carrying" %>
+        <% elsif log.category == "Récolte" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671027/brouette.svg">
-        <% elsif log.category == "cleaning" %>
+        <% elsif log.category == "Nettoyage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189352/noun_1551479_cc.svg">
-        <% elsif log.category == "cleaning" %>
-          <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189352/noun_1551479_cc.svg">
-        <% elsif log.category == "sharing" %>
+        <% elsif log.category == "Distribution" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671030/selling.svg">
         <% else %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">

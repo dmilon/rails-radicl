@@ -885,3 +885,9 @@ margin: 0 auto;
 .c100.orange.dark:hover > span {
   color: #e08833;
 }
+.c100.red .bar, .c100.red .fill {
+  border-color: #D60014 !important;
+}
+.c100.red:hover > span {
+  color: #D60014;
+}
