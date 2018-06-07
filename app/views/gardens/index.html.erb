@@ -16,21 +16,21 @@
     <div class="row zones-garden">
       <div class="col-xs-12 col-md-6">
         <div id= "search-community">
-        <%= form_tag community_gardens_path, method: :get do %>
+        <%= form_tag community_gardens_path, method: :get, remote: true do %>
           <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "trouver une ferme, construire sa communauté" %>
         <% end %>
         </div>
       <br><br>
-        <div
-          id="map"
-          style="min-width: 500px; min-height: 600px;"
-          data-markers="<%= @markers.to_json %>">
-        </div>
+      <div
+        id="map"
+        style="min-width: 500px; min-height: 600px;"
+        data-markers="<%= @markers.to_json %>">
+      </div>
       </div>
 
 
     <div class="col-xs-12 col-md-6 right-side-index">
-      <%= render "rightsideindex", gardens: @gardens %>
+      <%= render "rightsideindex", gardens: @gardens, markers: @markers %>
     </div>
   </div>
 </div>

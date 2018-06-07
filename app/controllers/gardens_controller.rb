@@ -22,10 +22,10 @@ class GardensController < ApplicationController
     @products = Product.all
     @users = User.all
     @product = Product.new
-    # respond_to do |format|
-    #   format.html { redirect_to community_gardens_path }
-    #   format.js
-    # end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 
