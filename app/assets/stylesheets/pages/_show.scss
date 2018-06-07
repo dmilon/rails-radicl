@@ -14,6 +14,31 @@ height: 0;
 transition: height 1s ease;
 }
 
+.btn.btn-medium {
+  border: 1px solid #C1C1C1;
+  font-size: 11px;
+  &.btn.btn-medium:focus{
+    outline: none;
+  }
+  // transition: all 0.3s ease;
+  &.done{
+    text-decoration: underline;
+    margin: auto 20px;
+    border: 1px solid transparent;
+  }
+  &.mark_as_done:hover {
+    transform: scale(1.1);
+  }
+  &.mark_as_done:focus {
+    outline: none;
+  }
+  &.follow {
+    font-size: 20px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+  }
+}
 .open-link {
   height: 100px!important;
 }
@@ -52,8 +77,6 @@ i.far.fa-times-circle {
 }
 
 
-
-
 .btn.active{
   background-color: #46b2e8;
   border: 1px solid #46b2e8;
@@ -75,7 +98,6 @@ p {margin: O}
     border-bottom: 1px solid #46b2e8;
     width: 818px;
     margin: 0 auto;
-    justify-content: center;
 }
 
 i.far.fa-edit {
@@ -102,8 +124,8 @@ i.far.fa-trash-alt {
 }
 
 .zone-name.zoni {
- background-color: #46b2e8;
- padding-top: 150px;
+  background-color: #46b2e8;
+  padding-top: 150px;
 }
 
 .zone-name.zoni h1 {color: white}
@@ -150,6 +172,7 @@ p.error-message {
 .avatar-large {
   width: 45px;
   margin-top: -3px;
+  border-radius: 50%;
 }
 
 img.plus-sign {
@@ -169,6 +192,7 @@ img.plus-sign:hover{
   flex-grow: 1;
   max-width: 800px;
   text-align: left;
+  flex: 0 0 18.4%;
 }
 
 
@@ -212,8 +236,8 @@ img.plus-sign:hover{
   font-weight: bold;
 }
 
-i.fas.fa-check-circle {
-  font-size: 28px;
+i.fas.fa-check {
+  font-size: 24px;
   color: grey;
   &.done {
     color: #04A366;
@@ -230,3 +254,6 @@ i.fas.fa-check-circle {
 .badge-success {background-color: green;}
 
 .badge-warning {background-color: coral;}
+
+
+

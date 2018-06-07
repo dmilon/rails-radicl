@@ -1,6 +1,6 @@
 <div class="row garden-logs">
   <% if @garden.zones == [] %>
-    <p class="error-message"><%= "Sorry, no zones are available " %></p>
+    <p class="error-message"><%= "Désolé, ces zones ne sont pas accessibles " %></p>
   <% else %>
       <div id= "searchbar">
         <%= form_tag garden_path(@garden), method: :get do %>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="message-body">
-          <p>log a new action</p>
+          <p>J'enregistre une action</p>
         </div>
       </div>
     <% end %>
@@ -66,7 +66,14 @@
       <div class="message-body">
         <p><strong>
           <%= link_to log_path(log), method: :patch, remote: true, class: "icon" do %>
-            <i class="fas fa-check-circle <%= "done" if log.status %>"></i>
+            <% if log.status %>
+              <button type="button" class="btn btn-medium done">
+                <i class="fas fa-check done"></i>
+                annuler
+              </button>
+            <% else %>
+              <button type="button" class="btn btn-medium mark_as_done">Marquer comme fait</button>
+            <% end %>
           <% end %>
           <!-- <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528202520/noun_1552127_cc_1.svg" alt=""> -->
           <!-- if @log.status = true (done), alors bouton passe au vert
