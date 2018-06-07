@@ -2,8 +2,8 @@
 function confirmSent()
 {
   const x = swal({
-  title: "Well sent",
-  text: "Please check your emails for updates and delivery",
+  title: "Message envoyé",
+  text: "Merci et à bientôt sur Radicl",
   icon: "success",
   timer: 20000,
 });

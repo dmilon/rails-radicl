@@ -15,7 +15,7 @@
         </div>
 
         <div class="message-body">
-          <p>J'enregistre une action</p>
+          <p>Enregistrer une action</p>
         </div>
       </div>
     <% end %>
@@ -51,7 +51,7 @@
       </div>
 
       <div class="message-body products date">
-        <p><%= l(log.date, format: "%A %d %b ") %></p>
+        <p><%= log.date.strftime("%d/%m/%Y") %></p>
          <!-- #.strftime("%A, %b %d") -->
       </div>
       <div class="message-body products">
