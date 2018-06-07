@@ -21,7 +21,9 @@
             <p><%= @garden.name %></p>
             <p><%= @garden.address %></p>
           </div>
-     <!-- Bouton follow de Damien -->
+     <div class="follow-btn">
+      <%= render "follow_button", garden: @garden %>
+    </div>
         </div>
       </div>
     <% end %>
