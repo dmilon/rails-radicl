@@ -15,7 +15,7 @@ louisa = User.create(admin: true, email: "louisa@gmail.com", password: "password
 olivier = User.create(admin: true, email: "olivier@gmail.com", password: "password", name: "olivier", remote_avatar_url: "https://randomuser.me/api/portraits/men/11.jpg")
 delphine = User.create(admin: true, email: "delphine@gmail.com", password: "password", name: "delphine", remote_avatar_url: "https://randomuser.me/api/portraits/women/9.jpg")
 juliette = User.create(admin: true, email: "juliette@gmail.com", password: "password", name: "juliette", remote_avatar_url: "https://randomuser.me/api/portraits/women/11.jpg")
-denis = User.create(admin: true, email: "denis@gmail.com", password: "password", name: "denis", remote_avatar_url: "https://randomuser.me/api/portraits/men/13.jpg")
+denis = User.create(admin: true, email: "denis@gmail.com", password: "password", name: "denis", remote_avatar_url: "https://randomuser.me/api/portraits/men/32.jpg")
 lea = User.create(admin: true, email: "lea@gmail.com", password: "password", name: "denis", remote_avatar_url: "https://randomuser.me/api/portraits/men/10.jpg")
 mohammed = User.create(admin: true, email: "mohammed@gmail.com", password: "password", name: "mohammed", remote_avatar_url: "https://randomuser.me/api/portraits/men/20.jpg")
 arnold = User.create(admin: true, email: "arnold@gmail.com", password: "password", name: "arnold", remote_avatar_url: "https://randomuser.me/api/portraits/men/14.jpg")
@@ -25,7 +25,7 @@ robert = User.create(admin: true, email: "robert@gmail.com", password: "password
 # Create Damien's farms
 champs = Garden.new(name: "L'envie des champs", area: "200",
   address: "La Heslière, 61290 Longny-au-Perche", latitude: 48.530741, longitude: 0.784926,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528374848/20650753-24036201.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528383011/44799499.jpg')
 champs.save!
 damien.garden = champs
 damien.save!
