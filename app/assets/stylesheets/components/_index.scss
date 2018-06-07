@@ -11,6 +11,11 @@
 @import "circle";
 
 .avatar-large.shared{ width: 78px}
+.avatar-medium.shared{
+  width: 60px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px grey;
+}
 
 .message-body h6 {
   color: #2b4635
@@ -22,3 +27,33 @@ text-decoration: underline!important}
 .message-body.product {
   width: 110px;
 }
+
+// .no-padding{
+//   padding: 0;
+// }
+
+.items{
+  background-color: #DCF3FE;
+  height: 50px;
+  border-radius: 5px;
+  padding-top: 1px;
+  margin: 5px;
+  margin-bottom: 20px;
+}
+
+.border{
+  border-left: 1px solid #DCF3FE;
+}
+
+.margin-bottom{
+  margin-bottom: 40px;
+}
+
+.good-width{
+  width: 165px;
+}
+
+.center{
+  margin-left: 400px;
+}
+

@@ -8,6 +8,7 @@
          <!--  <a href="#" class="icon"><i class="fas fa-seedling"></i></a> -->
         <%= link_to garden_path(garden) do %>
           <div class="overlay">
+        <%= cl_image_tag garden.users[0].avatar, class: "avatar card-avatar" %>
             <div class="text">
               <h2><%= garden.name %></h2>
               <p><%= garden.address %></p>
@@ -16,7 +17,7 @@
 
         </div>
           <div class="card-link">
-            <p>discover</p>
+            <p>découvrir</p>
           </div>
         <% end %>
     </div>

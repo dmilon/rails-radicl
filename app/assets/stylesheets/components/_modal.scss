@@ -3,16 +3,21 @@ button.plus {
     border: none;
 }
 
+.modal-header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #46b2e8;
+    color: white;
+}
+
 .modal-body{
-  padding: 40px 50px;
+  padding: 30px;
 }
 
 .modal-content {
 background-color: white !important}
 
-label.collection_check_boxes {
-    padding: 5px 10px;
-}
+
 
 legend {
     margin-bottom: 10px;

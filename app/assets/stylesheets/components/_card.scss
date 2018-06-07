@@ -4,6 +4,13 @@
   padding: 30px;
 }
 
+
+.card-avatar {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
 .wrapper {margin-bottom: 100px}
 
 .wrapper-2 {
@@ -122,17 +129,13 @@ i.fas.fa-heart {
   padding: 4px;
   font-size: 14px;
   z-index: 300;
-  background-color: #3fb1ea;
   color: white;
   &.followed {
-    background-color: white;
-    color: #294637;
+    color: #2ba578;
   }
 }
 
-i.fas.fa-heart:hover {
-  color: #294637;
-}
+
 
 .card-link {
   background-color: #3fb1ea;
