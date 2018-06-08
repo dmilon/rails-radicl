@@ -44,37 +44,10 @@
         <%= render "my_followers" %>
       </div>
 
-
-      <div class="col-xs-8 col-xs-offset-1">
-        <div class="row">
-          <div class="items text-center">
-            <h4>Produits partagés dans ma communauté</h4>
-            <br>
-          </div>
-        <% current_user.follows.each do |follow| %>
-          <% follow.garden.products.each do |product| %>
-            <div class="message">
-              <div class="message-name">
-                <%= cl_image_tag product.photo, class: "photo-produit"  %>
-              </div>
-              <div class="message-body product">
-                <p><strong> <%= product.description %> <%= product.element.name.upcase %> x <%= product.quantity %></strong></p>
-              </div>
-              <div class="message-body">
-                <p>Partagé par <%= product.element.zone.garden.users[0].name.capitalize %></p>
-              </div>
-              <div class="message-body adress-garden">
-                <h6><%= product.element.zone.garden.name.upcase %></h6>
-              </div>
-              <div class="message-body">
-                <button class="button-contact sweet-1" data-toggle="modal" data-target="#myModal-message"> CONTACT </button>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-        </div>
-
-    </div>
+    <div class="col-xs-8 col-xs-offset-1">
+      <div class="products">
+        <%= render "products" %>
+      </div>
   </div>
   <!-- this is the end of log section -->
   <br><br>
