@@ -1,0 +1,57 @@
+<div class="row">
+        <%# if @garden.zones == [] %>
+        <%# else %>
+        <div class="items text-center">
+          <h4>Produits partagés dans ma communauté</h4>
+          <br>
+        </div>
+
+        <!-- <div class= "center margin-bottom">
+      <%#= button_to "Partager un produit", new_product_path(@product), method: :get, class: "button-contact sweet-1 " %>
+    </div> -->
+  <!--       <div id= "searchbar"> -->
+            <%#= text_field_tag :query,
+              params[:query],
+              class: "barwidth",
+              placeholder: "rechercher un produit"%>
+<!--               <i class="far fa-times-circle"></i> -->
+          <!-- <div class= "filter">
+            <div id="myBtnContainer">
+              <button class="btn active btn-lg btn-home filter-btn" data-filter="all"> Show all</button>
+              <button class="btn filter-btn" data-filter="category">Category</button>
+              <button class="btn filter-btn" data-filter="date">Date</button>
+              <button class="btn filter-btn" data-filter="date">Availability</button>
+            </div>
+          </div> -->
+<!--         </div> -->
+      <% current_user.follows.each do |follow| %>
+        <% follow.garden.products.each do |product| %>
+        <%# @users.each do |user| %>
+          <%# if user.garden == product.element.zone.garden  %>
+          <div class="message">
+            <div class="message-name">
+              <%= cl_image_tag product.photo, class: "photo-produit"  %>
+            </div>
+            <div class="message-body product">
+              <p><strong><%= product.element.name.upcase %> x <%= product.quantity %></strong></p>
+            </div>
+            <div class="message-body">
+              <p>Partagé par <%= product.element.zone.garden.users[0].name %></p>
+            </div>
+           <!--  <div class="message-body"> -->
+                <%# if product.end_date > Date.today %>
+                 <!--  <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/goFichier_1_4x-100.jpg" width= 20> -->
+                <%# else %>
+                  <!-- <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1528132671/foFichier_1_4x-100.jpg" width= 20> -->
+                <%# end %>
+            <!-- </div> -->
+            <div class="message-body adress-garden">
+              <h6><%= product.element.zone.garden.name.upcase %></h6>
+            </div>
+            <div class="message-body">
+              <button class="button-contact sweet-1" data-toggle="modal" data-target="#myModal-message"> CONTACT </button>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
