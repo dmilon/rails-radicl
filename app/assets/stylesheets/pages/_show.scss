@@ -257,8 +257,9 @@ img.plus-sign:hover{
   }
   &.elements{
     flex: 0;
-    margin-left: 30px;
-  }
+    min-width: 88px;
+    text-align: center;
+      }
   flex: 0 0 18.4%;
   &.date{
     margin-left: 15px;
