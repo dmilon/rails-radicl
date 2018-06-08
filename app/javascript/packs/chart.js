@@ -19,6 +19,9 @@ function initChart(id, labels, datasets) {
                   display: false,
                   gridLines: {
                       display: false
+                  },
+                  ticks: {
+                      beginAtZero:true
                   }
               }]
           }

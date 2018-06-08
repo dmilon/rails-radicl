@@ -122,7 +122,6 @@ class GardensController < ApplicationController
       @chart1_data2 << sum
       end
     end
-
     @chart1_datasets = [{
       label: 'Ma ferme',
       data: @chart1_data1,

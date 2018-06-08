@@ -192,14 +192,14 @@ scopei4.save!
 # scope8.save!
 
 
-soil3 = Log.new(category: "Labourage", description: "Labourage pour mes artichauts, creuser et désherber", status: true, date: '2018-06-02')
-soil3.user = damien
-soil3.save!
+# soil3 = Log.new(category: "Labourage", description: "Labourage pour mes artichauts, creuser et désherber", status: true, date: '2018-06-02')
+# soil3.user = damien
+# soil3.save!
 
-scope9 = LogScope.new
-scope9.log_id = soil3.id
-scope9.element_id = artichaut.id
-scope9.save!
+# scope9 = LogScope.new
+# scope9.log_id = soil3.id
+# scope9.element_id = artichaut.id
+# scope9.save!
 
 # fert3 = Log.new(category: "Fertilisation", description: "étaler le composte pour mes artichauts", status: true, date: '2018-06-02')
 # fert3.user = damien
@@ -219,14 +219,14 @@ scope9.save!
 # scope11.element_id = artichaut.id
 # scope11.save!
 
-soil4 = Log.new(category: "Labourage", description: "Labourage pour mes épinards", status: false, date: '2018-06-01')
-soil4.user = damien
-soil4.save!
+# soil4 = Log.new(category: "Labourage", description: "Labourage pour mes épinards", status: false, date: '2018-06-01')
+# soil4.user = damien
+# soil4.save!
 
-scope12 = LogScope.new
-scope12.log_id = soil4.id
-scope12.element_id = epinard.id
-scope12.save!
+# scope12 = LogScope.new
+# scope12.log_id = soil4.id
+# scope12.element_id = epinard.id
+# scope12.save!
 
 # fert4 = Log.new(category: "Fertilisation", description: "étaler le compost sur mes épinards", status: true, date: '2018-06-03')
 # fert4.user = damien
