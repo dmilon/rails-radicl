@@ -3,7 +3,7 @@
 <div class="container map">
 
   <div class="wrapper wrapper-3 animated fadeInUp">
-    <h1 class="how text-center">Rejoignez la communauté permacole</h1>
+    <h1 class="how text-center">Rejoignez la communauté de permaculteurs</h1>
   </div>
 
   <div class="tab animated fadeInUp">
@@ -16,78 +16,76 @@
     <div class="row zones-garden">
       <div class="col-xs-12 col-md-6">
         <div id= "search-community">
-        <%= form_tag community_gardens_path, method: :get, remote: true do %>
-          <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "trouver une ferme, construire sa communauté" %>
-        <% end %>
+          <%= form_tag community_gardens_path, method: :get, remote: true do %>
+            <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "trouver une ferme, construire sa communauté" %>
+          <% end %>
         </div>
-      <br><br>
-      <div
-        id="map"
-        style="min-width: 500px; min-height: 600px;"
-        data-markers="<%= @markers.to_json %>">
-      </div>
+        <br><br>
+        <div
+          id="map"
+          style="min-width: 500px; min-height: 600px;"
+          data-markers="<%= @markers.to_json %>">
+        </div>
       </div>
 
 
-    <div class="col-xs-12 col-md-6 right-side-index">
-      <%= render "rightsideindex", gardens: @gardens, markers: @markers %>
+      <div class="col-xs-12 col-md-6 right-side-index">
+        <%= render "rightsideindex", gardens: @gardens, markers: @markers %>
+      </div>
     </div>
   </div>
-</div>
 
 
-<!-- this is the shared section -->
-<div id="Shared" class="tabcontent">
+  <!-- this is the shared section -->
+  <div id="Shared" class="tabcontent">
 
-  <div class="row">
-    <div class="col-xs-2 myfollowers no-padding">
-      <%= render "my_followers" %>
-    </div>
-
+    <div class="row">
+      <div class="col-xs-2 myfollowers no-padding">
+        <%= render "my_followers" %>
+      </div>
 
     <div class="col-xs-8 col-xs-offset-1">
       <div class="products">
         <%= render "products" %>
       </div>
   </div>
-</div>
   <!-- this is the end of log section -->
-<br><br>
-<br><br>
-</div>
-<!-- <div>
-  <h1>Followed</h1>
-  <#% current_user.follows.each do |follow| %>
-  <p><%#= follow.garden.name %></p>
-  <%# end %>
-</div>
- -->
-<div class="modal fade" id="myModal-message" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content form">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">send a message</h4>
-      </div>
-      <div class="modal-body">
-        <div class="form-actions">
-            <div>
-              <br>
-              <label for="name">your name:</label>
-              <input type="text" id="name" name="user_name" class="form-control">
-            </div>
-            <div>
-              <br>
-              <label for="msg">your message:</label>
-              <textarea id="msg" name="user_message" class="form-control msg"></textarea>
-            </div>
-            <div>
-              <input type="submit" value="contact the farmer" class="btn btn-home btn-lg" onclick="confirmSent()">
-            </div>
+  <br><br>
+  <br><br>
+  </div>
+  <!-- <div>
+    <h1>Followed</h1>
+    <#% current_user.follows.each do |follow| %>
+    <p><%#= follow.garden.name %></p>
+    <%# end %>
+  </div>
+   -->
+  <div class="modal fade" id="myModal-message" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content form">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Envoyer un message</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-actions">
+              <div>
+                <br>
+                <label for="name">Votre prénom :</label>
+                <input type="text" id="name" name="user_name" class="form-control">
+              </div>
+              <div>
+                <br>
+                <label for="msg">Votre message :</label>
+                <textarea id="msg" name="user_message" class="form-control msg"></textarea>
+              </div>
+              <div>
+                <input type="submit" value="envoyer" class="btn btn-home btn-lg" onclick="confirmSent()">
+              </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 </div>

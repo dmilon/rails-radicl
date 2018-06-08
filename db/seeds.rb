@@ -45,103 +45,151 @@ hen.save!
 
 
 # Create elements & logs & logs scopes for Damien
-carotte = Element.new(name: "carotte", quantity: "50")
+carotte = Element.new(name: "Carotte", quantity: "50")
 carotte.zone = potager
 carotte.save!
 
-betterave1 = Element.new(name: "betterave", quantity: "30")
+betterave1 = Element.new(name: "Betterave", quantity: "30")
 betterave1.zone = potager
 betterave1.save!
 
-oignon1 = Element.new(name: "oignon", quantity: "30")
+oignon1 = Element.new(name: "Oignon", quantity: "30")
 oignon1.zone = potager
 oignon1.save!
 
-artichaut = Element.new(name: "artichaut", quantity: "20")
+artichaut = Element.new(name: "Artichaut", quantity: "20")
 artichaut.zone = potager
 artichaut.save!
 
-epinard = Element.new(name: "epinard", quantity: "20")
+epinard = Element.new(name: "Épinard", quantity: "20")
 epinard.zone = potager
 epinard.save!
 
-tomate = Element.new(name: "tomate", quantity: "20")
+tomate = Element.new(name: "Tomate", quantity: "20")
 tomate.zone = potager
 tomate.save!
 
+poule1 = Element.new(name: "Poules", quantity: "10")
+poule1.zone = hen
+poule1.save!
+
+basil = Element.new(name: "Basilic", quantity: "40")
+basil.zone = aromates
+basil.save!
+
 
 #logs
-soil1 = Log.new(category: "Labourage", description: "Labourage pour mes carottes, creuser et desherbage", status: true, date: '2018-05-04')
-soil1.user = damien
-soil1.save!
 
-scope1 = LogScope.new
-scope1.log_id = soil1.id
-scope1.element_id = carotte.id
-scope1.save!
+poulette = Log.new(category: "Autres", description: "Installation des poules", status: true, date: '2018-04-01')
+poulette.user = damien
+poulette.save!
 
-fert1 = Log.new(category: "Fertilisation", description: "étaler le compost", status: true, date: '2018-05-15')
-fert1.user = damien
-fert1.save!
+scopei1 = LogScope.new
+scopei1.log_id = poulette.id
+scopei1.element_id = poule1.id
+scopei1.save!
 
-scope2 = LogScope.new
-scope2.log_id = fert1.id
-scope2.element_id = carotte.id
-scope2.save!
 
-sow1 = Log.new(category: "Semis", description: "parsemer les graines de carottes", status: true, date: '2018-05-25')
-sow1.user = damien
-sow1.save!
+poulette2 = Log.new(category: "Autres", description: "Paillage pour les poules", status: true, date: '2018-04-04')
+poulette2.user = damien
+poulette2.save!
 
-scope3 = LogScope.new
-scope3.log_id = sow1.id
-scope3.element_id = carotte.id
-scope3.save!
+scopei2 = LogScope.new
+scopei2.log_id = poulette2.id
+scopei2.element_id = poule1.id
+scopei2.save!
 
-trans1 = Log.new(category: "Repiquage", description: "déplacer les carottes dans le jardin", status: true, date: '2018-05-30')
-trans1.user = damien
-trans1.save!
+basilic1 = Log.new(category: "Labourage", description: "Préparation du sol", status: true, date: '2018-05-22')
+basilic1.user = damien
+basilic1.save!
 
-scope4 = LogScope.new
-scope4.log_id = trans1.id
-scope4.element_id = carotte.id
-scope4.save!
+scopei3 = LogScope.new
+scopei3.log_id = basilic1.id
+scopei3.element_id = basil.id
+scopei3.save!
 
-wat1 = Log.new(category: "Arrosage", description: "Arrosage des carottes", status: true, date: '2018-05-30')
-wat1.user = damien
-wat1.save!
 
-scope5 = LogScope.new
-scope5.log_id = wat1.id
-scope5.element_id = carotte.id
-scope5.save!
+basilic2 = Log.new(category: "Arrosage", description: "Arrosage du sol", status: true, date: '2018-05-25')
+basilic2.user = damien
+basilic2.save!
 
-soil2 = Log.new(category: "Labourage", description: "Labourage pour mes betteraves", status: true, date: '2018-06-01')
-soil2.user = damien
-soil2.save!
+scopei4 = LogScope.new
+scopei4.log_id = basilic2.id
+scopei4.element_id = basil.id
+scopei4.save!
 
-scope6 = LogScope.new
-scope6.log_id = soil2.id
-scope6.element_id = betterave1.id
-scope6.save!
 
-fert2 = Log.new(category: "Fertilisation", description: "étaler le compost", status: true, date: '2018-06-01')
-fert2.user = damien
-fert2.save!
+# soil1 = Log.new(category: "Labourage", description: "Labourage pour mes carottes, creuser et desherbage", status: true, date: '2018-05-04')
+# soil1.user = damien
+# soil1.save!
 
-scope7 = LogScope.new
-scope7.log_id = fert2.id
-scope7.element_id = betterave1.id
-scope7.save!
+# scope1 = LogScope.new
+# scope1.log_id = soil1.id
+# scope1.element_id = carotte.id
+# scope1.save!
 
-caring1 = Log.new(category: "Protection", description: "protéger les plants", status: true, date: '2018-06-02')
-caring1.user = damien
-caring1.save!
+# fert1 = Log.new(category: "Fertilisation", description: "étaler le compost", status: true, date: '2018-05-15')
+# fert1.user = damien
+# fert1.save!
 
-scope8 = LogScope.new
-scope8.log_id = caring1.id
-scope8.element_id = oignon1.id
-scope8.save!
+# scope2 = LogScope.new
+# scope2.log_id = fert1.id
+# scope2.element_id = carotte.id
+# scope2.save!
+
+# sow1 = Log.new(category: "Semis", description: "parsemer les graines de carottes", status: true, date: '2018-05-25')
+# sow1.user = damien
+# sow1.save!
+
+# scope3 = LogScope.new
+# scope3.log_id = sow1.id
+# scope3.element_id = carotte.id
+# scope3.save!
+
+# trans1 = Log.new(category: "Repiquage", description: "déplacer les carottes dans le jardin", status: true, date: '2018-05-30')
+# trans1.user = damien
+# trans1.save!
+
+# scope4 = LogScope.new
+# scope4.log_id = trans1.id
+# scope4.element_id = carotte.id
+# scope4.save!
+
+# wat1 = Log.new(category: "Arrosage", description: "Arrosage des carottes", status: true, date: '2018-05-30')
+# wat1.user = damien
+# wat1.save!
+
+# scope5 = LogScope.new
+# scope5.log_id = wat1.id
+# scope5.element_id = carotte.id
+# scope5.save!
+
+# soil2 = Log.new(category: "Labourage", description: "Labourage pour mes betteraves", status: true, date: '2018-06-01')
+# soil2.user = damien
+# soil2.save!
+
+# scope6 = LogScope.new
+# scope6.log_id = soil2.id
+# scope6.element_id = betterave1.id
+# scope6.save!
+
+# fert2 = Log.new(category: "Fertilisation", description: "étaler le compost", status: true, date: '2018-06-01')
+# fert2.user = damien
+# fert2.save!
+
+# scope7 = LogScope.new
+# scope7.log_id = fert2.id
+# scope7.element_id = betterave1.id
+# scope7.save!
+
+# caring1 = Log.new(category: "Protection", description: "protéger les plants", status: true, date: '2018-06-02')
+# caring1.user = damien
+# caring1.save!
+
+# scope8 = LogScope.new
+# scope8.log_id = caring1.id
+# scope8.element_id = oignon1.id
+# scope8.save!
 
 
 soil3 = Log.new(category: "Labourage", description: "Labourage pour mes artichauts, creuser et désherber", status: true, date: '2018-06-02')
@@ -153,25 +201,25 @@ scope9.log_id = soil3.id
 scope9.element_id = artichaut.id
 scope9.save!
 
-fert3 = Log.new(category: "Fertilisation", description: "étaler le composte pour mes artichauts", status: true, date: '2018-06-02')
-fert3.user = damien
-fert3.save!
+# fert3 = Log.new(category: "Fertilisation", description: "étaler le composte pour mes artichauts", status: true, date: '2018-06-02')
+# fert3.user = damien
+# fert3.save!
 
-scope10 = LogScope.new
-scope10.log_id = fert3.id
-scope10.element_id = artichaut.id
-scope10.save!
+# scope10 = LogScope.new
+# scope10.log_id = fert3.id
+# scope10.element_id = artichaut.id
+# scope10.save!
 
-sow2 = Log.new(category: "Semis", description: "semer les graines d'artichaut", status: true, date: '2018-06-03')
-sow2.user = damien
-sow2.save!
+# sow2 = Log.new(category: "Semis", description: "semer les graines d'artichaut", status: true, date: '2018-06-03')
+# sow2.user = damien
+# sow2.save!
 
-scope11 = LogScope.new
-scope11.log_id = sow2.id
-scope11.element_id = artichaut.id
-scope11.save!
+# scope11 = LogScope.new
+# scope11.log_id = sow2.id
+# scope11.element_id = artichaut.id
+# scope11.save!
 
-soil4 = Log.new(category: "Labourage", description: "Labourage pour mes épinards", status: true, date: '2018-06-01')
+soil4 = Log.new(category: "Labourage", description: "Labourage pour mes épinards", status: false, date: '2018-06-01')
 soil4.user = damien
 soil4.save!
 
@@ -180,17 +228,17 @@ scope12.log_id = soil4.id
 scope12.element_id = epinard.id
 scope12.save!
 
-fert4 = Log.new(category: "Fertilisation", description: "étaler le compost sur mes épinards", status: true, date: '2018-06-03')
-fert4.user = damien
-fert4.save!
+# fert4 = Log.new(category: "Fertilisation", description: "étaler le compost sur mes épinards", status: true, date: '2018-06-03')
+# fert4.user = damien
+# fert4.save!
 
-scope13 = LogScope.new
-scope13.log_id = fert4.id
-scope13.element_id = epinard.id
-scope13.save!
+# scope13 = LogScope.new
+# scope13.log_id = fert4.id
+# scope13.element_id = epinard.id
+# scope13.save!
 
 
-soil5 = Log.new(category: "Labourage", description: "Labourage pour mes épinards", status: true, date: '2018-06-01')
+soil5 = Log.new(category: "Labourage", description: "Labourage pour mes tomates", status: false, date: '2018-06-01')
 soil5.user = damien
 soil5.save!
 
@@ -199,14 +247,14 @@ scope14.log_id = soil5.id
 scope14.element_id = tomate.id
 scope14.save!
 
-fert5 = Log.new(category: "Fertilisation", description: "étaler le compost sur mes tomates", status: true, date: '2018-06-03')
-fert5.user = damien
-fert5.save!
+# fert5 = Log.new(category: "Fertilisation", description: "étaler le compost sur mes tomates", status: true, date: '2018-06-03')
+# fert5.user = damien
+# fert5.save!
 
-scope15 = LogScope.new
-scope15.log_id = fert5.id
-scope15.element_id = tomate.id
-scope15.save!
+# scope15 = LogScope.new
+# scope15.log_id = fert5.id
+# scope15.element_id = tomate.id
+# scope15.save!
 
 
 #Create Bruno's Farm
@@ -218,7 +266,7 @@ bruno.garden = ferme_de_quelenne
 bruno.save!
 
 # Create zones
-aromates2 = Zone.new(name: "aromates", area: "4", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209665/photo-1509727841791-40d09ad9b7fc.jpg")
+aromates2 = Zone.new(name: "Aromates", area: "4", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209665/photo-1509727841791-40d09ad9b7fc.jpg")
 aromates2.garden = ferme_de_quelenne
 aromates2.save!
 
@@ -238,7 +286,7 @@ bergerie = Zone.new(name: "Bergerie", area: "100", remote_photo_url: "https://re
 bergerie.garden = ferme_de_quelenne
 bergerie.save!
 
-etable = Zone.new(name: "Etable", area: "1000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1505872342847-6dbb5e76cd31.jpg")
+etable = Zone.new(name: "Étable", area: "1000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1505872342847-6dbb5e76cd31.jpg")
 etable.garden = ferme_de_quelenne
 etable.save!
 
@@ -246,44 +294,44 @@ graines = Zone.new(name: "Graines", area: "3000", remote_photo_url: "https://res
 graines.garden = ferme_de_quelenne
 graines.save!
 
-foret = Zone.new(name: "Forêt", area: "5000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209412/u3hg11kfxoz4g6detvhy.jpg")
+foret = Zone.new(name: "Forêt", area: "5000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528444552/foret.jpg")
 foret.garden = ferme_de_quelenne
 foret.save!
 
 #create elements
-citrouille1 = Element.new(name: "citrouille", quantity: "50")
+citrouille1 = Element.new(name: "Citrouille", quantity: "50")
 citrouille1.zone = potager2
 citrouille1.save!
 
-concombre1 = Element.new(name: "concombre", quantity: "30")
+concombre1 = Element.new(name: "Concombre", quantity: "30")
 concombre1.zone = potager2
 concombre1.save!
 
-oignon2 = Element.new(name: "oignon", quantity: "30")
+oignon2 = Element.new(name: "Oignon", quantity: "30")
 oignon2.zone = potager2
 oignon2.save!
 
-artichaut2 = Element.new(name: "artichaut", quantity: "20")
+artichaut2 = Element.new(name: "Artichaut", quantity: "20")
 artichaut2.zone = potager2
 artichaut2.save!
 
-epinard2 = Element.new(name: "epinard", quantity: "20")
+epinard2 = Element.new(name: "Épinard", quantity: "20")
 epinard2.zone = potager2
 epinard2.save!
 
-tomate2 = Element.new(name: "tomate", quantity: "20")
+tomate2 = Element.new(name: "Tomate", quantity: "20")
 tomate2.zone = potager2
 tomate2.save!
 
-carotte2 = Element.new(name: "carotte", quantity: "60")
+carotte2 = Element.new(name: "Carotte", quantity: "60")
 carotte2.zone = potager2
 carotte2.save!
 
-betterave2 = Element.new(name: "betterave", quantity: "30")
+betterave2 = Element.new(name: "Betterave", quantity: "30")
 betterave2.zone = potager2
 betterave2.save!
 
-patate1 = Element.new(name: "patate", quantity: "20")
+patate1 = Element.new(name: "Patate", quantity: "20")
 patate1.zone = potager2
 patate1.save!
 
@@ -660,7 +708,7 @@ juliette.garden = bizou
 juliette.save!
 
 # Create zones
-aromates3 = Zone.new(name: "aromates", area: "4", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209665/photo-1509727841791-40d09ad9b7fc.jpg")
+aromates3 = Zone.new(name: "Aromates", area: "4", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209665/photo-1509727841791-40d09ad9b7fc.jpg")
 aromates3.garden = bizou
 aromates3.save!
 
@@ -672,62 +720,132 @@ hen3 = Zone.new(name: "Poulailler", area: "30", remote_photo_url: "https://res.c
 hen3.garden = bizou
 hen3.save!
 
-ruche1 = Zone.new(name: "ruche", area: "20", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1498936178812-4b2e558d2937.jpg")
+ruche1 = Zone.new(name: "Ruche", area: "20", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843407/photo-1498936178812-4b2e558d2937.jpg")
 ruche1.garden = bizou
 ruche1.save!
 
-bergerie1 = Zone.new(name: "bergerie", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg")
+bergerie1 = Zone.new(name: "Bergerie", area: "100", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843409/photo-1520644981554-74cd132a97e8.jpg")
 bergerie1.garden = bizou
 bergerie1.save!
 
-etable1 = Zone.new(name: "etable", area: "1000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1505872342847-6dbb5e76cd31.jpg")
+etable1 = Zone.new(name: "Étable", area: "1000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527843408/photo-1505872342847-6dbb5e76cd31.jpg")
 etable1.garden = bizou
 etable1.save!
 
-graines1 = Zone.new(name: "graines", area: "3000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209412/u3hg11kfxoz4g6detvhy.jpg")
+graines1 = Zone.new(name: "Graines", area: "3000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209412/u3hg11kfxoz4g6detvhy.jpg")
 graines1.garden = bizou
 graines1.save!
 
-foret1 = Zone.new(name: "foret", area: "5000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528209412/u3hg11kfxoz4g6detvhy.jpg")
+foret1 = Zone.new(name: "Fôret", area: "5000", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528444552/foret.jpg")
 foret1.garden = bizou
 foret1.save!
 
 #create elements
-citrouille2 = Element.new(name: "citrouille", quantity: "50")
+citrouille2 = Element.new(name: "Citrouille", quantity: "50")
 citrouille2.zone = potager3
 citrouille2.save!
 
-concombre2 = Element.new(name: "concombre", quantity: "30")
+concombre2 = Element.new(name: "Concombre", quantity: "30")
 concombre2.zone = potager3
 concombre2.save!
 
-oignon3 = Element.new(name: "oignon", quantity: "30")
+oignon3 = Element.new(name: "Oignon", quantity: "30")
 oignon3.zone = potager3
 oignon3.save!
 
-artichaut3 = Element.new(name: "artichaut", quantity: "20")
+artichaut3 = Element.new(name: "Artichaut", quantity: "20")
 artichaut3.zone = potager3
 artichaut3.save!
 
-epinard3 = Element.new(name: "epinard", quantity: "20")
+epinard3 = Element.new(name: "Épinard", quantity: "20")
 epinard3.zone = potager3
 epinard3.save!
 
-tomate3 = Element.new(name: "tomate", quantity: "20")
+tomate3 = Element.new(name: "Tomate", quantity: "20")
 tomate3.zone = potager3
 tomate3.save!
 
-carotte3 = Element.new(name: "carotte", quantity: "60")
+carotte3 = Element.new(name: "Carotte", quantity: "60")
 carotte3.zone = potager3
 carotte3.save!
 
-betterave3 = Element.new(name: "betterave", quantity: "30")
+betterave3 = Element.new(name: "Betterave", quantity: "30")
 betterave3.zone = potager3
 betterave3.save!
 
-patate2 = Element.new(name: "patate", quantity: "20")
+patate2 = Element.new(name: "Patate", quantity: "20")
 patate2.zone = potager3
 patate2.save!
+
+
+
+poule2 = Element.new(name: "Poules", quantity: "20")
+poule2.zone = hen3
+poule2.save!
+
+basil2 = Element.new(name: "Basilic", quantity: "50")
+basil2.zone = aromates3
+basil2.save!
+
+
+#logs
+
+poulette3 = Log.new(category: "Autres", description: "Installation des poules", status: true, date: '2018-04-01')
+poulette3.user = juliette
+poulette3.save!
+
+scopei1 = LogScope.new
+scopei1.log_id = poulette3.id
+scopei1.element_id = poule2.id
+scopei1.save!
+
+
+poulette4 = Log.new(category: "Autres", description: "Paillage pour les poules", status: true, date: '2018-04-04')
+poulette4.user = juliette
+poulette4.save!
+
+scopei2 = LogScope.new
+scopei2.log_id = poulette4.id
+scopei2.element_id = poule2.id
+scopei2.save!
+
+poulette5 = Log.new(category: "Autres", description: "Preparation pour futurs poussins", status: true, date: '2018-04-04')
+poulette5.user = juliette
+poulette5.save!
+
+scopei21 = LogScope.new
+scopei21.log_id = poulette5.id
+scopei21.element_id = poule2.id
+scopei21.save!
+
+basilic3 = Log.new(category: "Labourage", description: "Préparation du sol", status: true, date: '2018-05-22')
+basilic3.user = juliette
+basilic3.save!
+
+scopei3 = LogScope.new
+scopei3.log_id = basilic3.id
+scopei3.element_id = basil2.id
+scopei3.save!
+
+
+basilic4 = Log.new(category: "Arrosage", description: "Arrosage du sol", status: true, date: '2018-05-25')
+basilic4.user = juliette
+basilic4.save!
+
+scopei4 = LogScope.new
+scopei4.log_id = basilic4.id
+scopei4.element_id = basil2.id
+scopei4.save!
+
+basilic5 = Log.new(category: "Semis", description: "Nouveaux plants", status: true, date: '2018-05-25')
+basilic5.user = juliette
+basilic5.save!
+
+scopei41 = LogScope.new
+scopei41.log_id = basilic5.id
+scopei41.element_id = basil2.id
+scopei41.save!
+
 
 #create logs and logscopes for Juliette
 soil15 = Log.new(category: "Labourage", description: "Labourage pour mes citrouilles, creuser et desherbage", status: true, date: '2018-01-04')
@@ -832,7 +950,7 @@ scope64.save!
 
 #tomates
 
-soil16 = Log.new(category: "Labourage", description: "Labourage pour mes tomates, creuser et desherbage", status: true, date: '2018-01-04')
+soil16 = Log.new(category: "Labourage", description: "Labourer la terre à la première éclaircie de la saison. Le desherbage m'a pris deux jours.", status: true, date: '2018-02-04')
 soil16.user = juliette
 soil16.save!
 
@@ -841,7 +959,7 @@ scope65.log_id = soil16.id
 scope65.element_id = tomate3.id
 scope65.save!
 
-fert16 = Log.new(category: "Fertilisation", description: "étaler le compost", status: true, date: '2018-02-15')
+fert16 = Log.new(category: "Fertilisation", description: "Appliquer le compost assez tôt dans la saison pour bien nourrir la terre", status: true, date: '2018-02-15')
 fert16.user = juliette
 fert16.save!
 
@@ -850,7 +968,7 @@ scope66.log_id = fert16.id
 scope66.element_id = tomate3.id
 scope66.save!
 
-sow13 = Log.new(category: "Semis", description: "étaler les graines de tomate ", status: true, date: '2018-03-25')
+sow13 = Log.new(category: "Semis", description: "Faire ses semis par beau temps, la terre est plus facile à travailler ", status: true, date: '2018-03-25')
 sow13.user = juliette
 sow13.save!
 
@@ -859,7 +977,7 @@ scope67.log_id = sow13.id
 scope67.element_id = tomate3.id
 scope67.save!
 
-trans11 = Log.new(category: "Repiquage", description: "moving tomate into the garden", status: true, date: '2018-03-30')
+trans11 = Log.new(category: "Repiquage", description: "Déplacer les tomates dans le jardin, quand la pousse fait 3 cms", status: true, date: '2018-03-30')
 trans11.user = juliette
 trans11.save!
 
@@ -868,7 +986,7 @@ scope68.log_id = trans11.id
 scope68.element_id = tomate3.id
 scope68.save!
 
-desherbage4 = Log.new(category: "Désherbage", description: "désherbage pour mes tomates", status: true, date: '2018-06-02')
+desherbage4 = Log.new(category: "Désherbage", description: "Invasion de mauvaise herbes, j'ai du desherber de nouveau", status: true, date: '2018-06-02')
 desherbage4.user = juliette
 desherbage4.save!
 
@@ -879,41 +997,41 @@ scope69.save!
 
 #artichaut
 
-soil18 = Log.new(category: "Labourage", description: "Labourage pour mes artichauts, creuser et desherbage", status: true, date: '2018-03-04')
-soil18.user = juliette
-soil18.save!
+# soil18 = Log.new(category: "Labourage", description: "Labourage pour mes artichauts, creuser et desherbage", status: true, date: '2018-03-04')
+# soil18.user = juliette
+# soil18.save!
 
-scope70 = LogScope.new
-scope70.log_id = soil18.id
-scope70.element_id = artichaut3.id
-scope70.save!
+# scope70 = LogScope.new
+# scope70.log_id = soil18.id
+# scope70.element_id = artichaut3.id
+# scope70.save!
 
-fert17 = Log.new(category: "Fertilisation", description: "étaler le compost", status: true, date: '2018-03-15')
-fert17.user = juliette
-fert17.save!
+# fert17 = Log.new(category: "Fertilisation", description: "étaler le compost", status: true, date: '2018-03-15')
+# fert17.user = juliette
+# fert17.save!
 
-scope71 = LogScope.new
-scope71.log_id = fert17.id
-scope71.element_id = artichaut3.id
-scope71.save!
+# scope71 = LogScope.new
+# scope71.log_id = fert17.id
+# scope71.element_id = artichaut3.id
+# scope71.save!
 
-sow14 = Log.new(category: "Semis", description: "étaler les graines d'artichaut", status: true, date: '2018-03-25')
-sow14.user = juliette
-sow14.save!
+# sow14 = Log.new(category: "Semis", description: "étaler les graines d'artichaut", status: true, date: '2018-03-25')
+# sow14.user = juliette
+# sow14.save!
 
-scope72 = LogScope.new
-scope72.log_id = sow14.id
-scope72.element_id = artichaut3.id
-scope72.save!
+# scope72 = LogScope.new
+# scope72.log_id = sow14.id
+# scope72.element_id = artichaut3.id
+# scope72.save!
 
-trans12 = Log.new(category: "Repiquage", description: "déplacer les artichauts dans le jardin", status: true, date: '2018-06-02')
-trans12.user = juliette
-trans12.save!
+# trans12 = Log.new(category: "Repiquage", description: "déplacer les artichauts dans le jardin", status: true, date: '2018-06-02')
+# trans12.user = juliette
+# trans12.save!
 
-scope73 = LogScope.new
-scope73.log_id = trans12.id
-scope73.element_id = artichaut3.id
-scope73.save!
+# scope73 = LogScope.new
+# scope73.log_id = trans12.id
+# scope73.element_id = artichaut3.id
+# scope73.save!
 
 #epinard
 
@@ -1157,7 +1275,12 @@ champiloiu.save!
 irene.garden = champiloiu
 irene.save!
 
-
+lastone = Garden.new(name: "L'Axide", area: "1000",
+  address: "Domaine de l'Axide 61110 Moutiers-au-Perche", latitude: 48.473517, longitude: 0.877933,
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528451007/axide.jpg')
+lastone.save!
+robert.garden = lastone
+robert.save!
 
 # # Create 8 zones
 # Garden.all.each do |garden|
@@ -1282,8 +1405,8 @@ irene.save!
 # horses.zone = c
 # horses.save!
 
-follow1 = Follow.new(user: damien, garden: ferme_de_quelenne)
-follow1.save!
+# follow1 = Follow.new(user: damien, garden: ferme_de_quelenne)
+# follow1.save!
 
 product1 = Product.new(quantity: 10, end_date: "15/06/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363257/23654-jaune_blanche_rouge_et_violette_decouvrez_les_varietes_oubliees_de_la_carotte_2.jpg")
 product1.element = carotte2
@@ -1294,7 +1417,7 @@ product2.save!
 product3 = Product.new(quantity: 10, end_date: "20/06/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363257/te%CC%81le%CC%81chargement.jpg")
 product3.element = epinard2
 product3.save!
-product4 = Product.new(quantity: 20, end_date: "23/09/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363257/tomato.jpg")
+product4 = Product.new(quantity: 20, end_date: "23/09/2018", description: "GRAINES DE", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363257/tomato.jpg")
 product4.element = tomate2
 product4.save!
 product5 = Product.new(quantity: 10, end_date: "15/07/2018", photo: "https://res.cloudinary.com/bdmbdm/image/upload/v1528363363/epinard-eb081013-100-l750-h512.jpg")
