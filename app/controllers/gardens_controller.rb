@@ -197,7 +197,7 @@ class GardensController < ApplicationController
       borderWidth: 1
     },
     {
-      label: 'Ma communauté',
+      label: 'Ma communauté (moyenne)',
       data: @chart3_data2,
       backgroundColor: 'rgba(51, 108, 188, 0.2)',
       borderColor: '#336CBC',

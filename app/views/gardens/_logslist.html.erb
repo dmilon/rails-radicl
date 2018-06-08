@@ -4,7 +4,7 @@
   <% else %>
       <div id= "searchbar">
         <%= form_tag garden_path(@garden), method: :get, remote: true do %>
-          <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "cherchez une action" %>
+          <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "Recherchez une action" %>
         <% end %>
       </div>
     </div>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="message-body">
-          <p>Enregistrer une action</p>
+          <p>Nouvelle action</p>
         </div>
       </div>
     <% end %>
@@ -55,7 +55,7 @@
          <!-- #.strftime("%A, %b %d") -->
       </div>
       <div class="message-body products">
-        <h6><strong><%= log.category %></strong></h6>
+        <p><strong><%= log.category.upcase %></strong></p>
       </div>
       <% log.log_scopes.each do |log_scope|%>
         <div class="message-body productsi">

@@ -43,8 +43,8 @@
   <br><br>
   <div class="tab">
     <% if @garden.users.include?(current_user) %>
-      <button class="tablinks" data-tab="Farm"><h1>Mes zones</h1></button>
-      <button class="tablinks default" data-tab="Logs"><h1>Mes actions</h1></button>
+      <button class="tablinks default" data-tab="Farm"><h1>Mes zones</h1></button>
+      <button class="tablinks" data-tab="Logs"><h1>Mes actions</h1></button>
       <!-- <button class="tablinks" data-tab="Shares"><h1>my shares</h1></button> -->
     <% else %>
       <button class="tablinks default" data-tab="Farm"><h1>Zones</h1></button>
@@ -85,7 +85,11 @@
               <div class="text">
                 <p>Superficie : <%= zone.area %>m2</p>
                 <% unless zone.logs.empty? %>
-                  <p>Votre dernière action : le <br><%= zone.logs.last.date.strftime("%d/%m/%Y")%></p>
+                  <% if @garden == current_user.garden %>
+                    <p>Votre dernière action : le <br><%= zone.logs.last.date.strftime("%d/%m/%Y")%></p>
+                  <% else %>
+                    <p>Dernière action : le <br><%= zone.logs.last.date.strftime("%d/%m/%Y")%></p>
+                  <% end %>
                 <% end %>
               </div>
             </div>
@@ -130,7 +134,7 @@
             <p><%= log.date.strftime("%d/%m/%Y") %></p>
           </div>
           <div class="message-body products">
-            <h6><strong><%= log.category %></strong></h6>
+            <p><strong><%= log.category.upcase %></strong></p>
           </div>
           <% log.log_scopes.each do |log_scope|%>
             <div class="message-body productsi">
