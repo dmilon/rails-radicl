@@ -1,5 +1,5 @@
 <%= render 'shared/banner-dashboard' %>
-      <div class="zone-name">
+    <div class="zone-name">
       <h1>MA FERME</h1>
         <p class="show">Vue d'ensemble</p>
       </div>
@@ -32,31 +32,30 @@
               </div>
           </div>
 
-
-              <div class="col-xs-12 col-md-3">
-                <div class="clearfix">
-                  <div class="c100 p20 big blue animated fadeInUp">
-                      <span><%= @garden.elements.count %> ressources</span>
-                      <div class="slice">
-                          <div class="bar"></div>
-                          <div class="fill"></div>
-                      </div>
+          <div class="col-xs-12 col-md-3">
+            <div class="clearfix">
+              <div class="c100 p20 big blue animated fadeInUp">
+                  <span><%= @garden.elements.count %> ressources</span>
+                  <div class="slice">
+                      <div class="bar"></div>
+                      <div class="fill"></div>
                   </div>
-                </div>
               </div>
-
-
-              <div class="col-xs-12 col-md-3">
-                <div class="clearfix">
-                  <div class="c100 p5 big red animated fadeInUp">
-                      <span><%=  @garden.logs.count %> actions</span>
-                      <div class="slice">
-                          <div class="bar"></div>
-                        <div class="fill"></div>
-                      </div>
-                  </div>
-                </div>
             </div>
+          </div>
+
+
+          <div class="col-xs-12 col-md-3">
+            <div class="clearfix">
+              <div class="c100 p5 big red animated fadeInUp">
+                  <span><%=  @garden.logs.count %> actions</span>
+                  <div class="slice">
+                      <div class="bar"></div>
+                    <div class="fill"></div>
+                  </div>
+              </div>
+            </div>
+        </div>
     </div>
   </div>
 
@@ -94,27 +93,7 @@
 </div>
 </div>
 
-<!-- <div>
-  <p><%#= @weeding %></p>
-  <p><%#= @data_serie_logs %></p>
-</div> -->
-
 <%= javascript_pack_tag 'chart' %>
-
-<!--script>
-  var labels1 = <%= raw @chart1_labels.to_json %>
-  var datasets1 = <%= raw @chart1_datasets.to_json %>;
-  initChart("myBarChart1", labels1, datasets1);
-  var labels2 = <%= raw @chart2_labels.to_json %>
-  var datasets2 = <%= raw @chart2_datasets.to_json %>;
-  initStackedChart("myBarChart2", labels2, datasets2);
-  var labels3 = <%= raw @chart3_labels.to_json %>
-  var datasets3 = <%= raw @chart3_datasets.to_json %>;
-  initRadarChart("myBarChart3", labels3, datasets3);
-  var labels4 = <%= raw @chart4_labels.to_json %>
-  var datasets4 = <%= raw @chart4_datasets.to_json %>;
-  initLineChart("myBarChart4", labels4, datasets4);
-</script-->
 
 <script>
   var labels1 = <%= raw @chart1_labels.to_json %>
