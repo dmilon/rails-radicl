@@ -12,4 +12,5 @@ class FollowPolicy < ApplicationPolicy
   def update?
     true
   end
+  #follow should have two actions: create and destroy, this requires to change the code in the view tho
 end
