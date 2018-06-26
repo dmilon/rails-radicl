@@ -1,21 +1,21 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.11)), url(https://images.unsplash.com/photo-1431631927486-6603c868ce5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=31cfb792a10418a51f4a1e609e089a06&auto=format&fit=crop&w=1950&q=80); background-size: cover!important;">
   <div class="form">
     <div class="row">
-<h2>Sign up</h2>
+<h2>Rejoindre la communauté</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+    <%= f.input :password, label: "Mot de passe", required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
+    <%= f.input :password_confirmation, label: "Confirmation du mot de passe", required: true %>
     <%= f.input :avatar, required: false %>
-  <%= f.input :avatar_cache, as: :hidden %>
+  <%= f.input :avatar_cache, label: "Votre photo", as: :hidden %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: "btn btn-home btn-lg" %>
+    <%= f.button :submit, "S'inscrire", class: "btn btn-home btn-lg" %>
   </div>
 <% end %>
 
