@@ -25,6 +25,9 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 1.2'
 gem 'groupdate'
 gem 'datetime_picker_input'
+gem "letter_opener", group: :development
+gem 'postmark-rails'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
