@@ -17,5 +17,3 @@ scroll();
 initUpdateNavbarOnScroll();
 loadDynamicBannerText();
 tabsClickListener();
-
-
