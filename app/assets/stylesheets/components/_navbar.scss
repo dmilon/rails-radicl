@@ -14,9 +14,9 @@
   left: 0;
 }
 
-
 .navbar-wagon-white {
-display:none}
+  display:none
+}
 
 /* Logo */
 .navbar-wagon-brand img {
@@ -30,7 +30,6 @@ display:none}
   width: 35px;
   border-radius: 50%;
 }
-
 
 .avatar {
   height: 35px;
@@ -53,19 +52,18 @@ display:none}
 
 /* Navbar link */
 .navbar-wagon-link {
-    color: white!important;
-    text-transform: uppercase;
-    padding: 7px;
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    padding: 20px !important
+  color: white!important;
+  text-transform: uppercase;
+  padding: 7px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  padding: 20px !important;
 }
 
 .navbar-wagon-link:hover {
   color: white;
   text-decoration: underline;
 }
-
 
 /* Dropdown menu */
 .navbar-wagon-dropdown-menu {
