@@ -34,8 +34,8 @@
   </div>
 </div>
 
-  <% if user_signed_in? %>
-<div class="wrapper-2">
+<% if user_signed_in? %>
+  <div class="wrapper-2">
     <h1 class="how text-center">Découvrez les fermes de votre région</h1>
     <br><br>
     <div class="row">
@@ -52,7 +52,7 @@
               <% end %>
               <%= link_to garden_path(garden) do %>
                 <div class="overlay">
-              <%= cl_image_tag garden.users[0].avatar, class: "avatar card-avatar" %>
+                  <%= cl_image_tag garden.users[0].avatar, class: "avatar card-avatar" %>
                   <div class="text">
                     <h2><%= garden.name %></h2>
                     <p><%= garden.address %></p>
