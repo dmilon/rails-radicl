@@ -17,7 +17,15 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
 
+  after_create :send_welcome_email
+
   def follow?(garden)
     !Follow.find_by(user: self, garden: garden).nil?
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 end

@@ -16,7 +16,7 @@ louisa = User.create(email: "louisa@gmail.com", password: "password", name: "Lou
 # Create 1 farm and assign it to all users
 champs = Farm.new(name: "L'envie des champs", area: 200,
   address: "La Heslière, 61290 Longny-au-Perche", latitude: 48.530741, longitude: 0.784926,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528383011/44799499.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1530011500/dsar9lripjklei0nu4l4.jpg')
 champs.save!
 User.all.each do |user|
   user.farm = champs

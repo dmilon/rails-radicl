@@ -94,4 +94,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  config.action_mailer.delivery_method     = :postmark
+  config.action_mailer.postmark_settings   = { api_key: ENV['81add9ff-2020-4993-8748-a78296c66d88'] }
+  config.action_mailer.default_url_options = { host: "rails-radicl.herokuapp.com" }
 end

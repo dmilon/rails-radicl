@@ -13,4 +13,13 @@ class Farm < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def creation_confirmation(garden)
+    @farmn = farm
+    mail(
+      to:       @farm.user.email,
+      subject:  "La ferme #{@farm.name} a bien été créée!"
+    )
+  end
 end
+

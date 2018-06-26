@@ -9,12 +9,8 @@ class GardenPolicy < ApplicationPolicy
       true
     end
 
-    def show?
-      true
-    end
-
     def update?
-      # user.garden == record && user.admin?
+      # (user.garden == record) && user.admin?
       true
     end
 

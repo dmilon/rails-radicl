@@ -22,5 +22,7 @@ module RailsRadicl
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.i18n.default_locale = :en
+    config.action_mailer.delivery_method = :postmark
+    config.action_mailer.postmark_settings = { :api_token => "81add9ff-2020-4993-8748-a78296c66d88" }
   end
 end

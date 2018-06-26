@@ -14,30 +14,29 @@
   background: $red;
 }
 
-
 .alert.alert-info.alert-dismissible {
-    width: 100vw;
-    margin-left: -102px;
+  width: 100vw;
+  margin-left: -102px;
 }
 
 .alert {
-    position: absolute;
-    top: 85px;
-    left: 102px;
-    height: 40px;
-    padding-top: 12px;
-    font-size: 11px;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    z-index: 40;
-    border: none;
-    border-radius: 0px;
+  position: absolute;
+  top: 85px;
+  left: 102px;
+  height: 40px;
+  padding-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  z-index: 40;
+  border: none;
+  border-radius: 0px;
 }
 
 button.close {
-    padding-top: 10px;
-    margin-top: -1px;
-    color: black;
-    font-size: 18px;
-    color: white!important;
+  padding-top: 10px;
+  margin-top: -1px;
+  color: black;
+  font-size: 18px;
+  color: white!important;
 }

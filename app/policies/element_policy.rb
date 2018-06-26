@@ -13,7 +13,7 @@ class ElementPolicy < ApplicationPolicy
     user.garden == record.zone.garden
   end
 
-  def delete?
+  def destroy?
     user.garden == record.zone.garden
   end
 end

@@ -3,99 +3,94 @@
 <div class="zone-name zoni">
   <h1><%= @zone.name.upcase %></h1>
     <%= link_to edit_zone_path(@zone) do %>
-     <i class="far fa-edit"></i>
+      <i class="far fa-edit"></i>
     <% end %>
   <p><%= @zone.garden.name %></p>
   <%= link_to zone_path(@zone),
     method: :delete,
     data: { confirm: "Are you sure?" } do %>
-  <i class="far fa-trash-alt"></i>
+    <i class="far fa-trash-alt"></i>
   <% end %>
 </div>
 
 <div class="container show-garden">
 <!-- this is the zone section -->
-<br><br>
-<div class="tab">
-  <button class="tablinks default" data-tab="elements"><h1>my elements</h1></button>
-  <button class="tablinks" data-tab="elements-logs"><h1>my logs</h1></button>
-</div>
-
-
-
-
-<div id="elements" class="tabcontent active">
-  <div class="row">
-    <% @elements.each do |element| %>
-      <% if element.zone_id == @zone.id %>
-        <div class="col-xs-12 col-md-3">
-          <%= content_tag(:div, class: "card garden", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527861929/a7pneilafaclnlzhogdh.jpg") do %>
-            <!-- #{cl_image_path zone.photo} -->
-              <div class="card-description-zone">
-                <h3><%= element.name%></h3>
-                  <%= link_to edit_zone_element_path(element) do %>
-                    <i class="far fa-edit"></i>
-                  <% end %>
-                <p><%= element.quantity %></p>
-                <p>last log: 12/01/2018</p>
-                  <%= link_to zone_element_path(element),
-                    method: :delete,
-                    data: { confirm: "Are you sure?" } do %>
-                  <i class="far fa-trash-alt"></i>
-                  <% end %>
-              </div>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
+  <br><br>
+  <div class="tab">
+    <button class="tablinks default" data-tab="elements"><h1>my elements</h1></button>
+    <button class="tablinks" data-tab="elements-logs"><h1>my logs</h1></button>
   </div>
 
-<div class="plus">
-  <% if @garden.users.include?(current_user) %>
-    <%= link_to new_zone_element_path(@zone) do %>
-      <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
-    <% end %>
-  <% end %>
-</div>
-</div>
+  <div id="elements" class="tabcontent active">
+    <div class="row">
+      <% @elements.each do |element| %>
+        <% if element.zone_id == @zone.id %>
+          <div class="col-xs-12 col-md-3">
+            <%= content_tag(:div, class: "card garden", style:"background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url(https://res.cloudinary.com/bdmbdm/image/upload/v1527861929/a7pneilafaclnlzhogdh.jpg") do %>
+              <div class="card-description-zone">
+                <h3><%= element.name%></h3>
+                <%= link_to edit_zone_element_path(element) do %>
+                  <i class="far fa-edit"></i>
+                <% end %>
+                <p><%= element.quantity %></p>
+                <p>last log: 12/01/2018</p>
+                <%= link_to zone_element_path(element),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } do %>
+                  <i class="far fa-trash-alt"></i>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
-<div id="elements-logs" class="tabcontent">
-  <div class="row garden-logs">
+    <div class="plus">
+      <% if @garden.users.include?(current_user) %>
+        <%= link_to new_zone_element_path(@zone) do %>
+          <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="elements-logs" class="tabcontent">
+    <div class="row garden-logs">
       <% @elements.each do |element| %>
         <% if element.zone_id == @zone.id %>
           <% @log_scopes.each do |log_scope| %>
             <% if log_scope.element_id == element.id %>
               <div class="message">
                 <div class="message-name">
-                    <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
-                    <p><%= log_scope.log.date %></p>
-                    <p><strong>
-                      <% if log_scope.log.status = true %>
-                      <span class="badge badge-success">good job!</span>
-                      <% else %>
-                      <span class="badge badge-warning">to be done</span>
-                      <p>plan the log</p>
-                      <% end %></strong></p>
+                  <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
+                  <p><%= log_scope.log.date %></p>
+                  <p><strong><% if log_scope.log.status = true %>
+                    <span class="badge badge-success">good job!</span>
+                  <% else %>
+                    <span class="badge badge-warning">to be done</span>
+                    <p>plan the log</p>
+                  <% end %></strong></p>
                 </div>
-                  <div class="message-body">
-                    <h4><strong><%= log_scope.log.category %></strong> on <%= log_scope.element.name %></h4>
-                    <p><%= log_scope.log.description %></p>
-                  </div>
+                <div class="message-body">
+                  <h4><strong><%= log_scope.log.category %></strong> on <%= log_scope.element.name %></h4>
+                  <p><%= log_scope.log.description %></p>
+                </div>
               </div>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
-  </div>
-  <div class="plus mod">
-    <% if @garden.users.include?(current_user) %>
-      <button class="plus" data-toggle="modal" data-target="#myModal">
-        <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
-      </button>
-    <% end %>
-  </div>
-</div>
+    </div>
 
+    <div class="plus mod">
+      <% if @garden.users.include?(current_user) %>
+        <button class="plus" data-toggle="modal" data-target="#myModal">
+          <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527684634/Fichier_1-100.jpg" alt="">
+        </button>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
@@ -128,5 +123,5 @@
 </div>
 
 <% if @log.errors.any? %>
-<%= javascript_pack_tag 'display_modal' %>
+  <%= javascript_pack_tag 'display_modal' %>
 <% end %>

@@ -1,0 +1,55 @@
+// Avatar shape
+.avatar-large.shared { width: 78px }
+.avatar-medium.shared {
+  width: 60px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px gray;
+  margin-bottom: 7px;
+  margin-top: 24px;
+}
+
+// Product's photo shape
+img.photo-produit {
+  width: 72px;
+  height: 50px;
+}
+
+// My friends's box
+
+.col-xs-2.myfollowers.no-padding {
+  padding-bottom: 40px;
+  margin-bottom: 41px;
+  background-color: #dcf3fe;
+  margin-left: 19px;
+  height: 479px;
+}
+
+// Products'box
+.message-body.adress-garden{
+  flex-grow: 4;
+}
+
+.message-body h6 {
+  color: #2b4635;
+}
+
+.message-body p a {
+  text-decoration: underline!important;
+}
+
+.message-body.product {
+  width: 110px;
+}
+
+.margin-bottom {
+  margin-bottom: 40px;
+}
+
+.good-width {
+  width: 165px;
+}
+
+.center {
+  margin-left: 400px;
+}
+
