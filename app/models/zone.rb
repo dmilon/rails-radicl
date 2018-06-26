@@ -1,9 +1,9 @@
 class Zone < ApplicationRecord
-  belongs_to :garden
+  belongs_to :farm
   has_many :elements, dependent: :destroy
-  has_many :logs, through: :elements
-  validates :name, presence: true
+  has_many :actions, through: :elements
 
   mount_uploader :photo, PhotoUploader
 
+  validates :name, presence: true
 end

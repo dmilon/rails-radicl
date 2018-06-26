@@ -1,9 +1,8 @@
 class Element < ApplicationRecord
-  has_many :products, dependent: :destroy
-  has_many :log_scopes, dependent: :destroy
-  has_many :alert_scopes
-  has_many :logs, through: :log_scopes
   belongs_to :zone
+  has_many :actions, dependent: :nullify
 
   mount_uploader :photo, PhotoUploader
+
+  validates :name, presence: true
 end

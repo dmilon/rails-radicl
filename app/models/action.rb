@@ -1,7 +1,7 @@
-class Log < ApplicationRecord
+class Action < ApplicationRecord
   belongs_to :user
-  has_many :log_scopes, dependent: :destroy
-  has_many :elements, through: :log_scopes
+  belongs_to :element
+
   ACTIONS = [
     "Labourage",
     "Fertilisation",

@@ -10,26 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_06_081303) do
+ActiveRecord::Schema.define(version: 2018_06_26_132609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "alert_scopes", force: :cascade do |t|
-    t.bigint "alert_id"
-    t.bigint "element_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["alert_id"], name: "index_alert_scopes_on_alert_id"
-    t.index ["element_id"], name: "index_alert_scopes_on_element_id"
-  end
-
-  create_table "alerts", force: :cascade do |t|
+  create_table "actions", force: :cascade do |t|
+    t.boolean "status", default: false
     t.date "date"
-    t.string "category"
-    t.string "description"
+    t.text "description"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "category"
+    t.bigint "element_id"
+    t.index ["element_id"], name: "index_actions_on_element_id"
+    t.index ["user_id"], name: "index_actions_on_user_id"
   end
 
   create_table "elements", force: :cascade do |t|
@@ -37,21 +33,12 @@ ActiveRecord::Schema.define(version: 2018_06_06_081303) do
     t.bigint "zone_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity"
     t.string "name"
+    t.integer "area"
     t.index ["zone_id"], name: "index_elements_on_zone_id"
   end
 
-  create_table "follows", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "garden_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["garden_id"], name: "index_follows_on_garden_id"
-    t.index ["user_id"], name: "index_follows_on_user_id"
-  end
-
-  create_table "gardens", force: :cascade do |t|
+  create_table "farms", force: :cascade do |t|
     t.integer "area"
     t.string "photo"
     t.datetime "created_at", null: false
@@ -62,38 +49,27 @@ ActiveRecord::Schema.define(version: 2018_06_06_081303) do
     t.string "name"
   end
 
-  create_table "log_scopes", force: :cascade do |t|
-    t.bigint "log_id"
-    t.bigint "element_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["element_id"], name: "index_log_scopes_on_element_id"
-    t.index ["log_id"], name: "index_log_scopes_on_log_id"
-  end
-
-  create_table "logs", force: :cascade do |t|
-    t.boolean "status", default: false
-    t.date "date"
-    t.string "description"
+  create_table "follows", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "quantity"
+    t.bigint "farm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
-    t.index ["user_id"], name: "index_logs_on_user_id"
+    t.index ["farm_id"], name: "index_follows_on_farm_id"
+    t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
-    t.bigint "element_id"
     t.integer "price"
-    t.string "description"
+    t.text "description"
     t.integer "quantity"
     t.string "photo"
     t.date "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "end_date"
-    t.index ["element_id"], name: "index_products_on_element_id"
+    t.bigint "farm_id"
+    t.string "name"
+    t.index ["farm_id"], name: "index_products_on_farm_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,10 +87,9 @@ ActiveRecord::Schema.define(version: 2018_06_06_081303) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "avatar"
-    t.bigint "garden_id"
-    t.boolean "admin", default: false, null: false
+    t.bigint "farm_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["garden_id"], name: "index_users_on_garden_id"
+    t.index ["farm_id"], name: "index_users_on_farm_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -122,21 +97,18 @@ ActiveRecord::Schema.define(version: 2018_06_06_081303) do
     t.string "name"
     t.integer "area"
     t.string "photo"
-    t.bigint "garden_id"
+    t.bigint "farm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["garden_id"], name: "index_zones_on_garden_id"
+    t.index ["farm_id"], name: "index_zones_on_farm_id"
   end
 
-  add_foreign_key "alert_scopes", "alerts"
-  add_foreign_key "alert_scopes", "elements"
+  add_foreign_key "actions", "elements"
+  add_foreign_key "actions", "users"
   add_foreign_key "elements", "zones"
-  add_foreign_key "follows", "gardens"
+  add_foreign_key "follows", "farms"
   add_foreign_key "follows", "users"
-  add_foreign_key "log_scopes", "elements"
-  add_foreign_key "log_scopes", "logs"
-  add_foreign_key "logs", "users"
-  add_foreign_key "products", "elements"
-  add_foreign_key "users", "gardens"
-  add_foreign_key "zones", "gardens"
+  add_foreign_key "products", "farms"
+  add_foreign_key "users", "farms"
+  add_foreign_key "zones", "farms"
 end
