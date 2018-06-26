@@ -1,7 +1,5 @@
-//=require datetime_picker_input
-
 import "bootstrap";
-import "../plugins/flatpickr";
+import "../components/flatpickr";
 
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { loadDynamicBannerText } from '../components/banner';
