@@ -1,7 +1,7 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.11)), url(https://images.unsplash.com/photo-1431631927486-6603c868ce5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=31cfb792a10418a51f4a1e609e089a06&auto=format&fit=crop&w=1950&q=80); background-size: cover!important;">
+<div class="banner editmyprofile" style="background-image: linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.11)), url(https://images.unsplash.com/photo-1431631927486-6603c868ce5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=31cfb792a10418a51f4a1e609e089a06&auto=format&fit=crop&w=1950&q=80); background-size: cover!important;">
   <div class="form">
     <div class="row">
-<h2>edit my profile</h2>
+<h2>Modifier mon profil</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -13,23 +13,20 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-    <%= f.input :avatar %>
+    <%= f.input :password, label: "Nouveau mot de passe", autocomplete: "off", hint: "Laisser vide si vous ne souhaitez pas le modifier", required: false %>
+    <%= f.input :password_confirmation, label: "Confirmer votre nouveau mot de passe", required: false %>
+    <%= f.input :current_password, label: "Votre ancien mot de passe", hint: "Nous avons besoin de votre mot passe actuel pour enregistrer ces modifications", required: true %>
+    <%= f.input :avatar, label: "Votre photo de profil" %>
     <%= f.input :avatar_cache, as: :hidden %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update", class: "btn btn-home btn-lg" %>
+    <%= f.button :submit, "Actualiser mon profil", class: "btn btn-home btn-lg" %>
   </div>
 <% end %>
 
-<p>Cancel my account</p>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<p><%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Êtes-vous sûr ? Vous ne pourrez pas revenir en arrière" }, method: :delete %></p>
+<p><%= link_to "Retour", :back %></p>
 
 </div>
 </div>
