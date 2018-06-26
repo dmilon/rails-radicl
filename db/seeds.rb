@@ -25,7 +25,7 @@ robert = User.create(admin: true, email: "robert@gmail.com", password: "password
 # Create Damien's farms
 champs = Garden.new(name: "L'envie des champs", area: "200",
   address: "La Heslière, 61290 Longny-au-Perche", latitude: 48.530741, longitude: 0.784926,
-  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1528383011/44799499.jpg')
+  remote_photo_url: 'https://res.cloudinary.com/bdmbdm/image/upload/v1530011500/dsar9lripjklei0nu4l4.jpg')
 champs.save!
 damien.garden = champs
 damien.save!
@@ -35,7 +35,7 @@ aromates = Zone.new(name: "Aromates", area: "3", remote_photo_url: "https://res.
 aromates.garden = champs
 aromates.save!
 
-potager = Zone.new(name: "Potager", area: "50", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527863158/m8xrduxuketfvxv9mijw.jpg")
+potager = Zone.new(name: "Potager", area: "50", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528471719/z7vcairs0kolfvy29w0q.jpg")
 potager.garden = champs
 potager.save!
 
@@ -271,7 +271,7 @@ aromates2 = Zone.new(name: "Aromates", area: "4", remote_photo_url: "https://res
 aromates2.garden = ferme_de_quelenne
 aromates2.save!
 
-potager2 = Zone.new(name: "Potager", area: "200", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527863158/m8xrduxuketfvxv9mijw.jpg")
+potager2 = Zone.new(name: "Potager", area: "200", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528471719/z7vcairs0kolfvy29w0q.jpg")
 potager2.garden = ferme_de_quelenne
 potager2.save!
 
@@ -713,7 +713,7 @@ aromates3 = Zone.new(name: "Aromates", area: "4", remote_photo_url: "https://res
 aromates3.garden = bizou
 aromates3.save!
 
-potager3 = Zone.new(name: "Potager", area: "200", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1527863158/m8xrduxuketfvxv9mijw.jpg")
+potager3 = Zone.new(name: "Potager", area: "200", remote_photo_url: "https://res.cloudinary.com/bdmbdm/image/upload/v1528471719/z7vcairs0kolfvy29w0q.jpg")
 potager3.garden = bizou
 potager3.save!
 
