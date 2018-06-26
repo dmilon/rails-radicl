@@ -6,5 +6,4 @@ class Element < ApplicationRecord
   belongs_to :zone
 
   mount_uploader :photo, PhotoUploader
-
 end

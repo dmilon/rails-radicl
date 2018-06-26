@@ -1,4 +1,3 @@
-
 function scroll() {
   const anims = document.querySelectorAll('.anim-scroll')
   window.addEventListener('scroll', (event) => {

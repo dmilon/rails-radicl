@@ -1,4 +1,3 @@
-
 function confirmSent()
 {
   const x = swal({
