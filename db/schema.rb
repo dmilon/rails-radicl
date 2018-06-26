@@ -10,27 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_06_081303) do
+ActiveRecord::Schema.define(version: 2018_06_26_103119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "alert_scopes", force: :cascade do |t|
-    t.bigint "alert_id"
-    t.bigint "element_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["alert_id"], name: "index_alert_scopes_on_alert_id"
-    t.index ["element_id"], name: "index_alert_scopes_on_element_id"
-  end
-
-  create_table "alerts", force: :cascade do |t|
-    t.date "date"
-    t.string "category"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "elements", force: :cascade do |t|
     t.string "photo"
@@ -128,8 +111,6 @@ ActiveRecord::Schema.define(version: 2018_06_06_081303) do
     t.index ["garden_id"], name: "index_zones_on_garden_id"
   end
 
-  add_foreign_key "alert_scopes", "alerts"
-  add_foreign_key "alert_scopes", "elements"
   add_foreign_key "elements", "zones"
   add_foreign_key "follows", "gardens"
   add_foreign_key "follows", "users"
