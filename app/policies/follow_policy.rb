@@ -1,7 +1,7 @@
 class FollowPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all
     end
   end
 

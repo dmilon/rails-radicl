@@ -14,7 +14,7 @@ class GardenPolicy < ApplicationPolicy
     end
 
     def update?
-      # user.garden == record && user.admin?
+      # (user.garden == record) && user.admin?
       true
     end
 

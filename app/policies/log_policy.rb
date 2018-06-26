@@ -1,15 +1,15 @@
 class LogPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope
+      scope.all
     end
   end
 
   def create?
-    user == record.user || user.admin?
+    user == record.user
   end
 
   def update?
-    user == record.user || user.admin?
+    user == record.user
   end
 end
