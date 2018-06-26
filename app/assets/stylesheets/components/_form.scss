@@ -5,7 +5,6 @@
   color : #2b4635;
 }
 
-
 small.form-text.text-muted {
     font-size: 11px;
 }
@@ -13,7 +12,6 @@ small.form-text.text-muted {
 input.btn.btn-home.btn-lg {
     margin-top: 43px;
 }
-
 
 .button-contact {
   background-color: white;
@@ -30,7 +28,6 @@ input.btn.btn-home.btn-lg {
   color: white;
   letter-spacing: 0.02em;
 }
-
 
 .select2-results__option{font-size: 13px}
 
@@ -49,8 +46,9 @@ span#select2-log_category-container {
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #2b4635!important;
-    line-height: 28px;}
+  color: #2b4635!important;
+  line-height: 28px;
+}
 
 .select2-container--default .select2-results__option--highlighted[aria-selected]
 {
@@ -75,11 +73,11 @@ h2{
 }
 
 input.form-control {
-    text-align: left;
-    width: 450px;
-    margin: 0 auto;
-    color: #2b4635;
-    font-weight: 300;
+  text-align: left;
+  width: 450px;
+  margin: 0 auto;
+  color: #2b4635;
+  font-weight: 300;
 }
 
 i.far.fa-times-circle{
@@ -154,10 +152,10 @@ label {
 }
 
 input[type="file"] {
-    display: block;
-    font-size: 10px;
-    margin: 0 auto;
-    padding-top: 10px;
+  display: block;
+  font-size: 10px;
+  margin: 0 auto;
+  padding-top: 10px;
 }
 
 .block-party span {
@@ -170,11 +168,10 @@ input[type="file"] {
   border-bottom: none;
 }
 
-
 .block-party {
-    background-color: rgba(0, 0, 0, 0.022);
-    padding: 31px;
-    margin-top: 26px;
+  background-color: rgba(0, 0, 0, 0.022);
+  padding: 31px;
+  margin-top: 26px;
 }
 
 textarea {
@@ -183,7 +180,7 @@ textarea {
 }
 
  textarea#msg {
-    height: 103px;
-    width: 450px;
-    text-align: left;
+  height: 103px;
+  width: 450px;
+  text-align: left;
 }
