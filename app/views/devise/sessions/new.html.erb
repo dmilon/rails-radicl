@@ -1,17 +1,17 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.12), rgba(0,0,0,0.11)), url(https://images.unsplash.com/photo-1431631927486-6603c868ce5e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=31cfb792a10418a51f4a1e609e089a06&auto=format&fit=crop&w=1950&q=80); background-size: cover!important;">
   <div class="form">
     <div class="row">
-<h2>welcome back! please log in </h2>
+<h2>Connectez vous à votre compte </h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
     <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <%= f.input :password, label: "Votre mot de passe", required: false %>
+    <%= f.input :remember_me, label: "Se rappeler de moi", as: :boolean if devise_mapping.rememberable? %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "Se connecter" %>
   </div>
 <% end %>
 

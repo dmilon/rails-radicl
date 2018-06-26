@@ -219,6 +219,7 @@ scopei4.save!
 # scope11.element_id = artichaut.id
 # scope11.save!
 
+
 # soil4 = Log.new(category: "Labourage", description: "Labourage pour mes épinards", status: false, date: '2018-06-01')
 # soil4.user = damien
 # soil4.save!
