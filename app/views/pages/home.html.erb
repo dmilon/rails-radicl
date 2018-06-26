@@ -4,7 +4,7 @@
     <h1 class="how text-center">Comment ça marche ?</h1>
     <div class="row">
       <br><br><br>
-      <%= link_to new_garden_path do %>
+      <%= link_to new_farm_path do %>
         <div class="col-xs-12 col-sm-3">
           <div class="card-icon">
             <img src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671032/farm.svg" alt="">
@@ -39,23 +39,23 @@
     <h1 class="how text-center">Découvrez les fermes de votre région</h1>
     <br><br>
     <div class="row">
-      <% @gardens.each do |garden| %>
-        <% unless garden == current_user.garden %>
+      <% @farms.each do |farm| %>
+        <% unless farm == current_user.farm %>
           <div class="col-xs-12 col-sm-3">
             <div class="card">
-              <%= cl_image_tag garden.photo, class: "card-img-top" %>
+              <%= cl_image_tag farm.photo, class: "card-img-top" %>
               <% if user_signed_in? %>
-                <% follow = current_user.follow?(garden) %>
-                <%= link_to follows_path(garden_id: garden.id), method: :post, class: "icon" do %>
+                <% follow = current_user.follow?(farm) %>
+                <%= link_to follows_path(farm_id: farm.id), method: :post, class: "icon" do %>
                   <i class="fas fa-heart <%= "followed" if follow %>" ></i>
                 <% end %>
               <% end %>
-              <%= link_to garden_path(garden) do %>
+              <%= link_to farm_path(farm) do %>
                 <div class="overlay">
-                  <%= cl_image_tag garden.users[0].avatar, class: "avatar card-avatar" %>
+                  <%= cl_image_tag farm.users[0].avatar, class: "avatar card-avatar" %>
                   <div class="text">
-                    <h2><%= garden.name %></h2>
-                    <p><%= garden.address %></p>
+                    <h2><%= farm.name %></h2>
+                    <p><%= farm.address %></p>
                   </div>
                 </div>
                 <div class="card-link">
@@ -70,7 +70,7 @@
   </div>
   <br>
 <%# if user_signed_in? %>
-  <!-- <div class="text-center animated zoomIn"> <%#= link_to "Accéder à votre ferme", garden_path(current_user.garden), class: "btn btn-home btn-lg text-center green-button" %>
+  <!-- <div class="text-center animated zoomIn"> <%#= link_to "Accéder à votre ferme", farm_path(current_user.farm), class: "btn btn-home btn-lg text-center green-button" %>
   </div> -->
 <%# end %>
 </div>

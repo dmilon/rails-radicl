@@ -1,4 +1,4 @@
-<% if @garden == current_user.garden %>
+<% if @farm == current_user.farm %>
 
   <%= render 'shared/banner-dashboard' %>
       <div class="zone-name">
@@ -16,18 +16,18 @@
 <%= render 'shared/banner-dashboard' %>
 
   <% @users.each do |user| %>
-    <% if user.garden_id == @garden.id %>
+    <% if user.farm_id == @farm.id %>
         <div class="zone-name autre">
           <div class="row">
             <div class="col-xs-12 col-md-2 col-md-offset-2">
               <div><%= cl_image_tag user.avatar, class: "avatar-other" %></div>
-              <div> <%= render "follow_button", garden: @garden %></div>
+              <div> <%= render "follow_button", farm: @farm %></div>
             </div>
             <div class="col-xs-12 col-md-5">
               <div class="title-other">
                 <h1 class="text-left">BIENVENUE CHEZ <%= user.name.upcase %></h1>
-                  <p><%= @garden.name %></p>
-                  <p><%= @garden.address %></p>
+                  <p><%= @farm.name %></p>
+                  <p><%= @farm.address %></p>
               </div>
             </div>
         </div>
@@ -38,30 +38,30 @@
   <% end %>
 <% end %>
 
-<div class="container show-garden animated fadeInUp">
+<div class="container show-farm animated fadeInUp">
   <!-- this is the zone section -->
   <br><br>
   <div class="tab">
-    <% if @garden.users.include?(current_user) %>
+    <% if @farm.users.include?(current_user) %>
       <button class="tablinks" data-tab="Farm"><h1>Mes zones</h1></button>
-      <button class="tablinks default" data-tab="Logs"><h1>Mes actions</h1></button>
+      <button class="tablinks default" data-tab="Actions"><h1>Mes actions</h1></button>
       <!-- <button class="tablinks" data-tab="Shares"><h1>my shares</h1></button> -->
     <% else %>
       <button class="tablinks default" data-tab="Farm"><h1>Zones</h1></button>
-      <button class="tablinks" data-tab="Logs"><h1>Actions</h1></button>
+      <button class="tablinks" data-tab="Actions"><h1>Actions</h1></button>
     <!--   <button class="tablinks" data-tab="Shares"><h1>shares</h1></button> -->
     <% end %>
   </div>
   <div id="Farm" class="tabcontent active">
-    <div class="row zones-garden">
+    <div class="row zones-farm">
       <% if @zones == [] %>
         <p class="error-message">Désolé, vous n'avez pas encore de zones</p>
       <% else %>
-        <% if @garden.users.include?(current_user) %>
+        <% if @farm.users.include?(current_user) %>
           <div class="col-xs-12 col-md-3">
             <div class="card">
               <%= cl_image_tag "https://res.cloudinary.com/bdmbdm/image/upload/v1528191161/Plan_de_travail_123.png", class: "card-img-top", width: 10 %>
-              <%= link_to new_garden_zone_path(@garden) do %>
+              <%= link_to new_farm_zone_path(@farm) do %>
                 <div class="overlay">
                   <div class="text">
                     <h5>J'ajoute une zone</h5>
@@ -76,7 +76,7 @@
         <% end %>
       <% end %>
 
-      <% @garden.zones.each do |zone| %>
+      <% @farm.zones.each do |zone| %>
         <div class="col-xs-12 col-md-3">
           <div class="card">
           <%= cl_image_tag zone.photo, class: "card-img-top" %>
@@ -84,11 +84,11 @@
             <div class="overlay">
               <div class="text">
                 <p>Superficie : <%= zone.area %>m2</p>
-                <% unless zone.logs.empty? %>
-                  <% if @garden == current_user.garden %>
-                    <p>Votre dernière action : le <br><%= zone.logs.last.date.strftime("%d/%m/%Y")%></p>
+                <% unless zone.actions.empty? %>
+                  <% if @farm == current_user.farm %>
+                    <p>Votre dernière action : le <br><%= zone.actions.last.date.strftime("%d/%m/%Y")%></p>
                   <% else %>
-                    <p>Dernière action : le <br><%= zone.logs.last.date.strftime("%d/%m/%Y")%></p>
+                    <p>Dernière action : le <br><%= zone.actions.last.date.strftime("%d/%m/%Y")%></p>
                   <% end %>
                 <% end %>
               </div>
@@ -103,19 +103,19 @@
     </div>
   </div>
   <!-- this is the end of the zone section -->
-  <!-- this is the log section -->
-  <div id="Logs" class="tabcontent">
-    <%= render 'logslist', logs: @logs, garden: @garden %>
+  <!-- this is the action section -->
+  <div id="Actions" class="tabcontent">
+    <%= render 'actions_list', actions: @actions, farm: @farm %>
   </div>
-  <!-- this is the end of log section -->
+  <!-- this is the end of aciton section -->
   </div>
 
 <div id="Shares" class="tabcontent">
-  <div class="row garden-logs">
-    <% if @garden.zones == [] %>
+  <div class="row farm-actions">
+    <% if @farm.zones == [] %>
       <p class="error-message"><%= "Ajoutez une zone" %></p>
     <% else %>
-      <% if @garden.users.include?(current_user) %>
+      <% if @farm.users.include?(current_user) %>
         <div class="message text-left">
           <div class="message-name">
             <img class="plus-sign" src="http://res.cloudinary.com/bdmbdm/image/upload/v1528034422/plussign_square.png" data-toggle="modal" data-target="#myModalShares">
@@ -125,22 +125,20 @@
           </div>
         </div>
       <% end %>
-      <% @logs.each do |log| %>
+      <% @actions.each do |action| %>
         <div class="message">
           <div class="message-name">
             <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/veggies_and_fruits.svg">
           </div>
           <div class="message-body">
-            <p><%= log.date.strftime("%d/%m/%Y") %></p>
+            <p><%= action.date.strftime("%d/%m/%Y") %></p>
           </div>
           <div class="message-body products">
-            <p><strong><%= log.category.upcase %></strong></p>
+            <p><strong><%= action.category.upcase %></strong></p>
           </div>
-          <% log.log_scopes.each do |log_scope|%>
             <div class="message-body productsi">
-              <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
+              <p><strong><%= action.element.name %></strong> : <%= action.description %></p>
             </div>
-          <% end %>
         </div>
       <% end %>
     <% end %>
@@ -176,12 +174,12 @@
         <h4 class="modal-title" id="myModalLabel">Enregistrer une action</h4>
       </div>
       <div class="modal-body">
-        <div class="form-log">
-          <%= simple_form_for @log do |f| %>
+        <div class="form-action">
+          <%= simple_form_for @action do |f| %>
             <%= f.input :date, as: :string, input_html: { class: "datepicker"} %>
-            <%= f.input :category, label: 'Type d\'action', collection: Log::ACTIONS, prompt:'Choisissez une action', input_html: { class: "select2" } %>
+            <%= f.input :category, label: 'Type d\'action', collection: Action::ACTIONS, prompt:'Choisissez une action', input_html: { class: "select2" } %>
             <%= f.input :description %>
-            <%= hidden_field_tag :garden_id, @garden.id %>
+            <%= hidden_field_tag :farm_id, @farm.id %>
 <!--             <p> On which zones? </p>
  -->            <%#= f.simple_fields_for :zones do |v|  %>
               <%#= v.collection_check_boxes :name, @garden.zones, :id, :name %>
@@ -189,7 +187,7 @@
             <p> Sur quels éléments ? </p>
             <div class="block-party">
               <%= f.simple_fields_for :elements do |e| %>
-                <%= e.collection_radio_buttons :name, @garden.elements, :id, :name %>
+                <%= e.collection_radio_buttons :name, @farm.elements, :id, :name %>
               <% end %>
             </div>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
@@ -209,13 +207,13 @@
         <h4 class="modal-title" id="myModalLabel">J'enregistre une action</h4>
       </div>
       <div class="modal-body">
-        <div class="form-log">
-          <%= simple_form_for @log do |f| %>
+        <div class="form-action">
+          <%= simple_form_for @action do |f| %>
             <%= f.input :date, as: :string, input_html: { class: "datepicker" } %>
             <%#= f.input :category, collection: Log::ACTIONS, prompt:"which action would you like to log?", input_html: { class: "select2" } %>
             <p> Que voulez-vous partager? </p>
             <%= f.simple_fields_for :elements do |e| %>
-              <%= e.collection_check_boxes :name, @garden.elements, :id, :name, class: 'form-check' %>
+              <%= e.collection_check_boxes :name, @farm.elements, :id, :name, class: 'form-check' %>
             <% end %>
 <!--             <p> From which zones? </p>
  -->            <%#= f.simple_fields_for :zones do |v|  %>
@@ -223,7 +221,7 @@
             <%# end %>
             <%= f.input :description %>
             <%= f.input :quantity %>
-            <%= hidden_field_tag :garden_id, @garden.id %>
+            <%= hidden_field_tag :farm_id, @farm.id %>
             <br>
             <br><br>
               <%#= f.association :elements, collection: zone.elements, as: :check_boxes %>
@@ -236,6 +234,6 @@
     </div>
   </div>
 </div>
-<% if @log.errors.any? %>
+<% if @action.errors.any? %>
 <%= javascript_pack_tag 'display_modal' %>
 <% end %>

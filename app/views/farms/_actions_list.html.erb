@@ -1,14 +1,14 @@
-<div class="row garden-logs">
-  <% if @garden.zones == [] %>
+<div class="row farm-actions">
+  <% if @farm.zones == [] %>
     <p class="error-message"><%= "Désolé, ces zones ne sont pas accessibles " %></p>
   <% else %>
       <div id= "searchbar">
-        <%= form_tag garden_path(@garden), method: :get, remote: true do %>
+        <%= form_tag farm_path(@farm), method: :get, remote: true do %>
           <%= text_field_tag :query, params[:query], class: "barwidth", placeholder: "Recherchez une action" %>
         <% end %>
       </div>
     </div>
-    <% if @garden.users.include?(current_user) %>
+    <% if @farm.users.include?(current_user) %>
       <div class="message text-left">
         <div class="message-name">
           <img class="plus-sign" src="http://res.cloudinary.com/bdmbdm/image/upload/v1528034422/plussign_square.png" data-toggle="modal" data-target="#myModal">
@@ -20,30 +20,30 @@
       </div>
     <% end %>
   <% end %>
-  <% @logs.each do |log| %>
+  <% @actions.each do |action| %>
     <div class="message">
-      <div class="message-name filterDiv <%= log.category %>">
-        <% if log.category == "Labourage" %>
+      <div class="message-name filterDiv <%= action.category %>">
+        <% if action.category == "Labourage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1561630_cc.svg">
-        <% elsif log.category == "Fertilisation" %>
+        <% elsif action.category == "Fertilisation" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1042097_cc.svg">
-        <% elsif log.category == "Semis" %>
+        <% elsif action.category == "Semis" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671029/seed.svg">
-        <% elsif log.category == "Repiquage" %>
+        <% elsif action.category == "Repiquage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">
-        <% elsif log.category == "Arrosage" %>
+        <% elsif action.category == "Arrosage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240203_cc.svg">
-        <% elsif log.category == "Désherbage" %>
+        <% elsif action.category == "Désherbage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189035/noun_984560_cc.svg">
-        <% elsif log.category == "Paillage" %>
+        <% elsif action.category == "Paillage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1240202_cc.svg">
-        <% elsif log.category == "Protection" %>
+        <% elsif action.category == "Protection" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189177/noun_1002074_cc.svg">
-        <% elsif log.category == "Récolte" %>
+        <% elsif action.category == "Récolte" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671027/brouette.svg">
-        <% elsif log.category == "Nettoyage" %>
+        <% elsif action.category == "Nettoyage" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528189352/noun_1551479_cc.svg">
-        <% elsif log.category == "Distribution" %>
+        <% elsif action.category == "Distribution" %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1527671030/selling.svg">
         <% else %>
           <img class="avatar-large" src="https://res.cloudinary.com/bdmbdm/image/upload/v1528188695/noun_1205722_cc.svg">
@@ -51,30 +51,28 @@
       </div>
 
       <div class="message-body products date">
-        <p><%= log.date.strftime("%d/%m/%Y") %></p>
+        <p><%= action.date.strftime("%d/%m/%Y") %></p>
          <!-- #.strftime("%A, %b %d") -->
       </div>
       <div class="message-body products">
-        <p><strong><%= log.category.upcase %></strong></p>
+        <p><strong><%= action.category.upcase %></strong></p>
       </div>
-      <% log.log_scopes.each do |log_scope|%>
         <div class="message-body productsi">
-          <p><strong><%= log_scope.element.name %></strong> : <%= log.description %></p>
+          <p><strong><%= action.element.name %></strong> : <%= action.description %></p>
         </div>
         <div class="message-body elements">
-          <p><%= link_to log_scope.element.zone.name, zone_path(log_scope.element.zone) %></p>
+          <p><%= link_to action.element.zone.name, zone_path(action.element.zone) %></p>
         </div>
-      <% end %>
 
       <div class="message-body">
-        <% if @garden.users.include?(current_user)%>
-          <% if log.status %>
+        <% if @farm.users.include?(current_user)%>
+          <% if action.status %>
             <div class="text-center">
               <div><i class="fas fa-check done"></i></div>
-              <%= link_to "annuler", log_path(log), method: :patch, remote: true, class: "icon done" %>
+              <%= link_to "annuler", action_path(action), method: :patch, remote: true, class: "icon done" %>
             </div>
           <% else %>
-            <%= link_to "Je l'ai fait", log_path(log), method: :patch, remote: true, class: "button-contact" %>
+            <%= link_to "Je l'ai fait", action_path(action), method: :patch, remote: true, class: "button-contact" %>
           <% end %>
         <% end %>
       </div>

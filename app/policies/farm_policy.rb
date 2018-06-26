@@ -1,4 +1,4 @@
-class GardenPolicy < ApplicationPolicy
+class FarmPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -15,7 +15,7 @@ class GardenPolicy < ApplicationPolicy
     end
 
     def destroy?
-      user.garden == record && user.admin?
+      user.farm == record && user.admin?
     end
 
     def stats?

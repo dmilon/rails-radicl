@@ -20,7 +20,7 @@ class User < ApplicationRecord
   after_create :send_welcome_email
 
   def follow?(garden)
-    !Follow.find_by(user: self, garden: garden).nil?
+    !Follow.find_by(user: self, farm: farm).nil?
   end
 
   private

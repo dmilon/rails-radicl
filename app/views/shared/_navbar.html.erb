@@ -7,13 +7,13 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <% if user_signed_in? %>
-      <% if current_user.garden.nil? == false %>
+      <% if current_user.farm.nil? == false %>
         <!-- Links when logged in -->
-        <%= link_to "Ma ferme", garden_path(current_user.garden), class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Tableau de bord", stats_garden_path(current_user.garden), class: "navbar-wagon-item navbar-wagon-link" %>
-        <%= link_to "Communauté", community_gardens_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Ma ferme", farm_path(current_user.farm), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Tableau de bord", stats_farm_path(current_user.farm), class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Communauté", community_farms_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% else %>
-        <%= link_to "Communauté", community_gardens_path, class: "navbar-wagon-item navbar-wagon-link" %>
+        <%= link_to "Communauté", community_farms_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
