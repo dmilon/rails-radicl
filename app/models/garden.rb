@@ -11,4 +11,14 @@ class Garden < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   mount_uploader :photo, PhotoUploader
+
+   def creation_confirmation(garden)
+    @garden = garden
+
+    mail(
+      to:       @garden.user.email,
+      subject:  "La ferme #{@garden.name} a bien été créée!"
+    )
+  end
 end
+
