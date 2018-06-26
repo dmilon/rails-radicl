@@ -1,6 +1,6 @@
-  <h4 class="text-center">Mes amis</h4>
+<h4 class="text-center">Mes amis</h4>
 <% current_user.follows.each do |follow| %>
   <% follow.garden.users.each do |user| %>
     <div class= "col-xs-6 no-padding"><%= cl_image_tag user.avatar, class: "avatar-medium shared"%></div>
   <% end %>
- <% end %>
+<% end %>

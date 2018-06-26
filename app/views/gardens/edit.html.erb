@@ -2,7 +2,7 @@
   <div class="form">
     <div class="row">
       <h1>edit your farm</h1>
-       <% if policy(@garden).edit? %>
+      <% if policy(@garden).edit? %>
         <%= render 'form', garden: @garden %>
       <% end %>
     </div>
