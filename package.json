@@ -3,12 +3,14 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "acorn": "^5.7.4",
     "bootstrap": "3",
     "chart.js": "^2.7.2",
     "chartjs": "^0.3.24",
     "flatpickr": "^4.5.0",
     "gmaps": "^0.4.24",
     "jquery": "^3.5.0",
+    "kind-of": "^6.0.3",
     "select2": "^4.0.6-rc.1",
     "sweetalert": "^2.1.0",
     "typed.js": "^2.0.7"
