@@ -10,8 +10,12 @@
     "flatpickr": "^4.5.0",
     "gmaps": "^0.4.24",
     "jquery": "^3.5.0",
+    "js-yaml": "^3.13.1",
     "kind-of": "^6.0.3",
+    "lodash": "^4.17.12",
     "select2": "^4.0.6-rc.1",
+    "serialize-javascript": "^2.1.1",
+    "set-value": "^2.0.1",
     "sweetalert": "^2.1.0",
     "typed.js": "^2.0.7"
   },
