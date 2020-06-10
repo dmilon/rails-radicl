@@ -88,7 +88,7 @@ GEM
     flatpickr (4.5.2.0)
     font-awesome-sass (5.0.13)
       sassc (>= 1.11)
-    geocoder (1.5.1)
+    geocoder (1.6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     groupdate (4.1.1)
